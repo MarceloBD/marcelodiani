@@ -16,9 +16,7 @@ const NAV_ITEMS = [
 
 type NavItem = (typeof NAV_ITEMS)[number];
 
-const SECTION_ID_MAP: Partial<Record<NavItem, string>> = {
-  contact: "quote",
-};
+const SECTION_ID_MAP: Partial<Record<NavItem, string>> = {};
 
 export function Navbar() {
   const translations = useTranslations("nav");

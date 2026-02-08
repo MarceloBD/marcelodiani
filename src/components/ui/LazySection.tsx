@@ -5,6 +5,8 @@ import { useInView } from "@/hooks/useInView";
 
 interface LazySectionProps {
   children: ReactNode;
+  /** Section id so anchor navigation works before content loads */
+  id?: string;
   /** Skeleton height while not yet loaded (default: "400px") */
   height?: string;
   /** How far before viewport to start loading (default: "300px") */
@@ -21,6 +23,7 @@ interface LazySectionProps {
  */
 export function LazySection({
   children,
+  id,
   height = "400px",
   rootMargin = "300px",
   className,
@@ -38,7 +41,7 @@ export function LazySection({
   }, [isInView]);
 
   return (
-    <div ref={elementReference} className={className}>
+    <div ref={elementReference} id={id} className={className}>
       {hasBeenVisible ? (
         children
       ) : (

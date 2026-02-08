@@ -88,7 +88,7 @@ export function SkillsSection() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
   return (
-    <section id="skills" className="py-24 px-6">
+    <section className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <SectionTitle
           title={translations("title")}

@@ -105,10 +105,10 @@ export default async function HomePage({ params }: PageProps) {
         <AboutSection />
 
         {/* Below the fold - defer mounting until near viewport */}
-        <LazySection height="600px">
+        <LazySection id="experience" height="600px">
           <ExperienceSection />
         </LazySection>
-        <LazySection height="800px">
+        <LazySection id="skills" height="800px">
           <SkillsSection />
         </LazySection>
         <LazySection height="800px">
@@ -123,10 +123,10 @@ export default async function HomePage({ params }: PageProps) {
         <LazySection height="700px">
           <ArchitectureSimulator />
         </LazySection>
-        <LazySection height="500px">
+        <LazySection id="projects" height="500px">
           <ProjectsSection />
         </LazySection>
-        <LazySection height="600px">
+        <LazySection id="education" height="600px">
           <EducationSection />
         </LazySection>
         <LazySection height="800px">
@@ -135,7 +135,7 @@ export default async function HomePage({ params }: PageProps) {
         <LazySection height="500px">
           <QuoteRequest />
         </LazySection>
-        <LazySection height="400px">
+        <LazySection id="contact" height="400px">
           <ContactSection />
         </LazySection>
         <LazySection height="300px">

@@ -47,7 +47,7 @@ export function ProjectsSection() {
   const [isGameExpanded, setIsGameExpanded] = useState(false);
 
   return (
-    <section id="projects" className="py-24 px-6 bg-section-alt">
+    <section className="py-24 px-6 bg-section-alt">
       <div className="max-w-6xl mx-auto">
         <SectionTitle title={translations("title")} />
 

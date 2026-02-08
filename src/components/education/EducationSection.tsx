@@ -47,7 +47,7 @@ export function EducationSection() {
   const translations = useTranslations("education");
 
   return (
-    <section id="education" className="py-24 px-6 relative overflow-hidden">
+    <section className="py-24 px-6 relative overflow-hidden">
       <MathBackground />
       <div className="max-w-6xl mx-auto relative z-10">
         <SectionTitle title={translations("title")} />

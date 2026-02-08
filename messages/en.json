@@ -1,0 +1,833 @@
+{
+  "metadata": {
+    "title": "Marcelo B. Diani | Senior Full Stack Developer",
+    "description": "Senior Full Stack Developer & Team Lead with 7+ years of experience in JavaScript/TypeScript. Specialized in React, Node.js, Next.js, and AWS. USP Computer Engineering graduate."
+  },
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "education": "Education",
+    "contact": "Contact",
+    "toggleMenu": "Toggle menu",
+    "skipToContent": "Skip to main content",
+    "languageSelection": "Language selection",
+    "switchToEnglish": "Switch to English",
+    "switchToPortuguese": "Switch to Portuguese"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Marcelo B. Diani",
+    "role": "Senior Full Stack & DevOps | Team Lead | Founder | E-commerce & AI Specialist",
+    "cursorBadge": "Top 4% Cursor user in 2025",
+    "tagline": "My mission is to improve people's lives through technology.",
+    "cta": "Get in touch",
+    "imageAlt": "Marcelo B. Diani"
+  },
+  "about": {
+    "title": "About Me",
+    "bio": "Graduated in Computer Engineering at the University of São Paulo (USP), in São Carlos, Brazil (2019). Mathematics Olympiad medalist. Have been working for 7+ years mostly with JavaScript/TypeScript with strong experience in web development. E-commerce specialist on maximizing online sales. AI enthusiast. Always with a positive mindset.",
+    "stats": {
+      "years": "7+",
+      "yearsLabel": "Years of Experience",
+      "leadership": "3+",
+      "leadershipLabel": "Years of Leadership",
+      "tests": "1000+",
+      "testsLabel": "Tests Written",
+      "apps": "25+",
+      "appsLabel": "Apps Managed"
+    },
+    "languages": {
+      "title": "Languages",
+      "portuguese": "Portuguese (native)",
+      "english": "English (advanced)",
+      "german": "German (basic)",
+      "spanish": "Spanish (basic)",
+      "italian": "Italian (basic)",
+      "clickHint": "Click to hear a greeting"
+    }
+  },
+  "beyondCode": {
+    "tab": "Beyond Code",
+    "tabProfessional": "Professional",
+    "subtitle": "A little about my journey outside the screen",
+    "chapters": {
+      "origins": {
+        "title": "Origins & Roots",
+        "icon": "seedling",
+        "text": "Born in 1996 in Mirassol, a small city in the countryside of São Paulo, Brazil. Descendant of Italian immigrants, I grew up in a humble and hardworking family. My dad fixes TVs, radios, and all kinds of electronics — watching him take things apart and put them back together sparked my curiosity about how everything is made."
+      },
+      "school": {
+        "title": "School Years",
+        "icon": "school",
+        "text": "I attended high school at an ETEC in São José do Rio Preto, one of the best public technical schools in the region — you had to pass a competitive exam to get in. During those years I won several math and physics medals, including a gold medal at the OBMEP national olympiad, where I traveled to Rio de Janeiro to receive it from the president's hands. I also received awards in my city for being one of the top students."
+      },
+      "hobbies": {
+        "title": "Hobbies & Interests",
+        "icon": "gamepad",
+        "text": "As a kid I played soccer a lot with friends — I was never that good, but it was always fun. I've always loved movies and spent countless hours playing video games. One game that stood out was Dota 2, which I consider a kind of \"chess 2.0\" — the strategy, teamwork, and decision-making it demands are unmatched."
+      },
+      "path": {
+        "title": "The Path to Engineering",
+        "icon": "compass",
+        "text": "Before university, I took some courses on edX about physics and one about Python — that was my first real contact with programming. Being good at math and having an innate curiosity about how things work (thanks, Dad!), I decided to pursue Computer Engineering at the University of São Paulo (USP)."
+      },
+      "university": {
+        "title": "University Life",
+        "icon": "graduation",
+        "text": "At USP I joined many extracurricular groups and learned how fulfilling it is to help people. I took all kinds of classes — I even enrolled in a quantum physics course, though I dropped it before exams to focus more on programming. After graduating, I had the choice between hardware and software, and I chose software because I believed I could impact more people with it."
+      },
+      "values": {
+        "title": "Who I Am Today",
+        "icon": "heart",
+        "text": "All these different experiences shaped me into a calm, studious, and friendly person. I always try to see other points of view and work to keep the peace wherever I am. Whether it's building software, leading a team, or just having a conversation — I believe empathy and curiosity are the best tools we have."
+      }
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "companyLogoAlt": "{company} logo",
+    "positions": {
+      "clearer": {
+        "company": "Clearer.io",
+        "location": "Boston, Massachusetts, Remote",
+        "period": "2022 – 2025",
+        "role": "Team Lead / Senior Full Stack Developer / Scrum Master",
+        "bullets": [
+          "Led two teams as Team Lead (7 developers). Responsible for PR reviews, 1:1 meetings, external meetings, individual goal tracking, Scrum ceremonies, sprint planning and task breakdown in Jira.",
+          "Helped manage more than 14 apps to Shopify App Store with tens of thousands of users monthly and total revenue of millions per year.",
+          "Created a library with CDK and moved apps from Heroku to AWS to reduce hosting costs and improve architecture management through IaC.",
+          "Added unit tests and end-to-end tests using Datadog, allowing faster feature delivery without regressions. Added Codacy for static code analysis.",
+          "Added observability with logging and tracing in Datadog, reducing debugging time. Implemented caching with Memcached. Created Lambda functions using DynamoDB and LLMs."
+        ]
+      },
+      "acesso": {
+        "company": "Acesso Comercial",
+        "location": "São Carlos, São Paulo",
+        "period": "2021 – 2022",
+        "role": "Founder",
+        "bullets": [
+          "Founder and developer of a startup to help small stores sell online similar to Shopify with ERP, CRM, blog (with SSR) and omnichannel chat.",
+          "Built with 3 microservices (auth, core, metrics) in Linux server. Used Github Actions for Blue-Green deployment with Docker and Nginx.",
+          "Used React, Node.js, GraphQL, Relay, MongoDB, AWS (S3). Created features using AI with OpenAI, Gemini and Typesense for RAG.",
+          "Led two developers and coordinated with designers, social media, lawyers, and consultants.",
+          "Setup more than 1,000 unit, integration and end-to-end tests. Created around 600 stores."
+        ]
+      },
+      "vortx": {
+        "company": "Vórtx DTVM",
+        "location": "São Paulo, São Paulo",
+        "period": "2020 – 2021",
+        "role": "Full Stack Developer",
+        "bullets": [
+          "Worked at a financial company collecting and maintaining client data for fund investments.",
+          "Used Angular and Node for 3 microservices and 2 lambdas, and .NET Core connected with MongoDB cluster.",
+          "Moved 1,800 records from manual Excel sheets to an online automated platform, eliminating paper-based workflow.",
+          "Delivered the project to external users in 6 months, saving at least one full-time employee of manual effort.",
+          "Implemented refresh token, pagination optimization (reducing time to 500ms), and generated 200,000 dynamic PDFs."
+        ]
+      },
+      "enfase": {
+        "company": "Ênfase Instituto Jurídico",
+        "location": "São Carlos, São Paulo",
+        "period": "2019 – 2020",
+        "role": "Full Stack Developer Intern",
+        "bullets": [
+          "Worked at a distance education company using JavaScript frameworks, React and Node with PostgreSQL across 3 main products.",
+          "Developed a postgraduate platform from scratch and one for law job positions, both with about 13,000 active students.",
+          "Architected front end with Atomic Design for componentization, resulting in easier maintenance.",
+          "Built platform connected with an event system using Kafka for user statistics.",
+          "Organized company events for promoting integration among members from different teams."
+        ]
+      }
+    }
+  },
+  "skills": {
+    "title": "Skills & Technologies",
+    "subtitle": "Interact with the sphere to explore my tech stack",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database",
+      "devops": "DevOps & Cloud",
+      "ai": "AI & Machine Learning",
+      "other": "Other"
+    }
+  },
+  "projects": {
+    "title": "Side Projects",
+    "closeDemo": "▲ Close Demo",
+    "playDemo": "▶ Play Web Demo",
+    "items": {
+      "learnCode": {
+        "name": "Learn Code",
+        "year": "2025",
+        "description": "Online interface to learn new languages and frameworks by their main concepts and puzzles."
+      },
+      "codingClasses": {
+        "name": "Coding Classes",
+        "year": "2025",
+        "description": "Recorded coding classes for an online course, teaching how to use AI with advanced techniques."
+      },
+      "languageTranslator": {
+        "name": "Language Translator",
+        "year": "2025",
+        "description": "State-of-the-art open-source React Native and Python app using LangGraph and OCR to translate text from images."
+      },
+      "bannerGenerator": {
+        "name": "Banner Generator",
+        "year": "2025",
+        "description": "Banner generation tool for web pages with editable text, leveraging multiple LLMs to improve output quality."
+      },
+      "travelGuide": {
+        "name": "Travel Guide",
+        "year": "2024",
+        "description": "Next.js platform for storing city guides and points of interest."
+      },
+      "cryptoTax": {
+        "name": "Crypto Tax Calculator",
+        "year": "2022",
+        "description": "Open-source application to calculate Brazilian taxes on crypto trading with extensive unit tests."
+      },
+      "platformJump": {
+        "name": "Platform Jump Game",
+        "year": "2021",
+        "description": "Unity C# mobile game featuring obstacles and a global ranking system on Google Play."
+      }
+    }
+  },
+  "education": {
+    "title": "Education & Achievements",
+    "uspLogoAlt": "USP Logo",
+    "degree": {
+      "title": "Computer Engineering",
+      "institution": "University of São Paulo (USP)",
+      "period": "2015 – 2019",
+      "details": "Final grade: 7.8 — Top 10 of 61 students. Completed with no failed courses."
+    },
+    "achievements": {
+      "cpa": {
+        "title": "CPA-20 Certification",
+        "year": "2020",
+        "description": "Score 93% — Ranked 1st among all candidates at the company."
+      },
+      "olympiad": {
+        "title": "Mathematics Olympiad — OBMEP",
+        "year": "2009 – 2012",
+        "description": "Gold medal winner. Participated in the 4-year program at UNESP for medalists."
+      },
+      "hackathon": {
+        "title": "Hackathon Elo+Getnet",
+        "year": "2018",
+        "description": "Developed a solution to facilitate consumer purchases in a weekend hackathon."
+      },
+      "robotics": {
+        "title": "Warthog Robotics — USP",
+        "year": "2015 – 2016",
+        "description": "Control Department of USP São Carlos robotic team for robot soccer championships."
+      },
+      "pontinha": {
+        "title": "Pontinha Project",
+        "year": "2019",
+        "description": "Taught English to students in a public school once a week for 6 months."
+      },
+      "clothing": {
+        "title": "USP Winter Clothing Drive",
+        "year": "2019",
+        "description": "Collected about 60,000 pieces of clothing for institutions in São Carlos region."
+      },
+      "christmas": {
+        "title": "Operation Christmas",
+        "year": "2018 – 2019",
+        "description": "Gathered food and distributed Christmas presents for children in need."
+      }
+    }
+  },
+  "playground": {
+    "title": "Code Playground",
+    "subtitle": "Languages for every taste and use case",
+    "windowTitle": "Code Playground",
+    "output": "Output",
+    "run": "Run",
+    "running": "Running...",
+    "noOutput": "(no output)",
+    "unknownError": "Unknown error",
+    "executionFailed": "Failed to execute code. Please try again.",
+    "clickRunHint": "Click Run to execute code"
+  },
+  "quote": {
+    "title": "Request a Quote",
+    "subtitle": "Have a project idea? Tell me about it and I'll get back to you with an estimate.",
+    "motivationalQuote": "Let your imagination run free!",
+    "motivationalSubtext": "If you liked this simple site, imagine the complex platform we can build together.",
+    "formTitle": "Describe Your Project",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "John Doe",
+    "emailLabel": "Your Email",
+    "emailPlaceholder": "john@example.com",
+    "projectTypeLabel": "Project Type",
+    "projectTypeNotSure": "Not decided yet",
+    "projectTypeLandingPage": "Landing Page",
+    "projectTypeInstitutional": "Institutional Website",
+    "projectTypeEcommerce": "E-commerce / Online Store",
+    "projectTypeBlog": "Blog / Content Platform",
+    "projectTypeDashboard": "Dashboard / Admin Panel",
+    "projectTypeMobileApp": "Mobile App",
+    "projectTypeSaasPlatform": "SaaS Platform / Web System",
+    "projectTypeComplexSystem": "Complex System / Enterprise",
+    "projectTypeApiBackend": "API / Backend Service",
+    "projectTypeOther": "Other",
+    "budgetLabel": "Budget Range (optional)",
+    "budgetNotSure": "Not sure yet",
+    "budgetSmall": "Less than $1,000",
+    "budgetMedium": "$1,000 – $5,000",
+    "budgetLarge": "$5,000 – $15,000",
+    "budgetEnterprise": "More than $15,000",
+    "descriptionLabel": "Project Description",
+    "descriptionPlaceholder": "Describe your project idea, goals, and any technical requirements...",
+    "send": "Send Request",
+    "sending": "Sending...",
+    "successTitle": "Request Sent!",
+    "successMessage": "Thank you! I'll review your project and get back to you via email soon.",
+    "sendAnother": "Send another request",
+    "promotionTitle": "Limited-time promotion",
+    "promotionDescription": "Take advantage of this month's exclusive discount to kickstart your project. Valid until the end of the month!",
+    "promotionUrgency": "This offer expires at the end of this month — don't miss out!",
+    "countdownDays": "days",
+    "countdownHours": "hours",
+    "countdownMinutes": "min",
+    "countdownSeconds": "sec",
+    "errorGeneric": "Something went wrong"
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "subtitle": "I'm always open to new opportunities and interesting conversations.",
+    "whatsapp": "Chat on WhatsApp",
+    "email": "Send an Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "linkedinBalloon": "Follow me!"
+  },
+  "worldClock": {
+    "title": "Available Globally",
+    "subtitle": "Working across time zones — your time, my time, anytime.",
+    "available": "Available for remote work",
+    "home": "Home",
+    "slider": "Time Travel",
+    "now": "Now",
+    "reset": "Reset",
+    "dayPeriods": {
+      "morning": "Morning",
+      "afternoon": "Afternoon",
+      "evening": "Evening",
+      "night": "Night"
+    },
+    "cities": {
+      "saoPaulo": "São Paulo",
+      "newYork": "New York",
+      "sanFrancisco": "San Francisco",
+      "london": "London",
+      "berlin": "Berlin",
+      "singapore": "Singapore",
+      "tokyo": "Tokyo"
+    }
+  },
+  "fortune": {
+    "clickHint": "Click for a positive message",
+    "phrases": {
+      "0": "Being grateful makes the other person's day brighter.",
+      "1": "A sincere smile can change someone's entire day.",
+      "2": "Good conversations make time fly.",
+      "3": "Helping someone without expecting anything back is one of the best feelings.",
+      "4": "A meal shared with loved ones always tastes better.",
+      "5": "Listening to someone with real attention is a form of love.",
+      "6": "Learning something new keeps the mind young.",
+      "7": "A walk in nature recharges the soul.",
+      "8": "Small acts of kindness create ripples bigger than we imagine.",
+      "9": "Laughter is contagious and heals.",
+      "10": "A good night of sleep makes everything look different.",
+      "11": "Music has the power to change any mood.",
+      "12": "The best memories are made in the simplest moments.",
+      "13": "Every person you meet knows something you don't.",
+      "14": "A genuine hug says more than a thousand words.",
+      "15": "Being kind to yourself is the first step to being kind to others.",
+      "16": "The sound of rain is nature's way of slowing us down.",
+      "17": "A good book can feel like a conversation with an old friend.",
+      "18": "Cooking for someone is a quiet way of saying I care.",
+      "19": "Watching the stars reminds us how small our problems really are.",
+      "20": "A deep breath can reset an entire moment.",
+      "21": "The warmth of sunlight on your skin costs nothing and feels like everything.",
+      "22": "There is always something to be thankful for.",
+      "23": "A cup of tea shared in silence is its own language."
+    }
+  },
+  "audioPlayer": {
+    "play": "Play ambient music",
+    "pause": "Pause ambient music",
+    "hint": "♪ Ambient space music"
+  },
+  "security": {
+    "title": "Security Awareness",
+    "subtitle": "See what your browser reveals — and how this site protects you",
+    "fingerprint": {
+      "title": "Your Digital Fingerprint",
+      "subtitle": "This is what any website can learn about you from a single visit",
+      "scanning": "Scanning your browser...",
+      "ipAddress": "IP Address",
+      "location": "Estimated Location",
+      "isp": "Internet Provider",
+      "coordinates": "Coordinates",
+      "browser": "Browser",
+      "operatingSystem": "Operating System",
+      "screenResolution": "Screen Resolution",
+      "colorDepth": "Color Depth",
+      "timezone": "Timezone",
+      "language": "Languages",
+      "cpuCores": "CPU Cores",
+      "deviceMemory": "Device Memory",
+      "webglRenderer": "GPU (WebGL)",
+      "canvasHash": "Canvas Fingerprint",
+      "touchScreen": "Touch Screen",
+      "doNotTrack": "Do Not Track",
+      "cookiesEnabled": "Cookies",
+      "connectionType": "Connection Type",
+      "platform": "Platform",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "yes": "Yes",
+      "no": "No",
+      "unknown": "Unknown",
+      "mapTitle": "Your Approximate Location",
+      "disclaimer": "This data is collected client-side for demonstration only and is NOT stored or transmitted.",
+      "visitorLocationMap": "Visitor location map"
+    }
+  },
+  "architecture": {
+    "title": "Architecture Playground",
+    "subtitle": "Interactive demos of cloud architecture, observability, and auto-scaling",
+    "tabs": {
+      "cloudFlow": "Cloud Flow",
+      "observability": "Observability",
+      "scaling": "Scaling"
+    },
+    "cloudFlow": {
+      "description": "Watch requests flow through a serverless AWS architecture with auto-scaling and queue processing",
+      "requestRate": "Request Rate",
+      "autoScale": "Auto-Scale",
+      "failureMode": "Inject Failures",
+      "metrics": {
+        "throughput": "Throughput",
+        "latency": "Avg Latency",
+        "queueDepth": "Queue Depth",
+        "errorRate": "Error Rate"
+      },
+      "services": {
+        "users": "Users",
+        "alb": "ALB",
+        "fargate": "Fargate",
+        "sqs": "SQS",
+        "workers": "Worker",
+        "database": "RDS",
+        "cloudwatch": "CloudWatch"
+      },
+      "dlq": "DLQ",
+      "tasks": "tasks",
+      "msgs": "msgs",
+      "workers": "workers",
+      "pause": "Pause",
+      "play": "Play",
+      "reset": "Reset",
+      "perSecond": "/s"
+    },
+    "observability": {
+      "description": "Monitor your system in real-time with metrics, distributed traces, logs, and alert rules",
+      "metrics": "Metrics",
+      "logs": "Log Stream",
+      "traces": "Distributed Tracing",
+      "alerts": "Alerts",
+      "triggerError": "Trigger Errors",
+      "pause": "Pause",
+      "play": "Play",
+      "cpuUsage": "CPU Usage",
+      "p99Latency": "P99 Latency",
+      "throughput": "Throughput",
+      "reqPerSecond": "req/s",
+      "alertCpuUsage": "CPU Usage",
+      "alertP99Latency": "P99 Latency",
+      "alertErrorRate": "Error Rate",
+      "alertMemory": "Memory"
+    },
+    "scaling": {
+      "description": "See containers scale with load, balance traffic, and perform rolling deployments",
+      "load": "Load",
+      "strategy": "Strategy",
+      "roundRobin": "Round Robin",
+      "leastConnections": "Least Connections",
+      "deploy": "Deploy v2.1",
+      "deploying": "Deploying...",
+      "scaleMode": "Scale Mode",
+      "manual": "Manual",
+      "auto": "Auto",
+      "healthy": "healthy",
+      "description2": "Containers auto-scale based on CPU usage",
+      "container": "Container",
+      "cpu": "CPU",
+      "conn": "conn",
+      "req": "req",
+      "loadBalancer": "Load Balancer",
+      "activeConnections": "active connections",
+      "pause": "Pause",
+      "play": "Play",
+      "scaleDown": "Scale Down",
+      "scaleUp": "Scale Up",
+      "scaleUpRule": "Scale up: Avg CPU > 70% (max {max})",
+      "scaleDownRule": "Scale down: Avg CPU < 30% (min {min})",
+      "avgCpu": "Avg CPU",
+      "routing": "Routing",
+      "state": "State",
+      "required": "Required",
+      "stateless": "Stateless",
+      "goodFor": "Good for",
+      "badFor": "Bad for"
+    }
+  },
+  "errorPage": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Please try again.",
+    "retry": "Try again"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "goHome": "Go home"
+  },
+  "structuredData": {
+    "jobTitle": "Senior Full Stack Developer & Team Lead",
+    "worksFor": "Freelance / Open to opportunities"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "built": "Built with Next.js, React Three Fiber & Framer Motion"
+  },
+  "likeBanner": {
+    "question": "Psst... Still here? Did you enjoy the page?",
+    "yes": "Loved it!",
+    "nah": "Meh",
+    "likesLabel": "likes on this page"
+  },
+  "welcomeBack": {
+    "greeting": "Welcome back! This is your",
+    "visitCount": "{count, selectordinal, one {#st} two {#nd} few {#rd} other {#th}} visit",
+    "privacy": "We don't track you — this counter is stored only in your browser cookies.",
+    "close": "Close"
+  },
+  "chat": {
+    "title": "AI Assistant",
+    "welcome": "Hi! I'm Marcelo's AI assistant. Ask me about his experience, skills, or request a data visualization.",
+    "placeholder": "Ask about Marcelo or request a chart...",
+    "send": "Send",
+    "close": "Close chat",
+    "openChat": "Open AI chat",
+    "closeChat": "Close AI chat",
+    "chartFailed": "Chart generation failed:",
+    "generatingChart": "Generating chart...",
+    "collapseChart": "Collapse chart",
+    "expandChart": "Expand chart",
+    "download": "Download",
+    "error": "Something went wrong. Please try again.",
+    "suggestions": {
+      "skills": "What are Marcelo's top skills?",
+      "experience": "Tell me about his experience",
+      "chart": "Create a chart of his skills by category"
+    }
+  },
+  "exitIntent": {
+    "title": "Have a nice day!",
+    "message": "You are always welcome to come back.",
+    "button": "Thanks, see you!",
+    "close": "Close",
+    "smileEmoji": "smile"
+  },
+  "signalVisualizer": {
+    "title": "Signal Visualizer",
+    "techStack": "Signals / Waves / IoT",
+    "ariaSelectWaveType": "Select wave type",
+    "waveTypeSine": "Sine Wave",
+    "waveTypeSquare": "Square Wave",
+    "waveTypeTriangle": "Triangle Wave",
+    "waveTypeSawtooth": "Sawtooth Wave",
+    "buttonAddSignal": "+ Signal",
+    "buttonTwoSignals": "2 Signals",
+    "buttonReset": "Reset",
+    "controlFreq": "Freq",
+    "controlAmp": "Amp",
+    "controlPhase": "Phase",
+    "ariaFrequency": "Frequency",
+    "ariaAmplitude": "Amplitude",
+    "ariaPhase": "Phase",
+    "controlType2": "Type 2",
+    "controlFreq2": "Freq 2",
+    "controlAmp2": "Amp 2",
+    "ariaSecondWaveType": "Second wave type",
+    "ariaSecondFrequency": "Second frequency",
+    "ariaSecondAmplitude": "Second amplitude",
+    "metricPeriod": "Period (T)",
+    "metricPeakToPeak": "Peak-to-Peak",
+    "metricRMS": "RMS",
+    "metricFrequency": "Frequency",
+    "legendPrimary": "Primary",
+    "legendSecondary": "Secondary",
+    "legendCombined": "Combined",
+    "harmonicsLabel": "Harmonics:",
+    "applications": "Applications",
+    "characteristics": "Characteristics"
+  },
+  "circuitSimulator": {
+    "title": "Circuit Simulator",
+    "ariaSelectCircuitType": "Select circuit type",
+    "circuitTypeOhmsLaw": "Ohm's Law",
+    "circuitTypeVoltageDivider": "Voltage Divider",
+    "circuitTypeLED": "LED Circuit",
+    "circuitTypeTransistorSwitch": "Transistor Switch",
+    "circuitTypeRCFilter": "RC Low-Pass Filter",
+    "buttonReset": "Reset",
+    "ariaAdjustParameter": "Adjust {label}",
+    "ariaCircuitDiagram": "Circuit diagram: {name}",
+    "legendComponent": "Component",
+    "legendCurrentFlow": "Current Flow",
+    "keyPrinciple": "Key Principle",
+    "applications": "Applications",
+    "tips": "Tips"
+  },
+  "treeVisualizer": {
+    "title": "Tree Visualizer",
+    "techStack": "JavaScript / AVL Tree / CS",
+    "ariaSelectAlgorithm": "Select tree algorithm",
+    "algorithmInorder": "Inorder (LNR)",
+    "algorithmPreorder": "Preorder (NLR)",
+    "algorithmPostorder": "Postorder (LRN)",
+    "algorithmLevelOrder": "Level Order (BFS)",
+    "algorithmBSTSearch": "BST Search",
+    "buttonRun": "Run",
+    "buttonRunning": "Running...",
+    "buttonReset": "Reset",
+    "buttonInsert": "Insert",
+    "buttonRemove": "Remove",
+    "placeholderValue": "1-99",
+    "ariaNodeValue": "Node value",
+    "messageClickToRemove": "Click on a node to remove it",
+    "messageInsertToStart": "Insert a value to start building the tree",
+    "ariaAVLTree": "AVL Tree with {count} nodes",
+    "legendDefault": "Default",
+    "legendTraversing": "Traversing",
+    "legendSuccessor": "Successor",
+    "legendUnbalanced": "Unbalanced",
+    "legendNewRoot": "New Root",
+    "legendFound": "Found",
+    "messageEnterNumber": "Enter a number between {min} and {max}",
+    "messageAlreadyExists": "{value} already exists in the tree",
+    "messageTreeFull": "Tree is full (max {max} nodes)",
+    "messageNotFound": "{value} not found in the tree",
+    "messageValueNotFound": "Value not found in the tree",
+    "messageNodeUnbalanced": "Node {value} is {direction} (balance: {balance})",
+    "rebalancingTitle": "How AVL Rebalancing Works",
+    "rebalancingWhen": "When:",
+    "complexityTime": "Time",
+    "complexitySpace": "Space",
+    "useCaseGoodFor": "Good for",
+    "useCaseBadFor": "Bad for"
+  },
+  "algorithmVisualizer": {
+    "title": "Algorithm Visualizer",
+    "techStack": "JavaScript / Algorithms / CS",
+    "selectAlgorithm": "Select sorting algorithm",
+    "bubbleSort": "Bubble Sort",
+    "quickSort": "Quick Sort",
+    "mergeSort": "Merge Sort",
+    "shuffle": "Shuffle",
+    "sort": "Sort",
+    "sorting": "Sorting...",
+    "unsorted": "Unsorted",
+    "comparing": "Comparing",
+    "sorted": "Sorted",
+    "best": "Best",
+    "average": "Average",
+    "worst": "Worst",
+    "space": "Space",
+    "stable": "Stable",
+    "yes": "Yes",
+    "no": "No",
+    "goodFor": "Good for",
+    "badFor": "Bad for"
+  },
+  "githubStats": {
+    "title": "Live GitHub Stats",
+    "techStack": "REST API / fetch / React",
+    "repos": "Repos",
+    "stars": "Stars",
+    "followers": "Followers"
+  },
+  "typingGame": {
+    "title": "Typing Challenge",
+    "techStack": "TypeScript / React / Keyboard Events",
+    "selectSnippet": "Select code snippet",
+    "codeToType": "Code to type",
+    "wpm": "WPM",
+    "accuracy": "Accuracy",
+    "time": "Time",
+    "tryAgain": "Try Again",
+    "nextSnippet": "Next Snippet",
+    "restart": "Restart",
+    "startTyping": "Start Typing"
+  },
+  "terminal": {
+    "close": "Close terminal",
+    "open": "Open terminal"
+  },
+  "loading": {
+    "text": "Loading..."
+  },
+  "worldData": {
+    "title": "Real World Data",
+    "subtitle": "Live data from public APIs — weather, markets, sports, and more",
+    "windowTitle": "Real World Data",
+    "loading": "Loading data...",
+    "lastUpdated": "Updated at",
+    "refresh": "Refresh",
+    "updatedDaily": "Data is fetched once per day to save API quota",
+    "error": {
+      "title": "Failed to load data",
+      "retry": "Try again"
+    },
+    "tabs": {
+      "weather": "Weather",
+      "weatherShort": "Weather",
+      "crypto": "Crypto",
+      "cryptoShort": "Crypto",
+      "exchange": "Exchange Rates",
+      "exchangeShort": "FX",
+      "gold": "Gold",
+      "goldShort": "Gold",
+      "stocks": "Stocks",
+      "stocksShort": "Stocks",
+      "sports": "Sports",
+      "sportsShort": "Sports",
+      "flights": "Flights",
+      "flightsShort": "Flights"
+    },
+    "weather": {
+      "cities": {
+        "saoPaulo": "São Paulo",
+        "newYork": "New York",
+        "london": "London",
+        "tokyo": "Tokyo",
+        "berlin": "Berlin",
+        "sydney": "Sydney"
+      },
+      "feelsLike": "Feels like",
+      "humidity": "Humidity",
+      "wind": "Wind",
+      "forecast": "5-Day Forecast",
+      "conditions": {
+        "clear": "Clear sky",
+        "partlyCloudy": "Partly cloudy",
+        "foggy": "Foggy",
+        "drizzle": "Drizzle",
+        "rain": "Rain",
+        "snow": "Snow",
+        "showers": "Showers",
+        "snowShowers": "Snow showers",
+        "thunderstorm": "Thunderstorm",
+        "unknown": "Unknown"
+      }
+    },
+    "crypto": {
+      "description": "Real-time cryptocurrency prices from CoinGecko",
+      "coin": "Coin",
+      "priceUsd": "Price (USD)",
+      "priceBrl": "Price (BRL)",
+      "change24h": "24h Change"
+    },
+    "exchange": {
+      "description": "Exchange rates from the European Central Bank via Frankfurter API",
+      "base": "Base",
+      "amount": "Amount",
+      "source": "Source: European Central Bank"
+    },
+    "gold": {
+      "description": "Gold spot price per troy ounce (XAU/USD)",
+      "pricePerOunce": "Gold Price (USD/oz)",
+      "previousClose": "Previous Close",
+      "dailyChange": "Daily Change",
+      "noApiKey": "Gold API not configured",
+      "noApiKeyDescription": "Add GOLDAPI_KEY to your .env file to enable gold price data from goldapi.io (free tier: 100 calls/month)."
+    },
+    "stocks": {
+      "description": "Stock quotes from Alpha Vantage (25 free calls/day)",
+      "open": "Open",
+      "high": "High",
+      "low": "Low",
+      "volume": "Volume",
+      "search": "Search",
+      "searchPlaceholder": "Enter symbol (e.g. PETR4.SAO)",
+      "noApiKey": "Stock API not configured",
+      "noApiKeyDescription": "Add ALPHA_VANTAGE_KEY to your .env file to enable stock data from Alpha Vantage (free tier: 25 calls/day)."
+    },
+    "sports": {
+      "description": "Latest match results from TheSportsDB",
+      "noResults": "No recent results available",
+      "leagues": {
+        "premier_league": "Premier League",
+        "la_liga": "La Liga",
+        "serie_a": "Serie A",
+        "brasileirao": "Brasileirão",
+        "champions_league": "Champions League",
+        "nba": "NBA",
+        "nfl": "NFL"
+      }
+    },
+    "flights": {
+      "description": "Live aircraft tracking from OpenSky Network",
+      "totalAircraft": "Total Aircraft",
+      "airborne": "Shown Airborne",
+      "callsign": "Callsign",
+      "origin": "Origin",
+      "altitude": "Altitude",
+      "speed": "Speed",
+      "regions": {
+        "brazil": "Brazil",
+        "usa": "United States",
+        "europe": "Europe",
+        "asia": "Asia"
+      }
+    }
+  },
+  "interactiveLab": {
+    "title": "Interactive Lab",
+    "subtitle": "Explore interactive simulations across engineering and computer science"
+  },
+  "platformGame": {
+    "headerTitle": "Platform Jump -- Web Edition",
+    "scoreboard": "Scoreboard",
+    "techStack": "Canvas API / Game Physics",
+    "canvasAriaLabel": "Platform Jump game canvas. Use arrow keys or A/D to move.",
+    "gameTitle": "Platform Jump",
+    "gameSubtitle": "Jump higher, avoid spikes & enemies!",
+    "startGame": "Start Game",
+    "controlsHint": "Arrow keys or A/D to move. Auto-jump on platforms.",
+    "gameOver": "Game Over!",
+    "saving": "Saving...",
+    "saveScore": "Save Score",
+    "yourNamePlaceholder": "Your name",
+    "playAgain": "Play Again",
+    "challengeFriends": "Challenge your friends!",
+    "top10Scores": "Top 10 Scores",
+    "noScoresYet": "No scores yet. Be the first!",
+    "play": "Play",
+    "back": "Back"
+  },
+  "walkingBoy": {
+    "title": "Drag to navigate, click to hide"
+  }
+}

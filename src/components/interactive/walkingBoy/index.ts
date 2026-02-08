@@ -1,0 +1,1 @@
+export { WalkingBoy } from "./WalkingBoy";

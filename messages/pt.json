@@ -1,0 +1,833 @@
+{
+  "metadata": {
+    "title": "Marcelo B. Diani | Desenvolvedor Full Stack Sênior",
+    "description": "Desenvolvedor Full Stack Sênior & Líder Técnico com 7+ anos de experiência em JavaScript/TypeScript. Especializado em React, Node.js, Next.js e AWS. Formado em Engenharia de Computação pela USP."
+  },
+  "nav": {
+    "about": "Sobre",
+    "experience": "Experiência",
+    "skills": "Habilidades",
+    "projects": "Projetos",
+    "education": "Educação",
+    "contact": "Contato",
+    "toggleMenu": "Abrir menu",
+    "skipToContent": "Pular para o conteúdo principal",
+    "languageSelection": "Seleção de idioma",
+    "switchToEnglish": "Mudar para Inglês",
+    "switchToPortuguese": "Mudar para Português"
+  },
+  "hero": {
+    "greeting": "Olá, eu sou",
+    "name": "Marcelo B. Diani",
+    "role": "Full Stack & DevOps Sênior | Líder Técnico | Fundador | Especialista em E-commerce & IA",
+    "cursorBadge": "Top 4% dos usuários do Cursor em 2025",
+    "tagline": "Minha missão é melhorar a vida das pessoas através da tecnologia.",
+    "cta": "Entre em contato",
+    "imageAlt": "Marcelo B. Diani"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "bio": "Formado em Engenharia de Computação pela Universidade de São Paulo (USP), em São Carlos, Brasil (2019). Medalhista em Olimpíada de Matemática. Trabalho há mais de 7 anos principalmente com JavaScript/TypeScript com forte experiência em desenvolvimento web. Especialista em e-commerce na maximização de vendas online. Entusiasta de IA. Sempre com uma mentalidade positiva.",
+    "stats": {
+      "years": "7+",
+      "yearsLabel": "Anos de Experiência",
+      "leadership": "3+",
+      "leadershipLabel": "Anos de Liderança",
+      "tests": "1000+",
+      "testsLabel": "Testes Escritos",
+      "apps": "25+",
+      "appsLabel": "Apps Gerenciados"
+    },
+    "languages": {
+      "title": "Idiomas",
+      "portuguese": "Português (nativo)",
+      "english": "Inglês (avançado)",
+      "german": "Alemão (básico)",
+      "spanish": "Espanhol (básico)",
+      "italian": "Italiano (básico)",
+      "clickHint": "Clique para ouvir uma saudação"
+    }
+  },
+  "beyondCode": {
+    "tab": "Além do Código",
+    "tabProfessional": "Profissional",
+    "subtitle": "Um pouco sobre minha jornada fora da tela",
+    "chapters": {
+      "origins": {
+        "title": "Origens & Raízes",
+        "icon": "seedling",
+        "text": "Nasci em 1996 em Mirassol, uma pequena cidade do interior de São Paulo. Descendente de imigrantes italianos, cresci em uma família humilde e trabalhadora. Meu pai conserta TVs, rádios e todo tipo de eletrônico — vê-lo desmontando e remontando as coisas despertou minha curiosidade sobre como tudo é feito."
+      },
+      "school": {
+        "title": "Anos de Escola",
+        "icon": "school",
+        "text": "Fiz o ensino médio em uma ETEC em São José do Rio Preto, uma das melhores escolas técnicas públicas da região — era preciso passar em um vestibulinho para entrar. Durante esses anos ganhei várias medalhas de matemática e física, incluindo uma medalha de ouro na OBMEP, onde viajei ao Rio de Janeiro para recebê-la das mãos do presidente. Também recebi prêmios na cidade por ser um dos melhores alunos."
+      },
+      "hobbies": {
+        "title": "Hobbies & Interesses",
+        "icon": "gamepad",
+        "text": "Quando criança jogava muito futebol com os amigos — nunca fui muito bom, mas sempre foi divertido. Sempre amei filmes e passei incontáveis horas jogando videogame. Um jogo que se destacou foi Dota 2, que considero uma espécie de \"xadrez 2.0\" — a estratégia, o trabalho em equipe e a tomada de decisão que ele exige são incomparáveis."
+      },
+      "path": {
+        "title": "O Caminho para a Engenharia",
+        "icon": "compass",
+        "text": "Antes da universidade, fiz alguns cursos no edX sobre física e um sobre Python — esse foi meu primeiro contato real com programação. Sendo bom em matemática e tendo uma curiosidade inata sobre como as coisas funcionam (obrigado, pai!), decidi cursar Engenharia de Computação na Universidade de São Paulo (USP)."
+      },
+      "university": {
+        "title": "Vida Universitária",
+        "icon": "graduation",
+        "text": "Na USP participei de muitos grupos extracurriculares e aprendi como é gratificante ajudar pessoas. Fiz todo tipo de matéria — até me matriculei em uma aula de física quântica, mas tranquei antes das provas para focar mais em programação. Após a formatura, tive a escolha entre hardware e software, e escolhi software porque acreditava que poderia impactar mais pessoas."
+      },
+      "values": {
+        "title": "Quem Eu Sou Hoje",
+        "icon": "heart",
+        "text": "Todas essas experiências diferentes me moldaram em uma pessoa calma, estudiosa e amigável. Sempre tento ver outros pontos de vista e trabalho para manter a paz onde quer que eu esteja. Seja construindo software, liderando um time ou simplesmente conversando — acredito que empatia e curiosidade são as melhores ferramentas que temos."
+      }
+    }
+  },
+  "experience": {
+    "title": "Experiência",
+    "companyLogoAlt": "Logo da {company}",
+    "positions": {
+      "clearer": {
+        "company": "Clearer.io",
+        "location": "Boston, Massachusetts, Remoto",
+        "period": "2022 – 2025",
+        "role": "Líder Técnico / Desenvolvedor Full Stack Sênior / Scrum Master",
+        "bullets": [
+          "Liderou dois times como Líder Técnico (7 desenvolvedores). Responsável por revisões de PR, reuniões 1:1, reuniões externas, acompanhamento de metas, cerimônias Scrum e planejamento de sprints no Jira.",
+          "Ajudou a gerenciar mais de 14 apps na Shopify App Store com dezenas de milhares de usuários mensais e receita total de milhões por ano.",
+          "Criou uma biblioteca com CDK e migrou apps do Heroku para AWS para reduzir custos de hospedagem e melhorar o gerenciamento de arquitetura com IaC.",
+          "Adicionou testes unitários e end-to-end usando Datadog, permitindo entregas mais rápidas sem regressões. Adicionou Codacy para análise estática de código.",
+          "Adicionou observabilidade com logging e tracing no Datadog, reduzindo tempo de debugging. Implementou cache com Memcached. Criou funções Lambda usando DynamoDB e LLMs."
+        ]
+      },
+      "acesso": {
+        "company": "Acesso Comercial",
+        "location": "São Carlos, São Paulo",
+        "period": "2021 – 2022",
+        "role": "Fundador",
+        "bullets": [
+          "Fundador e desenvolvedor de uma startup para ajudar pequenas lojas a vender online, similar ao Shopify, com ERP, CRM, blog (com SSR) e chat omnichannel.",
+          "Construído com 3 microsserviços (auth, core, métricas) em servidor Linux. Usou Github Actions para deploy Blue-Green com Docker e Nginx.",
+          "Usou React, Node.js, GraphQL, Relay, MongoDB, AWS (S3). Criou funcionalidades com IA usando OpenAI, Gemini e Typesense para RAG.",
+          "Liderou dois desenvolvedores e coordenou com designers, social media, advogados e consultores.",
+          "Configurou mais de 1.000 testes unitários, integração e end-to-end. Criou cerca de 600 lojas."
+        ]
+      },
+      "vortx": {
+        "company": "Vórtx DTVM",
+        "location": "São Paulo, São Paulo",
+        "period": "2020 – 2021",
+        "role": "Desenvolvedor Full Stack",
+        "bullets": [
+          "Trabalhou em uma empresa financeira coletando e mantendo dados de clientes para investimentos em fundos.",
+          "Usou Angular e Node para 3 microsserviços e 2 lambdas, e .NET Core conectado com cluster MongoDB.",
+          "Migrou 1.800 registros de planilhas Excel manuais para uma plataforma online automatizada, eliminando fluxo em papel.",
+          "Entregou o projeto para usuários externos em 6 meses, economizando pelo menos um funcionário em tempo integral de esforço manual.",
+          "Implementou refresh token, otimização de paginação (reduzindo tempo para 500ms) e gerou 200.000 PDFs dinâmicos."
+        ]
+      },
+      "enfase": {
+        "company": "Ênfase Instituto Jurídico",
+        "location": "São Carlos, São Paulo",
+        "period": "2019 – 2020",
+        "role": "Desenvolvedor Full Stack Estagiário",
+        "bullets": [
+          "Trabalhou em uma empresa de educação a distância usando frameworks JavaScript, React e Node com PostgreSQL em 3 produtos principais.",
+          "Desenvolveu uma plataforma de pós-graduação do zero e uma para vagas jurídicas, ambas com cerca de 13.000 alunos ativos.",
+          "Arquitetou o front end com Atomic Design para componentização, resultando em manutenção mais fácil.",
+          "Construiu plataforma conectada com sistema de eventos usando Kafka para estatísticas de usuários.",
+          "Organizou eventos da empresa para promover integração entre membros de diferentes equipes."
+        ]
+      }
+    }
+  },
+  "skills": {
+    "title": "Habilidades & Tecnologias",
+    "subtitle": "Interaja com a esfera para explorar meu stack de tecnologias",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Banco de Dados",
+      "devops": "DevOps & Cloud",
+      "ai": "IA & Machine Learning",
+      "other": "Outros"
+    }
+  },
+  "projects": {
+    "title": "Projetos Pessoais",
+    "closeDemo": "▲ Fechar Demo",
+    "playDemo": "▶ Jogar Demo Web",
+    "items": {
+      "learnCode": {
+        "name": "Learn Code",
+        "year": "2025",
+        "description": "Interface online para aprender novas linguagens e frameworks pelos seus conceitos principais e desafios."
+      },
+      "codingClasses": {
+        "name": "Aulas de Programação",
+        "year": "2025",
+        "description": "Aulas gravadas para um curso online, ensinando como usar IA com técnicas avançadas."
+      },
+      "languageTranslator": {
+        "name": "Tradutor de Idiomas",
+        "year": "2025",
+        "description": "App open-source de ponta em React Native e Python usando LangGraph e OCR para traduzir texto de imagens."
+      },
+      "bannerGenerator": {
+        "name": "Gerador de Banners",
+        "year": "2025",
+        "description": "Ferramenta de geração de banners para páginas web com texto editável, usando múltiplos LLMs."
+      },
+      "travelGuide": {
+        "name": "Guia de Viagem",
+        "year": "2024",
+        "description": "Plataforma Next.js para armazenar guias de cidades e pontos de interesse."
+      },
+      "cryptoTax": {
+        "name": "Calculadora de Impostos Crypto",
+        "year": "2022",
+        "description": "Aplicação open-source para calcular impostos brasileiros sobre negociação de criptomoedas com testes extensivos."
+      },
+      "platformJump": {
+        "name": "Jogo Platform Jump",
+        "year": "2021",
+        "description": "Jogo mobile em Unity C# com obstáculos e sistema de ranking global no Google Play."
+      }
+    }
+  },
+  "education": {
+    "title": "Educação & Conquistas",
+    "uspLogoAlt": "Logo da USP",
+    "degree": {
+      "title": "Engenharia de Computação",
+      "institution": "Universidade de São Paulo (USP)",
+      "period": "2015 – 2019",
+      "details": "Nota final: 7,8 — Top 10 de 61 alunos. Concluído sem reprovações."
+    },
+    "achievements": {
+      "cpa": {
+        "title": "Certificação CPA-20",
+        "year": "2020",
+        "description": "Nota 93% — Primeiro colocado entre todos os candidatos da empresa."
+      },
+      "olympiad": {
+        "title": "Olimpíada de Matemática — OBMEP",
+        "year": "2009 – 2012",
+        "description": "Medalhista de ouro. Participou do programa de 4 anos na UNESP para medalhistas."
+      },
+      "hackathon": {
+        "title": "Hackathon Elo+Getnet",
+        "year": "2018",
+        "description": "Desenvolveu solução para facilitar compras de consumidores em um hackathon de fim de semana."
+      },
+      "robotics": {
+        "title": "Warthog Robotics — USP",
+        "year": "2015 – 2016",
+        "description": "Departamento de Controle do time de robótica da USP São Carlos para campeonatos de futebol de robôs."
+      },
+      "pontinha": {
+        "title": "Projeto Pontinha",
+        "year": "2019",
+        "description": "Ensinou inglês para alunos de escola pública uma vez por semana durante 6 meses."
+      },
+      "clothing": {
+        "title": "Campanha USP do Agasalho",
+        "year": "2019",
+        "description": "Coletou cerca de 60.000 peças de roupa para instituições na região de São Carlos."
+      },
+      "christmas": {
+        "title": "Operação Natal",
+        "year": "2018 – 2019",
+        "description": "Coletou alimentos e distribuiu presentes de Natal para crianças carentes."
+      }
+    }
+  },
+  "playground": {
+    "title": "Code Playground",
+    "subtitle": "Linguagens para todos os gostos e usos",
+    "windowTitle": "Code Playground",
+    "output": "Saída",
+    "run": "Executar",
+    "running": "Executando...",
+    "noOutput": "(sem saída)",
+    "unknownError": "Erro desconhecido",
+    "executionFailed": "Falha ao executar o código. Tente novamente.",
+    "clickRunHint": "Clique Executar para rodar o código"
+  },
+  "quote": {
+    "title": "Solicitar Orçamento",
+    "subtitle": "Tem uma ideia de projeto? Me conte sobre ela e retorno com uma estimativa.",
+    "motivationalQuote": "Deixe sua imaginação fluir!",
+    "motivationalSubtext": "Se gostou desse site simples, imagina a plataforma complexa que podemos fazer juntos.",
+    "formTitle": "Descreva Seu Projeto",
+    "nameLabel": "Seu Nome",
+    "namePlaceholder": "João Silva",
+    "emailLabel": "Seu Email",
+    "emailPlaceholder": "joao@exemplo.com",
+    "projectTypeLabel": "Tipo de Projeto",
+    "projectTypeNotSure": "Ainda não decidi",
+    "projectTypeLandingPage": "Landing Page",
+    "projectTypeInstitutional": "Site Institucional",
+    "projectTypeEcommerce": "E-commerce / Loja Online",
+    "projectTypeBlog": "Blog / Plataforma de Conteúdo",
+    "projectTypeDashboard": "Dashboard / Painel Administrativo",
+    "projectTypeMobileApp": "Aplicativo Mobile",
+    "projectTypeSaasPlatform": "Plataforma SaaS / Sistema Web",
+    "projectTypeComplexSystem": "Sistema Complexo / Enterprise",
+    "projectTypeApiBackend": "API / Serviço Backend",
+    "projectTypeOther": "Outro",
+    "budgetLabel": "Faixa de Orçamento (opcional)",
+    "budgetNotSure": "Ainda não sei",
+    "budgetSmall": "Menos de R$ 5.000",
+    "budgetMedium": "R$ 5.000 – R$ 25.000",
+    "budgetLarge": "R$ 25.000 – R$ 75.000",
+    "budgetEnterprise": "Mais de R$ 75.000",
+    "descriptionLabel": "Descrição do Projeto",
+    "descriptionPlaceholder": "Descreva sua ideia de projeto, objetivos e requisitos técnicos...",
+    "send": "Enviar Solicitação",
+    "sending": "Enviando...",
+    "successTitle": "Solicitação Enviada!",
+    "successMessage": "Obrigado! Vou analisar seu projeto e retornar por email em breve.",
+    "sendAnother": "Enviar outra solicitação",
+    "promotionTitle": "Promoção por tempo limitado",
+    "promotionDescription": "Aproveite o desconto exclusivo deste mês para iniciar seu projeto. Válido até o final do mês!",
+    "promotionUrgency": "Oferta válida apenas até o final deste mês — não perca!",
+    "countdownDays": "dias",
+    "countdownHours": "horas",
+    "countdownMinutes": "min",
+    "countdownSeconds": "seg",
+    "errorGeneric": "Algo deu errado"
+  },
+  "contact": {
+    "title": "Vamos Conversar",
+    "subtitle": "Estou sempre aberto a novas oportunidades e conversas interessantes.",
+    "whatsapp": "Conversar no WhatsApp",
+    "email": "Enviar um Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "linkedinBalloon": "Me siga!"
+  },
+  "audioPlayer": {
+    "play": "Tocar música ambiente",
+    "pause": "Pausar música ambiente",
+    "hint": "♪ Música ambiente espacial"
+  },
+  "worldClock": {
+    "title": "Disponível Globalmente",
+    "subtitle": "Trabalhando em todos os fusos — seu horário, meu horário, qualquer horário.",
+    "available": "Disponível para trabalho remoto",
+    "home": "Base",
+    "slider": "Viagem no Tempo",
+    "now": "Agora",
+    "reset": "Resetar",
+    "dayPeriods": {
+      "morning": "Manhã",
+      "afternoon": "Tarde",
+      "evening": "Entardecer",
+      "night": "Noite"
+    },
+    "cities": {
+      "saoPaulo": "São Paulo",
+      "newYork": "Nova York",
+      "sanFrancisco": "San Francisco",
+      "london": "Londres",
+      "berlin": "Berlim",
+      "singapore": "Singapura",
+      "tokyo": "Tóquio"
+    }
+  },
+  "fortune": {
+    "clickHint": "Clique para uma mensagem positiva",
+    "phrases": {
+      "0": "Agradecer deixa o dia da outra pessoa mais feliz.",
+      "1": "Um sorriso sincero pode mudar o dia inteiro de alguém.",
+      "2": "Boas conversas fazem o tempo voar.",
+      "3": "Ajudar alguém sem esperar nada em troca é uma das melhores sensações.",
+      "4": "Uma refeição compartilhada com quem a gente ama sempre tem mais sabor.",
+      "5": "Ouvir alguém com atenção de verdade é uma forma de amor.",
+      "6": "Aprender algo novo mantém a mente jovem.",
+      "7": "Um passeio na natureza recarrega a alma.",
+      "8": "Pequenos gestos de gentileza criam ondas maiores do que a gente imagina.",
+      "9": "O riso é contagiante e cura.",
+      "10": "Uma boa noite de sono faz tudo parecer diferente.",
+      "11": "A música tem o poder de mudar qualquer humor.",
+      "12": "As melhores lembranças são feitas nos momentos mais simples.",
+      "13": "Toda pessoa que você conhece sabe algo que você não sabe.",
+      "14": "Um abraço de verdade diz mais que mil palavras.",
+      "15": "Ser gentil consigo mesmo é o primeiro passo para ser gentil com os outros.",
+      "16": "O som da chuva é o jeito da natureza de nos fazer desacelerar.",
+      "17": "Um bom livro pode parecer uma conversa com um velho amigo.",
+      "18": "Cozinhar para alguém é um jeito silencioso de dizer que se importa.",
+      "19": "Olhar as estrelas nos lembra como nossos problemas são pequenos.",
+      "20": "Uma respiração profunda pode resetar um momento inteiro.",
+      "21": "O calor do sol na pele não custa nada e parece tudo.",
+      "22": "Sempre existe algo pelo que ser grato.",
+      "23": "Uma xícara de chá compartilhada em silêncio é uma linguagem própria."
+    }
+  },
+  "security": {
+    "title": "Consciência de Segurança",
+    "subtitle": "Veja o que seu navegador revela — e como este site protege você",
+    "fingerprint": {
+      "title": "Sua Impressão Digital",
+      "subtitle": "Isto é o que qualquer site pode descobrir sobre você em uma única visita",
+      "scanning": "Escaneando seu navegador...",
+      "ipAddress": "Endereço IP",
+      "location": "Localização Estimada",
+      "isp": "Provedor de Internet",
+      "coordinates": "Coordenadas",
+      "browser": "Navegador",
+      "operatingSystem": "Sistema Operacional",
+      "screenResolution": "Resolução de Tela",
+      "colorDepth": "Profundidade de Cor",
+      "timezone": "Fuso Horário",
+      "language": "Idiomas",
+      "cpuCores": "Núcleos de CPU",
+      "deviceMemory": "Memória do Dispositivo",
+      "webglRenderer": "GPU (WebGL)",
+      "canvasHash": "Canvas Fingerprint",
+      "touchScreen": "Tela Touch",
+      "doNotTrack": "Do Not Track",
+      "cookiesEnabled": "Cookies",
+      "connectionType": "Tipo de Conexão",
+      "platform": "Plataforma",
+      "enabled": "Ativado",
+      "disabled": "Desativado",
+      "yes": "Sim",
+      "no": "Não",
+      "unknown": "Desconhecido",
+      "mapTitle": "Sua Localização Aproximada",
+      "disclaimer": "Estes dados são coletados no navegador apenas para demonstração e NÃO são armazenados ou transmitidos.",
+      "visitorLocationMap": "Mapa de localização do visitante"
+    }
+  },
+  "architecture": {
+    "title": "Playground de Arquitetura",
+    "subtitle": "Demos interativas de arquitetura cloud, observabilidade e auto-scaling",
+    "tabs": {
+      "cloudFlow": "Fluxo Cloud",
+      "observability": "Observabilidade",
+      "scaling": "Escalabilidade"
+    },
+    "cloudFlow": {
+      "description": "Veja requisições fluindo por uma arquitetura AWS serverless com auto-scaling e processamento em fila",
+      "requestRate": "Taxa de Requisições",
+      "autoScale": "Auto-Scale",
+      "failureMode": "Injetar Falhas",
+      "metrics": {
+        "throughput": "Throughput",
+        "latency": "Latência Média",
+        "queueDepth": "Fila",
+        "errorRate": "Taxa de Erros"
+      },
+      "services": {
+        "users": "Usuários",
+        "alb": "ALB",
+        "fargate": "Fargate",
+        "sqs": "SQS",
+        "workers": "Worker",
+        "database": "RDS",
+        "cloudwatch": "CloudWatch"
+      },
+      "dlq": "DLQ",
+      "tasks": "tarefas",
+      "msgs": "msgs",
+      "workers": "workers",
+      "pause": "Pausar",
+      "play": "Reproduzir",
+      "reset": "Resetar",
+      "perSecond": "/s"
+    },
+    "observability": {
+      "description": "Monitore seu sistema em tempo real com métricas, traces distribuídos, logs e regras de alerta",
+      "metrics": "Métricas",
+      "logs": "Stream de Logs",
+      "traces": "Tracing Distribuído",
+      "alerts": "Alertas",
+      "triggerError": "Disparar Erros",
+      "pause": "Pausar",
+      "play": "Reproduzir",
+      "cpuUsage": "Uso de CPU",
+      "p99Latency": "Latência P99",
+      "throughput": "Throughput",
+      "reqPerSecond": "req/s",
+      "alertCpuUsage": "Uso de CPU",
+      "alertP99Latency": "Latência P99",
+      "alertErrorRate": "Taxa de Erros",
+      "alertMemory": "Memória"
+    },
+    "scaling": {
+      "description": "Veja containers escalando com carga, balanceamento de tráfego e deploys rolling",
+      "load": "Carga",
+      "strategy": "Estratégia",
+      "roundRobin": "Round Robin",
+      "leastConnections": "Menos Conexões",
+      "deploy": "Deploy v2.1",
+      "deploying": "Deployando...",
+      "scaleMode": "Modo de Escala",
+      "manual": "Manual",
+      "auto": "Auto",
+      "healthy": "saudáveis",
+      "description2": "Containers escalam automaticamente baseado no uso de CPU",
+      "container": "Container",
+      "cpu": "CPU",
+      "conn": "conexões",
+      "req": "req",
+      "loadBalancer": "Balanceador de Carga",
+      "activeConnections": "conexões ativas",
+      "pause": "Pausar",
+      "play": "Reproduzir",
+      "scaleDown": "Reduzir Escala",
+      "scaleUp": "Aumentar Escala",
+      "scaleUpRule": "Aumentar escala: CPU Médio > 70% (máx {max})",
+      "scaleDownRule": "Reduzir escala: CPU Médio < 30% (mín {min})",
+      "avgCpu": "CPU Médio",
+      "routing": "Roteamento",
+      "state": "Estado",
+      "required": "Requerido",
+      "stateless": "Sem Estado",
+      "goodFor": "Bom para",
+      "badFor": "Ruim para"
+    }
+  },
+  "errorPage": {
+    "title": "Algo deu errado",
+    "description": "Ocorreu um erro inesperado. Por favor, tente novamente.",
+    "retry": "Tentar novamente"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "A página que você procura não existe ou foi movida.",
+    "goHome": "Ir para o início"
+  },
+  "structuredData": {
+    "jobTitle": "Desenvolvedor Full Stack Sênior & Líder Técnico",
+    "worksFor": "Freelancer / Aberto a oportunidades"
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados.",
+    "built": "Construído com Next.js, React Three Fiber & Framer Motion"
+  },
+  "likeBanner": {
+    "question": "Psst... Ainda aqui? Curtiu a página?",
+    "yes": "Amei!",
+    "nah": "Meh",
+    "likesLabel": "curtidas nesta página"
+  },
+  "welcomeBack": {
+    "greeting": "Bem-vindo de volta! Esta é sua",
+    "visitCount": "{count}ª visita",
+    "privacy": "Não rastreamos você — este contador é armazenado apenas nos cookies do seu navegador.",
+    "close": "Fechar"
+  },
+  "chat": {
+    "title": "Assistente IA",
+    "welcome": "Olá! Sou o assistente IA do Marcelo. Pergunte sobre sua experiência, habilidades ou peça uma visualização de dados.",
+    "placeholder": "Pergunte sobre o Marcelo ou peça um gráfico...",
+    "send": "Enviar",
+    "close": "Fechar chat",
+    "openChat": "Abrir chat IA",
+    "closeChat": "Fechar chat IA",
+    "chartFailed": "Falha ao gerar gráfico:",
+    "generatingChart": "Gerando gráfico...",
+    "collapseChart": "Recolher gráfico",
+    "expandChart": "Expandir gráfico",
+    "download": "Baixar",
+    "error": "Algo deu errado. Tente novamente.",
+    "suggestions": {
+      "skills": "Quais são as principais habilidades do Marcelo?",
+      "experience": "Conte sobre sua experiência profissional",
+      "chart": "Crie um gráfico das habilidades por categoria"
+    }
+  },
+  "exitIntent": {
+    "title": "Tenha um ótimo dia!",
+    "message": "Você é sempre bem-vindo(a) a volta.",
+    "button": "Obrigado, até logo!",
+    "close": "Fechar",
+    "smileEmoji": "sorriso"
+  },
+  "signalVisualizer": {
+    "title": "Visualizador de Sinais",
+    "techStack": "Sinais / Ondas / IoT",
+    "ariaSelectWaveType": "Selecionar tipo de onda",
+    "waveTypeSine": "Onda Senoidal",
+    "waveTypeSquare": "Onda Quadrada",
+    "waveTypeTriangle": "Onda Triangular",
+    "waveTypeSawtooth": "Onda Dente de Serra",
+    "buttonAddSignal": "+ Sinal",
+    "buttonTwoSignals": "2 Sinais",
+    "buttonReset": "Redefinir",
+    "controlFreq": "Freq",
+    "controlAmp": "Amp",
+    "controlPhase": "Fase",
+    "ariaFrequency": "Frequência",
+    "ariaAmplitude": "Amplitude",
+    "ariaPhase": "Fase",
+    "controlType2": "Tipo 2",
+    "controlFreq2": "Freq 2",
+    "controlAmp2": "Amp 2",
+    "ariaSecondWaveType": "Tipo de segunda onda",
+    "ariaSecondFrequency": "Segunda frequência",
+    "ariaSecondAmplitude": "Segunda amplitude",
+    "metricPeriod": "Período (T)",
+    "metricPeakToPeak": "Pico a Pico",
+    "metricRMS": "RMS",
+    "metricFrequency": "Frequência",
+    "legendPrimary": "Primário",
+    "legendSecondary": "Secundário",
+    "legendCombined": "Combinado",
+    "harmonicsLabel": "Harmônicos:",
+    "applications": "Aplicações",
+    "characteristics": "Características"
+  },
+  "circuitSimulator": {
+    "title": "Simulador de Circuitos",
+    "ariaSelectCircuitType": "Selecionar tipo de circuito",
+    "circuitTypeOhmsLaw": "Lei de Ohm",
+    "circuitTypeVoltageDivider": "Divisor de Tensão",
+    "circuitTypeLED": "Circuito LED",
+    "circuitTypeTransistorSwitch": "Interruptor com Transistor",
+    "circuitTypeRCFilter": "Filtro RC Passa-Baixa",
+    "buttonReset": "Redefinir",
+    "ariaAdjustParameter": "Ajustar {label}",
+    "ariaCircuitDiagram": "Diagrama do circuito: {name}",
+    "legendComponent": "Componente",
+    "legendCurrentFlow": "Fluxo de Corrente",
+    "keyPrinciple": "Princípio Chave",
+    "applications": "Aplicações",
+    "tips": "Dicas"
+  },
+  "treeVisualizer": {
+    "title": "Visualizador de Árvore",
+    "techStack": "JavaScript / Árvore AVL / CS",
+    "ariaSelectAlgorithm": "Selecionar algoritmo de árvore",
+    "algorithmInorder": "Em Ordem (LNR)",
+    "algorithmPreorder": "Pré-Ordem (NLR)",
+    "algorithmPostorder": "Pós-Ordem (LRN)",
+    "algorithmLevelOrder": "Por Nível (BFS)",
+    "algorithmBSTSearch": "Busca BST",
+    "buttonRun": "Executar",
+    "buttonRunning": "Executando...",
+    "buttonReset": "Redefinir",
+    "buttonInsert": "Inserir",
+    "buttonRemove": "Remover",
+    "placeholderValue": "1-99",
+    "ariaNodeValue": "Valor do nó",
+    "messageClickToRemove": "Clique em um nó para removê-lo",
+    "messageInsertToStart": "Insira um valor para começar a construir a árvore",
+    "ariaAVLTree": "Árvore AVL com {count} nós",
+    "legendDefault": "Padrão",
+    "legendTraversing": "Percorrendo",
+    "legendSuccessor": "Sucessor",
+    "legendUnbalanced": "Desequilibrado",
+    "legendNewRoot": "Nova Raiz",
+    "legendFound": "Encontrado",
+    "messageEnterNumber": "Digite um número entre {min} e {max}",
+    "messageAlreadyExists": "{value} já existe na árvore",
+    "messageTreeFull": "Árvore está cheia (máximo {max} nós)",
+    "messageNotFound": "{value} não encontrado na árvore",
+    "messageValueNotFound": "Valor não encontrado na árvore",
+    "messageNodeUnbalanced": "Nó {value} está {direction} (balanceamento: {balance})",
+    "rebalancingTitle": "Como Funciona o Rebalanceamento AVL",
+    "rebalancingWhen": "Quando:",
+    "complexityTime": "Tempo",
+    "complexitySpace": "Espaço",
+    "useCaseGoodFor": "Bom para",
+    "useCaseBadFor": "Ruim para"
+  },
+  "algorithmVisualizer": {
+    "title": "Visualizador de Algoritmos",
+    "techStack": "JavaScript / Algoritmos / CC",
+    "selectAlgorithm": "Selecionar algoritmo de ordenação",
+    "bubbleSort": "Bubble Sort",
+    "quickSort": "Quick Sort",
+    "mergeSort": "Merge Sort",
+    "shuffle": "Embaralhar",
+    "sort": "Ordenar",
+    "sorting": "Ordenando...",
+    "unsorted": "Não ordenado",
+    "comparing": "Comparando",
+    "sorted": "Ordenado",
+    "best": "Melhor",
+    "average": "Médio",
+    "worst": "Pior",
+    "space": "Espaço",
+    "stable": "Estável",
+    "yes": "Sim",
+    "no": "Não",
+    "goodFor": "Bom para",
+    "badFor": "Ruim para"
+  },
+  "githubStats": {
+    "title": "Estatísticas GitHub ao Vivo",
+    "techStack": "REST API / fetch / React",
+    "repos": "Repositórios",
+    "stars": "Estrelas",
+    "followers": "Seguidores"
+  },
+  "typingGame": {
+    "title": "Desafio de Digitação",
+    "techStack": "TypeScript / React / Eventos de Teclado",
+    "selectSnippet": "Selecionar trecho de código",
+    "codeToType": "Código para digitar",
+    "wpm": "PPM",
+    "accuracy": "Precisão",
+    "time": "Tempo",
+    "tryAgain": "Tentar Novamente",
+    "nextSnippet": "Próximo Trecho",
+    "restart": "Reiniciar",
+    "startTyping": "Começar a Digitar"
+  },
+  "terminal": {
+    "close": "Fechar terminal",
+    "open": "Abrir terminal"
+  },
+  "loading": {
+    "text": "Carregando..."
+  },
+  "worldData": {
+    "title": "Dados do Mundo Real",
+    "subtitle": "Dados ao vivo de APIs públicas — clima, mercados, esportes e mais",
+    "windowTitle": "Dados do Mundo Real",
+    "loading": "Carregando dados...",
+    "lastUpdated": "Atualizado às",
+    "refresh": "Atualizar",
+    "updatedDaily": "Dados atualizados uma vez por dia para economizar cota da API",
+    "error": {
+      "title": "Falha ao carregar dados",
+      "retry": "Tentar novamente"
+    },
+    "tabs": {
+      "weather": "Clima",
+      "weatherShort": "Clima",
+      "crypto": "Cripto",
+      "cryptoShort": "Cripto",
+      "exchange": "Câmbio",
+      "exchangeShort": "FX",
+      "gold": "Ouro",
+      "goldShort": "Ouro",
+      "stocks": "Ações",
+      "stocksShort": "Ações",
+      "sports": "Esportes",
+      "sportsShort": "Esporte",
+      "flights": "Voos",
+      "flightsShort": "Voos"
+    },
+    "weather": {
+      "cities": {
+        "saoPaulo": "São Paulo",
+        "newYork": "Nova York",
+        "london": "Londres",
+        "tokyo": "Tóquio",
+        "berlin": "Berlim",
+        "sydney": "Sydney"
+      },
+      "feelsLike": "Sensação de",
+      "humidity": "Umidade",
+      "wind": "Vento",
+      "forecast": "Previsão 5 dias",
+      "conditions": {
+        "clear": "Céu limpo",
+        "partlyCloudy": "Parcialmente nublado",
+        "foggy": "Nevoeiro",
+        "drizzle": "Garoa",
+        "rain": "Chuva",
+        "snow": "Neve",
+        "showers": "Pancadas",
+        "snowShowers": "Neve intermitente",
+        "thunderstorm": "Tempestade",
+        "unknown": "Desconhecido"
+      }
+    },
+    "crypto": {
+      "description": "Preços de criptomoedas em tempo real do CoinGecko",
+      "coin": "Moeda",
+      "priceUsd": "Preço (USD)",
+      "priceBrl": "Preço (BRL)",
+      "change24h": "Variação 24h"
+    },
+    "exchange": {
+      "description": "Taxas de câmbio do Banco Central Europeu via Frankfurter API",
+      "base": "Base",
+      "amount": "Valor",
+      "source": "Fonte: Banco Central Europeu"
+    },
+    "gold": {
+      "description": "Preço spot do ouro por onça troy (XAU/USD)",
+      "pricePerOunce": "Preço do Ouro (USD/oz)",
+      "previousClose": "Fechamento Anterior",
+      "dailyChange": "Variação Diária",
+      "noApiKey": "API do Ouro não configurada",
+      "noApiKeyDescription": "Adicione GOLDAPI_KEY ao seu .env para habilitar dados de preço do ouro do goldapi.io (tier gratuito: 100 chamadas/mês)."
+    },
+    "stocks": {
+      "description": "Cotações de ações do Alpha Vantage (25 chamadas grátis/dia)",
+      "open": "Abertura",
+      "high": "Máxima",
+      "low": "Mínima",
+      "volume": "Volume",
+      "search": "Buscar",
+      "searchPlaceholder": "Digite o símbolo (ex: PETR4.SAO)",
+      "noApiKey": "API de Ações não configurada",
+      "noApiKeyDescription": "Adicione ALPHA_VANTAGE_KEY ao seu .env para habilitar dados de ações do Alpha Vantage (tier gratuito: 25 chamadas/dia)."
+    },
+    "sports": {
+      "description": "Últimos resultados de partidas do TheSportsDB",
+      "noResults": "Nenhum resultado recente disponível",
+      "leagues": {
+        "premier_league": "Premier League",
+        "la_liga": "La Liga",
+        "serie_a": "Serie A",
+        "brasileirao": "Brasileirão",
+        "champions_league": "Champions League",
+        "nba": "NBA",
+        "nfl": "NFL"
+      }
+    },
+    "flights": {
+      "description": "Rastreamento de aeronaves ao vivo do OpenSky Network",
+      "totalAircraft": "Total de Aeronaves",
+      "airborne": "Em Voo Mostradas",
+      "callsign": "Indicativo",
+      "origin": "Origem",
+      "altitude": "Altitude",
+      "speed": "Velocidade",
+      "regions": {
+        "brazil": "Brasil",
+        "usa": "Estados Unidos",
+        "europe": "Europa",
+        "asia": "Ásia"
+      }
+    }
+  },
+  "interactiveLab": {
+    "title": "Laboratório Interativo",
+    "subtitle": "Explore simulações interativas de engenharia e ciência da computação"
+  },
+  "platformGame": {
+    "headerTitle": "Platform Jump -- Edição Web",
+    "scoreboard": "Placar",
+    "techStack": "Canvas API / Física do Jogo",
+    "canvasAriaLabel": "Canvas do jogo Platform Jump. Use as setas ou A/D para mover.",
+    "gameTitle": "Platform Jump",
+    "gameSubtitle": "Pule mais alto, evite espinhos e inimigos!",
+    "startGame": "Iniciar Jogo",
+    "controlsHint": "Setas ou A/D para mover. Pulo automático nas plataformas.",
+    "gameOver": "Fim de Jogo!",
+    "saving": "Salvando...",
+    "saveScore": "Salvar Pontuação",
+    "yourNamePlaceholder": "Seu nome",
+    "playAgain": "Jogar Novamente",
+    "challengeFriends": "Desafie seus amigos!",
+    "top10Scores": "Top 10 Pontuações",
+    "noScoresYet": "Ainda não há pontuações. Seja o primeiro!",
+    "play": "Jogar",
+    "back": "Voltar"
+  },
+  "walkingBoy": {
+    "title": "Arraste para navegar, clique para ocultar"
+  }
+}

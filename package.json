@@ -1,23 +1,43 @@
 {
-  "name": "temp_next",
+  "name": "marcelodiani",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:up": "docker-compose up -d",
+    "db:down": "docker-compose down",
+    "db:reset": "docker-compose down -v && docker-compose up -d"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^3.0.26",
+    "@ai-sdk/react": "^3.0.79",
+    "@e2b/code-interpreter": "^2.3.3",
+    "@gsap/react": "^2.1.2",
+    "@neondatabase/serverless": "^1.0.2",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "ai": "^6.0.77",
+    "framer-motion": "^12.33.0",
+    "gsap": "^3.14.2",
     "next": "16.1.6",
+    "next-intl": "^4.8.2",
+    "pg": "^8.18.0",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "resend": "^6.9.1",
+    "three": "^0.182.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.16.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.182.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",

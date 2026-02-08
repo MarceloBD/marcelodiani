@@ -1,26 +1,484 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050508;
+  --foreground: #e4e4e7;
+  --accent: #3b82f6;
+  --accent-glow: #60a5fa;
+  --muted: #a1a1aa;
+  --card: #0a0a0f;
+  --card-border: #1a1a2e;
+  --section-alt: #08080d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-glow: var(--accent-glow);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --color-section-alt: var(--section-alt);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--card-border) transparent;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #ffffff;
+}
+
+/* Custom scrollbar — Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--card-border), rgba(59, 130, 246, 0.25));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--muted), rgba(59, 130, 246, 0.5));
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Custom cursor theme — default arrow (dark fill, blue stroke) */
+* {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='28' viewBox='0 0 22 28'%3E%3Cpath d='M2 1L2 22L7.5 16.5L11 26L14 25L10.5 15L18 14Z' fill='%23050508' stroke='%233b82f6' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1, default;
+}
+
+/* Pointer cursor — interactive elements (blue fill, light-blue stroke) */
+a,
+button,
+[role='button'],
+input[type='submit'],
+input[type='button'],
+input[type='reset'],
+select,
+option,
+label[for],
+summary,
+details,
+.cursor-pointer,
+[onclick],
+[tabindex]:not([tabindex='-1']) {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='28' viewBox='0 0 22 28'%3E%3Cpath d='M2 1L2 22L7.5 16.5L11 26L14 25L10.5 15L18 14Z' fill='%233b82f6' stroke='%2360a5fa' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1, pointer !important;
+}
+
+/* Text cursor — editable fields (blue I-beam) */
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='search'],
+input[type='url'],
+input[type='tel'],
+input[type='number'],
+textarea,
+[contenteditable='true'] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='24' viewBox='0 0 16 24'%3E%3Cline x1='8' y1='3' x2='8' y2='21' stroke='%233b82f6' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='4' y1='3' x2='12' y2='3' stroke='%233b82f6' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='4' y1='21' x2='12' y2='21' stroke='%233b82f6' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") 8 12, text !important;
+}
+
+/* Disabled elements — keep themed arrow but signal non-interaction */
+[disabled],
+[aria-disabled='true'] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='28' viewBox='0 0 22 28'%3E%3Cpath d='M2 1L2 22L7.5 16.5L11 26L14 25L10.5 15L18 14Z' fill='%23050508' stroke='%23a1a1aa' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1, not-allowed !important;
+}
+
+@keyframes fortune-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-glow) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: rgba(10, 10, 15, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+}
+
+.glow-border {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.glow-border:hover {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+}
+
+/* Audio player glow animation */
+.audio-glow-ring {
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.25), 0 0 24px rgba(59, 130, 246, 0.1);
+  animation: audio-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes audio-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.2), 0 0 16px rgba(59, 130, 246, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.35), 0 0 32px rgba(59, 130, 246, 0.15);
+  }
+}
+
+/* Keyboard focus indicators for accessibility */
+@layer base {
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* Math background floating animations */
+@keyframes math-drift-up {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-40px) rotate(4deg);
+  }
+}
+
+@keyframes math-drift-down {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(30px) rotate(-3deg);
+  }
+}
+
+@keyframes math-drift-diagonal {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(20px, -25px) rotate(6deg);
+  }
+}
+
+/* ========================================
+   Walking Boy Character Animations
+   ======================================== */
+
+.boy-left-leg,
+.boy-right-leg,
+.boy-left-arm,
+.boy-right-arm {
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.boy-eyes {
+  transform-box: fill-box;
+  transform-origin: center center;
+}
+
+/* Walking state */
+.boy-walking .boy-body-group {
+  animation: boy-bounce 0.2s ease-in-out infinite;
+}
+
+.boy-walking .boy-left-leg {
+  animation: boy-leg-swing 0.4s ease-in-out infinite;
+}
+
+.boy-walking .boy-right-leg {
+  animation: boy-leg-swing 0.4s ease-in-out infinite;
+  animation-delay: -0.2s;
+}
+
+.boy-walking .boy-left-arm {
+  animation: boy-arm-swing 0.4s ease-in-out infinite;
+  animation-delay: -0.2s;
+}
+
+.boy-walking .boy-right-arm {
+  animation: boy-arm-swing 0.4s ease-in-out infinite;
+}
+
+/* Idle state */
+.boy-idle .boy-body-group {
+  animation: boy-idle-bob 3s ease-in-out infinite;
+}
+
+.boy-idle .boy-eyes {
+  animation: boy-blink 4s ease-in-out infinite;
+}
+
+/* Character container smooth movement */
+.walking-boy-container {
+  transition: left 0.3s ease-out;
+}
+
+@keyframes boy-leg-swing {
+  0%,
+  100% {
+    transform: rotate(25deg);
+  }
+  50% {
+    transform: rotate(-25deg);
+  }
+}
+
+@keyframes boy-arm-swing {
+  0%,
+  100% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes boy-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes boy-idle-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes boy-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* Celebrating state (checkpoint) — arms raised via SVG transform */
+.boy-celebrating .boy-body-group {
+  animation: boy-celebrate-jump 0.7s ease-out;
+}
+
+.boy-celebrating .boy-eyes {
+  transform: scaleY(0.3);
+  transition: transform 0.2s ease;
+}
+
+/* Final celebration state — bigger jump, arms raised higher via SVG transform */
+.boy-celebrating-final .boy-body-group {
+  animation: boy-celebrate-final-jump 1.2s ease-out;
+}
+
+.boy-celebrating-final .boy-eyes {
+  transform: scaleY(0.3);
+  transition: transform 0.2s ease;
+}
+
+@keyframes boy-celebrate-jump {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-14px);
+  }
+  55% {
+    transform: translateY(-3px);
+  }
+  75% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes boy-celebrate-final-jump {
+  0% {
+    transform: translateY(0);
+  }
+  15% {
+    transform: translateY(-22px);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+  45% {
+    transform: translateY(-18px);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+  75% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Walking dust particles */
+.boy-dust-particle {
+  animation: boy-dust 0.5s ease-out infinite;
+}
+
+@keyframes boy-dust {
+  0% {
+    opacity: 0.5;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.3);
+  }
+}
+
+/* World Clock Slider — matches glass-card aesthetic */
+.world-clock-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1px;
+  background: var(--card-border);
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.world-clock-slider:hover {
+  opacity: 1;
+}
+
+.world-clock-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.25);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.world-clock-slider::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4), 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.world-clock-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.25);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.world-clock-slider::-moz-range-thumb:hover {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4), 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.world-clock-slider::-moz-range-track {
+  height: 1px;
+  border-radius: 9999px;
+  background: var(--card-border);
+}
+
+/* Architecture diagram flow animations */
+@keyframes architecture-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.architecture-flow-line {
+  animation: architecture-flow 1.2s linear infinite;
+}
+
+/* Particle smooth movement via CSS instead of framer-motion */
+.particle-group circle {
+  transition: cx 120ms linear, cy 120ms linear;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

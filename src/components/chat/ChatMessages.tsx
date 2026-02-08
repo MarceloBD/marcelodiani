@@ -1,0 +1,162 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import type { UIMessage } from "ai";
+import { useTranslations } from "next-intl";
+import { ChartPreview } from "./ChartPreview";
+
+interface ToolOutput {
+  success: boolean;
+  title: string;
+  description: string;
+  imageBase64?: string;
+  logs?: string;
+  error?: string;
+}
+
+function UserMessage({ content }: { content: string }) {
+  return (
+    <div className="flex justify-end">
+      <div className="max-w-[85%] px-3 py-2 rounded-lg bg-accent/20 border border-accent/20 text-xs text-foreground">
+        {content}
+      </div>
+    </div>
+  );
+}
+
+function AssistantTextMessage({ content }: { content: string }) {
+  if (!content) return null;
+
+  return (
+    <div className="flex justify-start">
+      <div className="max-w-[85%] px-3 py-2 rounded-lg bg-card/50 border border-card-border text-xs text-foreground/90 whitespace-pre-wrap">
+        {content}
+      </div>
+    </div>
+  );
+}
+
+function ToolResultDisplay({ output, translations }: { output: ToolOutput; translations: ReturnType<typeof useTranslations> }) {
+  if (!output.success) {
+    return (
+      <div className="flex justify-start">
+        <div className="max-w-[85%] px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-400">
+          {translations("chartFailed")} {output.error}
+        </div>
+      </div>
+    );
+  }
+
+  if (output.imageBase64) {
+    return (
+      <ChartPreview
+        title={output.title}
+        description={output.description}
+        imageBase64={output.imageBase64}
+      />
+    );
+  }
+
+  if (output.logs) {
+    return (
+      <div className="flex justify-start">
+        <div className="max-w-[85%] px-3 py-2 rounded-lg bg-card/50 border border-card-border text-xs font-mono text-green-400">
+          {output.logs}
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function GeneratingIndicator({ translations }: { translations: ReturnType<typeof useTranslations> }) {
+  return (
+    <div className="flex justify-start">
+      <div className="px-3 py-2 rounded-lg bg-card/50 border border-card-border text-[10px] text-muted flex items-center gap-2">
+        <svg
+          className="w-3 h-3 animate-spin"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <circle cx="12" cy="12" r="10" className="opacity-25" />
+          <path d="M4 12a8 8 0 018-8" className="opacity-75" />
+        </svg>
+        {translations("generatingChart")}
+      </div>
+    </div>
+  );
+}
+
+function LoadingDots() {
+  return (
+    <div className="flex justify-start">
+      <div className="px-3 py-2 rounded-lg bg-card/50 border border-card-border">
+        <div className="flex gap-1">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent/60 animate-bounce [animation-delay:0ms]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-accent/60 animate-bounce [animation-delay:150ms]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-accent/60 animate-bounce [animation-delay:300ms]" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface ChatMessagesProps {
+  messages: UIMessage[];
+  isLoading: boolean;
+}
+
+export function ChatMessages({ messages, isLoading }: ChatMessagesProps) {
+  const translations = useTranslations("chat");
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, [messages, isLoading]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="flex-1 overflow-y-auto px-3 py-3 space-y-3 scrollbar-thin"
+    >
+      {messages.map((message) => (
+        <div key={message.id} className="space-y-2">
+          {message.parts.map((part, partIndex) => {
+            const partKey = `${message.id}-${partIndex}`;
+
+            if (part.type === "text" && part.text) {
+              if (message.role === "user") {
+                return <UserMessage key={partKey} content={part.text} />;
+              }
+              return <AssistantTextMessage key={partKey} content={part.text} />;
+            }
+
+            if (part.type === "tool-generateVisualization") {
+              if (part.state === "output-available") {
+                return (
+                  <ToolResultDisplay
+                    key={partKey}
+                    output={part.output as ToolOutput}
+                    translations={translations}
+                  />
+                );
+              }
+
+              // Tool is still running
+              return <GeneratingIndicator key={partKey} translations={translations} />;
+            }
+
+            return null;
+          })}
+        </div>
+      ))}
+
+      {isLoading && <LoadingDots />}
+    </div>
+  );
+}

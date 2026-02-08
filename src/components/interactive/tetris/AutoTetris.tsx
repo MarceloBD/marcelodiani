@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useCallback, useMemo } from "react";
 import {
-  createEmptyGrid,
+  createInitialGameState,
   getShape,
   getColor,
   getRotationCount,
@@ -10,13 +10,14 @@ import {
   isValidPosition,
   placePiece,
   clearLines,
+  findFullRows,
   getDropRow,
   getRandomPieceType,
   ROWS,
   COLUMNS,
   type Grid,
+  type GameState,
   type ActivePiece,
-  type BotTarget,
   type Position,
 } from "./tetrisEngine";
 
@@ -33,10 +34,12 @@ const BORDER = 1;
 
 const TICK_MS = 80;
 const SPAWN_DELAY_MS = 250;
+const CLEAR_DELAY_MS = 200;
 const TRANSITION_DURATION = "75ms";
 const WALL_KICK_OFFSETS = [-1, 1, -2, 2];
 const CELLS_PER_PIECE = 4;
 const EMPTY_CELL_BG = "rgba(5, 5, 8, 0.6)";
+const CLEAR_FLASH_COLOR = "rgba(255, 255, 255, 0.85)";
 
 // --- Helpers ---
 
@@ -55,22 +58,6 @@ function getFilledCellOffsets(shape: number[][]): Position[] {
 }
 
 // --- Game state machine ---
-
-interface GameState {
-  grid: Grid;
-  activePiece: ActivePiece | null;
-  target: BotTarget | null;
-  totalLinesCleared: number;
-}
-
-function createInitialState(): GameState {
-  return {
-    grid: createEmptyGrid(),
-    activePiece: null,
-    target: null,
-    totalLinesCleared: 0,
-  };
-}
 
 function tryRotatePiece(
   grid: Grid,
@@ -98,7 +85,7 @@ function tryRotatePiece(
 }
 
 function advanceGameState(state: GameState): GameState {
-  const { grid, activePiece, target, totalLinesCleared } = state;
+  const { grid, activePiece, target } = state;
 
   if (!activePiece || !target) {
     const type = getRandomPieceType();
@@ -107,7 +94,7 @@ function advanceGameState(state: GameState): GameState {
     const position: Position = { row: 0, column: startColumn };
 
     if (!isValidPosition(grid, shape, position)) {
-      return createInitialState();
+      return createInitialGameState();
     }
 
     return {
@@ -169,16 +156,17 @@ function advanceGameState(state: GameState): GameState {
     };
   }
 
-  // Piece landed
+  // Piece landed — merge into grid but don't clear lines yet (visual flash first)
   const color = getColor(activePiece.type);
   const placedGrid = placePiece(grid, shape, activePiece.position, color);
-  const { grid: clearedGrid, linesCleared } = clearLines(placedGrid);
+  const fullRows = findFullRows(placedGrid);
 
   return {
-    grid: clearedGrid,
+    ...state,
+    grid: placedGrid,
     activePiece: null,
     target: null,
-    totalLinesCleared: totalLinesCleared + linesCleared,
+    clearingRows: fullRows,
   };
 }
 
@@ -225,9 +213,11 @@ export function AutoTetris() {
   const ghostRef = useRef<HTMLDivElement>(null);
   const linesRef = useRef<HTMLParagraphElement>(null);
 
-  const gameStateRef = useRef<GameState>(createInitialState());
+  const gameStateRef = useRef<GameState>(createInitialGameState());
   const isSpawningRef = useRef(false);
+  const isClearingRef = useRef(false);
   const spawnTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const clearTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const previousPieceTypeRef = useRef<string | null>(null);
   const previousShapeKeyRef = useRef("");
 
@@ -238,15 +228,21 @@ export function AutoTetris() {
 
     if (!gridElement || !pieceElement || !ghostElement) return;
 
-    const { grid, activePiece, totalLinesCleared } = gameStateRef.current;
+    const { grid, activePiece, totalLinesCleared, clearingRows } =
+      gameStateRef.current;
+    const clearingRowSet = new Set(clearingRows);
 
     // 1. Paint placed pieces on the static grid
     for (let index = 0; index < ROWS * COLUMNS; index++) {
-      const cellColor = grid[Math.floor(index / COLUMNS)][index % COLUMNS];
+      const rowIndex = Math.floor(index / COLUMNS);
+      const cellColor = grid[rowIndex][index % COLUMNS];
       const element = gridElement.children[index] as HTMLDivElement;
       if (!element) continue;
 
-      if (cellColor) {
+      if (clearingRowSet.has(rowIndex)) {
+        element.style.backgroundColor = CLEAR_FLASH_COLOR;
+        element.style.boxShadow = "0 0 8px rgba(255, 255, 255, 0.5)";
+      } else if (cellColor) {
         element.style.backgroundColor = cellColor;
         element.style.boxShadow = `inset 0 0 ${CELL_SIZE / 2}px ${cellColor}40`;
       } else {
@@ -326,10 +322,34 @@ export function AutoTetris() {
   }, []);
 
   const tick = useCallback(() => {
-    if (isSpawningRef.current) return;
+    if (isSpawningRef.current || isClearingRef.current) return;
 
     const currentState = gameStateRef.current;
 
+    // Phase 1: Full rows detected — flash then clear after delay
+    if (currentState.clearingRows.length > 0) {
+      isClearingRef.current = true;
+
+      clearTimeoutRef.current = setTimeout(() => {
+        const { grid: clearedGrid, linesCleared } = clearLines(
+          gameStateRef.current.grid
+        );
+        gameStateRef.current = {
+          ...gameStateRef.current,
+          grid: clearedGrid,
+          totalLinesCleared:
+            gameStateRef.current.totalLinesCleared + linesCleared,
+          clearingRows: [],
+        };
+        paintGrid();
+        isClearingRef.current = false;
+        clearTimeoutRef.current = null;
+      }, CLEAR_DELAY_MS);
+
+      return;
+    }
+
+    // Phase 2: Spawn new piece after delay
     if (!currentState.activePiece) {
       isSpawningRef.current = true;
 
@@ -343,6 +363,7 @@ export function AutoTetris() {
       return;
     }
 
+    // Phase 3: Advance active piece
     gameStateRef.current = advanceGameState(currentState);
     paintGrid();
   }, [paintGrid]);
@@ -355,6 +376,10 @@ export function AutoTetris() {
 
       if (spawnTimeoutRef.current) {
         clearTimeout(spawnTimeoutRef.current);
+      }
+
+      if (clearTimeoutRef.current) {
+        clearTimeout(clearTimeoutRef.current);
       }
     };
   }, [tick]);

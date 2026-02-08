@@ -22,6 +22,14 @@ export interface BotTarget {
   column: number;
 }
 
+export interface GameState {
+  grid: Grid;
+  activePiece: ActivePiece | null;
+  target: BotTarget | null;
+  totalLinesCleared: number;
+  clearingRows: number[];
+}
+
 // --- Tetromino definitions ---
 
 interface TetrominoDef {
@@ -177,6 +185,25 @@ export function clearLines(grid: Grid): {
   }
 
   return { grid: remainingRows, linesCleared };
+}
+
+export function findFullRows(grid: Grid): number[] {
+  return grid.reduce<number[]>((indices, row, index) => {
+    if (row.every((cell) => cell !== null)) {
+      indices.push(index);
+    }
+    return indices;
+  }, []);
+}
+
+export function createInitialGameState(): GameState {
+  return {
+    grid: createEmptyGrid(),
+    activePiece: null,
+    target: null,
+    totalLinesCleared: 0,
+    clearingRows: [],
+  };
 }
 
 export function getDropRow(

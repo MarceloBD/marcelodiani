@@ -4,13 +4,15 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { incrementLikeCount } from "@/app/actions/likes";
+import { getCookie, setCookie } from "@/lib/cookies";
 
 type BannerPhase = "idle" | "banner" | "heart" | "counter" | "done";
 
 const SHOW_DELAY_MS = 60_000;
 const HEART_DURATION_MS = 1_400;
 const COUNTER_DURATION_MS = 3_000;
-const STORAGE_KEY = "like-banner-interacted";
+const COOKIE_NAME = "like-banner-interacted";
+const COOKIE_MAX_AGE_SECONDS = 365 * 24 * 60 * 60; // 1 year
 
 const FLOATING_HEARTS = [
   { offsetX: -80, delay: 0 },
@@ -80,7 +82,7 @@ export function LikeBanner() {
   const [likeCount, setLikeCount] = useState(0);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && localStorage.getItem(STORAGE_KEY)) {
+    if (getCookie(COOKIE_NAME)) {
       return;
     }
 
@@ -89,7 +91,7 @@ export function LikeBanner() {
   }, []);
 
   const handleLike = useCallback(async () => {
-    localStorage.setItem(STORAGE_KEY, "true");
+    setCookie(COOKIE_NAME, "true", COOKIE_MAX_AGE_SECONDS);
     setPhase("heart");
 
     const result = await incrementLikeCount();
@@ -103,7 +105,7 @@ export function LikeBanner() {
   }, []);
 
   const handleDismiss = useCallback(() => {
-    localStorage.setItem(STORAGE_KEY, "true");
+    setCookie(COOKIE_NAME, "true", COOKIE_MAX_AGE_SECONDS);
     setPhase("done");
   }, []);
 

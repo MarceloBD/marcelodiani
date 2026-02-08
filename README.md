@@ -1,8 +1,14 @@
 # marcelodiani.com
 
+[![Live Site](https://img.shields.io/badge/Live-marcelodiani.com-blue?style=for-the-badge)](https://marcelodiani.com)
+[![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](./LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
+
 Personal portfolio website built with Next.js 16, React 19, and Three.js. Features interactive demos, real-time data widgets, an AI chat assistant, a code playground, and engineering visualizers — all wrapped in a bilingual (EN/PT) experience.
 
-> **Live:** [marcelodiani.com](https://marcelodiani.com)
+> **Live:** [marcelodiani.com](https://marcelodiani.com) | **Source:** [github.com/MarceloBD/marcelodiani](https://github.com/MarceloBD/marcelodiani)
 
 ---
 
@@ -84,7 +90,7 @@ An embedded chat powered by GPT-4o-mini with full CV context, capable of answeri
 ### Installation
 
 ```bash
-git clone https://github.com/marcelodiani/marcelodiani.git
+git clone https://github.com/MarceloBD/marcelodiani.git
 cd marcelodiani
 npm install
 ```
@@ -203,6 +209,16 @@ Every push to `main` triggers an automatic production deployment.
 
 ---
 
+## Contributing
+
+This is a personal portfolio, but if you find a bug or have a suggestion, feel free to [open an issue](https://github.com/MarceloBD/marcelodiani/issues).
+
+---
+
 ## License
 
 This project is open source under the [MIT License](./LICENSE).
+
+---
+
+Made with passion by [Marcelo B. Diani](https://marcelodiani.com)

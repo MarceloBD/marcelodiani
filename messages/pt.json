@@ -508,7 +508,8 @@
   },
   "footer": {
     "rights": "Todos os direitos reservados.",
-    "built": "Construído com Next.js, React Three Fiber & Framer Motion"
+    "built": "Construído com Next.js, React Three Fiber & Framer Motion",
+    "sourceCode": "Código Fonte"
   },
   "likeBanner": {
     "question": "Psst... Ainda aqui? Curtiu a página?",
@@ -536,6 +537,7 @@
     "expandChart": "Expandir gráfico",
     "download": "Baixar",
     "error": "Algo deu errado. Tente novamente.",
+    "askBalloon": "Pergunte à IA",
     "suggestions": {
       "skills": "Quais são as principais habilidades do Marcelo?",
       "experience": "Conte sobre sua experiência profissional",
@@ -775,16 +777,26 @@
       "noApiKeyDescription": "Adicione ALPHA_VANTAGE_KEY ao seu .env para habilitar dados de ações do Alpha Vantage (tier gratuito: 25 chamadas/dia)."
     },
     "sports": {
-      "description": "Últimos resultados de partidas do TheSportsDB",
+      "description": "Classificação e resultados ao vivo via TheSportsDB",
+      "standingsTab": "Classificação",
+      "resultsTab": "Últimos Resultados",
       "noResults": "Nenhum resultado recente disponível",
+      "noStandings": "Classificação indisponível para esta liga",
+      "round": "Rodada",
+      "team": "Time",
+      "played": "J",
+      "won": "V",
+      "drawn": "E",
+      "lost": "D",
+      "points": "Pts",
+      "form": "Forma",
       "leagues": {
         "premier_league": "Premier League",
         "la_liga": "La Liga",
         "serie_a": "Serie A",
-        "brasileirao": "Brasileirão",
-        "champions_league": "Champions League",
-        "nba": "NBA",
-        "nfl": "NFL"
+        "bundesliga": "Bundesliga",
+        "ligue_1": "Ligue 1",
+        "brasileirao": "Brasileirão"
       }
     },
     "flights": {
@@ -816,6 +828,7 @@
     "gameSubtitle": "Pule mais alto, evite espinhos e inimigos!",
     "startGame": "Iniciar Jogo",
     "controlsHint": "Setas ou A/D para mover. Pulo automático nas plataformas.",
+    "controlsHintMobile": "Use os botões de toque para mover. Pulo automático nas plataformas.",
     "gameOver": "Fim de Jogo!",
     "saving": "Salvando...",
     "saveScore": "Salvar Pontuação",
@@ -829,5 +842,18 @@
   },
   "walkingBoy": {
     "title": "Arraste para navegar, clique para ocultar"
+  },
+  "sourceCode": {
+    "title": "Curioso Sobre o Código?",
+    "subtitle": "Todo este portfólio é open source. Explore como foi construído — desde cenas 3D e widgets de dados em tempo real até o assistente de IA e o motor de jogos.",
+    "cta": "Ver Código no GitHub",
+    "highlights": {
+      "nextjs": "Next.js 16 & React 19",
+      "threejs": "Cenas 3D com Three.js",
+      "ai": "Assistente IA",
+      "i18n": "Bilíngue (EN/PT)",
+      "realtime": "APIs de Dados ao Vivo",
+      "games": "Jogos Canvas & Demos"
+    }
   }
 }

@@ -32,19 +32,12 @@ export function useWorldData<T>({
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const abortControllerReference = useRef<AbortController | null>(null);
-  const previousEndpointReference = useRef(endpoint);
+  const currentEndpointReference = useRef(endpoint);
 
-  // Reset state when endpoint changes (e.g. user switches league, city, symbol)
-  useEffect(() => {
-    if (previousEndpointReference.current !== endpoint) {
-      setData(null);
-      setError(null);
-      setLastUpdated(null);
-      previousEndpointReference.current = endpoint;
-    }
-  }, [endpoint]);
+  // Track the latest endpoint so the fetch callback always reads the current value
+  currentEndpointReference.current = endpoint;
 
-  const fetchData = useCallback(async () => {
+  const fetchData = useCallback(async (fetchEndpoint: string) => {
     abortControllerReference.current?.abort();
     const controller = new AbortController();
     abortControllerReference.current = controller;
@@ -53,7 +46,7 @@ export function useWorldData<T>({
     setError(null);
 
     try {
-      const response = await fetch(endpoint, { signal: controller.signal });
+      const response = await fetch(fetchEndpoint, { signal: controller.signal });
 
       if (!response.ok) {
         throw new Error(`API error: ${response.status}`);
@@ -62,26 +55,39 @@ export function useWorldData<T>({
       const json = await response.json();
       const result = transform ? transform(json) : (json as T);
 
-      setData(result);
-      setLastUpdated(new Date());
+      // Only apply the result if the endpoint hasn't changed while we were fetching
+      if (currentEndpointReference.current === fetchEndpoint) {
+        setData(result);
+        setLastUpdated(new Date());
+      }
     } catch (fetchError) {
       if (fetchError instanceof DOMException && fetchError.name === "AbortError") {
         return;
       }
       const message = fetchError instanceof Error ? fetchError.message : "Failed to fetch data";
-      setError(message);
+      if (currentEndpointReference.current === fetchEndpoint) {
+        setError(message);
+      }
     } finally {
-      setIsLoading(false);
+      if (currentEndpointReference.current === fetchEndpoint) {
+        setIsLoading(false);
+      }
     }
-  }, [endpoint, transform]);
+  }, [transform]);
 
+  // Single effect that handles endpoint changes, initial fetch, and polling
   useEffect(() => {
     if (!enabled) return;
 
-    fetchData();
+    // Reset state when endpoint changes and start a new fetch
+    setData(null);
+    setError(null);
+    setLastUpdated(null);
+
+    fetchData(endpoint);
 
     if (pollingIntervalMs > 0) {
-      const interval = setInterval(fetchData, pollingIntervalMs);
+      const interval = setInterval(() => fetchData(endpoint), pollingIntervalMs);
       return () => {
         clearInterval(interval);
         abortControllerReference.current?.abort();
@@ -91,7 +97,10 @@ export function useWorldData<T>({
     return () => {
       abortControllerReference.current?.abort();
     };
-  }, [fetchData, pollingIntervalMs, enabled]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [endpoint, pollingIntervalMs, enabled]);
 
-  return { data, isLoading, error, lastUpdated, refetch: fetchData };
+  const refetch = useCallback(() => fetchData(currentEndpointReference.current), [fetchData]);
+
+  return { data, isLoading, error, lastUpdated, refetch };
 }

@@ -88,7 +88,7 @@ export function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="pt-10 pb-12 px-6">
       <div className="max-w-6xl mx-auto">
         <SectionTitle title={translations("title")} />
 

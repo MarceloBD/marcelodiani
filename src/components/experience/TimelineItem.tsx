@@ -49,8 +49,8 @@ export function TimelineItem({
           >
             <motion.div
               className="absolute w-3 h-3 rounded-full border-2 border-accent/60"
-              animate={{ scale: [1, 3], opacity: [0.8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+              animate={{ scale: [1, 2, 3], opacity: [0, 0.4, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             />
             <div className="w-3 h-3 rounded-full bg-accent shadow-[0_0_12px_rgba(59,130,246,0.5)]" />
           </motion.div>

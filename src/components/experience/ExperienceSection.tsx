@@ -27,7 +27,7 @@ export function ExperienceSection() {
   const translations = useTranslations("experience");
 
   return (
-    <section id="experience" className="py-24 px-6 bg-section-alt relative overflow-hidden">
+    <section id="experience" className="pt-12 pb-24 px-6 bg-section-alt relative overflow-hidden">
       <FloatingGeometrics />
 
       <div className="max-w-6xl mx-auto relative">

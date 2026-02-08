@@ -50,18 +50,22 @@ export function ExpandableName() {
     >
       Marcelo{" "}
 
+      {/* Mobile: plain inline text, no baseline issues */}
+      <span className="md:hidden">{ABBREVIATED_MIDDLE_NAME}</span>
+
+      {/* Desktop: animated expand on hover */}
       <motion.span
+        className="hidden md:inline-block"
         style={{
-          display: "inline-block",
           position: "relative",
           overflow: "clip",
           whiteSpace: "nowrap",
+          verticalAlign: "baseline",
         }}
         initial={false}
         animate={{ width: hasMeasured ? targetWidth : "auto" }}
         transition={hasMeasured ? WIDTH_TRANSITION : { duration: 0 }}
       >
-        {/* Abbreviated - in normal flow, sets the natural width before measurement */}
         <motion.span
           ref={abbreviatedReference}
           className="gradient-text"
@@ -72,7 +76,6 @@ export function ExpandableName() {
           {ABBREVIATED_MIDDLE_NAME}
         </motion.span>
 
-        {/* Full name - overlaps via absolute positioning */}
         <motion.span
           ref={fullReference}
           className="gradient-text"

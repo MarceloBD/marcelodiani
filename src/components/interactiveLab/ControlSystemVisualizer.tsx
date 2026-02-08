@@ -17,6 +17,43 @@ const SVG_HEIGHT = 150;
 const SIMULATION_STEPS = 500;
 const TIME_SPAN = 10;
 
+// Shared drone physics constants (used by both chart and real-time sim)
+const DRONE_MASS = 1.0;       // kg
+const DRONE_GRAVITY = 9.81;   // m/s²
+const DRONE_DAMPING = 0.5;    // air drag coefficient (N·s/m)
+const MAX_ALTITUDE = 5;       // meters
+// Unknown constant disturbance — the drone carries a payload the controller doesn't know about.
+// P and PD will have steady-state error because they can't compensate for unknown offsets.
+// PI and PID will eliminate it because the integral accumulates until the error is zero.
+const UNKNOWN_PAYLOAD_FORCE = 1.5; // Newtons downward (~150g unknown payload)
+
+// Compute PID control signal (force correction above hover thrust)
+function computePidControlSignal(
+  mode: ControlMode,
+  kp: number,
+  ki: number,
+  kd: number,
+  error: number,
+  integral: number,
+  previousError: number,
+  dt: number,
+  setpoint: number,
+): number {
+  switch (mode) {
+    case "openLoop":
+      // No feedback — just a constant thrust proportional to target
+      return setpoint * DRONE_GRAVITY * DRONE_MASS * 0.3 - DRONE_GRAVITY * DRONE_MASS;
+    case "p":
+      return kp * error;
+    case "pi":
+      return kp * error + ki * integral;
+    case "pd":
+      return kp * error + kd * (error - previousError) / dt;
+    case "pid":
+      return kp * error + ki * integral + kd * (error - previousError) / dt;
+  }
+}
+
 interface StepResponseResult {
   response: number[];
   overshoot: number;
@@ -25,6 +62,7 @@ interface StepResponseResult {
   steadyStateError: number;
 }
 
+// Step response uses the SAME second-order physics as the drone canvas
 function simulateStepResponse(
   mode: ControlMode,
   kp: number,
@@ -35,7 +73,8 @@ function simulateStepResponse(
   const dt = TIME_SPAN / SIMULATION_STEPS;
   const response: number[] = [];
 
-  let output = 0;
+  let altitude = 0;
+  let velocity = 0;
   let integral = 0;
   let previousError = setpoint;
   let maxValue = 0;
@@ -43,45 +82,42 @@ function simulateStepResponse(
   let settlingTime = TIME_SPAN;
   let hasReachedSetpoint = false;
 
-  const plantTimeConstant = 1.0;
-
   for (let step = 0; step < SIMULATION_STEPS; step++) {
-    const error = setpoint - output;
-    let controlSignal = 0;
+    const error = setpoint - altitude;
 
-    switch (mode) {
-      case "openLoop":
-        controlSignal = setpoint;
-        break;
-      case "p":
-        controlSignal = kp * error;
-        break;
-      case "pi":
-        integral += error * dt;
-        controlSignal = kp * error + ki * integral;
-        break;
-      case "pd":
-        controlSignal = kp * error + kd * (error - previousError) / dt;
-        break;
-      case "pid":
-        integral += error * dt;
-        controlSignal = kp * error + ki * integral + kd * (error - previousError) / dt;
-        break;
+    // Accumulate integral (with anti-windup clamp)
+    if (mode === "pi" || mode === "pid") {
+      integral += error * dt;
+      integral = Math.max(-10, Math.min(10, integral));
     }
 
-    const plantOutput = controlSignal / (1 + plantTimeConstant);
-    output += (plantOutput - output) * dt / plantTimeConstant;
-    output = Math.max(-setpoint * 2, Math.min(setpoint * 3, output));
+    const controlSignal = computePidControlSignal(mode, kp, ki, kd, error, integral, previousError, dt, setpoint);
 
-    response.push(output);
+    // Thrust = hover + PID correction, clamped to physical limits
+    const thrust = Math.max(0, Math.min(
+      DRONE_GRAVITY * DRONE_MASS * 3,
+      DRONE_GRAVITY * DRONE_MASS + controlSignal,
+    ));
+
+    // Second-order physics: F = ma (includes unknown payload the controller doesn't model)
+    const netForce = thrust - DRONE_GRAVITY * DRONE_MASS - DRONE_DAMPING * velocity - UNKNOWN_PAYLOAD_FORCE;
+    const acceleration = netForce / DRONE_MASS;
+    velocity += acceleration * dt;
+    altitude += velocity * dt;
+
+    // Ground / ceiling constraints with velocity reset
+    if (altitude < 0) { altitude = 0; velocity = Math.max(0, velocity); }
+    if (altitude > MAX_ALTITUDE) { altitude = MAX_ALTITUDE; velocity = Math.min(0, velocity); }
+
+    response.push(altitude);
     previousError = error;
-    if (output > maxValue) maxValue = output;
+    if (altitude > maxValue) maxValue = altitude;
 
-    if (!hasReachedSetpoint && output >= setpoint * 0.9) {
+    if (!hasReachedSetpoint && altitude >= setpoint * 0.9) {
       riseTime = step * dt;
       hasReachedSetpoint = true;
     }
-    if (Math.abs(output - setpoint) > setpoint * 0.02) {
+    if (Math.abs(altitude - setpoint) > setpoint * 0.02) {
       settlingTime = step * dt;
     }
   }
@@ -159,19 +195,31 @@ function DroneSimulation({
   const containerReference = useRef<HTMLDivElement>(null);
   const animationReference = useRef(0);
 
-  // Drone physics state
-  const droneStateReference = useRef({
+  const initialDroneState = {
     altitude: 0,
     velocity: 0,
     integral: 0,
     previousError: 0,
     windForce: 0,
     windDecay: 0,
-  });
+  };
+
+  // Drone physics state
+  const droneStateReference = useRef({ ...initialDroneState });
+  // Altitude history for trail plot
+  const altitudeHistoryReference = useRef<number[]>([]);
+  const maxHistoryLength = 300;
 
   const paramsReference = useRef({ mode, kp, ki, kd, targetAltitude });
   useEffect(() => {
     paramsReference.current = { mode, kp, ki, kd, targetAltitude };
+  }, [mode, kp, ki, kd, targetAltitude]);
+
+  // Reset drone when mode or gains change so user sees the transient response
+  useEffect(() => {
+    droneStateReference.current = { ...initialDroneState };
+    altitudeHistoryReference.current = [];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mode, kp, ki, kd, targetAltitude]);
 
   const addWind = useCallback(() => {
@@ -180,14 +228,9 @@ function DroneSimulation({
   }, []);
 
   const resetDrone = useCallback(() => {
-    droneStateReference.current = {
-      altitude: 0,
-      velocity: 0,
-      integral: 0,
-      previousError: 0,
-      windForce: 0,
-      windDecay: 0,
-    };
+    droneStateReference.current = { ...initialDroneState };
+    altitudeHistoryReference.current = [];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -208,77 +251,69 @@ function DroneSimulation({
 
     const drawFrame = () => {
       context.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
-      context.fillStyle = "rgba(0,0,0,0.3)";
+      // Fully clear canvas each frame (no trail effect)
+      context.clearRect(0, 0, width, height);
+      context.fillStyle = "rgba(0,0,0,0.5)";
       context.fillRect(0, 0, width, height);
 
       const params = paramsReference.current;
       const state = droneStateReference.current;
       const dt = 0.02;
-      const gravity = 9.81;
-      const mass = 1.0;
-      const damping = 0.15; // light air resistance
 
-      // PID control — gains are scaled by gravity*mass so Kp=1 means "full gravity correction per meter error"
+      // PID control — same math as the step response chart
       const error = params.targetAltitude - state.altitude;
-      const gainScale = gravity * mass; // ~9.81 — makes Kp=1 meaningful
-      let thrust = gravity * mass; // baseline hover thrust (counteracts gravity)
 
-      switch (params.mode) {
-        case "openLoop":
-          // No feedback — just apply a constant thrust proportional to target
-          thrust = params.targetAltitude * gravity * mass * 0.5;
-          break;
-        case "p":
-          thrust += params.kp * gainScale * error;
-          break;
-        case "pi":
-          state.integral += error * dt;
-          state.integral = Math.max(-5, Math.min(5, state.integral));
-          thrust += params.kp * gainScale * error + params.ki * gainScale * state.integral;
-          break;
-        case "pd": {
-          const derivative = (error - state.previousError) / dt;
-          thrust += params.kp * gainScale * error + params.kd * gainScale * derivative * 0.01;
-          break;
-        }
-        case "pid": {
-          state.integral += error * dt;
-          state.integral = Math.max(-5, Math.min(5, state.integral));
-          const derivative = (error - state.previousError) / dt;
-          thrust += params.kp * gainScale * error + params.ki * gainScale * state.integral + params.kd * gainScale * derivative * 0.01;
-          break;
-        }
+      // Accumulate integral (with anti-windup clamp)
+      if (params.mode === "pi" || params.mode === "pid") {
+        state.integral += error * dt;
+        state.integral = Math.max(-10, Math.min(10, state.integral));
       }
 
-      // Clamp thrust to physical limits (motors can't push downward)
-      thrust = Math.max(0, Math.min(gravity * mass * 5, thrust));
+      const controlSignal = computePidControlSignal(
+        params.mode, params.kp, params.ki, params.kd,
+        error, state.integral, state.previousError, dt, params.targetAltitude,
+      );
+
+      // Thrust = hover + PID correction, clamped to physical motor limits
+      let thrust = Math.max(0, Math.min(
+        DRONE_GRAVITY * DRONE_MASS * 3,
+        DRONE_GRAVITY * DRONE_MASS + controlSignal,
+      ));
 
       state.previousError = error;
+
+      // Random wind gusts — ~5% chance per frame when no wind is active
+      if (state.windDecay <= 0 && Math.random() < 0.05) {
+        state.windForce = (Math.random() - 0.5) * 4;
+        state.windDecay = 40 + Math.random() * 80; // 40–120 frames
+      }
 
       // Wind disturbance
       let windEffect = 0;
       if (state.windDecay > 0) {
-        windEffect = state.windForce * (state.windDecay / 60) * gravity * mass;
+        windEffect = state.windForce * (state.windDecay / 60) * DRONE_GRAVITY * DRONE_MASS * 0.5;
         state.windDecay--;
       }
 
-      // Physics: F = ma → a = (thrust - weight - drag + wind) / mass
-      const netForce = thrust - gravity * mass - damping * state.velocity + windEffect;
-      const acceleration = netForce / mass;
+      // Second-order physics: F = ma (same model as step response, includes unknown payload)
+      const netForce = thrust - DRONE_GRAVITY * DRONE_MASS - DRONE_DAMPING * state.velocity - UNKNOWN_PAYLOAD_FORCE + windEffect;
+      const acceleration = netForce / DRONE_MASS;
       state.velocity += acceleration * dt;
       state.altitude += state.velocity * dt;
 
-      // Ground constraint
+      // Ground and ceiling constraints — zero velocity on impact
       if (state.altitude < 0) {
         state.altitude = 0;
         state.velocity = Math.max(0, state.velocity);
       }
-      state.altitude = Math.min(5, state.altitude);
+      if (state.altitude > MAX_ALTITUDE) {
+        state.altitude = MAX_ALTITUDE;
+        state.velocity = Math.min(0, state.velocity);
+      }
 
       // Drawing
       const groundY = height - 25;
-      const maxVisualAltitude = 5;
-      const altitudeScale = (groundY - 30) / maxVisualAltitude;
+      const altitudeScale = (groundY - 30) / MAX_ALTITUDE;
       const droneY = groundY - state.altitude * altitudeScale;
       const droneX = width / 2;
 
@@ -310,7 +345,7 @@ function DroneSimulation({
       context.fillStyle = "rgba(255,255,255,0.3)";
       context.font = "8px monospace";
       context.textAlign = "right";
-      for (let altitudeLevel = 0; altitudeLevel <= maxVisualAltitude; altitudeLevel++) {
+      for (let altitudeLevel = 0; altitudeLevel <= MAX_ALTITUDE; altitudeLevel++) {
         const y = groundY - altitudeLevel * altitudeScale;
         context.fillText(`${altitudeLevel}m`, 25, y + 3);
         context.strokeStyle = "rgba(255,255,255,0.05)";
@@ -357,8 +392,8 @@ function DroneSimulation({
         context.stroke();
 
         // Thrust indicator
-        if (thrust > gravity * mass * 0.5) {
-          const thrustHeight = Math.min(20, Math.max(2, (thrust - gravity * mass) * 3));
+        if (thrust > DRONE_GRAVITY * DRONE_MASS * 0.5) {
+          const thrustHeight = Math.min(20, Math.max(2, (thrust - DRONE_GRAVITY * DRONE_MASS) * 3));
           context.fillStyle = "rgba(251,191,36,0.2)";
           context.beginPath();
           context.moveTo(px - 4, 2);
@@ -396,6 +431,54 @@ function DroneSimulation({
         context.font = "8px monospace";
         context.textAlign = "center";
         context.fillText("Wind", windX + windDirection * 12, droneY - 20);
+      }
+
+      // Record altitude history
+      const history = altitudeHistoryReference.current;
+      history.push(state.altitude);
+      if (history.length > maxHistoryLength) history.shift();
+
+      // Draw altitude history trail (right side of canvas)
+      if (history.length > 1) {
+        const trailLeft = width * 0.65;
+        const trailRight = width - 10;
+        const trailWidth = trailRight - trailLeft;
+        const trailTop = 10;
+        const trailBottom = groundY;
+        const trailHeight = trailBottom - trailTop;
+
+        // Trail background
+        context.fillStyle = "rgba(0,0,0,0.3)";
+        context.fillRect(trailLeft - 5, trailTop - 5, trailWidth + 15, trailHeight + 15);
+
+        // Target line on trail
+        const trailTargetY = trailBottom - (params.targetAltitude / MAX_ALTITUDE) * trailHeight;
+        context.strokeStyle = "rgba(34,197,94,0.3)";
+        context.lineWidth = 0.5;
+        context.setLineDash([3, 3]);
+        context.beginPath();
+        context.moveTo(trailLeft, trailTargetY);
+        context.lineTo(trailRight, trailTargetY);
+        context.stroke();
+        context.setLineDash([]);
+
+        // Altitude curve
+        context.beginPath();
+        context.strokeStyle = "rgba(109,90,207,0.8)";
+        context.lineWidth = 1.5;
+        for (let i = 0; i < history.length; i++) {
+          const x = trailLeft + (i / maxHistoryLength) * trailWidth;
+          const y = trailBottom - (history[i] / MAX_ALTITUDE) * trailHeight;
+          if (i === 0) context.moveTo(x, y);
+          else context.lineTo(x, y);
+        }
+        context.stroke();
+
+        // Label
+        context.fillStyle = "rgba(255,255,255,0.3)";
+        context.font = "7px monospace";
+        context.textAlign = "left";
+        context.fillText("Altitude over time", trailLeft, trailTop - 1);
       }
 
       // Current altitude text
@@ -439,9 +522,9 @@ function DroneSimulation({
 
 export function ControlSystemVisualizer() {
   const [selectedMode, setSelectedMode] = useState<ControlMode>("pid");
-  const [kp, setKp] = useState(3);
+  const [kp, setKp] = useState(8);
   const [ki, setKi] = useState(1);
-  const [kd, setKd] = useState(0.5);
+  const [kd, setKd] = useState(4);
   const [setpoint, setSetpoint] = useState(1);
 
   const canvasReference = useRef<HTMLCanvasElement>(null);
@@ -581,7 +664,7 @@ export function ControlSystemVisualizer() {
             <label className="text-[10px] text-muted flex justify-between">
               <span>Kp</span><span className="font-mono text-accent">{kp.toFixed(1)}</span>
             </label>
-            <input type="range" min={0.1} max={10} step={0.1} value={kp}
+            <input type="range" min={0.5} max={30} step={0.5} value={kp}
               onChange={(event) => setKp(Number(event.target.value))} className="w-full accent-[#6d5acf]" />
           </div>
         )}
@@ -590,7 +673,7 @@ export function ControlSystemVisualizer() {
             <label className="text-[10px] text-muted flex justify-between">
               <span>Ki</span><span className="font-mono text-accent">{ki.toFixed(1)}</span>
             </label>
-            <input type="range" min={0} max={5} step={0.1} value={ki}
+            <input type="range" min={0} max={10} step={0.5} value={ki}
               onChange={(event) => setKi(Number(event.target.value))} className="w-full accent-[#6d5acf]" />
           </div>
         )}
@@ -599,7 +682,7 @@ export function ControlSystemVisualizer() {
             <label className="text-[10px] text-muted flex justify-between">
               <span>Kd</span><span className="font-mono text-accent">{kd.toFixed(1)}</span>
             </label>
-            <input type="range" min={0} max={5} step={0.1} value={kd}
+            <input type="range" min={0} max={15} step={0.5} value={kd}
               onChange={(event) => setKd(Number(event.target.value))} className="w-full accent-[#6d5acf]" />
           </div>
         )}

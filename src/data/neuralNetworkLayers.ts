@@ -66,8 +66,7 @@ export function forwardPass(
       }
       // Add a small bias based on neuron index for variety
       sum += Math.sin(neuronIndex * 0.5) * 0.1;
-      const isOutputLayer = layer === weights.length - 1;
-      currentOutput.push(isOutputLayer ? sum : activationFunction(sum));
+      currentOutput.push(activationFunction(sum));
     }
 
     layerOutputs.push(currentOutput);

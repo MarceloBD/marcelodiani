@@ -508,7 +508,8 @@
   },
   "footer": {
     "rights": "All rights reserved.",
-    "built": "Built with Next.js, React Three Fiber & Framer Motion"
+    "built": "Built with Next.js, React Three Fiber & Framer Motion",
+    "sourceCode": "Source Code"
   },
   "likeBanner": {
     "question": "Psst... Still here? Did you enjoy the page?",
@@ -536,6 +537,7 @@
     "expandChart": "Expand chart",
     "download": "Download",
     "error": "Something went wrong. Please try again.",
+    "askBalloon": "Ask the AI",
     "suggestions": {
       "skills": "What are Marcelo's top skills?",
       "experience": "Tell me about his experience",
@@ -775,16 +777,26 @@
       "noApiKeyDescription": "Add ALPHA_VANTAGE_KEY to your .env file to enable stock data from Alpha Vantage (free tier: 25 calls/day)."
     },
     "sports": {
-      "description": "Latest match results from TheSportsDB",
+      "description": "Live league standings and results from TheSportsDB",
+      "standingsTab": "Standings",
+      "resultsTab": "Last Results",
       "noResults": "No recent results available",
+      "noStandings": "No standings available for this league",
+      "round": "Round",
+      "team": "Team",
+      "played": "P",
+      "won": "W",
+      "drawn": "D",
+      "lost": "L",
+      "points": "Pts",
+      "form": "Form",
       "leagues": {
         "premier_league": "Premier League",
         "la_liga": "La Liga",
         "serie_a": "Serie A",
-        "brasileirao": "Brasileirão",
-        "champions_league": "Champions League",
-        "nba": "NBA",
-        "nfl": "NFL"
+        "bundesliga": "Bundesliga",
+        "ligue_1": "Ligue 1",
+        "brasileirao": "Brasileirão"
       }
     },
     "flights": {
@@ -816,6 +828,7 @@
     "gameSubtitle": "Jump higher, avoid spikes & enemies!",
     "startGame": "Start Game",
     "controlsHint": "Arrow keys or A/D to move. Auto-jump on platforms.",
+    "controlsHintMobile": "Use the touch buttons to move. Auto-jump on platforms.",
     "gameOver": "Game Over!",
     "saving": "Saving...",
     "saveScore": "Save Score",
@@ -829,5 +842,18 @@
   },
   "walkingBoy": {
     "title": "Drag to navigate, click to hide"
+  },
+  "sourceCode": {
+    "title": "Curious About the Code?",
+    "subtitle": "This entire portfolio is open source. Explore how it was built — from 3D scenes and real-time data widgets to the AI assistant and game engine.",
+    "cta": "View Source on GitHub",
+    "highlights": {
+      "nextjs": "Next.js 16 & React 19",
+      "threejs": "Three.js 3D Scenes",
+      "ai": "AI Chat Assistant",
+      "i18n": "Bilingual (EN/PT)",
+      "realtime": "Real-Time Data APIs",
+      "games": "Canvas Games & Demos"
+    }
   }
 }

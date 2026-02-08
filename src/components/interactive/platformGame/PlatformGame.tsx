@@ -1,14 +1,21 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { CANVAS_WIDTH, CANVAS_HEIGHT } from "./types";
 import { usePlatformGame } from "./usePlatformGame";
+import { TouchControls } from "./TouchControls";
 
 export function PlatformGame() {
   const canvasReference = useRef<HTMLCanvasElement>(null);
   const t = useTranslations("platformGame");
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  }, []);
+
   const {
     gameScreen,
     setGameScreen,
@@ -22,6 +29,8 @@ export function PlatformGame() {
     startGame,
     handleSaveScore,
     handleShareGame,
+    handleTouchDirectionStart,
+    handleTouchDirectionEnd,
     fetchScores,
   } = usePlatformGame(canvasReference);
 
@@ -51,7 +60,7 @@ export function PlatformGame() {
           tabIndex={0}
           role="img"
           aria-label={t("canvasAriaLabel")}
-          className="block cursor-pointer outline-none"
+          className="block cursor-pointer outline-none touch-none"
         />
 
         <AnimatePresence mode="wait">
@@ -73,7 +82,7 @@ export function PlatformGame() {
                 {t("startGame")}
               </button>
               <p className="text-[9px] text-muted mt-3">
-                {t("controlsHint")}
+                {isTouchDevice ? t("controlsHintMobile") : t("controlsHint")}
               </p>
             </motion.div>
           )}
@@ -190,6 +199,13 @@ export function PlatformGame() {
           )}
         </AnimatePresence>
       </div>
+
+      {gameScreen === "playing" && isTouchDevice && (
+        <TouchControls
+          onDirectionStart={handleTouchDirectionStart}
+          onDirectionEnd={handleTouchDirectionEnd}
+        />
+      )}
     </div>
   );
 }

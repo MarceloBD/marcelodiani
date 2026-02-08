@@ -78,8 +78,17 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="text-xs text-muted">
-            {translations("built")}
+          <div className="text-xs text-muted flex items-center gap-1.5">
+            <span>{translations("built")}</span>
+            <span className="text-card-border">|</span>
+            <a
+              href="https://github.com/MarceloBD/marcelodiani"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors underline underline-offset-2"
+            >
+              {translations("sourceCode")}
+            </a>
           </div>
         </div>
       </div>

@@ -1,25 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { getCookie, setCookie } from "@/lib/cookies";
 
 const COOKIE_NAME = "visit-count";
 const COOKIE_MAX_AGE_SECONDS = 365 * 24 * 60 * 60; // 1 year
-
-function getCookie(name: string): string | null {
-  const match = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith(`${name}=`));
-
-  if (!match) {
-    return null;
-  }
-
-  return match.split("=")[1];
-}
-
-function setCookie(name: string, value: string, maxAgeSeconds: number): void {
-  document.cookie = `${name}=${value}; path=/; max-age=${maxAgeSeconds}; SameSite=Lax`;
-}
 
 /**
  * Reads and increments a visit counter stored in browser cookies.

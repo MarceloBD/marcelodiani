@@ -120,7 +120,7 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
             </div>
           </div>
         ) : (
-          <ChatMessages messages={messages} isLoading={isLoading} />
+          <ChatMessages messages={messages} isLoading={isLoading} onSuggestionClick={handleSuggestedPrompt} />
         )}
       </div>
 

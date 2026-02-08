@@ -25,6 +25,7 @@ import { WelcomeBack } from "@/components/interactive/WelcomeBack";
 import { ExitIntentModal } from "@/components/interactive/ExitIntentModal";
 import { StructuredData } from "@/lib/structured-data";
 import { LazySection } from "@/components/ui/LazySection";
+import { SourceCodeBanner } from "@/components/sourceCode/SourceCodeBanner";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -113,9 +114,6 @@ export default async function HomePage({ params }: PageProps) {
         <LazySection height="800px">
           <InteractiveLabSection />
         </LazySection>
-        <LazySection height="800px">
-          <WorldDataSection />
-        </LazySection>
         <LazySection height="500px">
           <SecuritySection />
         </LazySection>
@@ -131,11 +129,17 @@ export default async function HomePage({ params }: PageProps) {
         <LazySection height="600px">
           <EducationSection />
         </LazySection>
+        <LazySection height="800px">
+          <WorldDataSection />
+        </LazySection>
         <LazySection height="500px">
           <QuoteRequest />
         </LazySection>
         <LazySection height="400px">
           <ContactSection />
+        </LazySection>
+        <LazySection height="300px">
+          <SourceCodeBanner />
         </LazySection>
       </main>
       <Footer />

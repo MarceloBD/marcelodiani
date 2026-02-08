@@ -85,12 +85,20 @@ export function useWalkAnimation() {
   );
 
   const updatePositionFromScroll = useCallback(
-    (scrollY: number) => {
+    (scrollY: number, scrollDirection?: Direction) => {
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       if (maxScroll <= 0) return;
 
       const progress = scrollY / maxScroll;
-      setPositionX(POSITION_MIN + progress * POSITION_RANGE);
+      const targetPositionX = POSITION_MIN + progress * POSITION_RANGE;
+
+      // When scrolling in a known direction, clamp position to prevent backward jumps
+      // caused by lazy-loaded sections changing the total page height (maxScroll).
+      setPositionX((previous) => {
+        if (scrollDirection === "right") return Math.max(previous, targetPositionX);
+        if (scrollDirection === "left") return Math.min(previous, targetPositionX);
+        return targetPositionX;
+      });
 
       // Section index for ground path dots (visual only)
       const currentSectionIndex = Math.min(
@@ -129,8 +137,9 @@ export function useWalkAnimation() {
         const delta = currentScrollY - lastScrollYRef.current;
 
         if (Math.abs(delta) > SCROLL_THRESHOLD) {
-          startWalking(delta > 0 ? "right" : "left");
-          updatePositionFromScroll(currentScrollY);
+          const scrollDirection: Direction = delta > 0 ? "right" : "left";
+          startWalking(scrollDirection);
+          updatePositionFromScroll(currentScrollY, scrollDirection);
         }
 
         lastScrollYRef.current = currentScrollY;
@@ -199,10 +208,10 @@ export function useWalkAnimation() {
       window.scrollTo({ top: targetScrollY });
       lastScrollYRef.current = targetScrollY;
 
-      updatePositionFromScroll(targetScrollY);
-
       const dragDirection: Direction = event.clientX > lastDragXRef.current ? "right" : "left";
       lastDragXRef.current = event.clientX;
+
+      updatePositionFromScroll(targetScrollY, dragDirection);
       startWalking(dragDirection);
     },
     [updatePositionFromScroll, startWalking]

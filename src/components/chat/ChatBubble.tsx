@@ -69,46 +69,65 @@ export function ChatBubble() {
         )}
       </AnimatePresence>
 
-      {/* Floating bubble button */}
-      <motion.button
-        onClick={() => setIsOpen((previous) => !previous)}
-        className="relative w-14 h-14 rounded-full bg-accent text-background flex items-center justify-center shadow-lg shadow-accent/20 cursor-pointer hover:bg-accent-glow transition-colors duration-200"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 2, duration: 0.3, type: "spring" }}
-        aria-label={isOpen ? translations("closeChat") : translations("openChat")}
-      >
-        <AnimatePresence mode="wait">
-          {isOpen ? (
-            <motion.span
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.15 }}
+      {/* Floating bubble button with tooltip */}
+      <div className="relative flex items-center gap-3">
+        <motion.button
+          onClick={() => setIsOpen((previous) => !previous)}
+          className="relative w-14 h-14 rounded-full bg-accent text-background flex items-center justify-center shadow-lg shadow-accent/20 cursor-pointer hover:bg-accent-glow transition-colors duration-200"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 2, duration: 0.3, type: "spring" }}
+          aria-label={isOpen ? translations("closeChat") : translations("openChat")}
+        >
+          <AnimatePresence mode="wait">
+            {isOpen ? (
+              <motion.span
+                key="close"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.15 }}
+              >
+                <CloseIcon />
+              </motion.span>
+            ) : (
+              <motion.span
+                key="chat"
+                initial={{ rotate: 90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.15 }}
+              >
+                <ChatIcon />
+              </motion.span>
+            )}
+          </AnimatePresence>
+
+          {/* Pulse indicator for attention */}
+          {!hasBeenSeen && !isOpen && (
+            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-green-400 animate-pulse-glow" />
+          )}
+        </motion.button>
+
+        {/* Ask AI tooltip balloon */}
+        <AnimatePresence>
+          {!isOpen && !hasBeenSeen && (
+            <motion.div
+              initial={{ opacity: 0, x: -8 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -8 }}
+              transition={{ delay: 2.3, duration: 0.3 }}
+              className="absolute left-[calc(100%+12px)] whitespace-nowrap px-3 py-1.5 rounded-lg bg-accent text-background text-xs font-medium shadow-lg shadow-accent/20 pointer-events-none"
             >
-              <CloseIcon />
-            </motion.span>
-          ) : (
-            <motion.span
-              key="chat"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.15 }}
-            >
-              <ChatIcon />
-            </motion.span>
+              {translations("askBalloon")}
+              {/* Arrow pointing left */}
+              <span className="absolute top-1/2 -left-1.5 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[6px] border-r-accent" />
+            </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Pulse indicator for attention */}
-        {!hasBeenSeen && !isOpen && (
-          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-green-400 animate-pulse-glow" />
-        )}
-      </motion.button>
+      </div>
     </div>
   );
 }

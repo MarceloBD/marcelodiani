@@ -15,6 +15,8 @@ interface ExchangeData {
 
 const BASE_CURRENCIES = ["USD", "EUR", "GBP", "BRL"] as const;
 
+const ALL_CURRENCIES = ["USD", "EUR", "GBP", "BRL", "JPY", "CAD", "AUD", "CHF"];
+
 const CURRENCY_FLAGS: Record<string, string> = {
   USD: "🇺🇸",
   EUR: "🇪🇺",
@@ -31,7 +33,8 @@ export function ExchangeRateWidget() {
   const [amount, setAmount] = useState<string>("1");
   const translation = useTranslations("worldData");
 
-  const endpoint = `/api/world-data/exchange?base=${baseCurrency}&symbols=BRL,EUR,GBP,JPY,CAD,AUD,CHF,USD`;
+  const symbols = ALL_CURRENCIES.filter((currency) => currency !== baseCurrency).join(",");
+  const endpoint = `/api/world-data/exchange?base=${baseCurrency}&symbols=${symbols}`;
 
   const identityTransform = useCallback((raw: Record<string, unknown>) => raw as unknown as ExchangeData, []);
 

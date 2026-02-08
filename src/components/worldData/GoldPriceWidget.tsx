@@ -45,7 +45,11 @@ export function GoldPriceWidget() {
     );
   }
 
-  const isPositive = data.change >= 0;
+  const priceUsd = data.priceUsd ?? 0;
+  const previousClose = data.previousClose ?? 0;
+  const change = data.change ?? 0;
+  const changePercent = data.changePercent ?? 0;
+  const isPositive = change >= 0;
 
   return (
     <div className="space-y-4">
@@ -57,10 +61,10 @@ export function GoldPriceWidget() {
         <div>
           <div className="text-xs text-muted/60 mb-1">{translation("gold.pricePerOunce")}</div>
           <div className="text-3xl font-bold text-foreground">
-            ${data.priceUsd.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            ${priceUsd.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </div>
           <div className={`text-sm font-mono mt-1 ${isPositive ? "text-emerald-400" : "text-red-400"}`}>
-            {isPositive ? "▲" : "▼"} ${Math.abs(data.change).toFixed(2)} ({data.changePercent.toFixed(2)}%)
+            {isPositive ? "▲" : "▼"} ${Math.abs(change).toFixed(2)} ({changePercent.toFixed(2)}%)
           </div>
         </div>
       </div>
@@ -70,13 +74,13 @@ export function GoldPriceWidget() {
         <div className="bg-card-border/20 rounded-lg px-3 py-2.5">
           <div className="text-[10px] text-muted/70">{translation("gold.previousClose")}</div>
           <div className="text-sm font-mono text-foreground">
-            ${data.previousClose.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+            ${previousClose.toLocaleString("en-US", { minimumFractionDigits: 2 })}
           </div>
         </div>
         <div className="bg-card-border/20 rounded-lg px-3 py-2.5">
           <div className="text-[10px] text-muted/70">{translation("gold.dailyChange")}</div>
           <div className={`text-sm font-mono ${isPositive ? "text-emerald-400" : "text-red-400"}`}>
-            {data.changePercent.toFixed(2)}%
+            {changePercent.toFixed(2)}%
           </div>
         </div>
       </div>

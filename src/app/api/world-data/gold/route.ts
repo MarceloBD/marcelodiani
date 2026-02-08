@@ -63,11 +63,11 @@ export async function GET() {
     const raw: GoldApiResponse = await response.json();
 
     const data: GoldData = {
-      priceUsd: raw.price,
-      previousClose: raw.prev_close_price,
-      change: raw.change,
-      changePercent: raw.change_percent,
-      timestamp: raw.timestamp,
+      priceUsd: raw.price ?? 0,
+      previousClose: raw.prev_close_price ?? 0,
+      change: raw.change ?? 0,
+      changePercent: raw.change_percent ?? 0,
+      timestamp: raw.timestamp ?? 0,
     };
 
     // Store in both caches

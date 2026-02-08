@@ -10,8 +10,6 @@ import { SKILLS, SKILL_CATEGORY_COLORS } from "@/data/skills";
 import type { SkillCategory } from "@/data/skills";
 import { AlgorithmVisualizer } from "../interactive/AlgorithmVisualizer";
 import { TreeVisualizer } from "../interactive/TreeVisualizer";
-import { CircuitSimulator } from "../interactive/CircuitSimulator";
-import { SignalVisualizer } from "../interactive/SignalVisualizer";
 
 const TechSphereCanvas = dynamic(
   () =>
@@ -121,8 +119,6 @@ export function SkillsSection() {
 
         <AlgorithmVisualizer />
         <TreeVisualizer />
-        <CircuitSimulator />
-        <SignalVisualizer />
       </div>
     </section>
   );

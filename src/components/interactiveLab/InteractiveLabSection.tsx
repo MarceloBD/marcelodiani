@@ -16,7 +16,9 @@ type LabSimulator =
   | "database"
   | "concurrency"
   | "controlSystem"
-  | "transistor";
+  | "transistor"
+  | "circuit"
+  | "signal";
 
 interface LabTab {
   key: LabSimulator;
@@ -35,6 +37,8 @@ const LAB_TABS: LabTab[] = [
   { key: "concurrency", label: "Concurrency", shortLabel: "Conc" },
   { key: "controlSystem", label: "Control Systems", shortLabel: "PID" },
   { key: "transistor", label: "Transistors", shortLabel: "Trans" },
+  { key: "circuit", label: "Circuit Simulator", shortLabel: "Circuit" },
+  { key: "signal", label: "Signal Visualizer", shortLabel: "Signal" },
 ];
 
 const CalculusVisualizer = dynamic(() => import("./CalculusVisualizer").then((m) => ({ default: m.CalculusVisualizer })), { ssr: false });
@@ -47,6 +51,8 @@ const DatabaseVisualizer = dynamic(() => import("./DatabaseVisualizer").then((m)
 const ConcurrencyVisualizer = dynamic(() => import("./ConcurrencyVisualizer").then((m) => ({ default: m.ConcurrencyVisualizer })), { ssr: false });
 const ControlSystemVisualizer = dynamic(() => import("./ControlSystemVisualizer").then((m) => ({ default: m.ControlSystemVisualizer })), { ssr: false });
 const TransistorArchitectureVisualizer = dynamic(() => import("./TransistorArchitectureVisualizer").then((m) => ({ default: m.TransistorArchitectureVisualizer })), { ssr: false });
+const CircuitSimulator = dynamic(() => import("../interactive/CircuitSimulator").then((m) => ({ default: m.CircuitSimulator })), { ssr: false });
+const SignalVisualizer = dynamic(() => import("../interactive/SignalVisualizer").then((m) => ({ default: m.SignalVisualizer })), { ssr: false });
 
 const SIMULATOR_COMPONENTS: Record<LabSimulator, React.ComponentType> = {
   calculus: CalculusVisualizer,
@@ -59,6 +65,8 @@ const SIMULATOR_COMPONENTS: Record<LabSimulator, React.ComponentType> = {
   concurrency: ConcurrencyVisualizer,
   controlSystem: ControlSystemVisualizer,
   transistor: TransistorArchitectureVisualizer,
+  circuit: CircuitSimulator,
+  signal: SignalVisualizer,
 };
 
 export function InteractiveLabSection() {

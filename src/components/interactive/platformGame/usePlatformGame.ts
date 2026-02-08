@@ -117,6 +117,15 @@ export function usePlatformGame(canvasReference: React.RefObject<HTMLCanvasEleme
     });
   };
 
+  // Touch control callbacks -- feed into the same InputRecorder for replay compatibility
+  const handleTouchDirectionStart = useCallback((key: string) => {
+    inputRecorderReference.current.recordKeyDown(key);
+  }, []);
+
+  const handleTouchDirectionEnd = useCallback((key: string) => {
+    inputRecorderReference.current.recordKeyUp(key);
+  }, []);
+
   // Game loop effect -- runs when gameScreen becomes "playing"
   useEffect(() => {
     if (gameScreen !== "playing") return;
@@ -237,6 +246,15 @@ export function usePlatformGame(canvasReference: React.RefObject<HTMLCanvasEleme
     };
     canvas.addEventListener("click", handleCanvasClick);
 
+    // Instant unpause on touch (avoids the 300ms click delay on mobile)
+    const handleCanvasTouch = (event: TouchEvent) => {
+      if (state.isPaused) {
+        event.preventDefault();
+        resumeGame();
+      }
+    };
+    canvas.addEventListener("touchstart", handleCanvasTouch);
+
     return () => {
       delete document.body.dataset.gameActive;
       cancelAnimationFrame(animationFrameId);
@@ -246,6 +264,7 @@ export function usePlatformGame(canvasReference: React.RefObject<HTMLCanvasEleme
       window.removeEventListener("blur", handleWindowBlur);
       canvas.removeEventListener("blur", handleCanvasBlur);
       canvas.removeEventListener("click", handleCanvasClick);
+      canvas.removeEventListener("touchstart", handleCanvasTouch);
     };
   }, [gameScreen, fetchScores, canvasReference]);
 
@@ -262,6 +281,8 @@ export function usePlatformGame(canvasReference: React.RefObject<HTMLCanvasEleme
     startGame,
     handleSaveScore,
     handleShareGame,
+    handleTouchDirectionStart,
+    handleTouchDirectionEnd,
     fetchScores,
   };
 }

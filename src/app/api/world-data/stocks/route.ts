@@ -75,15 +75,15 @@ export async function GET(request: NextRequest) {
     }
 
     const data: StockData = {
-      symbol: quote["01. symbol"],
-      price: parseFloat(quote["05. price"]),
-      open: parseFloat(quote["02. open"]),
-      high: parseFloat(quote["03. high"]),
-      low: parseFloat(quote["04. low"]),
-      volume: parseInt(quote["06. volume"], 10),
-      previousClose: parseFloat(quote["08. previous close"]),
-      change: parseFloat(quote["09. change"]),
-      changePercent: quote["10. change percent"],
+      symbol: quote["01. symbol"] || symbol,
+      price: parseFloat(quote["05. price"]) || 0,
+      open: parseFloat(quote["02. open"]) || 0,
+      high: parseFloat(quote["03. high"]) || 0,
+      low: parseFloat(quote["04. low"]) || 0,
+      volume: parseInt(quote["06. volume"], 10) || 0,
+      previousClose: parseFloat(quote["08. previous close"]) || 0,
+      change: parseFloat(quote["09. change"]) || 0,
+      changePercent: quote["10. change percent"] || "0%",
     };
 
     // Store in both caches

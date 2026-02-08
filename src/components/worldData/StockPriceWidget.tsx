@@ -68,7 +68,14 @@ export function StockPriceWidget() {
 
   if (error) return <WidgetError message={error} onRetry={refetch} />;
 
-  const isPositive = (data?.change ?? 0) >= 0;
+  const stockChange = data?.change ?? 0;
+  const stockPrice = data?.price ?? 0;
+  const stockOpen = data?.open ?? 0;
+  const stockHigh = data?.high ?? 0;
+  const stockLow = data?.low ?? 0;
+  const stockVolume = data?.volume ?? 0;
+  const stockChangePercent = data?.changePercent ?? "0%";
+  const isPositive = stockChange >= 0;
 
   return (
     <div className="space-y-4">
@@ -119,34 +126,34 @@ export function StockPriceWidget() {
             <div className="flex items-center justify-between mb-3">
               <span className="text-lg font-bold text-foreground">{data.symbol}</span>
               <span className={`text-xs font-mono px-2 py-0.5 rounded ${isPositive ? "bg-emerald-400/10 text-emerald-400" : "bg-red-400/10 text-red-400"}`}>
-                {isPositive ? "▲" : "▼"} {data.changePercent}
+                {isPositive ? "▲" : "▼"} {stockChangePercent}
               </span>
             </div>
 
             <div className="text-2xl font-bold text-foreground mb-1">
-              ${data.price.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+              ${stockPrice.toLocaleString("en-US", { minimumFractionDigits: 2 })}
             </div>
             <div className={`text-sm font-mono ${isPositive ? "text-emerald-400" : "text-red-400"}`}>
-              {isPositive ? "+" : ""}{data.change.toFixed(2)}
+              {isPositive ? "+" : ""}{stockChange.toFixed(2)}
             </div>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <div className="bg-card-border/20 rounded-lg px-3 py-2">
               <div className="text-[10px] text-muted/70">{translation("stocks.open")}</div>
-              <div className="text-xs font-mono text-foreground">${data.open.toFixed(2)}</div>
+              <div className="text-xs font-mono text-foreground">${stockOpen.toFixed(2)}</div>
             </div>
             <div className="bg-card-border/20 rounded-lg px-3 py-2">
               <div className="text-[10px] text-muted/70">{translation("stocks.high")}</div>
-              <div className="text-xs font-mono text-foreground">${data.high.toFixed(2)}</div>
+              <div className="text-xs font-mono text-foreground">${stockHigh.toFixed(2)}</div>
             </div>
             <div className="bg-card-border/20 rounded-lg px-3 py-2">
               <div className="text-[10px] text-muted/70">{translation("stocks.low")}</div>
-              <div className="text-xs font-mono text-foreground">${data.low.toFixed(2)}</div>
+              <div className="text-xs font-mono text-foreground">${stockLow.toFixed(2)}</div>
             </div>
             <div className="bg-card-border/20 rounded-lg px-3 py-2">
               <div className="text-[10px] text-muted/70">{translation("stocks.volume")}</div>
-              <div className="text-xs font-mono text-foreground">{(data.volume / 1_000_000).toFixed(1)}M</div>
+              <div className="text-xs font-mono text-foreground">{(stockVolume / 1_000_000).toFixed(1)}M</div>
             </div>
           </div>
         </>

@@ -44,9 +44,9 @@ export async function GET(request: Request) {
     const rows = await sql`
       SELECT id, level, source, message, metadata, client_ip, stack_trace, created_at
       FROM system_logs
-      WHERE (${levelFilter} IS NULL OR level = ${levelFilter})
-        AND (${sourceFilter} IS NULL OR source = ${sourceFilter})
-        AND (${searchPattern} IS NULL OR message ILIKE ${searchPattern})
+      WHERE (${levelFilter}::text IS NULL OR level = ${levelFilter})
+        AND (${sourceFilter}::text IS NULL OR source = ${sourceFilter})
+        AND (${searchPattern}::text IS NULL OR message ILIKE ${searchPattern})
       ORDER BY created_at DESC
       LIMIT ${queryLimit}
       OFFSET ${queryOffset}
@@ -55,9 +55,9 @@ export async function GET(request: Request) {
     const countRows = await sql`
       SELECT COUNT(*)::int AS total
       FROM system_logs
-      WHERE (${levelFilter} IS NULL OR level = ${levelFilter})
-        AND (${sourceFilter} IS NULL OR source = ${sourceFilter})
-        AND (${searchPattern} IS NULL OR message ILIKE ${searchPattern})
+      WHERE (${levelFilter}::text IS NULL OR level = ${levelFilter})
+        AND (${sourceFilter}::text IS NULL OR source = ${sourceFilter})
+        AND (${searchPattern}::text IS NULL OR message ILIKE ${searchPattern})
     `;
 
     return Response.json({

@@ -27,6 +27,16 @@ const CHAT_HOURLY_LIMIT = {
   windowMs: 3_600_000,
 };
 
+const CHAT_DAILY_LIMIT = {
+  maxRequests: 20,
+  windowMs: 86_400_000,
+};
+
+const CHAT_MONTHLY_LIMIT = {
+  maxRequests: 100,
+  windowMs: 2_592_000_000,
+};
+
 function getClientIp(request: Request): string {
   const forwarded = request.headers.get("x-forwarded-for");
   const realIp = request.headers.get("x-real-ip");
@@ -56,6 +66,34 @@ export async function POST(request: Request) {
       return new Response(
         JSON.stringify({
           error: "Hourly message limit reached. Please try again later.",
+        }),
+        { status: 429, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    // Rate limit: per day
+    const dailyLimit = checkRateLimit(
+      `chat-day:${clientIp}`,
+      CHAT_DAILY_LIMIT
+    );
+    if (!dailyLimit.allowed) {
+      return new Response(
+        JSON.stringify({
+          error: "Daily message limit reached. Please come back tomorrow.",
+        }),
+        { status: 429, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    // Rate limit: per month
+    const monthlyLimit = checkRateLimit(
+      `chat-month:${clientIp}`,
+      CHAT_MONTHLY_LIMIT
+    );
+    if (!monthlyLimit.allowed) {
+      return new Response(
+        JSON.stringify({
+          error: "Monthly message limit reached. Please try again next month.",
         }),
         { status: 429, headers: { "Content-Type": "application/json" } }
       );

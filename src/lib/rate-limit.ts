@@ -8,6 +8,7 @@
 
 interface RateLimitEntry {
   timestamps: number[];
+  windowMs: number;
 }
 
 const rateLimitStore = new Map<string, RateLimitEntry>();
@@ -15,14 +16,14 @@ const rateLimitStore = new Map<string, RateLimitEntry>();
 const CLEANUP_INTERVAL_MS = 60_000;
 let lastCleanup = Date.now();
 
-function cleanupExpiredEntries(windowMs: number): void {
+function cleanupExpiredEntries(): void {
   const now = Date.now();
   if (now - lastCleanup < CLEANUP_INTERVAL_MS) return;
 
   lastCleanup = now;
-  const cutoff = now - windowMs;
 
   for (const [key, entry] of rateLimitStore.entries()) {
+    const cutoff = now - entry.windowMs;
     entry.timestamps = entry.timestamps.filter(
       (timestamp) => timestamp > cutoff
     );
@@ -52,9 +53,12 @@ export function checkRateLimit(
   const now = Date.now();
   const cutoff = now - windowMs;
 
-  cleanupExpiredEntries(windowMs);
+  cleanupExpiredEntries();
 
-  const entry = rateLimitStore.get(identifier) || { timestamps: [] };
+  const entry = rateLimitStore.get(identifier) || {
+    timestamps: [],
+    windowMs,
+  };
 
   // Remove timestamps outside the window
   entry.timestamps = entry.timestamps.filter((timestamp) => timestamp > cutoff);

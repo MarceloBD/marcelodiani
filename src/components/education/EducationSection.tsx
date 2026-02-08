@@ -47,7 +47,7 @@ export function EducationSection() {
   const translations = useTranslations("education");
 
   return (
-    <section id="education" className="py-24 px-6 relative">
+    <section id="education" className="py-24 px-6 relative overflow-hidden">
       <MathBackground />
       <div className="max-w-6xl mx-auto relative z-10">
         <SectionTitle title={translations("title")} />
@@ -104,7 +104,7 @@ export function EducationSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
                 whileHover={{ y: -4 }}
-                className="glass-card rounded-lg transition-all duration-300 group"
+                className="glass-card rounded-lg transition-colors duration-300 group"
               >
                 <Wrapper {...wrapperProps} className="block p-5">
                   <div className="flex items-start gap-3">

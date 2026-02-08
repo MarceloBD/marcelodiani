@@ -62,7 +62,7 @@ export function ChatBubble() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="w-[340px] sm:w-[380px] h-[480px] glass-card rounded-xl overflow-hidden border border-card-border shadow-2xl shadow-black/40 flex flex-col"
+            className="w-[calc(100vw-3rem)] sm:w-[380px] h-[480px] glass-card rounded-xl overflow-hidden border border-card-border shadow-2xl shadow-black/40 flex flex-col"
           >
             <ChatPanel onClose={() => setIsOpen(false)} />
           </motion.div>
@@ -119,7 +119,7 @@ export function ChatBubble() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -8 }}
               transition={{ delay: 2.3, duration: 0.3 }}
-              className="absolute left-[calc(100%+12px)] whitespace-nowrap px-3 py-1.5 rounded-lg bg-accent text-background text-xs font-medium shadow-lg shadow-accent/20 pointer-events-none"
+              className="absolute left-[calc(100%+12px)] whitespace-nowrap px-3 py-1.5 rounded-lg bg-accent text-background text-xs font-medium shadow-lg shadow-accent/20 pointer-events-none max-w-[calc(100vw-6rem)]"
             >
               {translations("askBalloon")}
               {/* Arrow pointing left */}

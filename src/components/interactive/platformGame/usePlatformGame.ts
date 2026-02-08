@@ -246,25 +246,68 @@ export function usePlatformGame(canvasReference: React.RefObject<HTMLCanvasEleme
     };
     canvas.addEventListener("click", handleCanvasClick);
 
-    // Instant unpause on touch (avoids the 300ms click delay on mobile)
-    const handleCanvasTouch = (event: TouchEvent) => {
+    // --- Canvas touch: pause/resume + direct movement on mobile ---
+    // Touch left half of canvas → move left, right half → move right
+    let canvasTouchDirection: string | null = null;
+
+    const getDirectionFromTouch = (touch: Touch): string => {
+      const rect = canvas.getBoundingClientRect();
+      const touchX = touch.clientX - rect.left;
+      return touchX < rect.width / 2 ? "ArrowLeft" : "ArrowRight";
+    };
+
+    const updateCanvasTouchDirection = (direction: string | null) => {
+      if (canvasTouchDirection === direction) return;
+      if (canvasTouchDirection) recorder.recordKeyUp(canvasTouchDirection);
+      if (direction) recorder.recordKeyDown(direction);
+      canvasTouchDirection = direction;
+    };
+
+    const handleCanvasTouchStart = (event: TouchEvent) => {
+      event.preventDefault();
       if (state.isPaused) {
-        event.preventDefault();
         resumeGame();
+        return;
+      }
+      const touch = event.touches[0];
+      if (touch && !state.isDead) {
+        updateCanvasTouchDirection(getDirectionFromTouch(touch));
       }
     };
-    canvas.addEventListener("touchstart", handleCanvasTouch);
+
+    const handleCanvasTouchMove = (event: TouchEvent) => {
+      event.preventDefault();
+      if (state.isPaused || state.isDead) return;
+      const touch = event.touches[0];
+      if (touch) {
+        updateCanvasTouchDirection(getDirectionFromTouch(touch));
+      }
+    };
+
+    const handleCanvasTouchEnd = (event: TouchEvent) => {
+      event.preventDefault();
+      updateCanvasTouchDirection(null);
+    };
+
+    canvas.addEventListener("touchstart", handleCanvasTouchStart);
+    canvas.addEventListener("touchmove", handleCanvasTouchMove);
+    canvas.addEventListener("touchend", handleCanvasTouchEnd);
+    canvas.addEventListener("touchcancel", handleCanvasTouchEnd);
 
     return () => {
       delete document.body.dataset.gameActive;
       cancelAnimationFrame(animationFrameId);
+      if (canvasTouchDirection) recorder.recordKeyUp(canvasTouchDirection);
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       window.removeEventListener("blur", handleWindowBlur);
       canvas.removeEventListener("blur", handleCanvasBlur);
       canvas.removeEventListener("click", handleCanvasClick);
-      canvas.removeEventListener("touchstart", handleCanvasTouch);
+      canvas.removeEventListener("touchstart", handleCanvasTouchStart);
+      canvas.removeEventListener("touchmove", handleCanvasTouchMove);
+      canvas.removeEventListener("touchend", handleCanvasTouchEnd);
+      canvas.removeEventListener("touchcancel", handleCanvasTouchEnd);
     };
   }, [gameScreen, fetchScores, canvasReference]);
 

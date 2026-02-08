@@ -27,15 +27,15 @@ function CloseIcon() {
 
 function useExitIntent(onExitIntent: () => void) {
   useEffect(() => {
-    const handleMouseLeave = (event: MouseEvent) => {
-      if (event.clientY <= 0) {
+    const handleMouseOut = (event: MouseEvent) => {
+      if (!event.relatedTarget && event.clientY <= 0) {
         onExitIntent();
       }
     };
 
-    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseout", handleMouseOut);
 
-    return () => document.removeEventListener("mouseleave", handleMouseLeave);
+    return () => document.removeEventListener("mouseout", handleMouseOut);
   }, [onExitIntent]);
 }
 

@@ -828,7 +828,7 @@
     "gameSubtitle": "Jump higher, avoid spikes & enemies!",
     "startGame": "Start Game",
     "controlsHint": "Arrow keys or A/D to move. Auto-jump on platforms.",
-    "controlsHintMobile": "Use the touch buttons to move. Auto-jump on platforms.",
+    "controlsHintMobile": "Touch left or right side of the screen to move. Auto-jump on platforms.",
     "gameOver": "Game Over!",
     "saving": "Saving...",
     "saveScore": "Save Score",

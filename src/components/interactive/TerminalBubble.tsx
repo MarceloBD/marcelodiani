@@ -63,7 +63,7 @@ export function TerminalBubble() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="w-[360px] sm:w-[420px] shadow-2xl shadow-black/40 rounded-lg"
+            className="w-[calc(100vw-3rem)] sm:w-[420px] shadow-2xl shadow-black/40 rounded-lg"
           >
             <InteractiveTerminal />
           </motion.div>

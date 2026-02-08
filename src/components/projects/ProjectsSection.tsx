@@ -13,6 +13,25 @@ const PlatformGame = dynamic(
   { ssr: false }
 );
 
+function GamepadIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="w-4 h-4 flex-shrink-0"
+    >
+      <rect x="2" y="6" width="20" height="12" rx="2" />
+      <path d="M6 12h4M8 10v4" />
+      <circle cx="17" cy="10" r="1" fill="currentColor" />
+      <circle cx="15" cy="13" r="1" fill="currentColor" />
+    </svg>
+  );
+}
+
 const PROJECT_KEYS = [
   "learnCode",
   "codingClasses",
@@ -49,9 +68,24 @@ export function ProjectsSection() {
                 <div className="mt-3">
                   <motion.button
                     onClick={() => setIsGameExpanded((previous) => !previous)}
-                    className="w-full text-[10px] px-3 py-2 rounded-lg border border-accent/20 text-accent hover:bg-accent/10 transition-colors cursor-pointer font-mono"
-                    whileTap={{ scale: 0.98 }}
+                    className={`w-full text-xs px-4 py-3 rounded-lg border-2 font-mono font-medium cursor-pointer transition-all flex items-center justify-center gap-2 ${
+                      isGameExpanded
+                        ? "bg-accent/5 border-accent/20 text-accent/70 hover:bg-accent/10"
+                        : "bg-accent/10 border-accent/30 text-accent hover:bg-accent/20"
+                    }`}
+                    whileTap={{ scale: 0.97 }}
+                    animate={
+                      !isGameExpanded
+                        ? { scale: [1, 1.02, 1], opacity: [1, 0.8, 1] }
+                        : {}
+                    }
+                    transition={
+                      !isGameExpanded
+                        ? { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
+                        : { duration: 0.15 }
+                    }
                   >
+                    <GamepadIcon />
                     {isGameExpanded ? translations("closeDemo") : translations("playDemo")}
                   </motion.button>
                   <AnimatePresence>

@@ -125,8 +125,10 @@ async function insertLogToDatabase(entry: LogEntry): Promise<void> {
 async function persistLog(entry: LogEntry): Promise<void> {
   try {
     await insertLogToDatabase(entry);
-  } catch {
-    // DB logging failure — at least we have console output
+  } catch (persistError) {
+    console.error(
+      `[logger] Failed to persist log to database: ${persistError instanceof Error ? persistError.message : String(persistError)}`,
+    );
   }
 
   if (entry.level === LogLevel.ERROR && shouldSendErrorEmail(entry.source)) {
@@ -137,8 +139,10 @@ async function persistLog(entry: LogEntry): Promise<void> {
         stackTrace: entry.stackTrace,
         metadata: entry.metadata,
       });
-    } catch {
-      // Email failure is non-critical
+    } catch (emailError) {
+      console.error(
+        `[logger] Failed to send error alert email: ${emailError instanceof Error ? emailError.message : String(emailError)}`,
+      );
     }
   }
 }

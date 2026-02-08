@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCached, setCache } from "@/lib/api-cache";
+import { logger, toError } from "@/lib/logger";
 
 const CACHE_TTL_MS = 2 * 60 * 1_000; // 2 minutes
 const CACHE_KEY_PREFIX = "flights";
@@ -71,7 +72,8 @@ export async function GET(request: NextRequest) {
     setCache(cacheKey, data, CACHE_TTL_MS);
 
     return NextResponse.json(data);
-  } catch {
+  } catch (caughtError) {
+    logger.error("flights-api", "Failed to fetch flight data", { error: toError(caughtError) });
     return NextResponse.json({ error: "Failed to fetch flight data" }, { status: 500 });
   }
 }

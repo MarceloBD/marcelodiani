@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCached, setCache } from "@/lib/api-cache";
+import { logger, toError } from "@/lib/logger";
 
 const CACHE_TTL_MS = 30 * 60 * 1_000; // 30 minutes
 const CACHE_KEY_PREFIX = "exchange";
@@ -51,5 +52,6 @@ export async function GET(request: NextRequest) {
     }
   }
 
+  logger.error("exchange-api", "All exchange rate API endpoints failed");
   return NextResponse.json({ error: "Exchange rate API unavailable" }, { status: 502 });
 }

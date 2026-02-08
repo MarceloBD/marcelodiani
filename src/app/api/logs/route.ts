@@ -1,4 +1,5 @@
 import { getDatabase, ensureSystemLogsTable } from "@/lib/db";
+import { logger, toError } from "@/lib/logger";
 
 // ---------------------------------------------------------------------------
 // Auth helper
@@ -17,29 +18,29 @@ function isAuthorized(request: Request): boolean {
 // ---------------------------------------------------------------------------
 
 export async function GET(request: Request) {
-  if (!isAuthorized(request)) {
-    return Response.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  const sql = getDatabase();
-  if (!sql) {
-    return Response.json({ error: "Database not configured" }, { status: 503 });
-  }
-
-  const tableReady = await ensureSystemLogsTable();
-  if (!tableReady) {
-    return Response.json({ error: "Failed to initialize logs table" }, { status: 500 });
-  }
-
-  const { searchParams } = new URL(request.url);
-  const levelFilter = searchParams.get("level") || null;
-  const sourceFilter = searchParams.get("source") || null;
-  const searchTerm = searchParams.get("search") || null;
-  const searchPattern = searchTerm ? `%${searchTerm}%` : null;
-  const queryLimit = Math.min(Number(searchParams.get("limit") || 50), 200);
-  const queryOffset = Number(searchParams.get("offset") || 0);
-
   try {
+    if (!isAuthorized(request)) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const sql = getDatabase();
+    if (!sql) {
+      return Response.json({ error: "Database not configured" }, { status: 503 });
+    }
+
+    const tableReady = await ensureSystemLogsTable();
+    if (!tableReady) {
+      return Response.json({ error: "Failed to initialize logs table" }, { status: 500 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const levelFilter = searchParams.get("level") || null;
+    const sourceFilter = searchParams.get("source") || null;
+    const searchTerm = searchParams.get("search") || null;
+    const searchPattern = searchTerm ? `%${searchTerm}%` : null;
+    const queryLimit = Math.min(Number(searchParams.get("limit") || 50) || 50, 200);
+    const queryOffset = Number(searchParams.get("offset") || 0) || 0;
+
     const rows = await sql`
       SELECT id, level, source, message, metadata, client_ip, stack_trace, created_at
       FROM system_logs
@@ -65,7 +66,10 @@ export async function GET(request: Request) {
       limit: queryLimit,
       offset: queryOffset,
     });
-  } catch {
+  } catch (caughtError) {
+    logger.error("logs-api", "Failed to query logs", {
+      error: toError(caughtError),
+    });
     return Response.json({ error: "Failed to query logs" }, { status: 500 });
   }
 }
@@ -75,25 +79,25 @@ export async function GET(request: Request) {
 // ---------------------------------------------------------------------------
 
 export async function DELETE(request: Request) {
-  if (!isAuthorized(request)) {
-    return Response.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  const sql = getDatabase();
-  if (!sql) {
-    return Response.json({ error: "Database not configured" }, { status: 503 });
-  }
-
-  const tableReady = await ensureSystemLogsTable();
-  if (!tableReady) {
-    return Response.json({ error: "Failed to initialize logs table" }, { status: 500 });
-  }
-
-  const { searchParams } = new URL(request.url);
-  const daysToKeep = Math.max(Number(searchParams.get("keep_days") || 30), 1);
-  const cutoffDate = new Date(Date.now() - daysToKeep * 24 * 60 * 60 * 1000).toISOString();
-
   try {
+    if (!isAuthorized(request)) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const sql = getDatabase();
+    if (!sql) {
+      return Response.json({ error: "Database not configured" }, { status: 503 });
+    }
+
+    const tableReady = await ensureSystemLogsTable();
+    if (!tableReady) {
+      return Response.json({ error: "Failed to initialize logs table" }, { status: 500 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const daysToKeep = Math.max(Number(searchParams.get("keep_days") || 30) || 30, 1);
+    const cutoffDate = new Date(Date.now() - daysToKeep * 24 * 60 * 60 * 1000).toISOString();
+
     const rows = await sql`
       DELETE FROM system_logs
       WHERE created_at < ${cutoffDate}::timestamptz
@@ -104,7 +108,10 @@ export async function DELETE(request: Request) {
       deleted: rows.length,
       cutoffDate,
     });
-  } catch {
+  } catch (caughtError) {
+    logger.error("logs-api", "Failed to delete logs", {
+      error: toError(caughtError),
+    });
     return Response.json({ error: "Failed to delete logs" }, { status: 500 });
   }
 }

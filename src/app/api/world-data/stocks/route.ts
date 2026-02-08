@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCached, setCache } from "@/lib/api-cache";
 import { getDailyCached, setDailyCache } from "@/lib/daily-api-cache";
+import { logger, toError } from "@/lib/logger";
 
 const MEMORY_CACHE_TTL_MS = 60 * 60 * 1_000; // 1 hour in-memory
 const CACHE_KEY_PREFIX = "stocks";
@@ -91,7 +92,8 @@ export async function GET(request: NextRequest) {
     await setDailyCache(cacheKey, data);
 
     return NextResponse.json(data);
-  } catch {
+  } catch (caughtError) {
+    logger.error("stocks-api", "Failed to fetch stock data", { error: toError(caughtError) });
     return NextResponse.json({ error: "Failed to fetch stock data" }, { status: 500 });
   }
 }

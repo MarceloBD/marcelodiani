@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getCached, setCache } from "@/lib/api-cache";
+import { logger, toError } from "@/lib/logger";
 
 const CACHE_TTL_MS = 60 * 1_000; // 1 minute
 const CACHE_KEY = "crypto:prices";
@@ -33,7 +34,8 @@ export async function GET() {
     setCache(CACHE_KEY, data, CACHE_TTL_MS);
 
     return NextResponse.json(data);
-  } catch {
+  } catch (caughtError) {
+    logger.error("crypto-api", "Failed to fetch crypto data", { error: toError(caughtError) });
     return NextResponse.json({ error: "Failed to fetch crypto data" }, { status: 500 });
   }
 }

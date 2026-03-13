@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { SectionTitle } from "../ui/SectionTitle";
 import { ScrollReveal } from "../ui/ScrollReveal";
-import { TypingGame } from "../interactive/TypingGame";
 import { MathBackground } from "./MathBackground";
 import { ACHIEVEMENT_LINKS, DEGREE_LINK } from "@/data/skills";
 
@@ -137,8 +136,6 @@ export function EducationSection() {
             );
           })}
         </div>
-
-        <TypingGame />
       </div>
     </section>
   );

@@ -10,6 +10,7 @@
     "projects": "Projects",
     "education": "Education",
     "contact": "Contact",
+    "blog": "Blog",
     "toggleMenu": "Toggle menu",
     "skipToContent": "Skip to main content",
     "languageSelection": "Language selection",
@@ -160,40 +161,80 @@
     "closeDemo": "▲ Close Demo",
     "playDemo": "▶ Play Web Demo",
     "items": {
-      "learnCode": {
-        "name": "Learn Code",
+      "webrix": {
+        "name": "Webrix",
         "year": "2025",
-        "description": "Online interface to learn new languages and frameworks by their main concepts and puzzles."
+        "description": "Contributions to the secure MCP gateway connecting AI agents to enterprise systems."
       },
-      "codingClasses": {
-        "name": "Coding Classes",
+      "welcomeToBrazil": {
+        "name": "Welcome to Brazil",
         "year": "2025",
-        "description": "Recorded coding classes for an online course, teaching how to use AI with advanced techniques."
+        "description": "Complete guide for foreigners to visit, live, and thrive in Brazil."
+      },
+      "marcelodiani": {
+        "name": "marcelodiani",
+        "year": "2025",
+        "description": "My portfolio website (marcelodiani.online)."
+      },
+      "vcChess": {
+        "name": "vc-chess",
+        "year": "2025",
+        "description": "Real-time multiplayer chess game — no account required."
+      },
+      "vcBillings": {
+        "name": "vc-billings",
+        "year": "2025",
+        "description": "Personal monthly payment tracker (Next.js + Drizzle + Neon Postgres)."
+      },
+      "vcEcommerce": {
+        "name": "vc-ecommerce",
+        "year": "2025",
+        "description": "E-commerce storefront template."
+      },
+      "vcPlumbingQuote": {
+        "name": "vc-plumbing-quote-landing",
+        "year": "2025",
+        "description": "Service quote landing page."
+      },
+      "vcProductLanding": {
+        "name": "vc-product-landing-page",
+        "year": "2025",
+        "description": "Product launch landing page (Next.js + Framer Motion)."
       },
       "languageTranslator": {
         "name": "Language Translator",
         "year": "2025",
-        "description": "State-of-the-art open-source React Native and Python app using LangGraph and OCR to translate text from images."
+        "description": "React Native + Python translator using LangGraph and OCR."
+      },
+      "learnCode": {
+        "name": "Learn Code",
+        "year": "2025",
+        "description": "Online interface to learn languages and frameworks through concepts and puzzles."
+      },
+      "codingClasses": {
+        "name": "Coding Classes",
+        "year": "2025",
+        "description": "Recorded coding classes teaching AI-assisted development techniques."
       },
       "bannerGenerator": {
         "name": "Banner Generator",
         "year": "2025",
-        "description": "Banner generation tool for web pages with editable text, leveraging multiple LLMs to improve output quality."
-      },
-      "travelGuide": {
-        "name": "Travel Guide",
-        "year": "2024",
-        "description": "Next.js platform for storing city guides and points of interest."
+        "description": "Banner generation tool leveraging multiple LLMs for quality output."
       },
       "cryptoTax": {
         "name": "Crypto Tax Calculator",
         "year": "2022",
-        "description": "Open-source application to calculate Brazilian taxes on crypto trading with extensive unit tests."
+        "description": "Cryptocurrency calculator (JavaScript)."
       },
       "platformJump": {
         "name": "Platform Jump Game",
         "year": "2021",
-        "description": "Unity C# mobile game featuring obstacles and a global ranking system on Google Play."
+        "description": "Unity C# mobile game with obstacles and global ranking on Google Play."
+      },
+      "picBird": {
+        "name": "PicBird",
+        "year": "2021",
+        "description": "Mobile game built with Unity and C#."
       }
     }
   },
@@ -855,5 +896,17 @@
       "realtime": "Real-Time Data APIs",
       "games": "Canvas Games & Demos"
     }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Thoughts on software engineering, architecture, and technology",
+    "homeSubtitle": "Latest insights on software development and engineering",
+    "readMore": "Read more",
+    "backToBlog": "← Back to Blog",
+    "publishedOn": "Published on",
+    "readingTime": "{minutes} min read",
+    "latestPosts": "Latest Posts",
+    "noPosts": "No posts yet. Check back soon!",
+    "viewAllPosts": "View All Posts"
   }
 }

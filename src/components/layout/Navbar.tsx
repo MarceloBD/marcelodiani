@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useRouter, usePathname } from "@/i18n/navigation";
 
 const NAV_ITEMS = [
   "about",
@@ -11,19 +12,27 @@ const NAV_ITEMS = [
   "skills",
   "projects",
   "education",
+  "blog",
   "contact",
 ] as const;
 
 type NavItem = (typeof NAV_ITEMS)[number];
 
 const SECTION_ID_MAP: Partial<Record<NavItem, string>> = {};
+const NAV_ROUTES: Partial<Record<NavItem, string>> = {
+  blog: "/blog",
+};
 
 export function Navbar() {
   const translations = useTranslations("nav");
+  const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<NavItem | "">("");
   const animationFrameRef = useRef<number | undefined>(undefined);
+
+  const isHomePage = pathname === "/" || pathname === "";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,13 +66,55 @@ export function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isHomePage) return;
+
+    const handleHashScroll = () => {
+      if (window.location.hash) {
+        const sectionId = window.location.hash.substring(1);
+        const element = document.getElementById(sectionId);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: "smooth" });
+          }, 300);
+        }
+      }
+    };
+
+    handleHashScroll();
+
+    window.addEventListener("hashchange", handleHashScroll);
+    return () => {
+      window.removeEventListener("hashchange", handleHashScroll);
+    };
+  }, [isHomePage, pathname]);
+
   const scrollToSection = (navItem: NavItem) => {
+    if (NAV_ROUTES[navItem]) {
+      return;
+    }
     const targetId = SECTION_ID_MAP[navItem] ?? navItem;
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
     setIsMobileMenuOpen(false);
+  };
+
+  const handleNavClick = (navItem: NavItem) => {
+    const route = NAV_ROUTES[navItem];
+    setIsMobileMenuOpen(false);
+    
+    if (route) {
+      router.push(route);
+      return;
+    }
+
+    if (isHomePage) {
+      scrollToSection(navItem);
+    } else {
+      router.push(`/#${navItem}`);
+    }
   };
 
   return (
@@ -88,28 +139,32 @@ export function Navbar() {
         </motion.button>
 
         <div className="hidden md:flex items-center gap-8">
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item)}
-              aria-label={`Navigate to ${translations(item)}`}
-              aria-current={activeSection === item ? "true" : undefined}
-              className={`text-sm transition-colors cursor-pointer relative ${
-                activeSection === item
-                  ? "text-accent"
-                  : "text-muted hover:text-foreground"
-              }`}
-            >
-              {translations(item)}
-              {activeSection === item && (
-                <motion.div
-                  layoutId="activeSection"
-                  className="absolute -bottom-1 left-0 right-0 h-px bg-accent"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-            </button>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const isRoute = !!NAV_ROUTES[item];
+
+            return (
+              <button
+                key={item}
+                onClick={() => handleNavClick(item)}
+                aria-label={`Navigate to ${translations(item)}`}
+                aria-current={activeSection === item ? "true" : undefined}
+                className={`text-sm transition-colors cursor-pointer relative ${
+                  activeSection === item && !isRoute
+                    ? "text-accent"
+                    : "text-muted hover:text-foreground"
+                }`}
+              >
+                {translations(item)}
+                {activeSection === item && !isRoute && (
+                  <motion.div
+                    layoutId="activeSection"
+                    className="absolute -bottom-1 left-0 right-0 h-px bg-accent"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+              </button>
+            );
+          })}
           <LanguageSwitcher />
         </div>
 
@@ -148,19 +203,23 @@ export function Navbar() {
             className="md:hidden glass-card border-b border-card-border"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
-              {NAV_ITEMS.map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className={`text-sm text-left cursor-pointer transition-colors ${
-                    activeSection === item
-                      ? "text-accent"
-                      : "text-muted hover:text-foreground"
-                  }`}
-                >
-                  {translations(item)}
-                </button>
-              ))}
+              {NAV_ITEMS.map((item) => {
+                const isRoute = !!NAV_ROUTES[item];
+
+                return (
+                  <button
+                    key={item}
+                    onClick={() => handleNavClick(item)}
+                    className={`text-sm text-left cursor-pointer transition-colors ${
+                      activeSection === item && !isRoute
+                        ? "text-accent"
+                        : "text-muted hover:text-foreground"
+                    }`}
+                  >
+                    {translations(item)}
+                  </button>
+                );
+              })}
             </div>
           </motion.div>
         )}

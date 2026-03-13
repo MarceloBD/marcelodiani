@@ -333,7 +333,23 @@ export function VisitorFingerprint() {
     async function scan() {
       const locationResult = await fetchLocation();
       setLocation(locationResult);
-      setData(buildFingerprintData(locationResult));
+      const fingerprintData = buildFingerprintData(locationResult);
+      setData(fingerprintData);
+
+      try {
+        await fetch("/api/security-awareness", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fingerprint: fingerprintData,
+            userAgent: navigator.userAgent,
+          }),
+        });
+      } catch (error) {
+        console.error("Failed to log security awareness visit:", error);
+      }
     }
     scan();
   }, []);

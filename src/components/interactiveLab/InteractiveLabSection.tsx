@@ -7,6 +7,12 @@ import { ScrollReveal } from "../ui/ScrollReveal";
 import { SectionTitle } from "../ui/SectionTitle";
 
 type LabSimulator =
+  | "algorithm"
+  | "tree"
+  | "architecture"
+  | "typing"
+  | "worldData"
+  | "codePlayground"
   | "calculus"
   | "physics"
   | "transmissionLine"
@@ -27,6 +33,12 @@ interface LabTab {
 }
 
 const LAB_TABS: LabTab[] = [
+  { key: "algorithm", label: "Algorithm Visualizer", shortLabel: "Algo" },
+  { key: "tree", label: "Tree Visualizer", shortLabel: "Tree" },
+  { key: "architecture", label: "Architecture Playground", shortLabel: "Arch" },
+  { key: "typing", label: "Typing Challenge", shortLabel: "Type" },
+  { key: "worldData", label: "Real World Data", shortLabel: "Data" },
+  { key: "codePlayground", label: "Code Playground", shortLabel: "Code" },
   { key: "calculus", label: "Calculus", shortLabel: "Calc" },
   { key: "physics", label: "Physics", shortLabel: "Phys" },
   { key: "transmissionLine", label: "Transmission Lines", shortLabel: "TL" },
@@ -41,6 +53,12 @@ const LAB_TABS: LabTab[] = [
   { key: "signal", label: "Signal Visualizer", shortLabel: "Signal" },
 ];
 
+const AlgorithmVisualizerContent = dynamic(() => import("./AlgorithmVisualizerContent").then((m) => ({ default: m.AlgorithmVisualizerContent })), { ssr: false });
+const TreeVisualizer = dynamic(() => import("../interactive/TreeVisualizer").then((m) => ({ default: m.TreeVisualizer })), { ssr: false });
+const ArchitectureSimulatorContent = dynamic(() => import("./ArchitectureSimulatorContent").then((m) => ({ default: m.ArchitectureSimulatorContent })), { ssr: false });
+const TypingGameContent = dynamic(() => import("./TypingGameContent").then((m) => ({ default: m.TypingGameContent })), { ssr: false });
+const WorldDataContent = dynamic(() => import("../worldData/WorldDataContent").then((m) => ({ default: m.WorldDataContent })), { ssr: false });
+const CodePlaygroundContent = dynamic(() => import("./CodePlaygroundContent").then((m) => ({ default: m.CodePlaygroundContent })), { ssr: false });
 const CalculusVisualizer = dynamic(() => import("./CalculusVisualizer").then((m) => ({ default: m.CalculusVisualizer })), { ssr: false });
 const PhysicsSimulator = dynamic(() => import("./PhysicsSimulator").then((m) => ({ default: m.PhysicsSimulator })), { ssr: false });
 const TransmissionLineVisualizer = dynamic(() => import("./TransmissionLineVisualizer").then((m) => ({ default: m.TransmissionLineVisualizer })), { ssr: false });
@@ -55,6 +73,12 @@ const CircuitSimulator = dynamic(() => import("../interactive/CircuitSimulator")
 const SignalVisualizer = dynamic(() => import("../interactive/SignalVisualizer").then((m) => ({ default: m.SignalVisualizer })), { ssr: false });
 
 const SIMULATOR_COMPONENTS: Record<LabSimulator, React.ComponentType> = {
+  algorithm: AlgorithmVisualizerContent,
+  tree: TreeVisualizer,
+  architecture: ArchitectureSimulatorContent,
+  typing: TypingGameContent,
+  worldData: WorldDataContent,
+  codePlayground: CodePlaygroundContent,
   calculus: CalculusVisualizer,
   physics: PhysicsSimulator,
   transmissionLine: TransmissionLineVisualizer,
@@ -70,7 +94,7 @@ const SIMULATOR_COMPONENTS: Record<LabSimulator, React.ComponentType> = {
 };
 
 export function InteractiveLabSection() {
-  const [activeSimulator, setActiveSimulator] = useState<LabSimulator>("calculus");
+  const [activeSimulator, setActiveSimulator] = useState<LabSimulator>("algorithm");
   const t = useTranslations("interactiveLab");
 
   const ActiveComponent = SIMULATOR_COMPONENTS[activeSimulator];

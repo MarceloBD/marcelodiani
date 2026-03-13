@@ -10,6 +10,7 @@
     "projects": "Projetos",
     "education": "Educação",
     "contact": "Contato",
+    "blog": "Blog",
     "toggleMenu": "Abrir menu",
     "skipToContent": "Pular para o conteúdo principal",
     "languageSelection": "Seleção de idioma",
@@ -160,40 +161,80 @@
     "closeDemo": "▲ Fechar Demo",
     "playDemo": "▶ Jogar Demo Web",
     "items": {
-      "learnCode": {
-        "name": "Learn Code",
+      "webrix": {
+        "name": "Webrix",
         "year": "2025",
-        "description": "Interface online para aprender novas linguagens e frameworks pelos seus conceitos principais e desafios."
+        "description": "Contribuições para o gateway MCP seguro conectando agentes de IA a sistemas corporativos."
       },
-      "codingClasses": {
-        "name": "Aulas de Programação",
+      "welcomeToBrazil": {
+        "name": "Welcome to Brazil",
         "year": "2025",
-        "description": "Aulas gravadas para um curso online, ensinando como usar IA com técnicas avançadas."
+        "description": "Guia completo para estrangeiros visitarem, viverem e prosperarem no Brasil."
+      },
+      "marcelodiani": {
+        "name": "marcelodiani",
+        "year": "2025",
+        "description": "Meu site de portfólio (marcelodiani.online)."
+      },
+      "vcChess": {
+        "name": "vc-chess",
+        "year": "2025",
+        "description": "Jogo de xadrez multiplayer em tempo real — sem necessidade de conta."
+      },
+      "vcBillings": {
+        "name": "vc-billings",
+        "year": "2025",
+        "description": "Rastreador de pagamentos mensais pessoais (Next.js + Drizzle + Neon Postgres)."
+      },
+      "vcEcommerce": {
+        "name": "vc-ecommerce",
+        "year": "2025",
+        "description": "Template de loja virtual e-commerce."
+      },
+      "vcPlumbingQuote": {
+        "name": "vc-plumbing-quote-landing",
+        "year": "2025",
+        "description": "Landing page de cotação de serviços."
+      },
+      "vcProductLanding": {
+        "name": "vc-product-landing-page",
+        "year": "2025",
+        "description": "Landing page de lançamento de produto (Next.js + Framer Motion)."
       },
       "languageTranslator": {
         "name": "Tradutor de Idiomas",
         "year": "2025",
-        "description": "App open-source de ponta em React Native e Python usando LangGraph e OCR para traduzir texto de imagens."
+        "description": "Tradutor em React Native + Python usando LangGraph e OCR."
+      },
+      "learnCode": {
+        "name": "Learn Code",
+        "year": "2025",
+        "description": "Interface online para aprender linguagens e frameworks através de conceitos e desafios."
+      },
+      "codingClasses": {
+        "name": "Aulas de Programação",
+        "year": "2025",
+        "description": "Aulas gravadas ensinando técnicas de desenvolvimento assistido por IA."
       },
       "bannerGenerator": {
         "name": "Gerador de Banners",
         "year": "2025",
-        "description": "Ferramenta de geração de banners para páginas web com texto editável, usando múltiplos LLMs."
-      },
-      "travelGuide": {
-        "name": "Guia de Viagem",
-        "year": "2024",
-        "description": "Plataforma Next.js para armazenar guias de cidades e pontos de interesse."
+        "description": "Ferramenta de geração de banners usando múltiplos LLMs para qualidade de saída."
       },
       "cryptoTax": {
-        "name": "Calculadora de Impostos Crypto",
+        "name": "Calculadora de Cripto",
         "year": "2022",
-        "description": "Aplicação open-source para calcular impostos brasileiros sobre negociação de criptomoedas com testes extensivos."
+        "description": "Calculadora de criptomoedas (JavaScript)."
       },
       "platformJump": {
         "name": "Jogo Platform Jump",
         "year": "2021",
-        "description": "Jogo mobile em Unity C# com obstáculos e sistema de ranking global no Google Play."
+        "description": "Jogo mobile em Unity C# com obstáculos e ranking global no Google Play."
+      },
+      "picBird": {
+        "name": "PicBird",
+        "year": "2021",
+        "description": "Jogo mobile construído com Unity e C#."
       }
     }
   },
@@ -855,5 +896,17 @@
       "realtime": "APIs de Dados ao Vivo",
       "games": "Jogos Canvas & Demos"
     }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Reflexões sobre engenharia de software, arquitetura e tecnologia",
+    "homeSubtitle": "Últimas reflexões sobre desenvolvimento e engenharia de software",
+    "readMore": "Leia mais",
+    "backToBlog": "← Voltar ao Blog",
+    "publishedOn": "Publicado em",
+    "readingTime": "{minutes} min de leitura",
+    "latestPosts": "Últimos Posts",
+    "noPosts": "Ainda não há posts. Volte em breve!",
+    "viewAllPosts": "Ver Todos os Posts"
   }
 }

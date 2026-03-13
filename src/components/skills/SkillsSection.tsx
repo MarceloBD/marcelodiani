@@ -8,8 +8,6 @@ import { SectionTitle } from "../ui/SectionTitle";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { SKILLS, SKILL_CATEGORY_COLORS } from "@/data/skills";
 import type { SkillCategory } from "@/data/skills";
-import { AlgorithmVisualizer } from "../interactive/AlgorithmVisualizer";
-import { TreeVisualizer } from "../interactive/TreeVisualizer";
 
 const TechSphereCanvas = dynamic(
   () =>
@@ -116,9 +114,6 @@ export function SkillsSection() {
             ))}
           </div>
         </div>
-
-        <AlgorithmVisualizer />
-        <TreeVisualizer />
       </div>
     </section>
   );

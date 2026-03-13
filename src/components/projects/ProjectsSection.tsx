@@ -33,18 +33,26 @@ function GamepadIcon() {
 }
 
 const PROJECT_KEYS = [
+  "webrix",
+  "welcomeToBrazil",
+  "marcelodiani",
+  "vcChess",
+  "vcBillings",
+  "vcEcommerce",
+  "vcPlumbingQuote",
+  "vcProductLanding",
+  "languageTranslator",
   "learnCode",
   "codingClasses",
-  "languageTranslator",
   "bannerGenerator",
-  "travelGuide",
   "cryptoTax",
   "platformJump",
+  "picBird",
 ] as const;
 
 export function ProjectsSection() {
   const translations = useTranslations("projects");
-  const [isGameExpanded, setIsGameExpanded] = useState(false);
+  const [isGameExpanded, setIsGameExpanded] = useState(true);
 
   return (
     <section className="py-24 px-6 bg-section-alt">
@@ -88,19 +96,20 @@ export function ProjectsSection() {
                     <GamepadIcon />
                     {isGameExpanded ? translations("closeDemo") : translations("playDemo")}
                   </motion.button>
-                  <AnimatePresence>
-                    {isGameExpanded && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden mt-2"
-                      >
-                        <PlatformGame />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <motion.div
+                    animate={
+                      isGameExpanded
+                        ? { height: "auto", marginTop: "0.5rem" }
+                        : { height: 0, marginTop: 0 }
+                    }
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                    style={{
+                      pointerEvents: isGameExpanded ? "auto" : "none",
+                    }}
+                  >
+                    <PlatformGame />
+                  </motion.div>
                 </div>
               )}
             </div>

@@ -134,8 +134,14 @@ export const EXPERIENCE_TECH: Record<string, string[]> = {
 };
 
 export const PROJECT_TECH: Record<string, string[]> = {
-  learnCode: ["TypeScript", "React", "Next.js", "Vercel"],
-  codingClasses: ["JavaScript", "Node.js", "React", "Cursor", "Supabase"],
+  webrix: ["TypeScript", "MCP", "Security", "Enterprise"],
+  welcomeToBrazil: ["TypeScript", "Next.js", "React", "Vercel"],
+  marcelodiani: ["TypeScript", "Next.js", "React", "Three.js", "Vercel"],
+  vcChess: ["TypeScript", "Next.js", "React", "WebSocket", "Real-time"],
+  vcBillings: ["TypeScript", "Next.js", "Drizzle", "Neon", "PostgreSQL"],
+  vcEcommerce: ["TypeScript", "Next.js", "React", "E-commerce"],
+  vcPlumbingQuote: ["TypeScript", "Next.js", "React", "Landing Page"],
+  vcProductLanding: ["TypeScript", "Next.js", "React", "Framer Motion"],
   languageTranslator: [
     "Python",
     "FastAPI",
@@ -145,16 +151,28 @@ export const PROJECT_TECH: Record<string, string[]> = {
     "OCR",
     "LLMs",
   ],
+  learnCode: ["TypeScript", "React", "Next.js", "Vercel"],
+  codingClasses: ["JavaScript", "Node.js", "React", "Cursor", "Supabase"],
   bannerGenerator: ["TypeScript", "Node.js", "LLMs"],
-  travelGuide: ["TypeScript", "Next.js", "Node.js", "React", "MongoDB", "AWS"],
   cryptoTax: ["Node.js", "JavaScript", "Tests"],
   platformJump: ["C#", "Unity", "Firebase", "Google Play"],
+  picBird: ["Unity", "C#", "Mobile", "Game"],
 };
 
 export const PROJECT_LINKS: Partial<Record<string, string>> = {
-  learnCode: "https://github.com/MarceloBD/learn-code",
+  webrix: "https://webrix.ai",
+  welcomeToBrazil: "https://welcometobrazil.online",
+  marcelodiani: "https://github.com/MarceloBD/marcelodiani",
+  vcChess: "https://github.com/MarceloBD/vc-chess",
+  vcBillings: "https://github.com/MarceloBD/vc-billings",
+  vcEcommerce: "https://github.com/MarceloBD/vc-ecommerce",
+  vcPlumbingQuote: "https://github.com/MarceloBD/vc-plumbing-quote-landing",
+  vcProductLanding: "https://github.com/MarceloBD/vc-product-landing-page",
   languageTranslator: "https://github.com/MarceloBD/language_translator",
+  learnCode: "https://github.com/MarceloBD/learn-code",
+  codingClasses: "https://vibecodingcomprogramacao.lovable.app",
   cryptoTax: "https://github.com/MarceloBD/crypto-calculator",
+  picBird: "https://github.com/MarceloBD/PicBird",
 };
 
 export const ACHIEVEMENT_LINKS: Partial<Record<string, string>> = {

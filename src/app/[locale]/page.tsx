@@ -8,14 +8,12 @@ import { AboutSection } from "@/components/about/AboutSection";
 import { ExperienceSection } from "@/components/experience/ExperienceSection";
 import { SkillsSection } from "@/components/skills/SkillsSection";
 import { SecuritySection } from "@/components/security/SecuritySection";
-import { CodePlayground } from "@/components/interactive/CodePlayground";
-import { ArchitectureSimulator } from "@/components/interactive/architecture/ArchitectureSimulator";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
 import { EducationSection } from "@/components/education/EducationSection";
+import { BlogSection } from "@/components/blog/BlogSection";
 import { QuoteRequest } from "@/components/interactive/QuoteRequest";
 import { ContactSection } from "@/components/contact/ContactSection";
 import { InteractiveLabSection } from "@/components/interactiveLab/InteractiveLabSection";
-import { WorldDataSection } from "@/components/worldData/WorldDataSection";
 import { TerminalBubble } from "@/components/interactive/TerminalBubble";
 import { LikeBanner } from "@/components/interactive/LikeBanner";
 import { WalkingBoy } from "@/components/interactive/walkingBoy";
@@ -117,20 +115,14 @@ export default async function HomePage({ params }: PageProps) {
         <LazySection height="500px">
           <SecuritySection />
         </LazySection>
-        <LazySection height="600px">
-          <CodePlayground />
-        </LazySection>
-        <LazySection height="700px">
-          <ArchitectureSimulator />
-        </LazySection>
         <LazySection id="projects" height="500px">
           <ProjectsSection />
         </LazySection>
         <LazySection id="education" height="600px">
           <EducationSection />
         </LazySection>
-        <LazySection height="800px">
-          <WorldDataSection />
+        <LazySection id="blog" height="500px">
+          <BlogSection />
         </LazySection>
         <LazySection height="500px">
           <QuoteRequest />

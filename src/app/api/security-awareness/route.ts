@@ -5,6 +5,17 @@ function getClientIp(request: Request): string {
   const forwarded = request.headers.get("x-forwarded-for");
   const realIp = request.headers.get("x-real-ip");
   
+  logger.info("ip-detection-debug", "IP detection headers", {
+    metadata: {
+      vercelForwarded,
+      forwarded,
+      realIp,
+      allHeaders: Object.fromEntries([...request.headers.entries()].filter(([key]) => 
+        key.toLowerCase().includes("ip") || key.toLowerCase().includes("forward")
+      )),
+    },
+  });
+  
   return (
     vercelForwarded?.split(",")[0]?.trim() ||
     forwarded?.split(",")[0]?.trim() ||

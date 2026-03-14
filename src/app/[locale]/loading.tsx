@@ -1,15 +1,12 @@
-"use client";
-
-import { useTranslations } from "next-intl";
-
 export default function Loading() {
-  const translations = useTranslations("loading");
-
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-8 h-8 border-2 border-accent/30 border-t-accent rounded-full animate-spin" />
-        <p className="text-sm text-muted animate-pulse">{translations("text")}</p>
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="text-center space-y-4">
+        <div className="relative w-16 h-16 mx-auto">
+          <div className="absolute inset-0 border-4 border-accent/20 rounded-full" />
+          <div className="absolute inset-0 border-4 border-accent border-t-transparent rounded-full animate-spin" />
+        </div>
+        <p className="text-muted text-sm">Loading...</p>
       </div>
     </div>
   );

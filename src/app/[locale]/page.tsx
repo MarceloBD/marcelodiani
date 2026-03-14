@@ -39,6 +39,36 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: translations("title"),
     description: translations("description"),
     metadataBase: new URL(baseUrl),
+    keywords: [
+      "Marcelo Diani",
+      "Full Stack Developer",
+      "React Developer",
+      "Node.js Developer",
+      "TypeScript",
+      "Next.js",
+      "AWS",
+      "Software Engineer",
+      "Web Development",
+      "Frontend Developer",
+      "Backend Developer",
+      "JavaScript",
+      "Portfolio",
+      "USP",
+      "Computer Engineering",
+      "Brazil",
+      "AI/ML",
+      "Docker",
+      "PostgreSQL",
+      "MongoDB",
+    ],
+    authors: [{ name: "Marcelo B. Diani", url: baseUrl }],
+    creator: "Marcelo B. Diani",
+    publisher: "Marcelo B. Diani",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
     alternates: {
       canonical: `${baseUrl}/${locale === "en" ? "" : locale}`,
       languages: {
@@ -67,6 +97,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: translations("title"),
       description: translations("description"),
       images: [`${baseUrl}/cvpic.jpg`],
+      creator: "@marcelodiani",
     },
     robots: {
       index: true,
@@ -78,6 +109,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         "max-image-preview": "large",
         "max-snippet": -1,
       },
+    },
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
     },
   };
 }

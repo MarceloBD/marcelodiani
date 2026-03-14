@@ -1,9 +1,16 @@
 import { logger } from "@/lib/logger";
 
 function getClientIp(request: Request): string {
+  const vercelForwarded = request.headers.get("x-vercel-forwarded-for");
   const forwarded = request.headers.get("x-forwarded-for");
   const realIp = request.headers.get("x-real-ip");
-  return forwarded?.split(",")[0]?.trim() || realIp || "unknown";
+  
+  return (
+    vercelForwarded?.split(",")[0]?.trim() ||
+    forwarded?.split(",")[0]?.trim() ||
+    realIp ||
+    "unknown"
+  );
 }
 
 export async function POST(request: Request) {

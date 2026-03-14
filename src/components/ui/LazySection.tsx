@@ -41,7 +41,15 @@ export function LazySection({
   }, [isInView]);
 
   return (
-    <div ref={elementReference} id={id} className={className}>
+    <div 
+      ref={elementReference} 
+      id={id} 
+      className={className}
+      style={{
+        contentVisibility: hasBeenVisible ? "auto" : "hidden",
+        containIntrinsicSize: hasBeenVisible ? "auto" : height,
+      }}
+    >
       {hasBeenVisible ? (
         children
       ) : (

@@ -43,9 +43,16 @@ const RATE_LIMIT_CONFIG = {
 
 async function getClientIdentifier(): Promise<string> {
   const requestHeaders = await headers();
+  const vercelForwarded = requestHeaders.get("x-vercel-forwarded-for");
   const forwarded = requestHeaders.get("x-forwarded-for");
   const realIp = requestHeaders.get("x-real-ip");
-  return forwarded?.split(",")[0]?.trim() || realIp || "unknown";
+  
+  return (
+    vercelForwarded?.split(",")[0]?.trim() ||
+    forwarded?.split(",")[0]?.trim() ||
+    realIp ||
+    "unknown"
+  );
 }
 
 export async function executeCode({

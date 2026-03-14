@@ -60,10 +60,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
+  const now = new Date();
+
   return [
     {
       url: `${BASE_URL}/`,
-      lastModified: new Date("2026-02-07"),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 1,
       alternates: {
@@ -75,7 +77,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/pt`,
-      lastModified: new Date("2026-02-07"),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 1,
       alternates: {

@@ -25,12 +25,12 @@
 }
 
 * {
-  scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: var(--card-border) transparent;
 }
 
 html {
+  scroll-behavior: smooth;
   scroll-padding-top: 5rem;
 }
 

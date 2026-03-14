@@ -5,6 +5,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { WebVitals } from "@/components/analytics/WebVitals";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -51,9 +52,18 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className="dark">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
+        <link rel="preload" href="/cvpic.jpg" as="image" fetchPriority="high" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
+        <WebVitals />
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>

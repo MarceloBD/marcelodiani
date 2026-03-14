@@ -1,17 +1,4 @@
-import { logger, toError } from "@/lib/logger";
-
-interface IpLocationResponse {
-  ip: string;
-  success: boolean;
-  city: string;
-  region: string;
-  country: string;
-  latitude: number;
-  longitude: number;
-  connection: {
-    isp: string;
-  };
-}
+import { logger } from "@/lib/logger";
 
 function getClientIp(request: Request): string {
   const vercelForwarded = request.headers.get("x-vercel-forwarded-for");
@@ -22,7 +9,7 @@ function getClientIp(request: Request): string {
     vercelForwarded?.split(",")[0]?.trim() ||
     forwarded?.split(",")[0]?.trim() ||
     realIp ||
-    ""
+    "Unknown"
   );
 }
 
@@ -30,51 +17,50 @@ export async function GET(request: Request) {
   try {
     const clientIp = getClientIp(request);
     
-    const url = clientIp 
-      ? `https://ipwho.is/${clientIp}`
-      : "https://ipwho.is/";
+    const city = request.headers.get("x-vercel-ip-city") || "Unknown";
+    const region = request.headers.get("x-vercel-ip-country-region") || "Unknown";
+    const country = request.headers.get("x-vercel-ip-country") || "Unknown";
+    const latitude = parseFloat(request.headers.get("x-vercel-ip-latitude") || "0");
+    const longitude = parseFloat(request.headers.get("x-vercel-ip-longitude") || "0");
 
-    const response = await fetch(url, {
-      headers: {
-        "Accept": "application/json",
+    const decodedCity = city !== "Unknown" ? decodeURIComponent(city) : "Unknown";
+
+    logger.info("geolocation-api", "Geolocation data retrieved", {
+      clientIp,
+      metadata: {
+        city: decodedCity,
+        region,
+        country,
+        latitude,
+        longitude,
       },
     });
-
-    if (!response.ok) {
-      throw new Error(`ipwho.is returned status ${response.status}`);
-    }
-
-    const data = (await response.json()) as IpLocationResponse;
-
-    if (!data.success) {
-      throw new Error("ipwho.is returned success: false");
-    }
 
     return Response.json({
-      ip: data.ip,
-      city: data.city || "Unknown",
-      region: data.region || "Unknown",
-      country: data.country || "Unknown",
-      isp: data.connection?.isp || "Unknown",
-      latitude: data.latitude,
-      longitude: data.longitude,
+      ip: clientIp,
+      city: decodedCity,
+      region,
+      country,
+      isp: "Unknown",
+      latitude,
+      longitude,
     });
   } catch (caughtError) {
+    const clientIp = getClientIp(request);
+    
     logger.error("geolocation-api", "Failed to fetch geolocation data", {
-      error: toError(caughtError),
+      error: caughtError instanceof Error ? caughtError : new Error(String(caughtError)),
+      clientIp,
     });
 
-    return Response.json(
-      {
-        ip: "Unknown",
-        city: "Unknown",
-        region: "Unknown",
-        country: "Unknown",
-        isp: "Unknown",
-        latitude: 0,
-        longitude: 0,
-      },
-      { status: 500 }
-    );
+    return Response.json({
+      ip: clientIp,
+      city: "Unknown",
+      region: "Unknown",
+      country: "Unknown",
+      isp: "Unknown",
+      latitude: 0,
+      longitude: 0,
+    });
   }
 }

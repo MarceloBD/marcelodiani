@@ -3,7 +3,7 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { SectionTitle } from "../ui/SectionTitle";
 import { ProjectCard } from "./ProjectCard";
 import { PROJECT_TECH, PROJECT_LINKS } from "@/data/skills";
@@ -53,6 +53,7 @@ const PROJECT_KEYS = [
 export function ProjectsSection() {
   const translations = useTranslations("projects");
   const [isGameExpanded, setIsGameExpanded] = useState(true);
+  const platformJumpIndex = PROJECT_KEYS.indexOf("platformJump");
 
   return (
     <section className="py-24 px-6 bg-section-alt">
@@ -61,59 +62,55 @@ export function ProjectsSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PROJECT_KEYS.map((projectKey, index) => (
-            <div key={projectKey}>
-              <ProjectCard
-                name={translations(`items.${projectKey}.name`)}
-                year={translations(`items.${projectKey}.year`)}
-                description={translations(`items.${projectKey}.description`)}
-                techStack={PROJECT_TECH[projectKey]}
-                githubUrl={PROJECT_LINKS[projectKey]}
-                index={index}
-              />
-
-              {/* Platform Jump Game expandable demo */}
-              {projectKey === "platformJump" && (
-                <div className="mt-3">
-                  <motion.button
-                    onClick={() => setIsGameExpanded((previous) => !previous)}
-                    className={`w-full text-xs px-4 py-3 rounded-lg border-2 font-mono font-medium cursor-pointer transition-all flex items-center justify-center gap-2 ${
-                      isGameExpanded
-                        ? "bg-accent/5 border-accent/20 text-accent/70 hover:bg-accent/10"
-                        : "bg-accent/10 border-accent/30 text-accent hover:bg-accent/20"
-                    }`}
-                    whileTap={{ scale: 0.97 }}
-                    animate={
-                      !isGameExpanded
-                        ? { scale: [1, 1.02, 1], opacity: [1, 0.8, 1] }
-                        : {}
-                    }
-                    transition={
-                      !isGameExpanded
-                        ? { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
-                        : { duration: 0.15 }
-                    }
-                  >
-                    <GamepadIcon />
-                    {isGameExpanded ? translations("closeDemo") : translations("playDemo")}
-                  </motion.button>
-                  <motion.div
-                    animate={
-                      isGameExpanded
-                        ? { height: "auto", marginTop: "0.5rem" }
-                        : { height: 0, marginTop: 0 }
-                    }
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                    style={{
-                      pointerEvents: isGameExpanded ? "auto" : "none",
-                    }}
-                  >
-                    <PlatformGame />
-                  </motion.div>
-                </div>
-              )}
-            </div>
+            <ProjectCard
+              key={projectKey}
+              name={translations(`items.${projectKey}.name`)}
+              year={translations(`items.${projectKey}.year`)}
+              description={translations(`items.${projectKey}.description`)}
+              techStack={PROJECT_TECH[projectKey]}
+              githubUrl={PROJECT_LINKS[projectKey]}
+              index={index}
+            />
           ))}
+        </div>
+
+        {/* Platform Jump Game expandable demo - outside grid */}
+        <div className="mt-6 max-w-3xl mx-auto">
+          <motion.button
+            onClick={() => setIsGameExpanded((previous) => !previous)}
+            className={`w-full text-xs px-4 py-3 rounded-lg border-2 font-mono font-medium cursor-pointer transition-all flex items-center justify-center gap-2 ${
+              isGameExpanded
+                ? "bg-accent/5 border-accent/20 text-accent/70 hover:bg-accent/10"
+                : "bg-accent/10 border-accent/30 text-accent hover:bg-accent/20"
+            }`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.4, delay: platformJumpIndex * 0.08 }}
+            whileTap={{ scale: 0.97 }}
+            animate={
+              !isGameExpanded
+                ? { scale: [1, 1.02, 1], opacity: [1, 0.8, 1] }
+                : {}
+            }
+          >
+            <GamepadIcon />
+            {isGameExpanded ? translations("closeDemo") : translations("playDemo")}
+          </motion.button>
+          <motion.div
+            animate={
+              isGameExpanded
+                ? { height: "auto", marginTop: "0.5rem" }
+                : { height: 0, marginTop: 0 }
+            }
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+            style={{
+              pointerEvents: isGameExpanded ? "auto" : "none",
+            }}
+          >
+            <PlatformGame />
+          </motion.div>
         </div>
       </div>
     </section>

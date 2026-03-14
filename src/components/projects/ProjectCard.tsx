@@ -64,14 +64,10 @@ export function ProjectCard({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.4,
-        delay: index * 0.08,
-        ease: [0.21, 0.47, 0.32, 0.98],
-      }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
       whileHover={{ y: -4 }}
-      className="glass-card rounded-xl glow-border transition-all duration-300 group"
+      className="glass-card rounded-xl glow-border transition-colors duration-300 group"
     >
       <Wrapper {...wrapperProps} className="block p-6">
         <div className="flex items-start justify-between mb-4">

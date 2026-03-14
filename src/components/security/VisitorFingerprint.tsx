@@ -10,19 +10,6 @@ interface NavigatorExtended extends Navigator {
   connection?: { effectiveType?: string };
 }
 
-interface IpLocationResponse {
-  ip: string;
-  success: boolean;
-  city: string;
-  region: string;
-  country: string;
-  latitude: number;
-  longitude: number;
-  connection: {
-    isp: string;
-  };
-}
-
 interface LocationData {
   ip: string;
   city: string;
@@ -169,23 +156,11 @@ async function fetchLocation(): Promise<LocationData> {
   };
 
   try {
-    // ipwho.is — free, HTTPS, no API key, CORS-enabled
-    // Called from the browser so it resolves the user's real IP
-    const response = await fetch("https://ipwho.is/");
+    const response = await fetch("/api/geolocation");
     if (!response.ok) return fallback;
 
-    const data = (await response.json()) as IpLocationResponse;
-    if (!data.success) return fallback;
-
-    return {
-      ip: data.ip,
-      city: data.city || "Unknown",
-      region: data.region || "Unknown",
-      country: data.country || "Unknown",
-      isp: data.connection?.isp || "Unknown",
-      latitude: data.latitude,
-      longitude: data.longitude,
-    };
+    const data = (await response.json()) as LocationData;
+    return data;
   } catch {
     return fallback;
   }

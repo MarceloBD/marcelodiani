@@ -19,6 +19,204 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "i-spent-a-month-fixing-tests",
+    title: {
+      en: "I Spent a Full Month Fixing Tests — Here's What I Learned",
+      pt: "Passei um Mês Inteiro Corrigindo Testes — Aqui Está o Que Aprendi",
+    },
+    publishedAt: "2026-03-13",
+    readingTime: 4,
+    coverImage: "/blog/testing-maintenance.png",
+    excerpt: {
+      en: "I once spent a full month fixing tests. Not building features. Not improving the product. Just fixing tests. Here's what happened.",
+      pt: "Uma vez passei um mês inteiro corrigindo testes. Sem construir funcionalidades. Sem melhorar o produto. Apenas corrigindo testes. Aqui está o que aconteceu.",
+    },
+    content: {
+      en: `I once spent a full month… fixing tests.
+
+Not building features.  
+Not improving the product.  
+Just fixing tests.
+
+Here's what happened.
+
+## A few years ago, I went all-in on testing
+
+Same codebase.  
+1,000+ tests.  
+Unit. Integration. End-to-end. Everything.
+
+At first, it felt amazing.
+
+I could confidently:
+- Validate complex math-heavy logic  
+- Test database queries without fear  
+- Protect critical flows like the entire e-commerce checkout  
+
+It felt like nothing could break.
+
+## But then reality kicked in
+
+Every small change started breaking tests.
+
+Not real bugs. Just… tests.
+
+Added a new internal function call?  
+→ Update mocks  
+
+Refactored something harmless?  
+→ Fix 5 tests  
+
+Changed implementation but not behavior?  
+→ Still broken  
+
+And suddenly, every feature had an extra cost: **+1 full day just for tests**
+
+Now multiply that by:
+- Every task  
+- Even small ones  
+- Over an entire year  
+
+That's when I realized:
+
+**I wasn't just writing tests. I was maintaining a second codebase.**
+
+## My controversial takeaway
+
+Tests are powerful. They can save you.
+
+But testing everything comes with a hidden price: **maintenance.**
+
+If I could go back, I'd do it differently:
+
+**I'd test what truly matters.**
+
+The core flows.  
+The things that, if broken, would kill the product.
+
+Not everything.
+
+## The AI game changer
+
+Now, here's the interesting part.
+
+This was 3 years ago, before AI really entered the game.
+
+Recently, I've been using AI to generate and fix tests.
+
+And it changes everything.
+
+AI can:
+- Create tests faster  
+- Update broken tests automatically  
+- Run fix loops with minimal human-in-the-loop involvement  
+
+What used to take days… now takes minutes.
+
+So maybe today, having 1,000+ tests isn't the problem anymore.
+
+## But one thing still matters
+
+Always balance  
+👉 number of tests  
+vs  
+👉 maintenance cost  
+
+Because in the end, **tests should protect your velocity, not kill it.**`,
+      pt: `Uma vez passei um mês inteiro… corrigindo testes.
+
+Sem construir funcionalidades.  
+Sem melhorar o produto.  
+Apenas corrigindo testes.
+
+Aqui está o que aconteceu.
+
+## Há alguns anos, apostei totalmente em testes
+
+Mesmo código base.  
+Mais de 1.000 testes.  
+Unitários. Integração. End-to-end. Tudo.
+
+No início, foi incrível.
+
+Eu podia confiantemente:
+- Validar lógica complexa com muita matemática  
+- Testar queries do banco sem medo  
+- Proteger fluxos críticos como todo o checkout do e-commerce  
+
+Parecia que nada poderia quebrar.
+
+## Mas então a realidade bateu
+
+Cada pequena mudança começou a quebrar testes.
+
+Não bugs reais. Apenas… testes.
+
+Adicionou uma nova chamada de função interna?  
+→ Atualizar mocks  
+
+Refatorou algo inofensivo?  
+→ Corrigir 5 testes  
+
+Mudou a implementação mas não o comportamento?  
+→ Ainda quebrado  
+
+E de repente, cada funcionalidade tinha um custo extra: **+1 dia inteiro apenas para testes**
+
+Agora multiplique isso por:
+- Cada tarefa  
+- Até as pequenas  
+- Durante um ano inteiro  
+
+Foi quando percebi:
+
+**Eu não estava apenas escrevendo testes. Estava mantendo uma segunda base de código.**
+
+## Minha conclusão controversa
+
+Testes são poderosos. Eles podem te salvar.
+
+Mas testar tudo tem um preço oculto: **manutenção.**
+
+Se eu pudesse voltar atrás, faria diferente:
+
+**Eu testaria o que realmente importa.**
+
+Os fluxos principais.  
+As coisas que, se quebrassem, matariam o produto.
+
+Não tudo.
+
+## A mudança de jogo da IA
+
+Agora, aqui está a parte interessante.
+
+Isso foi há 3 anos, antes da IA realmente entrar no jogo.
+
+Recentemente, tenho usado IA para gerar e corrigir testes.
+
+E isso muda tudo.
+
+A IA pode:
+- Criar testes mais rápido  
+- Atualizar testes quebrados automaticamente  
+- Executar loops de correção com mínima intervenção humana  
+
+O que costumava levar dias… agora leva minutos.
+
+Então talvez hoje, ter mais de 1.000 testes não seja mais o problema.
+
+## Mas uma coisa ainda importa
+
+Sempre equilibre  
+👉 número de testes  
+vs  
+👉 custo de manutenção  
+
+Porque no final, **testes devem proteger sua velocidade, não matá-la.**`,
+    },
+  },
+  {
     slug: "i-removed-nextjs-from-my-project",
     title: {
       en: "I Removed Next.js From My Project and It Was the Right Decision",

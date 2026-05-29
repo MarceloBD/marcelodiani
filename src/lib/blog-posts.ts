@@ -19,6 +19,100 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "observability-invisible-failures",
+    title: {
+      en: "You Cannot Solve What You Cannot See — How Observability Saved a Production System",
+      pt: "Você Não Pode Resolver o Que Não Pode Ver — Como Observabilidade Salvou um Sistema em Produção",
+    },
+    publishedAt: "2026-05-29",
+    readingTime: 5,
+    coverImage: "/blog/observability-dashboard.png",
+    excerpt: {
+      en: "In production environments, the most critical failures are often the ones that leave no trace. This is the story of how distributed tracing revealed a silent killer.",
+      pt: "Em ambientes de produção, as falhas mais críticas são frequentemente aquelas que não deixam rastros. Esta é a história de como rastreamento distribuído revelou um problema silencioso.",
+    },
+    content: {
+      en: `In production environments, the most critical failures are often the ones that leave no trace.
+
+Some time ago, I faced an issue where servers would shut down unexpectedly, without errors, without logs, and without any clear signal of what was happening. Traditional debugging approaches led nowhere.
+
+My initial assumption was infrastructure related. I suspected high request volume, so I scaled the system horizontally by adding more nodes. However, the problem persisted. Even with increased capacity, nodes continued to fail.
+
+At that point, it became clear that the issue wasn't about scale, it was about visibility.
+
+## The power of distributed tracing
+
+I implemented distributed tracing using Datadog and allowed the system to run until the failure occurred again. Once it did, I analyzed the traces and built a dashboard to better understand the system's behavior over time.
+
+That decision changed everything.
+
+The data revealed an abnormal spike: a specific function was being executed repeatedly, far beyond expected patterns. Upon deeper inspection, I identified the root cause: a recursive function that, under certain conditions, was entering an infinite loop.
+
+This loop wasn't generating explicit errors, but it was silently exhausting system resources until the server crashed.
+
+## The fix and the lesson
+
+After correcting the recursion logic, the issue was fully resolved. The system stabilized, and no further unexpected shutdowns occurred.
+
+This experience reinforced a key principle:
+
+**You cannot solve what you cannot see.**
+
+Observability is not just a tool, it is a fundamental capability for building reliable systems. Without it, teams rely on assumptions. With it, they operate on evidence.
+
+## Why observability matters
+
+In modern distributed systems, failures are rarely obvious. They don't always trigger alarms or show up in basic logs. Sometimes, the system appears to be working until it suddenly isn't.
+
+That's where observability becomes critical. It allows you to:
+- Trace requests across multiple services
+- Identify performance bottlenecks before they become critical
+- Understand system behavior under load
+- Debug issues that traditional logging cannot capture
+
+The ability to see what your system is doing in real time is not optional. It's essential.`,
+      pt: `Em ambientes de produção, as falhas mais críticas são frequentemente aquelas que não deixam rastros.
+
+Há algum tempo, enfrentei um problema onde servidores eram desligados inesperadamente, sem erros, sem logs e sem qualquer sinal claro do que estava acontecendo. Abordagens tradicionais de depuração não levavam a lugar algum.
+
+Minha suposição inicial era relacionada à infraestrutura. Suspeitei de alto volume de requisições, então escalei o sistema horizontalmente adicionando mais nós. No entanto, o problema persistiu. Mesmo com capacidade aumentada, os nós continuavam a falhar.
+
+Naquele momento, ficou claro que o problema não era sobre escala, era sobre visibilidade.
+
+## O poder do rastreamento distribuído
+
+Implementei rastreamento distribuído usando Datadog e permiti que o sistema rodasse até a falha ocorrer novamente. Quando isso aconteceu, analisei os rastros e construí um dashboard para entender melhor o comportamento do sistema ao longo do tempo.
+
+Essa decisão mudou tudo.
+
+Os dados revelaram um pico anormal: uma função específica estava sendo executada repetidamente, muito além dos padrões esperados. Com uma inspeção mais profunda, identifiquei a causa raiz: uma função recursiva que, sob certas condições, estava entrando em um loop infinito.
+
+Esse loop não estava gerando erros explícitos, mas estava silenciosamente esgotando os recursos do sistema até o servidor travar.
+
+## A correção e a lição
+
+Após corrigir a lógica da recursão, o problema foi completamente resolvido. O sistema estabilizou, e não ocorreram mais desligamentos inesperados.
+
+Essa experiência reforçou um princípio fundamental:
+
+**Você não pode resolver o que não pode ver.**
+
+Observabilidade não é apenas uma ferramenta, é uma capacidade fundamental para construir sistemas confiáveis. Sem ela, as equipes dependem de suposições. Com ela, operam com base em evidências.
+
+## Por que observabilidade importa
+
+Em sistemas distribuídos modernos, falhas raramente são óbvias. Elas nem sempre acionam alarmes ou aparecem em logs básicos. Às vezes, o sistema parece estar funcionando até que de repente não está mais.
+
+É aí que a observabilidade se torna crítica. Ela permite que você:
+- Rastreie requisições através de múltiplos serviços
+- Identifique gargalos de performance antes que se tornem críticos
+- Entenda o comportamento do sistema sob carga
+- Depure problemas que logs tradicionais não conseguem capturar
+
+A capacidade de ver o que seu sistema está fazendo em tempo real não é opcional. É essencial.`,
+    },
+  },
+  {
     slug: "i-spent-a-month-fixing-tests",
     title: {
       en: "I Spent a Full Month Fixing Tests — Here's What I Learned",

@@ -161,19 +161,19 @@
     "closeDemo": "▲ Close Demo",
     "playDemo": "▶ Play Web Demo",
     "items": {
-      "withWillow": {
-        "name": "WithWillow.ai",
-        "year": "2025",
-        "description": "Contributions to the secure MCP gateway connecting AI agents to enterprise systems."
-      },
       "boolToolsSeoCrawler": {
         "name": "BoolTools SEO Crawler",
-        "year": "2025",
+        "year": "2026",
         "description": "Open-source SEO/GEO auditing tool for optimizing search engine and AI search visibility."
+      },
+      "withWillow": {
+        "name": "WithWillow.ai",
+        "year": "2026",
+        "description": "Contributions to the secure MCP gateway connecting AI agents to enterprise systems."
       },
       "welcomeToBrazil": {
         "name": "Welcome to Brazil",
-        "year": "2025",
+        "year": "2026",
         "description": "Complete guide for foreigners to visit, live, and thrive in Brazil."
       },
       "marcelodiani": {

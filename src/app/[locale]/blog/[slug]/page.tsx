@@ -69,6 +69,75 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+function buildArticleSchema(post: (typeof blogPosts)[number], locale: string) {
+  const baseUrl = "https://marcelodiani.online";
+  const title = locale === "pt" ? post.title.pt : post.title.en;
+  const excerpt = locale === "pt" ? post.excerpt.pt : post.excerpt.en;
+  const localePath = locale === "en" ? "" : `${locale}/`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description: excerpt,
+    image: `${baseUrl}${post.coverImage}`,
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    url: `${baseUrl}/${localePath}blog/${post.slug}`,
+    inLanguage: locale === "pt" ? "pt-BR" : "en-US",
+    author: {
+      "@type": "Person",
+      name: "Marcelo B. Diani",
+      url: baseUrl,
+      jobTitle: "Senior Full Stack Developer & Team Lead",
+      sameAs: [
+        "https://github.com/marcelobd",
+        "https://linkedin.com/in/marcelo-diani",
+      ],
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Marcelo B. Diani",
+      url: baseUrl,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseUrl}/${localePath}blog/${post.slug}`,
+    },
+  };
+}
+
+function buildBreadcrumbSchema(post: (typeof blogPosts)[number], locale: string) {
+  const baseUrl = "https://marcelodiani.online";
+  const title = locale === "pt" ? post.title.pt : post.title.en;
+  const localePath = locale === "en" ? "" : `${locale}/`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${baseUrl}/${localePath}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${baseUrl}/${localePath}blog`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: title,
+        item: `${baseUrl}/${localePath}blog/${post.slug}`,
+      },
+    ],
+  };
+}
+
 export default async function BlogPostPage({ params }: PageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
@@ -84,8 +153,19 @@ export default async function BlogPostPage({ params }: PageProps) {
   const content = locale === "pt" ? post.content.pt : post.content.en;
   const paragraphs = content.split("\n\n");
 
+  const articleSchema = buildArticleSchema(post, locale);
+  const breadcrumbSchema = buildBreadcrumbSchema(post, locale);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navbar />
       <main className="min-h-screen pt-24 pb-16 px-6">
         <article className="max-w-3xl mx-auto">
@@ -101,6 +181,16 @@ export default async function BlogPostPage({ params }: PageProps) {
               {title}
             </h1>
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted mb-6">
+              <address className="not-italic inline">
+                <a
+                  rel="author"
+                  href="https://marcelodiani.online"
+                  className="text-accent hover:underline"
+                >
+                  Marcelo B. Diani
+                </a>
+              </address>
+              <span>•</span>
               <time dateTime={post.publishedAt}>
                 {translations("publishedOn")}{" "}
                 {new Date(post.publishedAt).toLocaleDateString(
@@ -122,8 +212,9 @@ export default async function BlogPostPage({ params }: PageProps) {
               <Image
                 src={post.coverImage}
                 alt={title}
-                fill
-                className="object-cover"
+                width={1200}
+                height={630}
+                className="object-cover w-full h-full"
                 priority
               />
             </div>

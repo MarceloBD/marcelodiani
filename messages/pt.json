@@ -935,7 +935,8 @@
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Reflexões sobre engenharia de software, arquitetura e tecnologia",
+    "pageTitle": "Blog de Engenharia de Software por Marcelo Diani — Arquitetura, React e Cloud",
+    "subtitle": "Artigos sobre engenharia de software, arquitetura de sistemas e desenvolvimento web moderno com React, Node.js e AWS.",
     "homeSubtitle": "Últimas reflexões sobre desenvolvimento e engenharia de software",
     "readMore": "Leia mais",
     "backToBlog": "← Voltar ao Blog",

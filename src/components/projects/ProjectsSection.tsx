@@ -33,7 +33,8 @@ function GamepadIcon() {
 }
 
 const PROJECT_KEYS = [
-  "webrix",
+  "withWillow",
+  "boolToolsSeoCrawler",
   "welcomeToBrazil",
   "marcelodiani",
   "vcChess",

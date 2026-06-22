@@ -49,8 +49,9 @@ export function HeroSection() {
               <Image
                 src="/cvpic.jpg"
                 alt={translations("imageAlt")}
-                fill
-                className="object-cover"
+                width={128}
+                height={128}
+                className="object-cover w-full h-full"
                 sizes="(max-width: 768px) 112px, 128px"
                 priority
               />

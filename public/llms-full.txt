@@ -1,0 +1,136 @@
+# Marcelo B. Diani — Senior Full Stack Developer & Team Lead
+
+> Senior Full Stack Developer with 7+ years of experience in JavaScript/TypeScript, specializing in React, Node.js, Next.js, and AWS. Computer Engineering graduate from the University of São Paulo (USP). Gold medalist at OBMEP national mathematics olympiad. Founder and e-commerce specialist focused on maximizing online sales. AI enthusiast building with LLMs, RAG, and LangChain.
+
+## About Marcelo
+
+Marcelo B. Diani is a Senior Full Stack Developer and Team Lead with over 7 years of professional experience building production-grade web applications. He graduated in Computer Engineering from the University of São Paulo (USP) in São Carlos, Brazil, in 2019, finishing in the top 10 of 61 students with no failed courses.
+
+Born in 1996 in Mirassol, a small city in the countryside of São Paulo, Brazil, Marcelo grew up in a humble and hardworking family. His father fixes TVs, radios, and electronics — watching him sparked Marcelo's curiosity about how things work. He won a gold medal at the OBMEP national mathematics olympiad and participated in a 4-year program at UNESP for medalists.
+
+His mission is to improve people's lives through technology. He is always open to new opportunities and interesting conversations.
+
+## Professional Experience
+
+### Clearer.io — Team Lead / Senior Full Stack Developer / Scrum Master (2022–2025)
+Location: Boston, Massachusetts (Remote)
+
+- Led two teams as Team Lead (7 developers). Responsible for PR reviews, 1:1 meetings, external meetings, individual goal tracking, Scrum ceremonies, sprint planning and task breakdown in Jira.
+- Helped manage more than 14 apps in the Shopify App Store with tens of thousands of users monthly and total revenue of millions per year.
+- Created a library with CDK and moved apps from Heroku to AWS to reduce hosting costs and improve architecture management through IaC.
+- Added unit tests and end-to-end tests using Datadog, allowing faster feature delivery without regressions. Added Codacy for static code analysis.
+- Added observability with logging and tracing in Datadog, reducing debugging time. Implemented caching with Memcached. Created Lambda functions using DynamoDB and LLMs.
+- Tech stack: JavaScript, TypeScript, Node.js, React, Next.js, MongoDB, PostgreSQL, REST, Redis, React Native, AWS, CDK, DataDog, Heroku, Codacy, Cloudflare.
+
+### Acesso Comercial — Founder (2021–2022)
+Location: São Carlos, São Paulo
+
+- Founder and developer of a startup to help small stores sell online (similar to Shopify) with ERP, CRM, blog (with SSR) and omnichannel chat.
+- Built with 3 microservices (auth, core, metrics) in Linux server. Used GitHub Actions for Blue-Green deployment with Docker and Nginx.
+- Used React, Node.js, GraphQL, Relay, MongoDB, AWS (S3). Created features using AI with OpenAI, Gemini and Typesense for RAG.
+- Led two developers and coordinated with designers, social media, lawyers, and consultants.
+- Set up more than 1,000 unit, integration and end-to-end tests. Created around 600 stores.
+- Tech stack: TypeScript, Node.js, React, Next.js, MongoDB, GraphQL, AWS, GitHub Actions, Docker, WebSocket, LLMs, RAG, SSR, BullMQ, Redis.
+
+### Vórtx DTVM — Full Stack Developer (2020–2021)
+Location: São Paulo, São Paulo
+
+- Worked at a financial company collecting and maintaining client data for fund investments.
+- Used Angular and Node for 3 microservices and 2 lambdas, and .NET Core connected with MongoDB cluster.
+- Moved 1,800 records from manual Excel sheets to an online automated platform, eliminating paper-based workflow.
+- Delivered the project to external users in 6 months, saving at least one full-time employee of manual effort.
+- Implemented refresh token, pagination optimization (reducing time to 500ms), and generated 200,000 dynamic PDFs.
+- Tech stack: C#, .NET, JavaScript, Angular, SQL Server, MongoDB, REST, GitHub Actions, Lambda, Puppeteer, Redux.
+
+### Ênfase Instituto Jurídico — Full Stack Developer Intern (2019–2020)
+Location: São Carlos, São Paulo
+
+- Worked at a distance education company using JavaScript frameworks, React and Node with PostgreSQL across 3 main products.
+- Developed a postgraduate platform from scratch and one for law job positions, both with about 13,000 active students.
+- Architected front end with Atomic Design for componentization, resulting in easier maintenance.
+- Built platform connected with an event system using Kafka for user statistics.
+- Tech stack: JavaScript, Node.js, React, PostgreSQL, GraphQL, Relay, Kafka, Prisma, Styled Components.
+
+## Technical Skills
+
+### Frontend
+React, Next.js, TypeScript, Angular, React Native, CSS3, HTML5, Relay, Redux, Styled Components, Storybook
+
+### Backend
+Node.js, GraphQL, .NET, C#, Python, REST, Express, Prisma, Kafka, BullMQ, WebSocket
+
+### Databases
+MongoDB, PostgreSQL, SQL Server, Redis, DynamoDB, Typesense
+
+### DevOps & Cloud
+AWS, Docker, CDK, Lambda, CI/CD, GitHub Actions, Cloudflare, Heroku, Vercel, DataDog, Grafana, Prometheus, OpenTelemetry
+
+### AI & Machine Learning
+LLMs, LangChain, RAG, TensorFlow, Cursor
+
+### Other
+Git, Cypress, Puppeteer, SEO, Figma, Unity
+
+## Education & Achievements
+
+### Computer Engineering — University of São Paulo (USP)
+Period: 2015–2019
+Final grade: 7.8 — Top 10 of 61 students. Completed with no failed courses.
+
+### CPA-20 Financial Certification (2020)
+Score 93% — Ranked 1st among all candidates at the company.
+
+### Mathematics Olympiad — OBMEP (2009–2012)
+Gold medal winner. Participated in the 4-year program at UNESP for medalists.
+
+### Hackathon Elo+Getnet (2018)
+Developed a solution to facilitate consumer purchases in a weekend hackathon.
+
+### Warthog Robotics — USP (2015–2016)
+Control Department of USP São Carlos robotic team for robot soccer championships.
+
+## Side Projects
+
+- WithWillow.ai: Contributions to the secure MCP gateway connecting AI agents to enterprise systems
+- BoolTools SEO Crawler: Open-source SEO/GEO auditing tool for optimizing search engine and AI search visibility
+- Welcome to Brazil: Complete guide for foreigners to visit, live, and thrive in Brazil
+- marcelodiani: Interactive portfolio website with 3D scenes, AI chat, games, and real-time data widgets
+- vc-chess: Real-time multiplayer chess game — no account required
+- vc-billings: Personal monthly payment tracker (Next.js + Drizzle + Neon Postgres)
+- vc-ecommerce: E-commerce storefront template
+- Language Translator: React Native + Python translator using LangGraph and OCR
+- Learn Code: Online interface to learn languages and frameworks through concepts and puzzles
+- Platform Jump Game: Unity C# mobile game with obstacles and global ranking on Google Play
+
+## Languages Spoken
+
+- Portuguese (native)
+- English (advanced)
+- German (basic)
+- Spanish (basic)
+- Italian (basic)
+
+## FAQ
+
+### What are Marcelo Diani's main technologies?
+Marcelo specializes in React, Node.js, TypeScript, Next.js, AWS, MongoDB, PostgreSQL, Docker, and AI/ML technologies including LLMs and RAG.
+
+### How to hire Marcelo Diani as a freelance developer?
+You can contact Marcelo via WhatsApp (+55 17 99106-8118), email (marcelodianib@gmail.com), or LinkedIn. He offers full stack development, technical consulting, and team leadership services.
+
+### What is Marcelo Diani's educational background?
+Marcelo holds a Computer Engineering degree from the University of São Paulo (USP), São Carlos campus, class of 2019. He is a gold medalist at the OBMEP national mathematics olympiad.
+
+### What kind of projects does Marcelo Diani work on?
+Marcelo works on web applications, e-commerce platforms, SaaS products, mobile apps, and AI-powered solutions. He has experience leading teams and managing production systems with millions in annual revenue.
+
+### Where is Marcelo Diani located?
+Marcelo is based in São Paulo, Brazil, and is available for remote work across all time zones.
+
+## Contact
+
+- Email: marcelodianib@gmail.com
+- WhatsApp: +55 17 99106-8118
+- GitHub: https://github.com/marcelobd
+- LinkedIn: https://linkedin.com/in/marcelo-diani
+- Website: https://marcelodiani.online

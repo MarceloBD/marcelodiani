@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Marcelo B. Diani | Desenvolvedor Full Stack Sênior",
-    "description": "Desenvolvedor Full Stack Sênior & Líder Técnico com 7+ anos de experiência em JavaScript/TypeScript. Especializado em React, Node.js, Next.js e AWS. Formado em Engenharia de Computação pela USP."
+    "description": "Desenvolvedor Full Stack Sênior & Líder Técnico com 7+ anos em JavaScript/TypeScript. React, Node.js, Next.js, AWS. Eng. USP."
   },
   "nav": {
     "about": "Sobre",
@@ -161,10 +161,15 @@
     "closeDemo": "▲ Fechar Demo",
     "playDemo": "▶ Jogar Demo Web",
     "items": {
-      "webrix": {
-        "name": "Webrix",
+      "withWillow": {
+        "name": "WithWillow.ai",
         "year": "2025",
         "description": "Contribuições para o gateway MCP seguro conectando agentes de IA a sistemas corporativos."
+      },
+      "boolToolsSeoCrawler": {
+        "name": "BoolTools SEO Crawler",
+        "year": "2025",
+        "description": "Ferramenta open-source de auditoria SEO/GEO para otimizar visibilidade em buscadores e IA."
       },
       "welcomeToBrazil": {
         "name": "Welcome to Brazil",
@@ -895,6 +900,36 @@
       "i18n": "Bilíngue (EN/PT)",
       "realtime": "APIs de Dados ao Vivo",
       "games": "Jogos Canvas & Demos"
+    }
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "subtitle": "Dúvidas comuns sobre meus serviços, experiência e como podemos trabalhar juntos",
+    "items": {
+      "whatTechnologies": {
+        "question": "Em quais tecnologias Marcelo Diani é especializado?",
+        "answer": "Sou especializado em React, Node.js, TypeScript, Next.js e AWS. Também tenho forte experiência com MongoDB, PostgreSQL, Docker, GraphQL e tecnologias de IA/ML incluindo LLMs, LangChain e RAG. Meu stack completo abrange frontend, backend, bancos de dados, DevOps e infraestrutura cloud."
+      },
+      "howToHire": {
+        "question": "Como posso contratar Marcelo Diani como desenvolvedor freelancer?",
+        "answer": "Você pode me contatar via WhatsApp, email ou LinkedIn. Ofereço serviços de desenvolvimento full stack, consultoria técnica, liderança de equipes e otimização de e-commerce. Preencha o formulário de orçamento acima ou envie uma mensagem diretamente — respondo normalmente em até 24 horas."
+      },
+      "whatEducation": {
+        "question": "Qual é a formação acadêmica de Marcelo Diani?",
+        "answer": "Sou formado em Engenharia de Computação pela Universidade de São Paulo (USP), campus São Carlos, entre os 10 melhores de 61 alunos em 2019. Também sou medalhista de ouro na OBMEP e possuo certificação CPA-20 com nota 93%."
+      },
+      "whatProjects": {
+        "question": "Que tipo de projetos Marcelo Diani desenvolve?",
+        "answer": "Desenvolvo aplicações web, plataformas de e-commerce, produtos SaaS, apps mobile e soluções com IA. Projetos notáveis incluem liderar 14+ apps Shopify gerando milhões em receita anual, fundar uma startup de e-commerce com 600+ lojas e criar ferramentas open-source como BoolTools SEO Crawler."
+      },
+      "whereLocated": {
+        "question": "Onde Marcelo Diani está localizado e ele trabalha remotamente?",
+        "answer": "Estou baseado em São Paulo, Brasil, e disponível para trabalho remoto em todos os fusos horários. Tenho ampla experiência trabalhando com equipes internacionais, incluindo 3 anos liderando equipes remotas para uma empresa em Boston. Falo português (nativo), inglês (avançado), alemão, espanhol e italiano."
+      },
+      "whatExperience": {
+        "question": "Quantos anos de experiência Marcelo Diani tem?",
+        "answer": "Tenho 7+ anos de experiência profissional em desenvolvimento de software, com 3+ anos em cargos de liderança. Já gerenciei equipes de até 7 desenvolvedores, escrevi mais de 1.000 testes e gerenciei 25+ aplicações em produção em diversas indústrias incluindo e-commerce, fintech e educação."
+      }
     }
   },
   "blog": {

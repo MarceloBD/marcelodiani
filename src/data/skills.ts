@@ -134,7 +134,8 @@ export const EXPERIENCE_TECH: Record<string, string[]> = {
 };
 
 export const PROJECT_TECH: Record<string, string[]> = {
-  webrix: ["TypeScript", "MCP", "Security", "Enterprise"],
+  withWillow: ["TypeScript", "MCP", "Security", "Enterprise"],
+  boolToolsSeoCrawler: ["Astro", "Golang", "SEO", "GEO", "Open Source"],
   welcomeToBrazil: ["TypeScript", "Next.js", "React", "Vercel"],
   marcelodiani: ["TypeScript", "Next.js", "React", "Three.js", "Vercel"],
   vcChess: ["TypeScript", "Next.js", "React", "WebSocket", "Real-time"],
@@ -160,7 +161,8 @@ export const PROJECT_TECH: Record<string, string[]> = {
 };
 
 export const PROJECT_LINKS: Partial<Record<string, string>> = {
-  webrix: "https://webrix.ai",
+  withWillow: "https://withwillow.ai",
+  boolToolsSeoCrawler: "https://github.com/booltools/booltools-seo-crawler",
   welcomeToBrazil: "https://welcometobrazil.online",
   marcelodiani: "https://github.com/MarceloBD/marcelodiani",
   vcChess: "https://github.com/MarceloBD/vc-chess",

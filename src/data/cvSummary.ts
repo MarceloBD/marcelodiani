@@ -127,14 +127,20 @@ export const CV_SUMMARY: CvSummary = {
   ],
   projects: [
     {
-      name: "Webrix",
-      year: "2025",
+      name: "BoolTools SEO Crawler",
+      year: "2026",
+      description: "Open-source SEO/GEO auditing tool for optimizing search engine and AI search visibility",
+      technologies: PROJECT_TECH.boolToolsSeoCrawler,
+    },
+    {
+      name: "WithWillow.ai",
+      year: "2026",
       description: "Contributions to the secure MCP gateway connecting AI agents to enterprise systems",
-      technologies: PROJECT_TECH.webrix,
+      technologies: PROJECT_TECH.withWillow,
     },
     {
       name: "Welcome to Brazil",
-      year: "2025",
+      year: "2026",
       description: "Complete guide for foreigners to visit, live, and thrive in Brazil",
       technologies: PROJECT_TECH.welcomeToBrazil,
     },

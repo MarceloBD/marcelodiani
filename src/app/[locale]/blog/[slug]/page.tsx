@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  const baseUrl = "https://marcelodiani.com";
+  const baseUrl = "https://marcelodiani.online";
   const title = locale === "pt" ? post.title.pt : post.title.en;
   const excerpt = locale === "pt" ? post.excerpt.pt : post.excerpt.en;
 
@@ -34,16 +34,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: excerpt,
     metadataBase: new URL(baseUrl),
     alternates: {
-      canonical: `${baseUrl}/${locale === "en" ? "" : locale}blog/${slug}`,
+      canonical: `${baseUrl}/${locale === "en" ? "" : `${locale}/`}blog/${slug}`,
       languages: {
         en: `${baseUrl}/blog/${slug}`,
         pt: `${baseUrl}/pt/blog/${slug}`,
+        "x-default": `${baseUrl}/blog/${slug}`,
       },
     },
     openGraph: {
       title: title,
       description: excerpt,
-      url: `${baseUrl}/${locale === "en" ? "" : locale}blog/${slug}`,
+      url: `${baseUrl}/${locale === "en" ? "" : `${locale}/`}blog/${slug}`,
       siteName: "Marcelo B. Diani",
       locale: locale === "pt" ? "pt_BR" : "en_US",
       type: "article",
@@ -62,6 +63,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: title,
       description: excerpt,
       images: [`${baseUrl}${post.coverImage}`],
+      creator: "@marcelodiani",
+      site: "@marcelodiani",
     },
   };
 }

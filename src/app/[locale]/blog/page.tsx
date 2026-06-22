@@ -14,23 +14,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const translations = await getTranslations({ locale, namespace: "blog" });
 
-  const baseUrl = "https://marcelodiani.com";
+  const baseUrl = "https://marcelodiani.online";
 
   return {
     title: `${translations("title")} | Marcelo B. Diani`,
     description: translations("subtitle"),
     metadataBase: new URL(baseUrl),
     alternates: {
-      canonical: `${baseUrl}/${locale === "en" ? "" : locale}blog`,
+      canonical: `${baseUrl}/${locale === "en" ? "" : `${locale}/`}blog`,
       languages: {
         en: `${baseUrl}/blog`,
         pt: `${baseUrl}/pt/blog`,
+        "x-default": `${baseUrl}/blog`,
       },
     },
     openGraph: {
       title: `${translations("title")} | Marcelo B. Diani`,
       description: translations("subtitle"),
-      url: `${baseUrl}/${locale === "en" ? "" : locale}blog`,
+      url: `${baseUrl}/${locale === "en" ? "" : `${locale}/`}blog`,
       siteName: "Marcelo B. Diani",
       locale: locale === "pt" ? "pt_BR" : "en_US",
       type: "website",

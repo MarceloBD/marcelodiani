@@ -24,6 +24,7 @@ import { ExitIntentModal } from "@/components/interactive/ExitIntentModal";
 import { StructuredData } from "@/lib/structured-data";
 import { LazySection } from "@/components/ui/LazySection";
 import { SourceCodeBanner } from "@/components/sourceCode/SourceCodeBanner";
+import { FaqSection } from "@/components/faq/FaqSection";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -33,7 +34,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const translations = await getTranslations({ locale, namespace: "metadata" });
 
-  const baseUrl = "https://marcelodiani.com";
+  const baseUrl = "https://marcelodiani.online";
+
+  const canonicalPath = locale === "en" ? "" : locale;
 
   return {
     title: translations("title"),
@@ -70,10 +73,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       telephone: false,
     },
     alternates: {
-      canonical: `${baseUrl}/${locale === "en" ? "" : locale}`,
+      canonical: `${baseUrl}/${canonicalPath}`,
       languages: {
         en: `${baseUrl}/`,
         pt: `${baseUrl}/pt`,
+        "x-default": `${baseUrl}/`,
       },
     },
     openGraph: {
@@ -98,6 +102,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: translations("description"),
       images: [`${baseUrl}/cvpic.jpg`],
       creator: "@marcelodiani",
+      site: "@marcelodiani",
     },
     robots: {
       index: true,
@@ -163,6 +168,9 @@ export default async function HomePage({ params }: PageProps) {
         </LazySection>
         <LazySection id="contact" height="400px">
           <ContactSection />
+        </LazySection>
+        <LazySection height="500px">
+          <FaqSection />
         </LazySection>
         <LazySection height="300px">
           <SourceCodeBanner />

@@ -68,7 +68,7 @@ export function usePlatformGame(canvasReference: React.RefObject<HTMLCanvasEleme
   }, []);
 
   const gameUrl = useMemo(() => {
-    if (typeof window === "undefined") return "https://marcelodiani.com/#projects";
+    if (typeof window === "undefined") return "https://marcelodiani.online/#projects";
     return `${window.location.origin}${window.location.pathname}#projects`;
   }, []);
 

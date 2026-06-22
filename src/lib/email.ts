@@ -95,7 +95,7 @@ export async function sendQuoteNotificationEmail({
               </div>
 
               <p style="color: #71717a; font-size: 11px; margin-top: 24px; text-align: center;">
-                Sent from marcelodiani.com portfolio
+                Sent from marcelodiani.online portfolio
               </p>
             </div>
           `,
@@ -169,7 +169,7 @@ export async function sendErrorAlertEmail({
           ` : ""}
 
           <p style="color: #71717a; font-size: 11px; margin-top: 24px; text-align: center;">
-            ${escapeHtml(timestamp)} &middot; marcelodiani.com
+            ${escapeHtml(timestamp)} &middot; marcelodiani.online
           </p>
         </div>
       `,

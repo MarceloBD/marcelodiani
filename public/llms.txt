@@ -1,0 +1,37 @@
+# Marcelo B. Diani — Senior Full Stack Developer & Team Lead
+
+> Senior Full Stack Developer with 7+ years of experience in JavaScript/TypeScript, specializing in React, Node.js, Next.js, and AWS. USP Computer Engineering graduate. Gold medalist at OBMEP. Founder and e-commerce specialist.
+
+## About
+
+- [Portfolio](https://marcelodiani.online): Interactive portfolio showcasing experience, skills, and projects
+- [Blog](https://marcelodiani.online/blog): Articles on software engineering, architecture, and technology
+- [GitHub](https://github.com/marcelobd): Open source projects and contributions
+- [LinkedIn](https://linkedin.com/in/marcelo-diani): Professional profile
+
+## Expertise
+
+- Frontend: React, Next.js, TypeScript, Angular, React Native
+- Backend: Node.js, GraphQL, Python, .NET, Express
+- Cloud & DevOps: AWS (CDK, Lambda, DynamoDB), Docker, CI/CD, Datadog
+- Databases: MongoDB, PostgreSQL, Redis, DynamoDB
+- AI/ML: LLMs, LangChain, RAG, TensorFlow
+
+## Experience
+
+- Team Lead / Senior Full Stack Developer at Clearer.io (2022–2025)
+- Founder at Acesso Comercial (2021–2022)
+- Full Stack Developer at Vórtx DTVM (2020–2021)
+- Full Stack Developer Intern at Ênfase Instituto Jurídico (2019–2020)
+
+## Education
+
+- Computer Engineering — University of São Paulo (USP), 2015–2019
+- OBMEP Mathematics Olympiad — Gold Medalist (2009–2012)
+- CPA-20 Financial Certification — Score 93%
+
+## Contact
+
+- Email: marcelodianib@gmail.com
+- WhatsApp: +55 17 99106-8118
+- Location: São Paulo, Brazil

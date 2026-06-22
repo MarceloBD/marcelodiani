@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Marcelo B. Diani | Senior Full Stack Developer",
-    "description": "Senior Full Stack Developer & Team Lead with 7+ years of experience in JavaScript/TypeScript. Specialized in React, Node.js, Next.js, and AWS. USP Computer Engineering graduate."
+    "description": "Senior Full Stack Developer & Team Lead with 7+ years in JavaScript/TypeScript. React, Node.js, Next.js, AWS. USP Engineering."
   },
   "nav": {
     "about": "About",
@@ -161,10 +161,15 @@
     "closeDemo": "▲ Close Demo",
     "playDemo": "▶ Play Web Demo",
     "items": {
-      "webrix": {
-        "name": "Webrix",
+      "withWillow": {
+        "name": "WithWillow.ai",
         "year": "2025",
         "description": "Contributions to the secure MCP gateway connecting AI agents to enterprise systems."
+      },
+      "boolToolsSeoCrawler": {
+        "name": "BoolTools SEO Crawler",
+        "year": "2025",
+        "description": "Open-source SEO/GEO auditing tool for optimizing search engine and AI search visibility."
       },
       "welcomeToBrazil": {
         "name": "Welcome to Brazil",
@@ -895,6 +900,36 @@
       "i18n": "Bilingual (EN/PT)",
       "realtime": "Real-Time Data APIs",
       "games": "Canvas Games & Demos"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Common questions about my services, experience, and how we can work together",
+    "items": {
+      "whatTechnologies": {
+        "question": "What technologies does Marcelo Diani specialize in?",
+        "answer": "I specialize in React, Node.js, TypeScript, Next.js, and AWS. I also have strong experience with MongoDB, PostgreSQL, Docker, GraphQL, and AI/ML technologies including LLMs, LangChain, and RAG. My full tech stack spans frontend, backend, databases, DevOps, and cloud infrastructure."
+      },
+      "howToHire": {
+        "question": "How can I hire Marcelo Diani as a freelance developer?",
+        "answer": "You can reach me via WhatsApp, email, or LinkedIn. I offer full stack development, technical consulting, team leadership, and e-commerce optimization services. Fill out the quote request form above or send me a message directly — I typically respond within 24 hours."
+      },
+      "whatEducation": {
+        "question": "What is Marcelo Diani's educational background?",
+        "answer": "I hold a Computer Engineering degree from the University of São Paulo (USP), São Carlos campus, graduating in the top 10 of 61 students in 2019. I'm also a gold medalist at the OBMEP national mathematics olympiad and hold a CPA-20 financial certification with a 93% score."
+      },
+      "whatProjects": {
+        "question": "What kind of projects does Marcelo Diani build?",
+        "answer": "I build web applications, e-commerce platforms, SaaS products, mobile apps, and AI-powered solutions. Notable projects include leading 14+ Shopify apps generating millions in annual revenue, founding an e-commerce startup with 600+ stores, and building open-source tools like BoolTools SEO Crawler."
+      },
+      "whereLocated": {
+        "question": "Where is Marcelo Diani located and does he work remotely?",
+        "answer": "I'm based in São Paulo, Brazil, and available for remote work across all time zones. I have extensive experience working with international teams, including 3 years leading remote teams for a Boston-based company. I speak Portuguese (native), English (advanced), German, Spanish, and Italian."
+      },
+      "whatExperience": {
+        "question": "How many years of experience does Marcelo Diani have?",
+        "answer": "I have 7+ years of professional experience in software development, with 3+ years in leadership roles. I've managed teams of up to 7 developers, written over 1,000 tests, and managed 25+ production applications across various industries including e-commerce, fintech, and education."
+      }
     }
   },
   "blog": {

@@ -35,9 +35,12 @@ export function ExpandableName() {
   }, []);
 
   useEffect(() => {
-    measureWidths();
+    const frameId = requestAnimationFrame(measureWidths);
     window.addEventListener("resize", measureWidths);
-    return () => window.removeEventListener("resize", measureWidths);
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", measureWidths);
+    };
   }, [measureWidths]);
 
   const targetWidth = isHovered ? fullWidth : abbreviatedWidth;

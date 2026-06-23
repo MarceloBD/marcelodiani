@@ -88,10 +88,9 @@ export function useWorldClock(offsetHours: number = 0): CityTime[] {
     return CITY_TIMEZONES.map((city) => buildCityTime(city, adjustedDate));
   }, [offsetHours]);
 
-  const [cityTimes, setCityTimes] = useState<CityTime[]>([]);
+  const [cityTimes, setCityTimes] = useState<CityTime[]>(() => computeTimes());
 
   useEffect(() => {
-    setCityTimes(computeTimes());
     const interval = setInterval(() => setCityTimes(computeTimes()), 1000);
     return () => clearInterval(interval);
   }, [computeTimes]);

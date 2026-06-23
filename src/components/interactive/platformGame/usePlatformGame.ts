@@ -34,7 +34,7 @@ export function usePlatformGame(canvasReference: React.RefObject<HTMLCanvasEleme
   }, []);
 
   useEffect(() => {
-    fetchScores();
+    requestAnimationFrame(() => { fetchScores(); });
   }, [fetchScores]);
 
   const startGame = useCallback(async () => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import type { Points } from "three";
 import * as THREE from "three";
@@ -8,18 +8,21 @@ import * as THREE from "three";
 const PARTICLE_COUNT = 500;
 const SPREAD = 20;
 
+function generateParticlePositions(): Float32Array {
+  const positionArray = new Float32Array(PARTICLE_COUNT * 3);
+  for (let index = 0; index < PARTICLE_COUNT; index++) {
+    positionArray[index * 3] = (Math.random() - 0.5) * SPREAD;
+    positionArray[index * 3 + 1] = (Math.random() - 0.5) * SPREAD;
+    positionArray[index * 3 + 2] = (Math.random() - 0.5) * SPREAD;
+  }
+  return positionArray;
+}
+
+const INITIAL_POSITIONS = generateParticlePositions();
+
 export function ParticleField() {
   const pointsReference = useRef<Points>(null);
-
-  const positions = useMemo(() => {
-    const positionArray = new Float32Array(PARTICLE_COUNT * 3);
-    for (let index = 0; index < PARTICLE_COUNT; index++) {
-      positionArray[index * 3] = (Math.random() - 0.5) * SPREAD;
-      positionArray[index * 3 + 1] = (Math.random() - 0.5) * SPREAD;
-      positionArray[index * 3 + 2] = (Math.random() - 0.5) * SPREAD;
-    }
-    return positionArray;
-  }, []);
+  const positions = INITIAL_POSITIONS;
 
   useFrame((state) => {
     if (pointsReference.current) {

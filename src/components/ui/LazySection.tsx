@@ -1,26 +1,16 @@
 "use client";
 
-import { type ReactNode, useState, useEffect } from "react";
+import { type ReactNode } from "react";
 import { useInView } from "@/hooks/useInView";
 
 interface LazySectionProps {
   children: ReactNode;
-  /** Section id so anchor navigation works before content loads */
   id?: string;
-  /** Skeleton height while not yet loaded (default: "400px") */
   height?: string;
-  /** How far before viewport to start loading (default: "300px") */
   rootMargin?: string;
-  /** CSS class for the wrapper */
   className?: string;
 }
 
-/**
- * Defers mounting of heavy children until the section is near the viewport.
- * Once mounted, children stay mounted to preserve state.
- * This is the key performance optimization - sections below the fold
- * won't render their component trees until the user scrolls close.
- */
 export function LazySection({
   children,
   id,
@@ -32,13 +22,6 @@ export function LazySection({
     rootMargin,
     once: true,
   });
-  const [hasBeenVisible, setHasBeenVisible] = useState(false);
-
-  useEffect(() => {
-    if (isInView) {
-      setHasBeenVisible(true);
-    }
-  }, [isInView]);
 
   return (
     <div 
@@ -46,11 +29,11 @@ export function LazySection({
       id={id} 
       className={className}
       style={{
-        contentVisibility: hasBeenVisible ? "auto" : "hidden",
-        containIntrinsicSize: hasBeenVisible ? "auto" : height,
+        contentVisibility: isInView ? "auto" : "hidden",
+        containIntrinsicSize: isInView ? "auto" : height,
       }}
     >
-      {hasBeenVisible ? (
+      {isInView ? (
         children
       ) : (
         <div

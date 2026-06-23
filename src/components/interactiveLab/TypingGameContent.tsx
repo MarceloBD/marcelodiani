@@ -77,8 +77,10 @@ export function TypingGameContent() {
 
   useEffect(() => {
     if (isComplete && !endTime) {
-      setEndTime(Date.now());
-      setIsActive(false);
+      requestAnimationFrame(() => {
+        setEndTime(Date.now());
+        setIsActive(false);
+      });
     }
   }, [isComplete, endTime]);
 

@@ -426,7 +426,7 @@ export function CircuitSimulator() {
     for (const parameter of circuitInfo.parameters) {
       defaults[parameter.id] = parameter.defaultValue;
     }
-    setParameterValues(defaults);
+    requestAnimationFrame(() => setParameterValues(defaults));
   }, [circuitInfo]);
 
   const results = useMemo(

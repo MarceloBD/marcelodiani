@@ -275,7 +275,7 @@ function DroneSimulation({
       );
 
       // Thrust = hover + PID correction, clamped to physical motor limits
-      let thrust = Math.max(0, Math.min(
+      const thrust = Math.max(0, Math.min(
         DRONE_GRAVITY * DRONE_MASS * 3,
         DRONE_GRAVITY * DRONE_MASS + controlSignal,
       ));

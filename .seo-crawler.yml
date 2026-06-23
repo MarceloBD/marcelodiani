@@ -1,0 +1,13 @@
+mode: full
+url: http://localhost:3000
+start_cmd: "npm run dev"
+wait_for: http://localhost:3000
+wait_timeout: 60s
+fail_on: high
+max_pages: 50
+format: text
+
+ignore:
+  - uses_https
+  - hsts_header
+  - csp_header

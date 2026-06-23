@@ -1,0 +1,56 @@
+#!/usr/bin/env sh
+
+SEO_BINARY="./bin/seo-crawler"
+
+detect_platform() {
+  OS="$(uname -s)"
+  ARCH="$(uname -m)"
+
+  case "$OS" in
+    Linux*)  PLATFORM_OS="linux" ;;
+    Darwin*) PLATFORM_OS="darwin" ;;
+    MINGW*|MSYS*|CYGWIN*) PLATFORM_OS="windows" ;;
+    *)       echo "Unsupported OS: $OS"; exit 2 ;;
+  esac
+
+  case "$ARCH" in
+    x86_64|amd64) PLATFORM_ARCH="amd64" ;;
+    arm64|aarch64) PLATFORM_ARCH="arm64" ;;
+    *)             echo "Unsupported architecture: $ARCH"; exit 2 ;;
+  esac
+
+  BINARY_NAME="seo-crawler-${PLATFORM_OS}-${PLATFORM_ARCH}"
+  if [ "$PLATFORM_OS" = "windows" ]; then
+    BINARY_NAME="${BINARY_NAME}.exe"
+    SEO_BINARY="./bin/seo-crawler.exe"
+  fi
+}
+
+download_sdk() {
+  DOWNLOAD_URL="https://github.com/booltools/booltools-seo-crawler/releases/latest/download/${BINARY_NAME}"
+  echo "Downloading SEO Crawler SDK from ${DOWNLOAD_URL}..."
+
+  mkdir -p ./bin
+  curl -sL "$DOWNLOAD_URL" -o "$SEO_BINARY"
+  chmod +x "$SEO_BINARY"
+
+  if [ ! -f "$SEO_BINARY" ]; then
+    echo "Failed to download SEO Crawler SDK"
+    exit 2
+  fi
+
+  echo "SEO Crawler SDK downloaded successfully"
+}
+
+detect_platform
+
+if [ ! -f "$SEO_BINARY" ]; then
+  download_sdk
+fi
+
+echo "Running SEO & GEO audit before push..."
+$SEO_BINARY --mode=full \
+  --start-cmd="npm run dev" \
+  --wait-for=http://localhost:3000 \
+  --url=http://localhost:3000 \
+  --fail-on=high

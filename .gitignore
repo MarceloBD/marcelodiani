@@ -20,6 +20,9 @@
 # production
 /build
 
+# seo-crawler sdk binary
+/bin/seo-crawler*
+
 # misc
 .DS_Store
 *.pem

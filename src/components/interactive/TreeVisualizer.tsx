@@ -128,7 +128,6 @@ export function TreeVisualizer() {
     async (startingTree: TreeNode): Promise<TreeNode> => {
       let currentTree = startingTree;
 
-      // Show balance factors on all nodes
       setShowBalanceFactors(true);
       await sleep(600);
 
@@ -138,7 +137,6 @@ export function TreeVisualizer() {
 
         const direction = step.balanceFactor > 0 ? "left-heavy" : "right-heavy";
 
-        // Step 1: Highlight the unbalanced node — explain WHY
         setRebalancingPivot(step.pivotValue);
         setMessage(
           translations("messageNodeUnbalanced", {
@@ -151,14 +149,12 @@ export function TreeVisualizer() {
 
         if (cancelReference.current) break;
 
-        // Step 2: Also highlight the new root — explain WHAT will happen
         setRebalancingNewRoot(step.newRootValue);
         setMessage(step.description);
         await sleep(1200);
 
         if (cancelReference.current) break;
 
-        // Step 3: Apply the rotation — tree visually rearranges
         currentTree = step.tree;
         setTree(currentTree);
         setRebalancingPivot(null);
@@ -170,7 +166,7 @@ export function TreeVisualizer() {
       setMessage(null);
       return currentTree;
     },
-    [],
+    [translations],
   );
 
   // --- Animated Insert ---
@@ -223,7 +219,7 @@ export function TreeVisualizer() {
 
     setInputValue("");
     setIsAnimating(false);
-  }, [parseInput, isAnimating, tree, clearAnimation, showTemporaryMessage, animateSteps, animateRebalancing]);
+  }, [parseInput, isAnimating, tree, clearAnimation, showTemporaryMessage, animateSteps, animateRebalancing, translations]);
 
   // --- Animated Delete ---
   const performAnimatedDelete = useCallback(
@@ -291,7 +287,7 @@ export function TreeVisualizer() {
 
     await performAnimatedDelete(value);
     setInputValue("");
-  }, [parseInput, isAnimating, tree, showTemporaryMessage, performAnimatedDelete]);
+  }, [parseInput, isAnimating, tree, showTemporaryMessage, performAnimatedDelete, translations]);
 
   const handleRemoveByClick = useCallback(
     async (value: number) => {
@@ -345,6 +341,7 @@ export function TreeVisualizer() {
     clearAnimation,
     showTemporaryMessage,
     animateSteps,
+    translations,
   ]);
 
   const handleReset = useCallback(() => {

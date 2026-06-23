@@ -21,8 +21,10 @@ export function useVisitCount() {
     const newCount = previousCount + 1;
 
     setCookie(COOKIE_NAME, String(newCount), COOKIE_MAX_AGE_SECONDS);
-    setVisitCount(newCount);
-    setIsReturningVisitor(previousCount > 0);
+    requestAnimationFrame(() => {
+      setVisitCount(newCount);
+      setIsReturningVisitor(previousCount > 0);
+    });
   }, []);
 
   return { visitCount, isReturningVisitor };

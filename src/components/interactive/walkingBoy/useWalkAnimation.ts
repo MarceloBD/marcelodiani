@@ -126,7 +126,7 @@ export function useWalkAnimation() {
   // Scroll and keyboard event handling
   useEffect(() => {
     lastScrollYRef.current = window.scrollY;
-    updatePositionFromScroll(window.scrollY);
+    const initialFrameId = requestAnimationFrame(() => updatePositionFromScroll(window.scrollY));
 
     const handleScroll = () => {
       if (isDraggingRef.current) return;
@@ -168,6 +168,7 @@ export function useWalkAnimation() {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
+      cancelAnimationFrame(initialFrameId);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("keydown", handleKeyDown);
       clearTimeout(walkTimeoutRef.current);

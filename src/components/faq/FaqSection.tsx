@@ -65,6 +65,11 @@ function FaqItem({ question, answer, isOpen, onToggle }: FaqItemProps) {
           </motion.div>
         )}
       </AnimatePresence>
+      {!isOpen && (
+        <div className="sr-only">
+          <p>{answer}</p>
+        </div>
+      )}
     </div>
   );
 }

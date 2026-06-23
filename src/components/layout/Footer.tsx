@@ -52,6 +52,7 @@ const SOCIAL_LINKS = [
 
 export function Footer() {
   const translations = useTranslations("footer");
+  const navTranslations = useTranslations("nav");
   const legalTranslations = useTranslations("legal");
   const locale = useLocale();
   const currentYear = new Date().getFullYear();
@@ -83,16 +84,13 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="text-xs text-muted flex items-center gap-1.5 flex-wrap justify-center">
-            <span>{translations("built")}</span>
+          <nav aria-label="Footer navigation" className="text-xs text-muted flex items-center gap-1.5 flex-wrap justify-center">
+            <a href="#about" className="hover:text-accent transition-colors underline underline-offset-2">
+              {navTranslations("about")}
+            </a>
             <span className="text-card-border">|</span>
-            <a
-              href="https://github.com/MarceloBD/marcelodiani"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-accent transition-colors underline underline-offset-2"
-            >
-              {translations("sourceCode")}
+            <a href="#contact" className="hover:text-accent transition-colors underline underline-offset-2">
+              {navTranslations("contact")}
             </a>
             <span className="text-card-border">|</span>
             <a
@@ -108,8 +106,20 @@ export function Footer() {
             >
               {legalTranslations("terms.title")}
             </a>
-          </div>
+            <span className="text-card-border">|</span>
+            <a
+              href="https://github.com/MarceloBD/marcelodiani"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors underline underline-offset-2"
+            >
+              {translations("sourceCode")}
+            </a>
+          </nav>
         </div>
+        <p className="text-center text-xs text-muted/50 mt-4">
+          {translations("built")}
+        </p>
       </div>
     </footer>
   );

@@ -58,7 +58,6 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
-        <link rel="preload" href="/cvpic.webp" as="image" type="image/webp" fetchPriority="high" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}

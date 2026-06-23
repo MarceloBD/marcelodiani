@@ -4,7 +4,7 @@ const BASE_URL = "https://marcelodiani.online";
 
 const SOCIAL_PROFILES = [
   "https://github.com/marcelobd",
-  "https://linkedin.com/in/marcelo-diani",
+  "https://www.linkedin.com/in/marcelo-diani",
   "https://wa.me/5517991068118",
 ];
 
@@ -66,7 +66,7 @@ export async function StructuredData({ locale }: StructuredDataProps) {
     name: "Marcelo B. Diani",
     description: "Full Stack Developer & Team Lead specializing in React, Node.js, TypeScript, and cloud technologies.",
     url: BASE_URL,
-    logo: `${BASE_URL}/cvpic.jpg`,
+    logo: `${BASE_URL}/cvpic.webp`,
     email: "marcelodianib@gmail.com",
     telephone: "+5517991068118",
     address: {

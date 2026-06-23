@@ -25,6 +25,7 @@ import { StructuredData } from "@/lib/structured-data";
 import { LazySection } from "@/components/ui/LazySection";
 import { SourceCodeBanner } from "@/components/sourceCode/SourceCodeBanner";
 import { FaqSection } from "@/components/faq/FaqSection";
+import { SeoContent } from "@/components/seo/SeoContent";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -89,7 +90,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "website",
       images: [
         {
-          url: `${baseUrl}/cvpic.jpg`,
+          url: `${baseUrl}/cvpic.webp`,
           width: 1200,
           height: 630,
           alt: translations("title"),
@@ -100,7 +101,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: translations("title"),
       description: translations("description"),
-      images: [`${baseUrl}/cvpic.jpg`],
+      images: [`${baseUrl}/cvpic.webp`],
       creator: "@marcelodiani",
       site: "@marcelodiani",
     },
@@ -136,6 +137,7 @@ export default async function HomePage({ params }: PageProps) {
         {navTranslations("skipToContent")}
       </a>
       <Navbar />
+      <SeoContent locale={locale} />
       <main id="main-content">
         {/* Above the fold - render immediately */}
         <HeroSection />
@@ -169,9 +171,7 @@ export default async function HomePage({ params }: PageProps) {
         <LazySection id="contact" height="400px">
           <ContactSection />
         </LazySection>
-        <LazySection height="500px">
-          <FaqSection />
-        </LazySection>
+        <FaqSection />
         <LazySection height="300px">
           <SourceCodeBanner />
         </LazySection>

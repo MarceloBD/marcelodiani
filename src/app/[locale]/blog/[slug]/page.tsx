@@ -92,7 +92,7 @@ function buildArticleSchema(post: (typeof blogPosts)[number], locale: string) {
       jobTitle: "Senior Full Stack Developer & Team Lead",
       sameAs: [
         "https://github.com/marcelobd",
-        "https://linkedin.com/in/marcelo-diani",
+        "https://www.linkedin.com/in/marcelo-diani",
       ],
     },
     publisher: {

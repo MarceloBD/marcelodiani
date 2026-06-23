@@ -944,5 +944,47 @@
     "latestPosts": "Latest Posts",
     "noPosts": "No posts yet. Check back soon!",
     "viewAllPosts": "View All Posts"
+  },
+  "legal": {
+    "backToHome": "← Back to Home",
+    "lastUpdated": "Last updated: June 2025",
+    "privacy": {
+      "title": "Privacy Policy",
+      "metaDescription": "Privacy Policy for Marcelo B. Diani's portfolio website. Learn how your data is handled.",
+      "intro": "This Privacy Policy explains how marcelodiani.online (\"the Site\") handles information when you visit. Your privacy is important — this site is designed to be transparent and minimal in data collection.",
+      "collectionTitle": "What Information Is Collected?",
+      "collectionItems": [
+        "Anonymous analytics (page views, web vitals) to improve site performance — no personal identifiers are stored.",
+        "Browser-detected information (IP approximation, browser type, screen size) shown in the Security Awareness section for educational purposes only. This data is NOT stored or transmitted to any server.",
+        "Cookies for visit count and preferences (language, audio) — stored only in your browser.",
+        "Information you voluntarily provide through the quote request form (name, email, project description) — used solely to respond to your inquiry."
+      ],
+      "useTitle": "How Is Your Information Used?",
+      "useDescription": "Any information collected is used exclusively to improve the website experience and respond to your inquiries. No data is sold, shared with third parties, or used for advertising.",
+      "cookiesTitle": "Cookies",
+      "cookiesDescription": "This site uses first-party cookies only for essential functionality: remembering your language preference, visit count, and audio settings. No third-party tracking cookies are used.",
+      "thirdPartyTitle": "Third-Party Services",
+      "thirdPartyDescription": "The site connects to external APIs (GitHub, weather, sports data) for interactive features. These connections are made from your browser and are subject to each service's own privacy policy.",
+      "rightsTitle": "Your Rights",
+      "rightsDescription": "You can clear all site data by clearing your browser cookies. Since no personal data is stored on our servers, there is nothing to delete on our end.",
+      "contactTitle": "Contact",
+      "contactDescription": "For privacy-related questions, contact marcelodianib@gmail.com."
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "metaDescription": "Terms of Service for Marcelo B. Diani's portfolio website.",
+      "intro": "By accessing and using marcelodiani.online (\"the Site\"), you agree to the following terms.",
+      "useTitle": "Acceptable Use",
+      "useDescription": "This site is provided for informational and portfolio purposes. You may browse the site, interact with demos, and contact me through the provided channels. Automated scraping, abuse of APIs, or any malicious activity is prohibited.",
+      "contentTitle": "Intellectual Property",
+      "contentDescription": "The site's source code is open source and available on GitHub. The content, design, and personal information belong to Marcelo B. Diani. You may reference or link to the site but may not reproduce content for commercial purposes without permission.",
+      "disclaimerTitle": "Disclaimer",
+      "disclaimerDescription": "The site and its interactive demos are provided \"as is\" without warranties of any kind. Code playground outputs, AI chat responses, and external data are for demonstration purposes only.",
+      "liabilityTitle": "Limitation of Liability",
+      "liabilityDescription": "Marcelo B. Diani is not liable for any damages arising from the use of this site, including but not limited to data loss, service interruptions, or inaccuracies in displayed data.",
+      "changesTitle": "Changes to These Terms",
+      "changesDescription": "These terms may be updated from time to time. Continued use of the site constitutes acceptance of any changes.",
+      "contactTitle": "Contact",
+      "contactDescription": "For questions about these terms, contact marcelodianib@gmail.com."
+    }
   }
-}

@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "website",
       images: [
         {
-          url: `${baseUrl}/cvpic.jpg`,
+          url: `${baseUrl}/cvpic.webp`,
           width: 1200,
           height: 630,
           alt: pageTitle,
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: pageTitle,
       description,
-      images: [`${baseUrl}/cvpic.jpg`],
+      images: [`${baseUrl}/cvpic.webp`],
       creator: "@marcelodiani",
       site: "@marcelodiani",
     },

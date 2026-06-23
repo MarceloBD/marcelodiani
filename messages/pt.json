@@ -945,5 +945,47 @@
     "latestPosts": "Últimos Posts",
     "noPosts": "Ainda não há posts. Volte em breve!",
     "viewAllPosts": "Ver Todos os Posts"
+  },
+  "legal": {
+    "backToHome": "← Voltar ao Início",
+    "lastUpdated": "Última atualização: Junho de 2025",
+    "privacy": {
+      "title": "Política de Privacidade",
+      "metaDescription": "Política de Privacidade do site portfólio de Marcelo B. Diani. Saiba como seus dados são tratados.",
+      "intro": "Esta Política de Privacidade explica como marcelodiani.online (\"o Site\") trata as informações quando você visita. Sua privacidade é importante — este site foi projetado para ser transparente e mínimo na coleta de dados.",
+      "collectionTitle": "Quais Informações São Coletadas?",
+      "collectionItems": [
+        "Analytics anônimos (visualizações de página, web vitals) para melhorar o desempenho do site — nenhum identificador pessoal é armazenado.",
+        "Informações detectadas pelo navegador (aproximação de IP, tipo de navegador, tamanho da tela) mostradas na seção de Conscientização de Segurança apenas para fins educacionais. Esses dados NÃO são armazenados ou transmitidos a nenhum servidor.",
+        "Cookies para contagem de visitas e preferências (idioma, áudio) — armazenados apenas no seu navegador.",
+        "Informações que você fornece voluntariamente através do formulário de orçamento (nome, email, descrição do projeto) — usadas exclusivamente para responder à sua consulta."
+      ],
+      "useTitle": "Como Suas Informações São Usadas?",
+      "useDescription": "Qualquer informação coletada é usada exclusivamente para melhorar a experiência do site e responder às suas consultas. Nenhum dado é vendido, compartilhado com terceiros ou usado para publicidade.",
+      "cookiesTitle": "Cookies",
+      "cookiesDescription": "Este site utiliza apenas cookies primários para funcionalidades essenciais: lembrar sua preferência de idioma, contagem de visitas e configurações de áudio. Nenhum cookie de rastreamento de terceiros é utilizado.",
+      "thirdPartyTitle": "Serviços de Terceiros",
+      "thirdPartyDescription": "O site se conecta a APIs externas (GitHub, clima, dados esportivos) para funcionalidades interativas. Essas conexões são feitas pelo seu navegador e estão sujeitas à política de privacidade de cada serviço.",
+      "rightsTitle": "Seus Direitos",
+      "rightsDescription": "Você pode limpar todos os dados do site limpando os cookies do seu navegador. Como nenhum dado pessoal é armazenado em nossos servidores, não há nada para excluir do nosso lado.",
+      "contactTitle": "Contato",
+      "contactDescription": "Para dúvidas relacionadas à privacidade, entre em contato pelo email marcelodianib@gmail.com."
+    },
+    "terms": {
+      "title": "Termos de Serviço",
+      "metaDescription": "Termos de Serviço do site portfólio de Marcelo B. Diani.",
+      "intro": "Ao acessar e usar marcelodiani.online (\"o Site\"), você concorda com os seguintes termos.",
+      "useTitle": "Uso Aceitável",
+      "useDescription": "Este site é fornecido para fins informativos e de portfólio. Você pode navegar pelo site, interagir com demos e entrar em contato pelos canais fornecidos. Scraping automatizado, abuso de APIs ou qualquer atividade maliciosa é proibida.",
+      "contentTitle": "Propriedade Intelectual",
+      "contentDescription": "O código-fonte do site é open source e disponível no GitHub. O conteúdo, design e informações pessoais pertencem a Marcelo B. Diani. Você pode referenciar ou linkar o site, mas não pode reproduzir o conteúdo para fins comerciais sem permissão.",
+      "disclaimerTitle": "Isenção de Responsabilidade",
+      "disclaimerDescription": "O site e seus demos interativos são fornecidos \"como estão\" sem garantias de qualquer tipo. Saídas do playground de código, respostas do chat IA e dados externos são apenas para fins de demonstração.",
+      "liabilityTitle": "Limitação de Responsabilidade",
+      "liabilityDescription": "Marcelo B. Diani não é responsável por quaisquer danos decorrentes do uso deste site, incluindo, mas não se limitando a, perda de dados, interrupções de serviço ou imprecisões nos dados exibidos.",
+      "changesTitle": "Alterações Nestes Termos",
+      "changesDescription": "Estes termos podem ser atualizados periodicamente. O uso continuado do site constitui aceitação de quaisquer alterações.",
+      "contactTitle": "Contato",
+      "contactDescription": "Para dúvidas sobre estes termos, entre em contato pelo email marcelodianib@gmail.com."
+    }
   }
-}

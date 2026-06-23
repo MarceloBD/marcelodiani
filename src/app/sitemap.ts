@@ -62,13 +62,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
+  const legalPages: MetadataRoute.Sitemap = ["privacy", "terms"].flatMap(
+    (page) => [
+      {
+        url: `${BASE_URL}/${page}`,
+        lastModified: now,
+        changeFrequency: "yearly" as const,
+        priority: 0.3,
+        alternates: {
+          languages: {
+            en: `${BASE_URL}/${page}`,
+            pt: `${BASE_URL}/pt/${page}`,
+          },
+        },
+      },
+      {
+        url: `${BASE_URL}/pt/${page}`,
+        lastModified: now,
+        changeFrequency: "yearly" as const,
+        priority: 0.3,
+        alternates: {
+          languages: {
+            en: `${BASE_URL}/${page}`,
+            pt: `${BASE_URL}/pt/${page}`,
+          },
+        },
+      },
+    ]
+  );
+
   return [
     {
       url: `${BASE_URL}/`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 1,
-      images: [`${BASE_URL}/cvpic.jpg`],
+      images: [`${BASE_URL}/cvpic.webp`],
       alternates: {
         languages: {
           en: `${BASE_URL}/`,
@@ -81,7 +110,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 1,
-      images: [`${BASE_URL}/cvpic.jpg`],
+      images: [`${BASE_URL}/cvpic.webp`],
       alternates: {
         languages: {
           en: `${BASE_URL}/`,
@@ -90,5 +119,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     ...blogEntries,
+    ...legalPages,
   ];
 }

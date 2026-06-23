@@ -7,7 +7,7 @@
 - [Portfolio](https://marcelodiani.online): Interactive portfolio showcasing experience, skills, and projects
 - [Blog](https://marcelodiani.online/blog): Articles on software engineering, architecture, and technology
 - [GitHub](https://github.com/marcelobd): Open source projects and contributions
-- [LinkedIn](https://linkedin.com/in/marcelo-diani): Professional profile
+- [LinkedIn](https://www.linkedin.com/in/marcelo-diani): Professional profile
 
 ## Expertise
 

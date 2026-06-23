@@ -83,7 +83,7 @@ export const FILE_SYSTEM: Record<string, string> = {
     "Email:    marcelodianib@gmail.com",
     "WhatsApp: +55 17 99106-8118",
     "GitHub:   github.com/MarceloBD",
-    "LinkedIn: linkedin.com/in/marcelo-diani",
+    "LinkedIn: www.linkedin.com/in/marcelo-diani",
   ].join("\n"),
 
   "education.txt": [

@@ -47,7 +47,7 @@ export function HeroSection() {
           <FortuneOrbit>
             <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-accent/30 shadow-[0_0_30px_rgba(59,130,246,0.15)]">
               <Image
-                src="/cvpic.jpg"
+                src="/cvpic.webp"
                 alt={translations("imageAlt")}
                 width={128}
                 height={128}

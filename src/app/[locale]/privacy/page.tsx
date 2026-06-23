@@ -37,12 +37,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: "Marcelo B. Diani",
       locale: locale === "pt" ? "pt_BR" : "en_US",
       type: "website",
+      images: [{ url: `${BASE_URL}/cvpic.webp`, width: 1200, height: 1295, alt: "Marcelo B. Diani" }],
     },
     twitter: {
       card: "summary",
       title: `${translations("title")} | Marcelo B. Diani`,
       description: translations("metaDescription"),
       site: "@marcelodiani",
+      images: [`${BASE_URL}/cvpic.webp`],
     },
     robots: { index: true, follow: true },
   };
@@ -62,12 +64,14 @@ export default async function PrivacyPage({ params }: PageProps) {
     privacy("collectionItems.3"),
   ];
 
-  const jsonLd = {
+  const localePath = locale === "en" ? "" : `${locale}/`;
+
+  const pageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: privacy("title"),
     description: privacy("metaDescription"),
-    url: `${BASE_URL}/${locale === "en" ? "" : `${locale}/`}privacy`,
+    url: `${BASE_URL}/${localePath}privacy`,
     inLanguage: locale === "pt" ? "pt-BR" : "en-US",
     author: {
       "@type": "Person",
@@ -86,11 +90,24 @@ export default async function PrivacyPage({ params }: PageProps) {
     },
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${BASE_URL}/${localePath}` },
+      { "@type": "ListItem", position: 2, name: privacy("title"), item: `${BASE_URL}/${localePath}privacy` },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <Navbar />
       <main className="min-h-screen pt-24 pb-16 px-6">

@@ -55,5 +55,5 @@ $SEO_BINARY --mode=full \
   --start-cmd="npm run dev" \
   --wait-for=http://localhost:3000 \
   --url=http://localhost:3000 \
-  --fail-on=high
+  --fail-on=high \
   --ignore=ttfb

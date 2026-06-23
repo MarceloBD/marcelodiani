@@ -32,7 +32,9 @@ download_sdk() {
 
   mkdir -p ./bin
   curl -sL "$DOWNLOAD_URL" -o "$SEO_BINARY"
-  chmod +x "$SEO_BINARY"
+  if [ "$PLATFORM_OS" != "windows" ]; then
+    chmod +x "$SEO_BINARY"
+  fi
 
   if [ ! -f "$SEO_BINARY" ]; then
     echo "Failed to download SEO Crawler SDK"

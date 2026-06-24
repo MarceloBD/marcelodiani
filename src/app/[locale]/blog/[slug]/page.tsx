@@ -138,6 +138,50 @@ function buildBreadcrumbSchema(post: (typeof blogPosts)[number], locale: string)
   };
 }
 
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function formatParagraph(text: string): string {
+  const codeBlocks: string[] = [];
+  const withPlaceholders = text.replace(/`(.*?)`/g, (_, content) => {
+    codeBlocks.push(content);
+    return `%%CODE_${codeBlocks.length - 1}%%`;
+  });
+
+  const boldBlocks: string[] = [];
+  const withBoldPlaceholders = withPlaceholders.replace(/\*\*(.*?)\*\*/g, (_, content) => {
+    boldBlocks.push(content);
+    return `%%BOLD_${boldBlocks.length - 1}%%`;
+  });
+
+  let escaped = escapeHtml(withBoldPlaceholders);
+
+  boldBlocks.forEach((content, index) => {
+    escaped = escaped.replace(
+      `%%BOLD_${index}%%`,
+      `<strong class="text-accent">${escapeHtml(content)}</strong>`
+    );
+  });
+
+  codeBlocks.forEach((content, index) => {
+    escaped = escaped.replace(
+      `%%CODE_${index}%%`,
+      `<code class="px-2 py-1 bg-card rounded text-accent">${escapeHtml(content)}</code>`
+    );
+  });
+
+  escaped = escaped.replace(
+    /(https?:\/\/[^\s<]+)/g,
+    '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">$1</a>'
+  );
+
+  return escaped;
+}
+
 export default async function BlogPostPage({ params }: PageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
@@ -241,15 +285,35 @@ export default async function BlogPostPage({ params }: PageProps) {
                 );
               }
 
-              const formattedParagraph = paragraph
-                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-accent">$1</strong>')
-                .replace(/`(.*?)`/g, '<code class="px-2 py-1 bg-card rounded text-accent">$1</code>');
+              if (paragraph.includes("\n- ")) {
+                const [intro, ...rest] = paragraph.split("\n- ");
+                const items = rest.map((item) => item.replace(/^- /, ""));
+                return (
+                  <div key={index} className="my-4">
+                    {intro && (
+                      <p
+                        className="text-lg leading-relaxed mb-2 text-foreground"
+                        dangerouslySetInnerHTML={{ __html: formatParagraph(intro) }}
+                      />
+                    )}
+                    <ul className="list-disc pl-6 space-y-1">
+                      {items.map((item, itemIndex) => (
+                        <li
+                          key={itemIndex}
+                          className="text-lg leading-relaxed text-foreground"
+                          dangerouslySetInnerHTML={{ __html: formatParagraph(item) }}
+                        />
+                      ))}
+                    </ul>
+                  </div>
+                );
+              }
 
               return (
                 <p
                   key={index}
                   className="text-lg leading-relaxed my-4 text-foreground"
-                  dangerouslySetInnerHTML={{ __html: formattedParagraph }}
+                  dangerouslySetInnerHTML={{ __html: formatParagraph(paragraph) }}
                 />
               );
             })}

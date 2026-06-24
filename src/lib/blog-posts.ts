@@ -102,7 +102,7 @@ This problem is what led me to create **BoolTools**.
 
 BoolTools is a new initiative where I am building developer-focused tools that solve real, practical problems in the development workflow. Not marketing tools repackaged for developers. Actual tools built with a developer's mental model in mind.
 
-The first tool under BoolTools is an **open-source SEO and GEO crawler** that runs **200+ checks** across your entire site. Technical SEO, on-page optimization, performance signals, security headers, structured data validation, link analysis, and full GEO readiness assessment including AI crawler access, \`llms.txt\` validation, and content citability scoring. The project is fully open-source and available on GitHub at https://github.com/booltools/booltools-seo-crawler.
+The first tool under BoolTools is an **open-source SEO and GEO crawler** that runs **200+ checks** across your entire site. Technical SEO, on-page optimization, performance signals, security headers, structured data validation, link analysis, and full GEO readiness assessment including AI crawler access, \`llms.txt\` validation, and content citability scoring. The project is fully open-source and available on GitHub at https://github.com/booltools/booltools-seo-crawler
 
 It gives you a clear, actionable report prioritized by severity and impact. Not vague suggestions, but specific findings like: "Page /pricing is missing a meta description," "Structured data on /blog/post-1 has an invalid datePublished format," or "robots.txt is blocking GPTBot."
 
@@ -185,7 +185,7 @@ Esse problema foi o que me levou a criar o **BoolTools**.
 
 BoolTools é uma nova iniciativa onde estou construindo ferramentas focadas em desenvolvedores que resolvem problemas reais e práticos no fluxo de trabalho de desenvolvimento. Não são ferramentas de marketing reembaladas para devs. São ferramentas construídas com o modelo mental do desenvolvedor em mente.
 
-A primeira ferramenta do BoolTools é um **crawler de SEO e GEO open-source** que executa **mais de 200 verificações** em todo o seu site. SEO técnico, otimização on-page, sinais de performance, headers de segurança, validação de dados estruturados, análise de links, e avaliação completa de prontidão para GEO incluindo acesso de crawlers de IA, validação de \`llms.txt\` e score de citabilidade de conteúdo. O projeto é totalmente open-source e está disponível no GitHub em https://github.com/booltools/booltools-seo-crawler.
+A primeira ferramenta do BoolTools é um **crawler de SEO e GEO open-source** que executa **mais de 200 verificações** em todo o seu site. SEO técnico, otimização on-page, sinais de performance, headers de segurança, validação de dados estruturados, análise de links, e avaliação completa de prontidão para GEO incluindo acesso de crawlers de IA, validação de \`llms.txt\` e score de citabilidade de conteúdo. O projeto é totalmente open-source e está disponível no GitHub em https://github.com/booltools/booltools-seo-crawler .
 
 Ele fornece um relatório claro e acionável priorizado por severidade e impacto. Não sugestões vagas, mas achados específicos como: "A página /pricing está sem meta description," "Dados estruturados em /blog/post-1 têm um formato inválido de datePublished," ou "robots.txt está bloqueando o GPTBot."
 

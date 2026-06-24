@@ -58,6 +58,7 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
+        <meta name="google-site-verification" content="6vzZD0heq5T-PiL170brMzDEgK9_S_cOhpkvsqUvDuM" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}

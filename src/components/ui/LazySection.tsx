@@ -1,7 +1,6 @@
 "use client";
 
-import { type ReactNode } from "react";
-import { useInView } from "@/hooks/useInView";
+import { type ReactNode, useState, useEffect, useRef } from "react";
 
 interface LazySectionProps {
   children: ReactNode;
@@ -18,28 +17,56 @@ export function LazySection({
   rootMargin = "300px",
   className,
 }: LazySectionProps) {
-  const { elementReference, isInView } = useInView<HTMLDivElement>({
-    rootMargin,
-    once: true,
-  });
+  const elementReference = useRef<HTMLDivElement>(null);
+  const [hasBeenVisible, setHasBeenVisible] = useState(true);
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    setIsHydrated(true);
+    setHasBeenVisible(false);
+  }, []);
+
+  useEffect(() => {
+    if (!isHydrated || hasBeenVisible) return;
+
+    const element = elementReference.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasBeenVisible(true);
+          observer.unobserve(element);
+        }
+      },
+      { rootMargin }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [isHydrated, hasBeenVisible, rootMargin]);
+
+  const shouldRender = hasBeenVisible;
 
   return (
-    <div 
-      ref={elementReference} 
-      id={id} 
+    <div
+      ref={elementReference}
+      id={id}
       className={className}
-      style={{
-        contentVisibility: isInView ? "auto" : "hidden",
-        containIntrinsicSize: isInView ? "auto" : height,
-      }}
+      style={
+        shouldRender
+          ? undefined
+          : {
+              contentVisibility: "hidden",
+              containIntrinsicSize: height,
+            }
+      }
     >
-      {isInView ? (
+      {shouldRender ? (
         children
       ) : (
-        <div
-          style={{ minHeight: height }}
-          aria-hidden="true"
-        />
+        <div style={{ minHeight: height }} aria-hidden="true" />
       )}
     </div>
   );

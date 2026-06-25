@@ -19,6 +19,274 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "top-4-percent-cursor-user-how-ai-changed-my-workflow",
+    title: {
+      en: "I'm in the Top 4% of Cursor Users — Here's How AI Rewired My Entire Dev Workflow",
+      pt: "Estou no Top 4% dos Usuários do Cursor — Como a IA Reconfigurou Todo Meu Fluxo de Trabalho",
+    },
+    publishedAt: "2026-06-25",
+    readingTime: 9,
+    coverImage: "/blog/cursor-top-4-percent.png",
+    excerpt: {
+      en: "Cursor sent me a year-end recap: top 4% most active users in 2025 by token usage. Everyone uses AI now. The real question is whether you are getting everything you can out of it. Here are the specific workflow optimizations that pushed my usage into the top 4%.",
+      pt: "O Cursor me enviou um resumo de fim de ano: top 4% dos usuários mais ativos em 2025 por consumo de tokens. Todo mundo usa IA agora. A verdadeira pergunta é se você está extraindo tudo que pode dela. Aqui estão as otimizações específicas de fluxo de trabalho que empurraram meu uso para o top 4%.",
+    },
+    content: {
+      en: `A few weeks ago, Cursor sent me a year-end recap for 2025. One stat stood out: I was in the top 4% most active users globally, measured by token usage.
+
+My first reaction was "that is a lot of tokens burned." My second reaction was more interesting: I could not imagine working any other way.
+
+We all use AI in our workflows now. That is not news. The real question is: are you getting everything you can out of it, or are you just scratching the surface? Because there is a massive gap between "I use Copilot for autocomplete" and "AI is embedded in every stage of how I plan, build, debug, and ship software."
+
+This post is about the specific ways I optimized my workflow with AI throughout 2025 that pushed my usage into the top 4%. Not theory. Not hype. The actual patterns that made me measurably more productive.
+
+## Planning: two approaches, both valid
+
+When it comes to planning with AI, there are basically two ways to go about it.
+
+The first is the simple prompt: "generate a WebSocket handler." Quick, direct, and sometimes that is all you need. If you are lucky and the problem is straightforward, you can get a solid architecture on the first try.
+
+The second is the detailed description: "I need a real-time notification system that handles multi-tenant isolation, supports WebSocket fallback to SSE, and integrates with our existing event bus." This approach tends to give you a better result with a single prompt because the AI has enough context to surface edge cases, propose trade-offs, and produce a structured plan without you needing to go back and forth.
+
+The trade-off is clear. With a simple prompt, you sometimes need multiple interactions to refine the result. With a detailed one, you front-load the context and often get what you need in one shot. Both work. It depends on what you are building and how much context the problem requires.
+
+Either way, the planning phase that used to involve hours of Googling, reading docs, and sketching on a whiteboard now happens inside a conversation.
+
+## Writing code: let the AI learn from your codebase
+
+Everyone uses AI autocomplete. That is table stakes. What made the real difference for me was letting the AI learn from what already exists in my project.
+
+My approach is simple: when I need something new, I reference an existing file or folder and ask the AI to replicate its patterns. If I need a new service, I point to an existing one and say "follow this structure." If I need a new component, I reference a similar one. The AI picks up the naming conventions, the dependency injection setup, the error handling, everything. I do not need to explain my architecture from scratch every time because the codebase itself is the documentation.
+
+Modern tools also help a lot here. Skills, project indexing, and codebase-aware features mean the harness does most of the context gathering for you. You do not need to manually configure every rule. The tool reads your project and understands the patterns on its own.
+
+A few examples of what this looks like in practice:
+- Writing a new repository implementation: I reference an existing repository and the AI mirrors its pattern, including the correct interfaces, error handling, and logging
+- Building API endpoints: I point to an existing endpoint and it follows the same validation, authentication middleware, and response formatting
+- Creating React components: it picks up my design system, state management patterns, and test structure from similar components
+
+## Debugging: the highest-ROI use case
+
+This is where AI earned its keep for me.
+
+We all know the debugging loop: look at a stack trace, form a hypothesis, add some logs, reproduce the issue, realize your hypothesis was wrong, form a new one, repeat. Some bugs take twenty minutes. Some take two days.
+
+With AI in the loop, I feed it the error, the surrounding code, the recent changes, and the infrastructure configuration. The AI does not just guess, it reasons through the code path, identifies where state could be inconsistent, points out race conditions I missed, and suggests targeted fixes.
+
+Tools like Cursor's debug mode take this even further. It does not just analyze the error you paste, it actually creates the logs, runs the code, reads the output, and iterates on the fix for you. The entire cycle of "add a log, run, read the output, adjust" that used to be manual is now handled by the AI. You describe the bug, and it investigates.
+
+**AI does not replace your debugging skills. It gives you a second brain that never gets tired of reading stack traces.**
+
+## Legacy code: turning days into hours
+
+Every developer has been here: you join a new team or pick up a ticket, and the feature you need to modify lives inside a 2,000-line file with no documentation, cryptic variable names, and business logic that was written three years ago by someone who already left the company.
+
+Most developers already ask AI to "explain this code." The optimization I found was asking structured, layered questions instead of a single broad one.
+
+First pass: "Explain what this module does and what the main data flow is." Second pass: "What are the edge cases and failure modes?" Third pass: "What happens if this field is null?" and "Where does this configuration get loaded?"
+
+Each layer builds on the previous one. The AI traces through the code and gives specific answers with line references. By the third pass, I have a mental model that would have taken days of manual reading.
+
+This completely changed how I onboard onto unfamiliar codebases. What used to take a week of careful reading now takes an afternoon.
+
+## Testing: from maintenance burden to automated workflow
+
+I wrote an entire article about how I spent a full month fixing tests. The core issue was not writing tests, it was maintaining them. Every refactor meant updating dozens of tests coupled to implementation details.
+
+The workflow I built around AI testing is what changed the game. When I refactor a function signature, I immediately ask the AI to update every test that references it. When I add a new validation rule, it generates the corresponding test cases. When a test fails because of an intentional behavior change, the AI understands the difference between a regression and an evolution.
+
+The key was making testing part of the AI conversation, not a separate step. I stopped treating test updates as a chore I do after coding and started including them in the same AI session where I write the feature. The AI already has the full context of what changed and why, so the tests it generates are accurate on the first pass.
+
+I now write more tests than I did before, with less time spent keeping them alive.
+
+## AI-first development: the new mental model
+
+Remember when "mobile-first" changed how we built software? We stopped designing for desktop and then adapting to mobile. Instead, we started with mobile constraints and scaled up. It shifted the entire mental model.
+
+Something similar is happening now. I call it AI-first development.
+
+The idea is simple: when I need to build something, I try with AI first. I describe what I need, let the AI generate the initial implementation, and then iterate through prompts to refine it. Adjust the architecture, fix edge cases, improve the naming, all through conversation. Only if the AI-driven approach is not converging on a good solution do I step in and write or fix it manually.
+
+This does not mean blindly accepting whatever the AI produces. It means treating AI as the starting point instead of a blank file. You still review everything. You still make the architectural decisions. But the default path changed from "write it yourself and ask AI for help when stuck" to "let AI take the first pass and guide it from there."
+
+This mental shift is what pushed my usage so high. When AI is your first attempt at everything, not your last resort, you naturally engage with it at every stage.
+
+## When AI is not the silver bullet
+
+I want to be honest about where this breaks down, because it does.
+
+AI struggles with complex business problems that carry a lot of context and have many side effects. The kind of feature where changing one function affects five other modules, where the business rules have exceptions on top of exceptions, and where the only person who truly understands the logic is someone who has been working on the product for two years.
+
+In those cases, AI can still help with isolated parts, but it cannot hold the full picture. It does not know that changing the discount calculation will break the invoicing flow, which will trigger incorrect notifications, which will confuse the customer support team. Those chains of side effects require human judgment and domain knowledge that no AI has today.
+
+If you try to force AI through a problem like that, you end up spending more time fixing its output than you would have spent writing it yourself. Recognizing when to stop prompting and start coding manually is a skill in itself.
+
+**AI is a tool, not a replacement for thinking. The best developers know when to use it and when to put it down.**
+
+## The harness matters more than the model
+
+One thing I learned in 2025 that most developers overlook: the quality of the final result depends heavily on the harness around the AI, not just the model itself.
+
+What I mean by harness is everything that happens before and after the model generates a response. Does the tool use RAG to pull relevant context from your codebase? Does it integrate with MCPs (Model Context Protocol servers) to bring in external knowledge? Does it run additional verifications on the output before presenting it to you?
+
+This is why not all AI coding tools produce the same results even when using the same underlying model. A tool like Google's Stitch, for example, has deeper knowledge about frontend patterns and component libraries because its harness is built specifically for that domain. Cursor uses project rules, codebase indexing, and MCP integrations to bring more specific context into every conversation.
+
+The harness is what turns a generic language model into a tool that actually understands your project. Without it, you get generic answers. With a good harness, you get answers that are already aligned with your architecture, your dependencies, and your conventions.
+
+When choosing your AI tools, pay as much attention to the harness as you do to the model. A smaller model with great context retrieval will often outperform a larger model with no context at all.
+
+## The real shift: it is not about typing faster
+
+If you take one thing from this post, let it be this: the value of AI is not that it makes you type faster. It is that it removes the friction from the parts of development that slow down your thinking.
+
+Context switching between docs, code, and browser is reduced because the AI brings context to you. The gap between "I know what I need to build" and "I have a working implementation" shrinks dramatically. The cognitive load of holding an entire codebase in your head is offloaded to a tool that actually can hold it all.
+
+That is what the top 4% means. Not that I outsourced my work. That I used AI in every phase of my workflow: planning, coding, debugging, testing, reviewing, and understanding legacy systems. It was embedded in how I work, not something I opened once in a while.
+
+## What I changed to get more out of AI
+
+The biggest shift in my workflow was moving from reactive to proactive AI usage.
+
+Early on, I used AI reactively: I had a problem, I asked the AI, I got an answer. That works, but it leaves a lot on the table.
+
+The shift happened when I started treating the AI as a collaborator in every phase. I describe architectural constraints upfront. I ask it to challenge my approach before I commit. I use it to explore three alternatives before picking one. I feed it my project rules and conventions so every response is already aligned with my codebase.
+
+The developers who get the most value from AI are not the ones who ask the most questions. They are the ones who provide the most context and ask the sharpest questions.
+
+## The bottom line
+
+AI changed the way we work. That is not a prediction, it already happened. And it benefits everyone: it lets us spend less time on repetitive tasks and more time on the things that actually matter, the architecture decisions, the business logic, the user experience.
+
+Landing in the top 4% of Cursor users was not a goal. It was a side effect of using AI in every phase of my work throughout 2025. Planning, coding, debugging, testing, reviewing. It became part of how I think about building software, and I am a better developer because of it.`,
+      pt: `Algumas semanas atrás, o Cursor me enviou um resumo de fim de ano de 2025. Uma estatística se destacou: eu estava no top 4% dos usuários mais ativos globalmente, medido por consumo de tokens.
+
+Minha primeira reação foi "isso são muitos tokens queimados." Minha segunda reação foi mais interessante: eu não conseguia imaginar trabalhar de outra forma.
+
+Todos nós usamos IA no nosso fluxo de trabalho agora. Isso não é novidade. A pergunta real é: você está extraindo tudo que pode dela, ou está apenas arranhando a superfície? Porque existe uma diferença enorme entre "eu uso Copilot para autocomplete" e "IA está incorporada em cada etapa de como eu planejo, construo, debugo e entrego software."
+
+Este post é sobre as formas específicas como eu otimizei meu fluxo de trabalho com IA ao longo de 2025 que empurraram meu uso para o top 4%. Não teoria. Não hype. Os padrões reais que me tornaram mensuravelmente mais produtivo.
+
+## Planejamento: duas abordagens, ambas válidas
+
+Quando se trata de planejar com IA, existem basicamente duas formas de fazer.
+
+A primeira é o prompt simples: "gere um handler de WebSocket." Rápido, direto, e às vezes é tudo que você precisa. Se tiver sorte e o problema for direto, você consegue uma arquitetura sólida na primeira tentativa.
+
+A segunda é a descrição detalhada: "Preciso de um sistema de notificações em tempo real que lide com isolamento multi-tenant, suporte fallback de WebSocket para SSE, e se integre com nosso event bus existente." Essa abordagem tende a dar um resultado melhor com um único prompt porque a IA tem contexto suficiente para revelar edge cases, propor trade-offs e produzir um plano estruturado sem você precisar ficar indo e voltando.
+
+O trade-off é claro. Com um prompt simples, às vezes você precisa de múltiplas interações para refinar o resultado. Com um detalhado, você antecipa o contexto e frequentemente consegue o que precisa de primeira. Ambos funcionam. Depende do que você está construindo e de quanto contexto o problema requer.
+
+De qualquer forma, a fase de planejamento que costumava envolver horas pesquisando no Google, lendo documentação e desenhando no quadro branco agora acontece dentro de uma conversa.
+
+## Escrevendo código: deixe a IA aprender com sua codebase
+
+Todo mundo usa autocomplete com IA. Isso é o básico. O que fez a diferença real para mim foi deixar a IA aprender com o que já existe no meu projeto.
+
+Minha abordagem é simples: quando preciso de algo novo, eu referencio um arquivo ou pasta existente e peço para a IA replicar seus padrões. Se preciso de um novo serviço, aponto para um existente e digo "siga essa estrutura." Se preciso de um novo componente, referencio um similar. A IA pega as convenções de nomenclatura, o setup de injeção de dependência, o tratamento de erros, tudo. Não preciso explicar minha arquitetura do zero toda vez porque a codebase em si é a documentação.
+
+Ferramentas modernas também ajudam muito aqui. Skills, indexação de projeto e funcionalidades que conhecem a codebase fazem a maior parte da coleta de contexto por você. Você não precisa configurar manualmente cada regra. A ferramenta lê seu projeto e entende os padrões por conta própria.
+
+Alguns exemplos do que isso significa na prática:
+- Escrevendo uma nova implementação de repositório: eu referencio um repositório existente e a IA espelha seu padrão, incluindo interfaces corretas, tratamento de erros e logging
+- Construindo endpoints de API: aponto para um endpoint existente e ela segue a mesma validação, middleware de autenticação e formatação de resposta
+- Criando componentes React: ela reconhece meu design system, padrões de gerenciamento de estado e estrutura de testes a partir de componentes similares
+
+## Debugging: o caso de uso com maior ROI
+
+É aqui que a IA provou seu valor para mim.
+
+Todos conhecemos o loop de debugging: olhar um stack trace, formar uma hipótese, adicionar alguns logs, reproduzir o problema, perceber que a hipótese estava errada, formar uma nova, repetir. Alguns bugs levam vinte minutos. Alguns levam dois dias.
+
+Com IA no loop, eu alimento ela com o erro, o código ao redor, as mudanças recentes e a configuração de infraestrutura. A IA não apenas chuta, ela raciocina pelo caminho do código, identifica onde o estado pode estar inconsistente, aponta race conditions que eu perdi e sugere correções direcionadas.
+
+Ferramentas como o modo debug do Cursor levam isso ainda mais longe. Ele não apenas analisa o erro que você cola, ele realmente cria os logs, roda o código, lê a saída e itera na correção por você. Todo o ciclo de "adicionar um log, rodar, ler a saída, ajustar" que era manual agora é feito pela IA. Você descreve o bug, e ela investiga.
+
+**IA não substitui suas habilidades de debugging. Ela te dá um segundo cérebro que nunca se cansa de ler stack traces.**
+
+## Código legado: transformando dias em horas
+
+Todo desenvolvedor já esteve aqui: você entra em um novo time ou pega um ticket, e a feature que precisa modificar vive dentro de um arquivo de 2.000 linhas sem documentação, nomes de variáveis crípticos e lógica de negócio que foi escrita três anos atrás por alguém que já saiu da empresa.
+
+A maioria dos desenvolvedores já pede à IA para "explicar este código." A otimização que encontrei foi fazer perguntas estruturadas e em camadas ao invés de uma única pergunta ampla.
+
+Primeira passagem: "Explique o que este módulo faz e qual é o fluxo principal de dados." Segunda passagem: "Quais são os edge cases e modos de falha?" Terceira passagem: "O que acontece se este campo for null?" e "Onde essa configuração é carregada?"
+
+Cada camada se constrói sobre a anterior. A IA rastreia o código e dá respostas específicas com referências de linha. Na terceira passagem, tenho um modelo mental que teria levado dias de leitura manual.
+
+Isso mudou completamente como eu faço onboarding em codebases desconhecidas. O que costumava levar uma semana de leitura cuidadosa agora leva uma tarde.
+
+## Testes: de fardo de manutenção a fluxo automatizado
+
+Escrevi um artigo inteiro sobre como passei um mês inteiro corrigindo testes. O problema central não era escrever testes, era mantê-los. Cada refatoração significava atualizar dezenas de testes acoplados a detalhes de implementação.
+
+O fluxo de trabalho que construí em torno de testes com IA é o que mudou o jogo. Quando refatoro uma assinatura de função, imediatamente peço à IA para atualizar cada teste que a referencia. Quando adiciono uma nova regra de validação, ela gera os casos de teste correspondentes. Quando um teste falha por causa de uma mudança intencional de comportamento, a IA entende a diferença entre uma regressão e uma evolução.
+
+A chave foi tornar testes parte da conversa com IA, não um passo separado. Parei de tratar atualizações de teste como uma tarefa que faço depois de codificar e comecei a incluí-las na mesma sessão de IA onde escrevo a feature. A IA já tem o contexto completo do que mudou e por quê, então os testes que ela gera são precisos na primeira tentativa.
+
+Agora escrevo mais testes do que antes, com menos tempo gasto mantendo-os vivos.
+
+## Desenvolvimento AI-first: o novo modelo mental
+
+Lembra quando o "mobile-first" mudou como construíamos software? Paramos de projetar para desktop e depois adaptar para mobile. Em vez disso, começamos pelas restrições mobile e escalamos para cima. Isso mudou todo o modelo mental.
+
+Algo similar está acontecendo agora. Eu chamo de desenvolvimento AI-first.
+
+A ideia é simples: quando preciso construir algo, eu tento com IA primeiro. Descrevo o que preciso, deixo a IA gerar a implementação inicial, e então itero através de prompts para refinar. Ajustar a arquitetura, corrigir edge cases, melhorar a nomenclatura, tudo através de conversa. Só se a abordagem via IA não estiver convergindo para uma boa solução é que eu entro e escrevo ou corrijo manualmente.
+
+Isso não significa aceitar cegamente o que a IA produz. Significa tratar a IA como ponto de partida ao invés de um arquivo vazio. Você ainda revisa tudo. Ainda toma as decisões arquiteturais. Mas o caminho padrão mudou de "escreva você mesmo e peça ajuda da IA quando travar" para "deixe a IA fazer a primeira tentativa e guie a partir daí."
+
+Essa mudança mental é o que empurrou meu uso tão alto. Quando IA é sua primeira tentativa em tudo, não seu último recurso, você naturalmente interage com ela em cada estágio.
+
+## Quando IA não é bala de prata
+
+Quero ser honesto sobre onde isso falha, porque falha.
+
+IA tem dificuldade com problemas de negócio complexos que carregam muito contexto e têm muitos efeitos colaterais. O tipo de feature onde mudar uma função afeta cinco outros módulos, onde as regras de negócio têm exceções em cima de exceções, e onde a única pessoa que realmente entende a lógica é alguém que trabalha no produto há dois anos.
+
+Nesses casos, IA ainda pode ajudar com partes isoladas, mas não consegue manter o quadro completo. Ela não sabe que mudar o cálculo de desconto vai quebrar o fluxo de faturamento, que vai disparar notificações incorretas, que vai confundir a equipe de suporte ao cliente. Essas cadeias de efeitos colaterais exigem julgamento humano e conhecimento de domínio que nenhuma IA tem hoje.
+
+Se você tentar forçar a IA através de um problema assim, acaba gastando mais tempo corrigindo a saída dela do que teria gasto escrevendo você mesmo. Reconhecer quando parar de promptar e começar a codificar manualmente é uma habilidade por si só.
+
+**IA é uma ferramenta, não um substituto para pensar. Os melhores desenvolvedores sabem quando usá-la e quando largá-la.**
+
+## O harness importa mais que o modelo
+
+Uma coisa que aprendi em 2025 que a maioria dos desenvolvedores ignora: a qualidade do resultado final depende muito do harness ao redor da IA, não apenas do modelo em si.
+
+O que quero dizer com harness é tudo que acontece antes e depois do modelo gerar uma resposta. A ferramenta usa RAG para puxar contexto relevante da sua codebase? Ela integra com MCPs (Model Context Protocol servers) para trazer conhecimento externo? Ela executa verificações adicionais na saída antes de apresentá-la a você?
+
+É por isso que nem todas as ferramentas de código com IA produzem os mesmos resultados mesmo usando o mesmo modelo base. Uma ferramenta como o Stitch do Google, por exemplo, tem conhecimento mais profundo sobre padrões de frontend e bibliotecas de componentes porque seu harness é construído especificamente para esse domínio. O Cursor usa regras de projeto, indexação de codebase e integrações com MCP para trazer contexto mais específico para cada conversa.
+
+O harness é o que transforma um modelo de linguagem genérico em uma ferramenta que realmente entende seu projeto. Sem ele, você recebe respostas genéricas. Com um bom harness, você recebe respostas que já estão alinhadas com sua arquitetura, suas dependências e suas convenções.
+
+Ao escolher suas ferramentas de IA, preste tanta atenção ao harness quanto ao modelo. Um modelo menor com ótima recuperação de contexto frequentemente vai superar um modelo maior sem nenhum contexto.
+
+## A mudança real: não é sobre digitar mais rápido
+
+Se você tirar uma coisa deste post, que seja esta: o valor da IA não é que ela te faz digitar mais rápido. É que ela remove a fricção das partes do desenvolvimento que desaceleram seu pensamento.
+
+Troca de contexto entre docs, código e navegador é reduzida porque a IA traz contexto até você. A lacuna entre "eu sei o que preciso construir" e "tenho uma implementação funcionando" encolhe dramaticamente. A carga cognitiva de manter uma codebase inteira na cabeça é descarregada para uma ferramenta que realmente consegue manter tudo.
+
+É isso que o top 4% significa. Não que eu terceirizei meu trabalho. Que eu usei IA em cada fase do meu fluxo: planejamento, codificação, debugging, testes, revisão e compreensão de sistemas legados. Estava incorporada em como eu trabalho, não algo que eu abria de vez em quando.
+
+## O que mudei para extrair mais da IA
+
+A maior mudança no meu fluxo de trabalho foi passar de uso reativo para uso proativo da IA.
+
+No início, eu usava IA reativamente: tinha um problema, perguntava à IA, recebia uma resposta. Isso funciona, mas deixa muito na mesa.
+
+A mudança aconteceu quando comecei a tratar a IA como colaboradora em cada fase. Descrevo restrições arquiteturais antecipadamente. Peço para ela desafiar minha abordagem antes de me comprometer. Uso-a para explorar três alternativas antes de escolher uma. Alimento-a com minhas regras de projeto e convenções para que cada resposta já esteja alinhada com minha codebase.
+
+Os desenvolvedores que extraem mais valor da IA não são os que fazem mais perguntas. São os que fornecem mais contexto e fazem as perguntas mais afiadas.
+
+## Conclusão
+
+IA mudou a forma como trabalhamos. Isso não é uma previsão, já aconteceu. E beneficia a todos: nos permite gastar menos tempo em tarefas repetitivas e mais tempo nas coisas que realmente importam, as decisões de arquitetura, a lógica de negócio, a experiência do usuário.
+
+Ficar no top 4% dos usuários do Cursor não foi um objetivo. Foi um efeito colateral de usar IA em cada fase do meu trabalho ao longo de 2025. Planejamento, codificação, debugging, testes, revisão. Se tornou parte de como eu penso sobre construir software, e sou um desenvolvedor melhor por causa disso.`,
+    },
+  },
+  {
     slug: "seo-geo-and-why-i-created-booltools",
     title: {
       en: "SEO & GEO in 2026 — Why It Matters More Than Ever and Why I Created BoolTools",

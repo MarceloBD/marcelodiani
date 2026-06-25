@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, Suspense } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Text, Billboard } from "@react-three/drei";
 import * as THREE from "three";
@@ -136,16 +136,17 @@ export function TechSphere({ hoveredSkill }: TechSphereProps) {
           />
         </mesh>
 
-        {/* Tech labels -- Billboard keeps them facing the camera */}
-        {techPositions.map(({ name, color, position }) => (
-          <TechLabel
-            key={name}
-            text={name}
-            position={position}
-            color={color}
-            isHighlighted={hoveredSkill === name}
-          />
-        ))}
+        <Suspense fallback={null}>
+          {techPositions.map(({ name, color, position }) => (
+            <TechLabel
+              key={name}
+              text={name}
+              position={position}
+              color={color}
+              isHighlighted={hoveredSkill === name}
+            />
+          ))}
+        </Suspense>
 
         {/* Dots at each tech position */}
         {techPositions.map(({ name, color, position }) => (

@@ -8,6 +8,7 @@ import { StatsCounter } from "./StatsCounter";
 import { LanguageBadge } from "./LanguageBadge";
 import { GitHubStats } from "../interactive/GitHubStats";
 import { BeyondCode } from "./BeyondCode";
+import { useIsHydrated } from "@/hooks/useIsHydrated";
 
 const STATS_KEYS = ["years", "leadership", "tests", "apps"] as const;
 
@@ -21,21 +22,20 @@ const LANGUAGE_KEYS = [
 
 type AboutTab = "professional" | "beyondCode";
 
-const TAB_ANIMATION = {
-  initial: { opacity: 0, y: 12 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -12 },
-  transition: { duration: 0.3 },
-};
+const TAB_ANIMATE = { opacity: 1, y: 0 };
+const TAB_INITIAL = { opacity: 0, y: 12 };
+const TAB_EXIT = { opacity: 0, y: -12 };
+const TAB_TRANSITION = { duration: 0.3 };
 
 function ProfessionalContent() {
   const translations = useTranslations("about");
+  const isHydrated = useIsHydrated();
 
   return (
     <>
       <div className="grid md:grid-cols-2 gap-16 items-start mb-16">
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
+          initial={isHydrated ? { opacity: 0, x: -30 } : false}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
@@ -81,6 +81,7 @@ export function AboutSection() {
   const [activeTab, setActiveTab] = useState<AboutTab>("professional");
   const translations = useTranslations("about");
   const beyondCodeTranslations = useTranslations("beyondCode");
+  const isHydrated = useIsHydrated();
 
   const tabs: { key: AboutTab; label: string }[] = [
     { key: "professional", label: beyondCodeTranslations("tabProfessional") },
@@ -121,11 +122,11 @@ export function AboutSection() {
 
         <AnimatePresence mode="wait">
           {activeTab === "professional" ? (
-            <motion.div key="professional" {...TAB_ANIMATION}>
+            <motion.div key="professional" initial={isHydrated ? TAB_INITIAL : false} animate={TAB_ANIMATE} exit={TAB_EXIT} transition={TAB_TRANSITION}>
               <ProfessionalContent />
             </motion.div>
           ) : (
-            <motion.div key="beyondCode" {...TAB_ANIMATION}>
+            <motion.div key="beyondCode" initial={isHydrated ? TAB_INITIAL : false} animate={TAB_ANIMATE} exit={TAB_EXIT} transition={TAB_TRANSITION}>
               <BeyondCode />
             </motion.div>
           )}

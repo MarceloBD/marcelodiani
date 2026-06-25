@@ -1,11 +1,12 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { SectionTitle } from "../ui/SectionTitle";
 import { ScrollReveal } from "../ui/ScrollReveal";
+import { useIsHydrated } from "@/hooks/useIsHydrated";
 import { SKILLS, SKILL_CATEGORY_COLORS } from "@/data/skills";
 import type { SkillCategory } from "@/data/skills";
 
@@ -14,7 +15,7 @@ const TechSphereCanvas = dynamic(
     import("./TechSphereCanvas").then((module) => ({
       default: module.TechSphereCanvas,
     })),
-  { ssr: false }
+  { ssr: false, loading: () => <SphereLoading /> }
 );
 
 const CATEGORIES: SkillCategory[] = [
@@ -84,6 +85,7 @@ function SphereLoading() {
 export function SkillsSection() {
   const translations = useTranslations("skills");
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const isHydrated = useIsHydrated();
 
   return (
     <section className="py-24 px-6">
@@ -94,11 +96,12 @@ export function SkillsSection() {
         />
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* 3D Sphere */}
           <div className="h-[400px] md:h-[500px] order-2 lg:order-1">
-            <Suspense fallback={<SphereLoading />}>
+            {isHydrated ? (
               <TechSphereCanvas hoveredSkill={hoveredSkill} />
-            </Suspense>
+            ) : (
+              <SphereLoading />
+            )}
           </div>
 
           {/* Skills categories */}

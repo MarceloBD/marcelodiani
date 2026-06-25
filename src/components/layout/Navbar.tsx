@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useRouter, usePathname } from "@/i18n/navigation";
-import { useIsHydrated } from "@/hooks/useIsHydrated";
 
 const NAV_ITEMS = [
   "about",
@@ -28,7 +27,6 @@ export function Navbar() {
   const translations = useTranslations("nav");
   const router = useRouter();
   const pathname = usePathname();
-  const isHydrated = useIsHydrated();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<NavItem | "">("");
@@ -121,7 +119,7 @@ export function Navbar() {
 
   return (
     <motion.header
-      initial={isHydrated ? { y: -100 } : false}
+      initial={false}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${

@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useIsHydrated } from "@/hooks/useIsHydrated";
 import { ChatPanel } from "./ChatPanel";
 
 function ChatIcon() {
@@ -44,7 +43,6 @@ export function ChatBubble() {
   const translations = useTranslations("chat");
   const [isOpen, setIsOpen] = useState(false);
   const [hasBeenSeen, setHasBeenSeen] = useState(false);
-  const isHydrated = useIsHydrated();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -78,7 +76,7 @@ export function ChatBubble() {
           className="relative w-14 h-14 rounded-full bg-accent text-background flex items-center justify-center shadow-lg shadow-accent/20 cursor-pointer hover:bg-accent-glow transition-colors duration-200"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          initial={isHydrated ? { opacity: 0, scale: 0 } : false}
+          initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 2, duration: 0.3, type: "spring" }}
           aria-label={isOpen ? translations("closeChat") : translations("openChat")}
@@ -87,7 +85,7 @@ export function ChatBubble() {
             {isOpen ? (
             <motion.span
               key="close"
-              initial={isHydrated ? { rotate: -90, opacity: 0 } : false}
+              initial={{ rotate: -90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.15 }}
@@ -97,7 +95,7 @@ export function ChatBubble() {
           ) : (
             <motion.span
               key="chat"
-              initial={isHydrated ? { rotate: 90, opacity: 0 } : false}
+              initial={{ rotate: 90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.15 }}
@@ -117,7 +115,7 @@ export function ChatBubble() {
         <AnimatePresence>
           {!isOpen && !hasBeenSeen && (
             <motion.div
-              initial={isHydrated ? { opacity: 0, x: -8 } : false}
+              initial={{ opacity: 0, x: -8 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -8 }}
               transition={{ delay: 2.3, duration: 0.3 }}

@@ -3,7 +3,6 @@
 import { useState, useCallback, useEffect, type ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useIsHydrated } from "@/hooks/useIsHydrated";
 import { WorldClockOrbit } from "@/components/timezone/WorldClockOrbit";
 
 const ORBIT_DOT_COUNT = 8;
@@ -32,8 +31,6 @@ export function FortuneOrbit({ children }: FortuneOrbitProps) {
   const [currentPhrase, setCurrentPhrase] = useState<string | null>(null);
   const [lastPhraseIndex, setLastPhraseIndex] = useState(-1);
   const [clockOffsetHours, setClockOffsetHours] = useState(0);
-  const isHydrated = useIsHydrated();
-
   const pickRandomPhrase = useCallback(() => {
     let nextIndex: number;
     do {
@@ -127,7 +124,7 @@ export function FortuneOrbit({ children }: FortuneOrbitProps) {
           {isSpinning ? (
             <motion.div
               key="spinning"
-              initial={isHydrated ? { opacity: 0 } : false}
+              initial={false}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="flex gap-1.5 items-center"
@@ -149,7 +146,7 @@ export function FortuneOrbit({ children }: FortuneOrbitProps) {
           ) : currentPhrase ? (
             <motion.div
               key="phrase"
-              initial={isHydrated ? { opacity: 0, y: -8, scale: 0.95 } : false}
+              initial={false}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 8, scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -160,7 +157,7 @@ export function FortuneOrbit({ children }: FortuneOrbitProps) {
           ) : (
             <motion.p
               key="hint"
-              initial={isHydrated ? { opacity: 0 } : false}
+              initial={false}
               animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
               className="text-[10px] text-muted tracking-wide"
@@ -173,7 +170,7 @@ export function FortuneOrbit({ children }: FortuneOrbitProps) {
 
       {/* Time Travel Slider */}
       <motion.div
-        initial={isHydrated ? { opacity: 0 } : false}
+        initial={false}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.0, duration: 0.5 }}
         className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-card/50 backdrop-blur-sm border border-card-border/20"

@@ -2,8 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { useIsHydrated } from "@/hooks/useIsHydrated";
-
 const REPO_URL = "https://github.com/MarceloBD/marcelodiani";
 
 const HIGHLIGHT_KEYS = [
@@ -43,7 +41,6 @@ function CodeBracketIcon() {
 
 export function SourceCodeBanner() {
   const translations = useTranslations("sourceCode");
-  const isHydrated = useIsHydrated();
 
   return (
     <section className="py-16 px-6 relative overflow-hidden">
@@ -52,7 +49,7 @@ export function SourceCodeBanner() {
 
       <motion.div
         className="max-w-4xl mx-auto relative"
-        initial={isHydrated ? { opacity: 0, y: 40 } : false}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -83,7 +80,7 @@ export function SourceCodeBanner() {
               <motion.span
                 key={highlightKey}
                 className="px-3 py-1.5 text-xs font-mono rounded-lg bg-card-border/50 text-muted border border-card-border/30"
-                initial={isHydrated ? { opacity: 0, scale: 0.8 } : false}
+                initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 + 0.3, duration: 0.3 }}

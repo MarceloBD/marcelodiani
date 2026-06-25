@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useIsHydrated } from "@/hooks/useIsHydrated";
 import { getMonthlyDiscount, getTimeRemaining } from "@/lib/monthly-discount";
 
 function FlameIcon() {
@@ -38,7 +37,6 @@ export function PromotionCountdown() {
   const translations = useTranslations("quote");
   const [discount] = useState(() => getMonthlyDiscount());
   const [timeRemaining, setTimeRemaining] = useState(() => getTimeRemaining());
-  const isHydrated = useIsHydrated();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -52,7 +50,7 @@ export function PromotionCountdown() {
 
   return (
     <motion.div
-      initial={isHydrated ? { opacity: 0, y: 10 } : false}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
       className="relative overflow-hidden rounded-xl border border-accent/20 bg-accent/5 p-5 mb-6"

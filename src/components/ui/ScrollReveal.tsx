@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { useIsHydrated } from "@/hooks/useIsHydrated";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -26,7 +25,6 @@ export function ScrollReveal({
   direction = "up",
   distance,
 }: ScrollRevealProps) {
-  const isHydrated = useIsHydrated();
   const offset = DIRECTION_OFFSETS[direction];
   const multiplier = distance ? distance / 40 : 1;
 
@@ -38,7 +36,7 @@ export function ScrollReveal({
 
   return (
     <motion.div
-      initial={isHydrated ? initialValues : false}
+      initial={initialValues}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{

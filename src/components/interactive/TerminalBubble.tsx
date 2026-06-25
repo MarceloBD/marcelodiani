@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useIsHydrated } from "@/hooks/useIsHydrated";
 import { InteractiveTerminal } from "./terminal";
 
 function TerminalIcon() {
@@ -45,7 +44,6 @@ export function TerminalBubble() {
   const translations = useTranslations("terminal");
   const [isOpen, setIsOpen] = useState(false);
   const [hasBeenSeen, setHasBeenSeen] = useState(false);
-  const isHydrated = useIsHydrated();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -78,7 +76,7 @@ export function TerminalBubble() {
         className="relative w-14 h-14 rounded-full bg-accent text-background flex items-center justify-center shadow-lg shadow-accent/20 cursor-pointer hover:bg-accent-glow transition-colors duration-200"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        initial={isHydrated ? { opacity: 0, scale: 0 } : false}
+        initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1.5, duration: 0.3, type: "spring" }}
         aria-label={isOpen ? translations("close") : translations("open")}
@@ -87,7 +85,7 @@ export function TerminalBubble() {
           {isOpen ? (
             <motion.span
               key="close"
-              initial={isHydrated ? { rotate: -90, opacity: 0 } : false}
+              initial={{ rotate: -90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.15 }}
@@ -97,7 +95,7 @@ export function TerminalBubble() {
           ) : (
             <motion.span
               key="terminal"
-              initial={isHydrated ? { rotate: 90, opacity: 0 } : false}
+              initial={{ rotate: 90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.15 }}

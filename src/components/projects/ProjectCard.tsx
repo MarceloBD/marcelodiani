@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useIsHydrated } from "@/hooks/useIsHydrated";
 
 interface ProjectCardProps {
   name: string;
@@ -56,7 +55,6 @@ export function ProjectCard({
   githubUrl,
   index,
 }: ProjectCardProps) {
-  const isHydrated = useIsHydrated();
   const Wrapper = githubUrl ? "a" : "div";
   const wrapperProps = githubUrl
     ? { href: githubUrl, target: "_blank", rel: "noopener noreferrer" }
@@ -64,7 +62,7 @@ export function ProjectCard({
 
   return (
     <motion.div
-      initial={isHydrated ? { opacity: 0, y: 20 } : false}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.4, delay: index * 0.08 }}

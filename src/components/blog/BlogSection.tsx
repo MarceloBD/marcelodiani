@@ -3,7 +3,6 @@
 import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { SectionTitle } from "../ui/SectionTitle";
-import { useIsHydrated } from "@/hooks/useIsHydrated";
 import { blogPosts } from "@/lib/blog-posts";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
@@ -11,7 +10,6 @@ import { Link } from "@/i18n/navigation";
 export function BlogSection() {
   const translations = useTranslations("blog");
   const locale = useLocale();
-  const isHydrated = useIsHydrated();
 
   const latestPosts = blogPosts.slice(0, 3);
 
@@ -33,7 +31,7 @@ export function BlogSection() {
             return (
               <motion.article
                 key={post.slug}
-                initial={isHydrated ? { opacity: 0, y: 20 } : false}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
@@ -84,7 +82,7 @@ export function BlogSection() {
         </div>
 
         <motion.div
-          initial={isHydrated ? { opacity: 0 } : false}
+          initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="text-center"

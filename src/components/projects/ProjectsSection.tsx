@@ -4,7 +4,6 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { useIsHydrated } from "@/hooks/useIsHydrated";
 import { SectionTitle } from "../ui/SectionTitle";
 import { ProjectCard } from "./ProjectCard";
 import { PROJECT_TECH, PROJECT_LINKS } from "@/data/skills";
@@ -56,7 +55,6 @@ export function ProjectsSection() {
   const translations = useTranslations("projects");
   const [isGameExpanded, setIsGameExpanded] = useState(true);
   const platformJumpIndex = PROJECT_KEYS.indexOf("platformJump");
-  const isHydrated = useIsHydrated();
 
   return (
     <section className="py-24 px-6 bg-section-alt">
@@ -86,7 +84,7 @@ export function ProjectsSection() {
                 ? "bg-accent/5 border-accent/20 text-accent/70 hover:bg-accent/10"
                 : "bg-accent/10 border-accent/30 text-accent hover:bg-accent/20"
             }`}
-            initial={isHydrated ? { opacity: 0, y: 20 } : false}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.4, delay: platformJumpIndex * 0.08 }}

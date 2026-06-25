@@ -3,8 +3,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { useIsHydrated } from "@/hooks/useIsHydrated";
-
 const AUDIO_SOURCE = "/audios/space-ambient.mp3";
 const FADE_DURATION_MS = 800;
 const FADE_STEPS = 20;
@@ -12,7 +10,6 @@ const TARGET_VOLUME = 0.35;
 
 export function AudioPlayer() {
   const translations = useTranslations("audioPlayer");
-  const isHydrated = useIsHydrated();
   const audioReference = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -102,7 +99,7 @@ export function AudioPlayer() {
 
   return (
     <motion.div
-      initial={isHydrated ? { opacity: 0, scale: 0.8 } : false}
+      initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 2, duration: 0.5 }}
       className="fixed bottom-24 left-6 z-50"
@@ -157,7 +154,7 @@ export function AudioPlayer() {
             ) : (
               <motion.div
                 key="paused"
-                initial={isHydrated ? { opacity: 0 } : false}
+                initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
@@ -187,7 +184,7 @@ export function AudioPlayer() {
       <AnimatePresence>
         {!isLoaded && !isPlaying && (
           <motion.div
-            initial={isHydrated ? { opacity: 0, x: -10 } : false}
+            initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -10 }}
             transition={{ delay: 3, duration: 0.4 }}

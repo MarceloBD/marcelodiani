@@ -57,6 +57,7 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   experimental: {
+    inlineCss: true,
     optimizePackageImports: [
       "framer-motion",
       "react-icons",

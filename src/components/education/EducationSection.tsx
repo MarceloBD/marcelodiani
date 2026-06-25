@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { SectionTitle } from "../ui/SectionTitle";
 import { ScrollReveal } from "../ui/ScrollReveal";
+import { useIsHydrated } from "@/hooks/useIsHydrated";
 import { MathBackground } from "./MathBackground";
 import { ACHIEVEMENT_LINKS, DEGREE_LINK } from "@/data/skills";
 
@@ -44,6 +45,7 @@ function ExternalLinkIcon() {
 
 export function EducationSection() {
   const translations = useTranslations("education");
+  const isHydrated = useIsHydrated();
 
   return (
     <section className="py-24 px-6 relative overflow-hidden">
@@ -98,7 +100,7 @@ export function EducationSection() {
             return (
               <motion.div
                 key={achievementKey}
-                initial={{ opacity: 0, y: 20 }}
+                initial={isHydrated ? { opacity: 0, y: 20 } : false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}

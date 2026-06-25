@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useIsHydrated } from "@/hooks/useIsHydrated";
 import { ScrollReveal } from "../ui/ScrollReveal";
 
 interface TimelineItemProps {
@@ -30,6 +31,7 @@ export function TimelineItem({
 }: TimelineItemProps) {
   const translations = useTranslations("experience");
   const isEven = index % 2 === 0;
+  const isHydrated = useIsHydrated();
 
   return (
     <ScrollReveal
@@ -41,7 +43,7 @@ export function TimelineItem({
         {/* Timeline dot with pulse ring */}
         <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-2 z-10">
           <motion.div
-            initial={{ scale: 0 }}
+            initial={isHydrated ? { scale: 0 } : false}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 }}

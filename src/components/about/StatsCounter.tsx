@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { useIsHydrated } from "@/hooks/useIsHydrated";
 
 interface StatsCounterProps {
   value: string;
@@ -20,6 +21,7 @@ function parseNumericPart(value: string): { number: number; suffix: string } {
 export function StatsCounter({ value, label, delay = 0 }: StatsCounterProps) {
   const reference = useRef<HTMLDivElement>(null);
   const isInView = useInView(reference, { once: true, margin: "-50px" });
+  const isHydrated = useIsHydrated();
   const [displayNumber, setDisplayNumber] = useState(0);
   const { number: targetNumber, suffix } = parseNumericPart(value);
 
@@ -51,7 +53,7 @@ export function StatsCounter({ value, label, delay = 0 }: StatsCounterProps) {
   return (
     <motion.div
       ref={reference}
-      initial={{ opacity: 0, y: 20 }}
+      initial={isHydrated ? { opacity: 0, y: 20 } : false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}

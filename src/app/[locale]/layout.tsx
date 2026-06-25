@@ -53,7 +53,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className="dark" suppressHydrationWarning>
       <head>
-        <style dangerouslySetInnerHTML={{ __html: "html,body{background:#050508;color:#e4e4e7}" }} />
+        <style dangerouslySetInnerHTML={{ __html: `:root{--background:#050508;--foreground:#e4e4e7;--accent:#3b82f6;--accent-glow:#60a5fa;--muted:#a1a1aa;--card:#0a0a0f;--card-border:#1a1a2e;--section-alt:#08080d}html,body{background:var(--background);color:var(--foreground);margin:0;padding:0;overflow-x:clip}.gradient-text{background:linear-gradient(135deg,var(--accent),var(--accent-glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.glass-card{background:rgba(10,10,15,0.6);backdrop-filter:blur(12px);border:1px solid var(--card-border)}` }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />

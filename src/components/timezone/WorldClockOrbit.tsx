@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useIsHydrated } from "@/hooks/useIsHydrated";
 import { useWorldClock } from "./useWorldClock";
 import type { CityTime } from "./useWorldClock";
 
@@ -22,9 +23,10 @@ interface OrbitalBadgeProps {
   cityLabel: string;
   index: number;
   totalItems: number;
+  isHydrated: boolean;
 }
 
-function OrbitalBadge({ cityTime, cityLabel, index, totalItems }: OrbitalBadgeProps) {
+function OrbitalBadge({ cityTime, cityLabel, index, totalItems, isHydrated }: OrbitalBadgeProps) {
   const { city, formattedTime, isDayTime } = cityTime;
   const { x, y } = getOrbitalPosition(index, totalItems);
 
@@ -43,7 +45,7 @@ function OrbitalBadge({ cityTime, cityLabel, index, totalItems }: OrbitalBadgePr
       }}
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0 }}
+        initial={isHydrated ? { opacity: 0, scale: 0 } : false}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1.3 + index * 0.1, duration: 0.4, ease: "backOut" }}
         whileHover={{ scale: 1.15 }}
@@ -80,6 +82,7 @@ interface WorldClockOrbitProps {
 export function WorldClockOrbit({ offsetHours = 0 }: WorldClockOrbitProps) {
   const translations = useTranslations("worldClock");
   const cityTimes = useWorldClock(offsetHours);
+  const isHydrated = useIsHydrated();
 
   if (cityTimes.length === 0) return null;
 
@@ -87,7 +90,7 @@ export function WorldClockOrbit({ offsetHours = 0 }: WorldClockOrbitProps) {
     <div className="absolute inset-0 pointer-events-none">
       {/* Subtle rotating dashed ring */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
+        initial={isHydrated ? { opacity: 0, scale: 0.5 } : false}
         animate={{ opacity: 1, scale: 1, rotate: 360 }}
         transition={{
           opacity: { delay: 1.0, duration: 0.6 },
@@ -111,6 +114,7 @@ export function WorldClockOrbit({ offsetHours = 0 }: WorldClockOrbitProps) {
           cityLabel={translations(`cities.${cityTime.city.translationKey}`)}
           index={index}
           totalItems={cityTimes.length}
+          isHydrated={isHydrated}
         />
       ))}
     </div>

@@ -3,6 +3,7 @@
 import { useState, useTransition, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useIsHydrated } from "@/hooks/useIsHydrated";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { SectionTitle } from "../ui/SectionTitle";
 import { submitQuoteRequest } from "@/app/actions/quote";
@@ -57,6 +58,7 @@ export function QuoteRequest() {
   const [formError, setFormError] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const formReference = useRef<HTMLFormElement>(null);
+  const isHydrated = useIsHydrated();
 
   const handleSubmit = (formData: FormData) => {
     setFormError(null);
@@ -132,7 +134,7 @@ export function QuoteRequest() {
                   key="form"
                   ref={formReference}
                   action={handleSubmit}
-                  initial={{ opacity: 0 }}
+                  initial={isHydrated ? { opacity: 0 } : false}
                   animate={{ opacity: 1 }}
                   className="space-y-4"
                 >

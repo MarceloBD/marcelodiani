@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import { useIsHydrated } from "@/hooks/useIsHydrated";
 
 const CHAPTER_KEYS = [
   "origins",
@@ -69,11 +70,12 @@ function ChapterIcon({ chapter }: { chapter: ChapterKey }) {
 
 export function BeyondCode() {
   const translations = useTranslations("beyondCode");
+  const isHydrated = useIsHydrated();
 
   return (
     <div className="mt-4">
       <motion.p
-        initial={{ opacity: 0, y: 12 }}
+        initial={isHydrated ? { opacity: 0, y: 12 } : false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         className="text-center text-muted text-sm md:text-base mb-12 max-w-lg mx-auto"
@@ -85,7 +87,7 @@ export function BeyondCode() {
         {CHAPTER_KEYS.map((chapter, index) => (
           <motion.div
             key={chapter}
-            initial={{ opacity: 0, y: 20 }}
+            initial={isHydrated ? { opacity: 0, y: 20 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.08 }}
             whileHover={{ y: -4 }}

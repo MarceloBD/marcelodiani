@@ -254,7 +254,7 @@ export function SignalVisualizer() {
         );
 
         // Draw combined waveform
-        const combinedGenerator: WaveGenerator = (time, _freq, _amp, _phase) => {
+        const combinedGenerator: WaveGenerator = (time) => {
           const primary = primaryGenerator(time, currentFrequency, currentAmplitude, currentPhase);
           const secondary = secondGenerator(time, currentSecondFrequency, currentSecondAmplitude, 0);
           return primary + secondary;

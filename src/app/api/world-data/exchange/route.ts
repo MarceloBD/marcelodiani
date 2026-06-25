@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCached, setCache } from "@/lib/api-cache";
-import { logger, toError } from "@/lib/logger";
+import { logger } from "@/lib/logger";
 
 const CACHE_TTL_MS = 30 * 60 * 1_000; // 30 minutes
 const CACHE_KEY_PREFIX = "exchange";

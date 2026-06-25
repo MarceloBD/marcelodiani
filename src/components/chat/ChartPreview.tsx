@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -86,10 +87,13 @@ function FullscreenModal({
         </div>
 
         {/* Image */}
-        <img
+        <Image
           src={imageSrc}
           alt={title}
+          width={800}
+          height={600}
           className="max-w-full max-h-[80vh] object-contain rounded-lg border border-white/10"
+          unoptimized
         />
       </motion.div>
     </motion.div>,
@@ -124,10 +128,13 @@ export function ChartPreview({
           className="w-full cursor-pointer"
           aria-label={translations("expandChart")}
         >
-          <img
+          <Image
             src={imageSrc}
             alt={title}
+            width={400}
+            height={200}
             className="w-full max-h-[200px] object-contain transition-all duration-200 hover:brightness-110"
+            unoptimized
           />
         </button>
 

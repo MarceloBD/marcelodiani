@@ -185,7 +185,7 @@ function LogStream({ logs }: { logs: LogEntry[] }) {
   );
 }
 
-function TraceWaterfall({ spans, hasError }: { spans: TraceSpan[]; hasError: boolean }) {
+function TraceWaterfall({ spans }: { spans: TraceSpan[] }) {
   return (
     <div className="space-y-1.5">
       {spans.map((span, index) => {
@@ -362,7 +362,7 @@ export function ObservabilityDashboard() {
       );
 
       // Update alerts
-      setAlerts((previousAlerts) => {
+      setAlerts(() => {
         const latestCpu = errorMode ? 75 + Math.random() * 20 : 40 + Math.random() * 25;
         const latestLatency = errorMode ? 300 + Math.random() * 300 : 80 + Math.random() * 80;
         const latestErrorRate = errorMode ? 4 + Math.random() * 8 : Math.random() * 2;
@@ -398,7 +398,7 @@ export function ObservabilityDashboard() {
     }, TICK_MS);
 
     return () => clearInterval(intervalId);
-  }, [isRunning, isInView]);
+  }, [isRunning, isInView, translations]);
 
   const latestCpu = cpuHistory.length > 0 ? Math.round(cpuHistory[cpuHistory.length - 1].value) : 0;
   const latestLatency = latencyHistory.length > 0 ? Math.round(latencyHistory[latencyHistory.length - 1].value) : 0;
@@ -489,7 +489,7 @@ export function ObservabilityDashboard() {
               {translations("traces")}
             </div>
             <div className="rounded-lg border border-card-border/50 bg-background/30 p-3">
-              <TraceWaterfall spans={traceSpans} hasError={errorMode} />
+              <TraceWaterfall spans={traceSpans} />
             </div>
           </div>
         </div>

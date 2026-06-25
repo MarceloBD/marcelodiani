@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, useState, useEffect, useRef } from "react";
+import { type ReactNode, useState, useRef, useSyncExternalStore, useEffect } from "react";
 
 interface LazySectionProps {
   children: ReactNode;
@@ -8,6 +8,10 @@ interface LazySectionProps {
   height?: string;
   rootMargin?: string;
   className?: string;
+}
+
+function subscribeNoop() {
+  return () => {};
 }
 
 export function LazySection({
@@ -18,16 +22,11 @@ export function LazySection({
   className,
 }: LazySectionProps) {
   const elementReference = useRef<HTMLDivElement>(null);
-  const [hasBeenVisible, setHasBeenVisible] = useState(true);
-  const [isHydrated, setIsHydrated] = useState(false);
+  const isServer = useSyncExternalStore(subscribeNoop, () => false, () => true);
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
 
   useEffect(() => {
-    setIsHydrated(true);
-    setHasBeenVisible(false);
-  }, []);
-
-  useEffect(() => {
-    if (!isHydrated || hasBeenVisible) return;
+    if (hasBeenVisible) return;
 
     const element = elementReference.current;
     if (!element) return;
@@ -39,15 +38,15 @@ export function LazySection({
           observer.unobserve(element);
         }
       },
-      { rootMargin }
+      { rootMargin },
     );
 
     observer.observe(element);
 
     return () => observer.disconnect();
-  }, [isHydrated, hasBeenVisible, rootMargin]);
+  }, [hasBeenVisible, rootMargin]);
 
-  const shouldRender = hasBeenVisible;
+  const shouldRender = isServer || hasBeenVisible;
 
   return (
     <div

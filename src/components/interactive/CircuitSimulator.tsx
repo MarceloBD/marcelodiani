@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { useTranslations } from "next-intl";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { CircuitDetails } from "./CircuitDetails";
 import { type CircuitType, CIRCUIT_EXAMPLES } from "@/data/circuitExamples";
@@ -409,7 +408,6 @@ const CIRCUIT_RENDERERS: Record<CircuitType, React.ComponentType<CircuitDiagramP
 // --- Main Component ---
 
 export function CircuitSimulator() {
-  const translations = useTranslations("circuitSimulator");
   const [selectedCircuit, setSelectedCircuit] = useState<CircuitType>("resistor");
   const [parameterValues, setParameterValues] = useState<Record<string, number>>(() => {
     const defaults: Record<string, number> = {};

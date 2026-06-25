@@ -51,12 +51,11 @@ export default async function LocaleLayout({
   const messages = (await import(`../../../messages/${locale}.json`)).default;
 
   return (
-    <html lang={locale} className="dark">
+    <html lang={locale} className="dark" suppressHydrationWarning>
       <head>
+        <style dangerouslySetInnerHTML={{ __html: "html,body{background:#050508;color:#e4e4e7}" }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
         <meta name="google-site-verification" content="6vzZD0heq5T-PiL170brMzDEgK9_S_cOhpkvsqUvDuM" />
       </head>

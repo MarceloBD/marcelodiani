@@ -130,7 +130,13 @@ export function Navbar() {
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <motion.button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() => {
+            if (isHomePage) {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              return;
+            }
+            router.push("/");
+          }}
           className="text-lg font-bold tracking-tight hover:text-accent transition-colors cursor-pointer"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

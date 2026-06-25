@@ -105,7 +105,7 @@ export function CodePlayground() {
     } finally {
       setIsRunning(false);
     }
-  }, [code, selectedLanguageIndex]);
+  }, [code, selectedLanguageIndex, translations]);
 
   return (
     <section className="py-16 px-6">

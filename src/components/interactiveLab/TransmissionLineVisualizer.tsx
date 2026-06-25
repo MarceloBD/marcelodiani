@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import { SimulatorDetails } from "./SimulatorDetails";
 import {
   type TransmissionLineMode,
@@ -474,7 +474,6 @@ function SmithChartView() {
               <g key={`r-${r}`}>
                 <circle cx={circleCenter} cy={SMITH_CENTER} r={circleRadius}
                   fill="none" stroke="rgba(109,90,207,0.2)" strokeWidth={0.5} />
-                <SmithChartClipCircle cx={circleCenter} cy={SMITH_CENTER} r={circleRadius} />
                 {r > 0 && (
                   <text x={circleCenter - circleRadius + 3} y={SMITH_CENTER - 3}
                     className="fill-muted/30 text-[7px] font-mono">{r}</text>
@@ -548,13 +547,6 @@ function SmithChartView() {
       </div>
     </>
   );
-}
-
-// Clip constant-r circle to the unit circle boundary
-function SmithChartClipCircle({ cx, cy, r }: { cx: number; cy: number; r: number }) {
-  // This is just a visual helper — the circles are already drawn, this clips them
-  // We rely on the outer boundary circle and SVG overflow:hidden for clipping
-  return null;
 }
 
 // Draw reactance arc clipped to the unit circle

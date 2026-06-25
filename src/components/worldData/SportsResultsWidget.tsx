@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useWorldData } from "@/hooks/useWorldData";
 import { WidgetError } from "./WidgetError";
@@ -125,11 +126,14 @@ function StandingsTable({
 
               <div className="flex items-center gap-1.5 min-w-0">
                 {standing.strBadge && (
-                  <img
+                  <Image
                     src={standing.strBadge}
                     alt=""
+                    width={16}
+                    height={16}
                     className="w-4 h-4 object-contain shrink-0"
                     loading="lazy"
+                    unoptimized
                   />
                 )}
                 <span className="text-foreground truncate text-[11px]">
@@ -200,11 +204,14 @@ function MatchResults({
               {event.strHomeTeam}
             </span>
             {event.strHomeTeamBadge && (
-              <img
+              <Image
                 src={event.strHomeTeamBadge}
                 alt=""
+                width={16}
+                height={16}
                 className="w-4 h-4 object-contain shrink-0"
                 loading="lazy"
+                unoptimized
               />
             )}
           </div>
@@ -219,11 +226,14 @@ function MatchResults({
           {/* Away team */}
           <div className="flex-1 flex items-center gap-1.5 min-w-0">
             {event.strAwayTeamBadge && (
-              <img
+              <Image
                 src={event.strAwayTeamBadge}
                 alt=""
+                width={16}
+                height={16}
                 className="w-4 h-4 object-contain shrink-0"
                 loading="lazy"
+                unoptimized
               />
             )}
             <span className="text-xs text-foreground truncate">

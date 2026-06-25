@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import { type CircuitType, CIRCUIT_EXAMPLES } from "@/data/circuitExamples";
 
 interface CircuitDetailsProps {

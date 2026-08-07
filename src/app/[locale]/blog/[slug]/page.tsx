@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const excerpt = locale === "pt" ? post.excerpt.pt : post.excerpt.en;
 
   return {
-    title: `${title} | Marcelo B. Diani`,
+    title: title,
     description: excerpt,
     metadataBase: new URL(baseUrl),
     alternates: {

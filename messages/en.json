@@ -934,8 +934,8 @@
   },
   "blog": {
     "title": "Blog",
-    "pageTitle": "Software Engineering Blog by Marcelo Diani — Architecture, React & Cloud",
-    "subtitle": "Articles on software engineering, system architecture, and modern web development with React, Node.js, and AWS.",
+    "pageTitle": "Blog — Marcelo Diani | Software Engineering",
+    "subtitle": "Articles on software engineering, system architecture, and modern web development with React, Node.js, AWS, and cloud technologies.",
     "homeSubtitle": "Latest insights on software development and engineering",
     "readMore": "Read more",
     "backToBlog": "← Back to Blog",

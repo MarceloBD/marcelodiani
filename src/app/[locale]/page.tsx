@@ -116,6 +116,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         "max-snippet": -1,
       },
     },
+    icons: {
+      icon: [
+        { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      ],
+      apple: [
+        { url: "/apple-icon.png", type: "image/png", sizes: "180x180" },
+      ],
+    },
     verification: {
       google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
     },

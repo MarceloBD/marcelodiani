@@ -19,17 +19,263 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "compliance-and-security-why-i-built-booltools-gdpr-and-security-checker",
+    title: {
+      en: "Why I Built BoolTools GDPR & Security Checker",
+      pt: "Por Que Criei o BoolTools GDPR e Security Checker",
+    },
+    publishedAt: "2026-08-07",
+    readingTime: 10,
+    coverImage: "/blog/booltools-compliance-security.png",
+    excerpt: {
+      en: "Most developers ship code without knowing if it complies with GDPR or LGPD. Here is why it matters and why I built BoolTools to catch these gaps.",
+      pt: "A maioria dos desenvolvedores entrega código sem saber se está em conformidade com GDPR ou LGPD. Veja por que importa e por que criei o BoolTools.",
+    },
+    content: {
+      en: `If you ship software that handles user data, you have compliance and security obligations whether you think about them or not.
+
+Most developers know this in theory. We hear about GDPR fines, data breaches, and vulnerability disclosures. But in practice, compliance and security auditing feel like someone else's problem. Legal handles GDPR. The security team runs penetration tests. We just write the code.
+
+Except that is not how it works anymore. The compliance gaps and security vulnerabilities that cause real damage almost always originate in the codebase. A missing consent mechanism, a hardcoded secret, an unencrypted data store, a missing data deletion endpoint. These are not legal oversights. They are engineering defects.
+
+And unlike a broken button or a failed test, they do not announce themselves. They sit quietly in production until an auditor, an attacker, or a regulator finds them.
+
+## What GDPR and LGPD actually mean for your code
+
+**GDPR** (EU General Data Protection Regulation) and **LGPD** (Brazilian Lei Geral de Protecao de Dados) are the two most impactful data protection regulations in the world. If your application serves users in Europe or Brazil, you are subject to one or both of them.
+
+From a developer's perspective, these regulations translate into concrete technical requirements:
+
+**Consent management.** Users must give explicit consent before you collect, process, or store their personal data. This means your application needs consent collection mechanisms, cookie banners that actually block tracking scripts until consent is given, and a way for users to withdraw consent at any time. If your analytics script fires before the user clicks "accept," you are already non-compliant.
+
+**Data subject rights.** Users have the right to access, rectify, delete, and export their personal data. Your application needs API endpoints or workflows that allow users to request their data, correct inaccuracies, delete their account and all associated data, and download everything you have stored about them. If a user asks "what data do you have on me?" and you cannot answer programmatically, you have a problem.
+
+**Data minimization and purpose limitation.** You should only collect data that is necessary for the stated purpose, and you should not use it for anything else. That "just in case" field you added to the registration form? That analytics event that captures the full URL including query parameters with user tokens? Those are potential violations.
+
+**Security measures.** Both regulations require "appropriate technical and organizational measures" to protect personal data. This includes encryption at rest and in transit, access control, logging, and incident response procedures. Your \`Content-Security-Policy\` headers, your TLS configuration, your database encryption setup, all of these are compliance requirements, not just best practices.
+
+**Breach notification.** If a data breach occurs, GDPR requires notification to the supervisory authority within 72 hours and notification to affected users without undue delay. LGPD has similar requirements. Your application needs logging and monitoring sufficient to detect a breach, and your organization needs a response plan.
+
+## Why developers are the first line of defense
+
+The reason compliance is a developer concern is simple: most compliance failures are implementation failures.
+
+A privacy policy page does not make you compliant. A cookie banner does not make you compliant. What makes you compliant is whether your code actually does what those documents promise.
+
+Consider a practical example. Your privacy policy says "users can delete their account and all associated data at any time." But your deletion endpoint only soft-deletes the user record and leaves their comments, uploads, analytics events, and payment history intact across six different database tables and two third-party services. You have a compliance gap, and it lives in your code.
+
+Or consider security. Your infrastructure team configured the load balancer with TLS 1.3. But your application sets cookies without the \`Secure\` flag, serves sensitive API responses without \`Cache-Control: no-store\`, and logs request bodies that contain personal data in plain text. The infrastructure is secure. The application is not.
+
+**Compliance and security are not checkboxes on a legal document. They are properties of your running system that must be validated continuously.**
+
+## The security side: what you do not know can hurt you
+
+Security vulnerabilities follow the same pattern as compliance gaps. They are silent, they accumulate, and they are almost always the result of implementation decisions rather than infrastructure failures.
+
+The landscape of known vulnerabilities is enormous. The NVD (National Vulnerability Database) contains over 200,000 CVEs. The CWE (Common Weakness Enumeration) catalogs hundreds of software weakness patterns. MITRE ATT&CK documents adversary tactics and techniques. CISA maintains a catalog of actively exploited vulnerabilities. OWASP (Open Worldwide Application Security Project) publishes the Top 10 most critical web application security risks, along with testing guides, cheat sheets, and frameworks like ASVS (Application Security Verification Standard) that define security requirements by maturity level. And new entries across all of these sources are added every day.
+
+As a developer, you need to worry about:
+
+**Dependency vulnerabilities.** Every npm package, Go module, or Python library you import carries its own attack surface. A single vulnerable transitive dependency can expose your entire application. OSV.dev, GitHub Advisories, and the NVD all track these, but most developers only check when something dramatic makes the news.
+
+**Code-level weaknesses.** Hardcoded secrets, SQL injection vectors, insecure deserialization, improper input validation, missing authentication checks. These are CWE patterns that exist in virtually every codebase at some scale. They are not exotic attacks. They are common mistakes that automated tools can detect.
+
+**Configuration vulnerabilities.** Missing security headers, overly permissive CORS policies, debug endpoints left in production, default credentials in Docker configurations. These are the low-hanging fruit that attackers scan for first.
+
+**Platform-specific risks.** If you deploy on AWS, GCP, or Azure, each platform has its own set of misconfigurations that can expose data. If you use Docker, your Dockerfile and compose configuration need to follow security best practices. If you run a database, its access control and encryption settings matter.
+
+The problem is not that this information is unavailable. It is that it is scattered across dozens of databases and standards, and no developer has time to manually cross-reference their codebase against all of them.
+
+## The real problem: silent accumulation
+
+Here is what makes compliance and security different from other engineering concerns.
+
+When a feature is broken, users report it. When a test fails, the CI pipeline catches it. When performance degrades, monitoring alerts fire. There is a feedback loop.
+
+Compliance and security gaps have no natural feedback loop. They accumulate silently over months or years. A developer adds a new data collection field without updating the consent flow. Another developer introduces a dependency with a known CVE. A configuration change removes a security header. A new endpoint is added without rate limiting or authentication.
+
+None of these trigger build errors. None of them break tests. The application continues to function perfectly. But the attack surface grows, and the compliance posture degrades.
+
+You only discover these problems in one of three ways: a security audit finds them (expensive but controlled), an attacker exploits them (expensive and uncontrolled), or a regulator investigates you (expensive and painful). There is no good scenario for finding these problems late.
+
+**The only viable strategy is continuous, automated validation.**
+
+## Why I built BoolTools GDPR Checker and Security Checker
+
+This is the problem I set out to solve with two new tools in the **BoolTools** ecosystem.
+
+**BoolTools GDPR Checker** is an open-source compliance auditing platform that validates any software project against **GDPR and LGPD** using **348 curated rules** across six categories: consent, data rights, security, cookies, vendor management, and organizational measures. Each rule includes a \`check_instruction\` field designed for AI agents to verify against your actual codebase, not just a checklist, but actionable verification steps.
+
+It supports six audit types: code audits, consent audits, rights audits, security audits, documentation audits, and full comprehensive audits. You can filter by regulation (GDPR, LGPD, or both), severity level, programming language, framework, and platform.
+
+The project includes a web UI with real-time progress tracking, a REST API for automation, and an MCP server that lets AI agents like Cursor or Claude run compliance audits programmatically. The agent workflow is straightforward: start an audit, download the rules, verify each rule's check instruction against the codebase, report results, and get a compliance report with a letter grade from A to F.
+
+The project is fully open-source and available at https://github.com/booltools/booltools-gdpr
+
+**BoolTools Security Checker** is an open-source security validation platform that audits any repository or cloud architecture against **thousands of known vulnerabilities** from ten authoritative sources: NVD, CWE, MITRE ATT&CK, CAPEC, Nuclei templates, CISA KEV, EPSS, Exploit-DB, GitHub Advisory, and OSV.dev. All sources are normalized into a unified database with a common schema.
+
+It follows the same architecture as the GDPR Checker: web UI with real-time SSE progress, REST API, and MCP server for AI agent integration. You specify your language, platform, tools, and minimum severity, and it returns a comprehensive audit against all relevant vulnerability patterns and attack techniques.
+
+The project is fully open-source and available at https://github.com/booltools/booltools-security-checker
+
+## What these tools prevent
+
+Together, these tools address the two categories of silent risk that every application carries:
+
+**Compliance risk.** Without systematic checking, your application likely has gaps in consent collection, data deletion, user data export, cookie management, or privacy documentation. Each gap is a potential regulatory violation. GDPR fines can reach 4% of global annual revenue. LGPD fines can reach 2% of revenue in Brazil. These are not theoretical numbers, they are enforced.
+
+**Security risk.** Without continuous vulnerability assessment, your application accumulates known weaknesses over time. Every dependency update, every new endpoint, every configuration change can introduce a vulnerability that matches a known CVE, CWE pattern, or attack technique. These weaknesses are exactly what automated scanners and attackers look for first.
+
+The goal of both tools is the same: **make compliance and security validation as routine as running your test suite.** Point them at your project, get an immediate, comprehensive answer, and know exactly what needs fixing before it becomes a problem.
+
+## Why specialized tools beat a generic AI agent
+
+You might be thinking: "I can just ask ChatGPT or Claude to audit my code for GDPR compliance or security issues." And you can. But the results will be fundamentally different from what a specialized tool produces.
+
+A generic AI agent relies on its own training data. It knows about GDPR and security concepts in a general sense, but it does not have a curated, structured knowledge base with 348 specific compliance rules or thousands of cataloged vulnerability patterns from NVD, CWE, OWASP, and MITRE ATT&CK. It will give you a reasonable answer, but it will miss things. It might hallucinate a rule that does not exist, or skip a real requirement because it was not prominent enough in its training data.
+
+Specialized tools like BoolTools solve this differently. They come with a pre-built knowledge base where every rule has been curated, categorized by severity, and mapped to specific regulations or vulnerability databases. When an AI agent uses BoolTools through MCP, it does not rely on its own knowledge to know what to check. It downloads the rules from the tool, reads the check instructions, and verifies each one against your actual code. The AI's role becomes execution and reasoning, not knowledge recall.
+
+This is the same principle behind why we use linters instead of asking an AI "does my code have style issues." The linter has a definitive rule set. The AI has opinions. For compliance and security, you need definitive rule sets.
+
+The combination is powerful: a specialized knowledge base that knows exactly what to check, plus an AI agent that can reason about your code and determine whether each check passes or fails. Neither alone is as effective as both together.
+
+## What comes next
+
+BoolTools started with the SEO and GEO crawler. The GDPR Checker and Security Checker are the second and third tools in the ecosystem, and they follow the same philosophy: developer-focused, open-source, actionable, and designed to integrate directly into your workflow through MCP and AI agents.
+
+If you are building software that handles user data, and in 2026 that is virtually all software, compliance and security are not optional extras. They are technical requirements that deserve the same continuous validation as your test coverage, your performance metrics, and your deployment pipeline.
+
+The cost of finding these problems late is always higher than the cost of finding them early. BoolTools is built to help you find them early.`,
+      pt: `Se você entrega software que lida com dados de usuários, você tem obrigações de conformidade e segurança quer pense nelas ou não.
+
+A maioria dos desenvolvedores sabe disso em teoria. Ouvimos sobre multas da GDPR, vazamentos de dados e divulgações de vulnerabilidades. Mas na prática, auditoria de conformidade e segurança parecem ser problema de outra pessoa. O jurídico cuida da GDPR. O time de segurança faz testes de penetração. Nós apenas escrevemos o código.
+
+Só que não é mais assim que funciona. As lacunas de conformidade e vulnerabilidades de segurança que causam danos reais quase sempre se originam no código. Um mecanismo de consentimento ausente, um segredo hardcoded, um armazenamento de dados não criptografado, um endpoint de exclusão de dados faltando. Estes não são descuidos jurídicos. São defeitos de engenharia.
+
+E diferente de um botão quebrado ou um teste falhando, eles não se anunciam. Ficam silenciosamente em produção até que um auditor, um atacante ou um regulador os encontre.
+
+## O que GDPR e LGPD realmente significam para seu código
+
+**GDPR** (Regulamento Geral de Proteção de Dados da UE) e **LGPD** (Lei Geral de Proteção de Dados do Brasil) são as duas regulamentações de proteção de dados mais impactantes do mundo. Se sua aplicação atende usuários na Europa ou no Brasil, você está sujeito a uma ou ambas.
+
+Da perspectiva do desenvolvedor, essas regulamentações se traduzem em requisitos técnicos concretos:
+
+**Gerenciamento de consentimento.** Os usuários devem dar consentimento explícito antes de você coletar, processar ou armazenar seus dados pessoais. Isso significa que sua aplicação precisa de mecanismos de coleta de consentimento, banners de cookies que realmente bloqueiem scripts de rastreamento até o consentimento ser dado, e uma forma para os usuários retirarem o consentimento a qualquer momento. Se seu script de analytics dispara antes do usuário clicar em "aceitar", você já está em não conformidade.
+
+**Direitos dos titulares de dados.** Os usuários têm o direito de acessar, retificar, excluir e exportar seus dados pessoais. Sua aplicação precisa de endpoints de API ou workflows que permitam aos usuários solicitar seus dados, corrigir imprecisões, excluir sua conta e todos os dados associados, e baixar tudo que você armazenou sobre eles. Se um usuário pergunta "que dados vocês têm sobre mim?" e você não consegue responder programaticamente, você tem um problema.
+
+**Minimização de dados e limitação de finalidade.** Você deve coletar apenas dados necessários para a finalidade declarada, e não deve usá-los para mais nada. Aquele campo "por precaução" que você adicionou no formulário de cadastro? Aquele evento de analytics que captura a URL completa incluindo parâmetros de query com tokens de usuário? São potenciais violações.
+
+**Medidas de segurança.** Ambas as regulamentações exigem "medidas técnicas e organizacionais adequadas" para proteger dados pessoais. Isso inclui criptografia em repouso e em trânsito, controle de acesso, logging e procedimentos de resposta a incidentes. Seus headers \`Content-Security-Policy\`, sua configuração TLS, seu setup de criptografia do banco de dados, tudo isso são requisitos de conformidade, não apenas boas práticas.
+
+**Notificação de violação.** Se ocorrer uma violação de dados, a GDPR exige notificação à autoridade supervisora em 72 horas e notificação aos usuários afetados sem atraso indevido. A LGPD tem requisitos similares. Sua aplicação precisa de logging e monitoramento suficientes para detectar uma violação, e sua organização precisa de um plano de resposta.
+
+## Por que desenvolvedores são a primeira linha de defesa
+
+A razão pela qual conformidade é uma preocupação do desenvolvedor é simples: a maioria das falhas de conformidade são falhas de implementação.
+
+Uma página de política de privacidade não te torna conforme. Um banner de cookies não te torna conforme. O que te torna conforme é se seu código realmente faz o que esses documentos prometem.
+
+Considere um exemplo prático. Sua política de privacidade diz "usuários podem excluir sua conta e todos os dados associados a qualquer momento." Mas seu endpoint de exclusão apenas faz soft-delete do registro do usuário e deixa seus comentários, uploads, eventos de analytics e histórico de pagamentos intactos em seis tabelas diferentes do banco de dados e dois serviços terceiros. Você tem uma lacuna de conformidade, e ela vive no seu código.
+
+Ou considere segurança. Seu time de infraestrutura configurou o load balancer com TLS 1.3. Mas sua aplicação configura cookies sem a flag \`Secure\`, serve respostas de API sensíveis sem \`Cache-Control: no-store\`, e registra corpos de requisição que contêm dados pessoais em texto plano. A infraestrutura é segura. A aplicação não é.
+
+**Conformidade e segurança não são checkboxes em um documento legal. São propriedades do seu sistema em execução que devem ser validadas continuamente.**
+
+## O lado da segurança: o que você não sabe pode te prejudicar
+
+Vulnerabilidades de segurança seguem o mesmo padrão que lacunas de conformidade. São silenciosas, se acumulam, e são quase sempre resultado de decisões de implementação ao invés de falhas de infraestrutura.
+
+O cenário de vulnerabilidades conhecidas é enorme. O NVD (National Vulnerability Database) contém mais de 200.000 CVEs. O CWE (Common Weakness Enumeration) cataloga centenas de padrões de fraqueza de software. O MITRE ATT&CK documenta táticas e técnicas de adversários. A CISA mantém um catálogo de vulnerabilidades ativamente exploradas. O OWASP (Open Worldwide Application Security Project) publica o Top 10 dos riscos de segurança mais críticos para aplicações web, além de guias de teste, cheat sheets e frameworks como o ASVS (Application Security Verification Standard) que definem requisitos de segurança por nível de maturidade. E novas entradas em todas essas fontes são adicionadas todos os dias.
+
+Como desenvolvedor, você precisa se preocupar com:
+
+**Vulnerabilidades de dependências.** Cada pacote npm, módulo Go ou biblioteca Python que você importa carrega sua própria superfície de ataque. Uma única dependência transitiva vulnerável pode expor toda sua aplicação. OSV.dev, GitHub Advisories e o NVD rastreiam essas vulnerabilidades, mas a maioria dos desenvolvedores só verifica quando algo dramático vira notícia.
+
+**Fraquezas a nível de código.** Segredos hardcoded, vetores de SQL injection, deserialização insegura, validação de input inadequada, verificações de autenticação ausentes. Esses são padrões CWE que existem em virtualmente toda codebase em alguma escala. Não são ataques exóticos. São erros comuns que ferramentas automatizadas podem detectar.
+
+**Vulnerabilidades de configuração.** Headers de segurança ausentes, políticas CORS excessivamente permissivas, endpoints de debug deixados em produção, credenciais padrão em configurações Docker. Esses são os alvos fáceis que atacantes escaneiam primeiro.
+
+**Riscos específicos de plataforma.** Se você faz deploy na AWS, GCP ou Azure, cada plataforma tem seu próprio conjunto de configurações incorretas que podem expor dados. Se você usa Docker, seu Dockerfile e configuração compose precisam seguir boas práticas de segurança. Se você roda um banco de dados, suas configurações de controle de acesso e criptografia importam.
+
+O problema não é que essa informação esteja indisponível. É que está espalhada em dezenas de bancos de dados e padrões, e nenhum desenvolvedor tem tempo para cruzar manualmente sua codebase com todos eles.
+
+## O verdadeiro problema: acumulação silenciosa
+
+Aqui está o que torna conformidade e segurança diferentes de outras preocupações de engenharia.
+
+Quando uma feature está quebrada, usuários reportam. Quando um teste falha, o pipeline de CI captura. Quando performance degrada, alertas de monitoramento disparam. Existe um ciclo de feedback.
+
+Lacunas de conformidade e segurança não têm ciclo de feedback natural. Se acumulam silenciosamente ao longo de meses ou anos. Um desenvolvedor adiciona um novo campo de coleta de dados sem atualizar o fluxo de consentimento. Outro desenvolvedor introduz uma dependência com um CVE conhecido. Uma mudança de configuração remove um header de segurança. Um novo endpoint é adicionado sem rate limiting ou autenticação.
+
+Nenhum desses aciona erros de build. Nenhum deles quebra testes. A aplicação continua funcionando perfeitamente. Mas a superfície de ataque cresce, e a postura de conformidade degrada.
+
+Você só descobre esses problemas de uma de três formas: uma auditoria de segurança os encontra (caro mas controlado), um atacante os explora (caro e descontrolado), ou um regulador investiga você (caro e doloroso). Não há cenário bom para encontrar esses problemas tarde.
+
+**A única estratégia viável é validação contínua e automatizada.**
+
+## Por que criei o BoolTools GDPR Checker e Security Checker
+
+Este é o problema que me propus a resolver com duas novas ferramentas no ecossistema **BoolTools**.
+
+**BoolTools GDPR Checker** é uma plataforma open-source de auditoria de conformidade que valida qualquer projeto de software contra **GDPR e LGPD** usando **348 regras curadas** em seis categorias: consentimento, direitos de dados, segurança, cookies, gestão de fornecedores e medidas organizacionais. Cada regra inclui um campo \`check_instruction\` projetado para agentes de IA verificarem contra sua codebase real, não apenas um checklist, mas passos de verificação acionáveis.
+
+Suporta seis tipos de auditoria: auditorias de código, consentimento, direitos, segurança, documentação e auditorias completas. Você pode filtrar por regulamentação (GDPR, LGPD ou ambas), nível de severidade, linguagem de programação, framework e plataforma.
+
+O projeto inclui uma UI web com rastreamento de progresso em tempo real, uma API REST para automação, e um servidor MCP que permite que agentes de IA como Cursor ou Claude executem auditorias de conformidade programaticamente. O workflow do agente é direto: iniciar uma auditoria, baixar as regras, verificar a instrução de checagem de cada regra contra a codebase, reportar resultados e obter um relatório de conformidade com nota de A a F.
+
+O projeto é totalmente open-source e está disponível em https://github.com/booltools/booltools-gdpr
+
+**BoolTools Security Checker** é uma plataforma open-source de validação de segurança que audita qualquer repositório ou arquitetura cloud contra **milhares de vulnerabilidades conhecidas** de dez fontes autoritativas: NVD, CWE, MITRE ATT&CK, CAPEC, templates Nuclei, CISA KEV, EPSS, Exploit-DB, GitHub Advisory e OSV.dev. Todas as fontes são normalizadas em um banco de dados unificado com um schema comum.
+
+Segue a mesma arquitetura do GDPR Checker: UI web com progresso em tempo real via SSE, API REST e servidor MCP para integração com agentes de IA. Você especifica sua linguagem, plataforma, ferramentas e severidade mínima, e ele retorna uma auditoria abrangente contra todos os padrões de vulnerabilidade e técnicas de ataque relevantes.
+
+O projeto é totalmente open-source e está disponível em https://github.com/booltools/booltools-security-checker
+
+## O que essas ferramentas previnem
+
+Juntas, essas ferramentas abordam as duas categorias de risco silencioso que toda aplicação carrega:
+
+**Risco de conformidade.** Sem verificação sistemática, sua aplicação provavelmente tem lacunas na coleta de consentimento, exclusão de dados, exportação de dados do usuário, gerenciamento de cookies ou documentação de privacidade. Cada lacuna é uma potencial violação regulatória. Multas da GDPR podem chegar a 4% da receita anual global. Multas da LGPD podem chegar a 2% da receita no Brasil. Não são números teóricos, são aplicados.
+
+**Risco de segurança.** Sem avaliação contínua de vulnerabilidades, sua aplicação acumula fraquezas conhecidas ao longo do tempo. Cada atualização de dependência, cada novo endpoint, cada mudança de configuração pode introduzir uma vulnerabilidade que corresponde a um CVE conhecido, padrão CWE ou técnica de ataque. Essas fraquezas são exatamente o que scanners automatizados e atacantes procuram primeiro.
+
+O objetivo de ambas as ferramentas é o mesmo: **tornar a validação de conformidade e segurança tão rotineira quanto rodar sua suíte de testes.** Aponte-as para seu projeto, obtenha uma resposta imediata e abrangente, e saiba exatamente o que precisa ser corrigido antes que se torne um problema.
+
+## Por que ferramentas especializadas superam um agente de IA genérico
+
+Você pode estar pensando: "eu posso simplesmente pedir ao ChatGPT ou Claude para auditar meu código quanto a conformidade com GDPR ou problemas de segurança." E pode. Mas os resultados serão fundamentalmente diferentes do que uma ferramenta especializada produz.
+
+Um agente de IA genérico depende dos seus próprios dados de treinamento. Ele conhece conceitos de GDPR e segurança de forma geral, mas não tem uma base de conhecimento curada e estruturada com 348 regras específicas de conformidade ou milhares de padrões de vulnerabilidade catalogados do NVD, CWE, OWASP e MITRE ATT&CK. Ele vai te dar uma resposta razoável, mas vai perder coisas. Pode alucinar uma regra que não existe, ou pular um requisito real porque não era proeminente o suficiente nos seus dados de treinamento.
+
+Ferramentas especializadas como BoolTools resolvem isso de forma diferente. Elas vêm com uma base de conhecimento pré-construída onde cada regra foi curada, categorizada por severidade e mapeada para regulamentações específicas ou bancos de dados de vulnerabilidades. Quando um agente de IA usa BoolTools através de MCP, ele não depende do próprio conhecimento para saber o que verificar. Ele baixa as regras da ferramenta, lê as instruções de verificação e verifica cada uma contra seu código real. O papel da IA se torna execução e raciocínio, não recall de conhecimento.
+
+Este é o mesmo princípio pelo qual usamos linters ao invés de perguntar a uma IA "meu código tem problemas de estilo." O linter tem um conjunto definitivo de regras. A IA tem opiniões. Para conformidade e segurança, você precisa de conjuntos definitivos de regras.
+
+A combinação é poderosa: uma base de conhecimento especializada que sabe exatamente o que verificar, mais um agente de IA que pode raciocinar sobre seu código e determinar se cada verificação passa ou falha. Nenhum dos dois sozinho é tão eficaz quanto ambos juntos.
+
+## O que vem a seguir
+
+BoolTools começou com o crawler de SEO e GEO. O GDPR Checker e o Security Checker são a segunda e terceira ferramentas do ecossistema, e seguem a mesma filosofia: focadas no desenvolvedor, open-source, acionáveis e projetadas para se integrar diretamente no seu workflow através de MCP e agentes de IA.
+
+Se você está construindo software que lida com dados de usuários, e em 2026 isso é virtualmente todo software, conformidade e segurança não são extras opcionais. São requisitos técnicos que merecem a mesma validação contínua que sua cobertura de testes, suas métricas de performance e seu pipeline de deployment.
+
+O custo de encontrar esses problemas tarde é sempre maior que o custo de encontrá-los cedo. O BoolTools foi construído para te ajudar a encontrá-los cedo.`,
+    },
+  },
+  {
     slug: "top-4-percent-cursor-user-how-ai-changed-my-workflow",
     title: {
-      en: "I'm in the Top 4% of Cursor Users — Here's How AI Rewired My Entire Dev Workflow",
-      pt: "Estou no Top 4% dos Usuários do Cursor — Como a IA Reconfigurou Todo Meu Fluxo de Trabalho",
+      en: "Top 4% Cursor User — How AI Changed My Workflow",
+      pt: "Top 4% do Cursor — Como a IA Mudou Meu Workflow",
     },
     publishedAt: "2026-06-25",
     readingTime: 9,
     coverImage: "/blog/cursor-top-4-percent.png",
     excerpt: {
-      en: "Cursor sent me a year-end recap: top 4% most active users in 2025 by token usage. Everyone uses AI now. The real question is whether you are getting everything you can out of it. Here are the specific workflow optimizations that pushed my usage into the top 4%.",
-      pt: "O Cursor me enviou um resumo de fim de ano: top 4% dos usuários mais ativos em 2025 por consumo de tokens. Todo mundo usa IA agora. A verdadeira pergunta é se você está extraindo tudo que pode dela. Aqui estão as otimizações específicas de fluxo de trabalho que empurraram meu uso para o top 4%.",
+      en: "Cursor ranked me in the top 4% of users by token usage in 2025. Here are the workflow optimizations that made the difference in my daily development.",
+      pt: "O Cursor me classificou no top 4% dos usuários por consumo de tokens em 2025. Aqui estão as otimizações de workflow que fizeram a diferença no meu dia a dia.",
     },
     content: {
       en: `A few weeks ago, Cursor sent me a year-end recap for 2025. One stat stood out: I was in the top 4% most active users globally, measured by token usage.
@@ -289,15 +535,15 @@ Ficar no top 4% dos usuários do Cursor não foi um objetivo. Foi um efeito cola
   {
     slug: "seo-geo-and-why-i-created-booltools",
     title: {
-      en: "SEO & GEO in 2026 — Why It Matters More Than Ever and Why I Created BoolTools",
-      pt: "SEO & GEO em 2026 — Por Que Importa Mais Do Que Nunca e Por Que Criei o BoolTools",
+      en: "SEO & GEO in 2026 — Why I Created BoolTools",
+      pt: "SEO & GEO em 2026 — Por Que Criei o BoolTools",
     },
     publishedAt: "2026-06-22",
     readingTime: 7,
     coverImage: "/blog/booltools-seo-geo.png",
     excerpt: {
-      en: "Most developers deal with SEO daily without realizing it. Every meta tag, every alt attribute, every sitemap config is SEO work. Here is why it matters, what breaks silently, and why I built BoolTools to catch regressions automatically.",
-      pt: "A maioria dos desenvolvedores lida com SEO diariamente sem perceber. Cada meta tag, cada atributo alt, cada configuração de sitemap é trabalho de SEO. Aqui está por que importa, o que quebra silenciosamente, e por que criei o BoolTools para capturar regressões automaticamente.",
+      en: "Most developers handle SEO daily without realizing it. Every meta tag and sitemap config is SEO work. Here is why it matters and why I built BoolTools.",
+      pt: "A maioria dos desenvolvedores lida com SEO diariamente sem perceber. Cada meta tag e configuração de sitemap é trabalho de SEO. Veja por que criei o BoolTools.",
     },
     content: {
       en: `Most developers have a complicated relationship with SEO. We know it matters, but it often feels like someone else's problem. We write the code, configure the server, deploy the application, and then a marketing team worries about search rankings. At least, that is how it used to work.
@@ -471,15 +717,15 @@ E se você quer uma forma confiável e automatizada de capturar regressões ante
   {
     slug: "observability-invisible-failures",
     title: {
-      en: "You Cannot Solve What You Cannot See — How Observability Saved a Production System",
-      pt: "Você Não Pode Resolver o Que Não Pode Ver — Como Observabilidade Salvou um Sistema em Produção",
+      en: "How Observability Saved a Production System",
+      pt: "Como Observabilidade Salvou um Sistema em Produção",
     },
     publishedAt: "2026-05-29",
     readingTime: 5,
     coverImage: "/blog/observability-dashboard.png",
     excerpt: {
-      en: "In production environments, the most critical failures are often the ones that leave no trace. This is the story of how distributed tracing revealed a silent killer.",
-      pt: "Em ambientes de produção, as falhas mais críticas são frequentemente aquelas que não deixam rastros. Esta é a história de como rastreamento distribuído revelou um problema silencioso.",
+      en: "In production, the most critical failures leave no trace. This is how distributed tracing revealed a silent killer in our system.",
+      pt: "Em produção, as falhas mais críticas não deixam rastros. Veja como rastreamento distribuído revelou um problema silencioso no nosso sistema.",
     },
     content: {
       en: `In production environments, the most critical failures are often the ones that leave no trace.
@@ -565,15 +811,15 @@ A capacidade de ver o que seu sistema está fazendo em tempo real não é opcion
   {
     slug: "i-spent-a-month-fixing-tests",
     title: {
-      en: "I Spent a Full Month Fixing Tests — Here's What I Learned",
-      pt: "Passei um Mês Inteiro Corrigindo Testes — Aqui Está o Que Aprendi",
+      en: "A Month Fixing Tests — Lessons Learned",
+      pt: "Um Mês Corrigindo Testes — O Que Aprendi",
     },
     publishedAt: "2026-03-13",
     readingTime: 4,
     coverImage: "/blog/testing-maintenance.png",
     excerpt: {
-      en: "I once spent a full month fixing tests. Not building features. Not improving the product. Just fixing tests. Here's what happened.",
-      pt: "Uma vez passei um mês inteiro corrigindo testes. Sem construir funcionalidades. Sem melhorar o produto. Apenas corrigindo testes. Aqui está o que aconteceu.",
+      en: "I once spent a full month fixing tests. Not building features. Not improving the product. Just fixing tests. Here is what happened.",
+      pt: "Passei um mês inteiro corrigindo testes. Sem construir funcionalidades. Sem melhorar o produto. Apenas corrigindo testes.",
     },
     content: {
       en: `I once spent a full month… fixing tests.
@@ -763,8 +1009,8 @@ Porque no final, **testes devem proteger sua velocidade, não matá-la.**`,
   {
     slug: "i-removed-nextjs-from-my-project",
     title: {
-      en: "I Removed Next.js From My Project and It Was the Right Decision",
-      pt: "Eu Removi o Next.js do Meu Projeto e Foi a Decisão Certa",
+      en: "I Removed Next.js — And It Was Right",
+      pt: "Removi o Next.js — E Foi a Decisão Certa",
     },
     publishedAt: "2025-03-13",
     readingTime: 5,

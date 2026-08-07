@@ -93,6 +93,8 @@ Control Department of USP São Carlos robotic team for robot soccer championship
 
 - WithWillow.ai: Contributions to the secure MCP gateway connecting AI agents to enterprise systems
 - BoolTools SEO Crawler: Open-source SEO/GEO auditing tool for optimizing search engine and AI search visibility
+- BoolTools GDPR Checker: Open-source GDPR/LGPD compliance auditing platform with 348 rules across consent, data rights, security, and vendor management
+- BoolTools Security Checker: Open-source security validation platform auditing against NVD, CWE, MITRE ATT&CK, CISA KEV, and other vulnerability databases
 - Welcome to Brazil: Complete guide for foreigners to visit, live, and thrive in Brazil
 - marcelodiani: Interactive portfolio website with 3D scenes, AI chat, games, and real-time data widgets
 - vc-chess: Real-time multiplayer chess game — no account required

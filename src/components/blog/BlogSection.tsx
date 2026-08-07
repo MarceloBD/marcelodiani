@@ -45,8 +45,9 @@ export function BlogSection() {
                       <Image
                         src={post.coverImage}
                         alt={title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        width={640}
+                        height={360}
+                        className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
                     <div className="p-6 flex-1 flex flex-col">

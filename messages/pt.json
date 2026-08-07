@@ -935,8 +935,8 @@
   },
   "blog": {
     "title": "Blog",
-    "pageTitle": "Blog de Engenharia de Software por Marcelo Diani — Arquitetura, React e Cloud",
-    "subtitle": "Artigos sobre engenharia de software, arquitetura de sistemas e desenvolvimento web moderno com React, Node.js e AWS.",
+    "pageTitle": "Blog — Marcelo Diani | Engenharia de Software",
+    "subtitle": "Artigos sobre engenharia de software, arquitetura de sistemas e desenvolvimento web moderno com React, Node.js, AWS e tecnologias cloud.",
     "homeSubtitle": "Últimas reflexões sobre desenvolvimento e engenharia de software",
     "readMore": "Leia mais",
     "backToBlog": "← Voltar ao Blog",
@@ -973,7 +973,7 @@
     },
     "terms": {
       "title": "Termos de Serviço",
-      "metaDescription": "Termos de Serviço de marcelodiani.online por Marcelo B. Diani. Diretrizes de uso, propriedade intelectual e isenções.",
+      "metaDescription": "Termos de Serviço de marcelodiani.online por Marcelo B. Diani. Diretrizes de uso, propriedade intelectual, isenções de responsabilidade e limitações.",
       "intro": "Ao acessar e usar marcelodiani.online (\"o Site\"), você concorda com os seguintes termos.",
       "useTitle": "Uso Aceitável",
       "useDescription": "Este site é fornecido para fins informativos e de portfólio. Você pode navegar pelo site, interagir com demos e entrar em contato pelos canais fornecidos. Scraping automatizado, abuso de APIs ou qualquer atividade maliciosa é proibida.",

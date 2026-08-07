@@ -73,6 +73,7 @@ function buildBlogListSchema(locale: string) {
     inLanguage: locale === "pt" ? "pt-BR" : "en-US",
     author: {
       "@type": "Person",
+      "@id": `${baseUrl}/#person`,
       name: "Marcelo B. Diani",
       url: baseUrl,
     },

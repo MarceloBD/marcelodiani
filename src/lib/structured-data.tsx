@@ -92,7 +92,7 @@ export async function StructuredData({ locale }: StructuredDataProps) {
       {
         "@type": "Organization",
         "@id": ORGANIZATION_ID,
-        name: translations("worksFor"),
+        name: "Marcelo B. Diani",
         description: "Full Stack Developer & Team Lead specializing in React, Node.js, TypeScript, and cloud technologies.",
         url: BASE_URL,
         logo: `${BASE_URL}/cvpic.webp`,
@@ -105,6 +105,13 @@ export async function StructuredData({ locale }: StructuredDataProps) {
         },
         founder: { "@id": PERSON_ID },
         sameAs: SOCIAL_PROFILES,
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          email: "marcelodianib@gmail.com",
+          telephone: "+5517991068118",
+          availableLanguage: ["Portuguese", "English"],
+        },
       },
       {
         "@type": "WebSite",

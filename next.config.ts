@@ -69,7 +69,13 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/:path*",
-        headers: securityHeaders,
+        headers: [
+          ...securityHeaders,
+          {
+            key: "Content-Signal",
+            value: "ai-train=yes, search=yes, ai-input=yes",
+          },
+        ],
       },
       {
         source: "/fonts/:path*",

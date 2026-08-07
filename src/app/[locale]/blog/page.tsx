@@ -135,6 +135,16 @@ export default async function BlogPage({ params }: PageProps) {
               {translations("title")}
             </h1>
             <p className="text-lg text-muted">{translations("subtitle")}</p>
+            <address className="not-italic text-sm text-muted mt-2">
+              {locale === "pt" ? "Por" : "By"}{" "}
+              <a
+                rel="author"
+                href="https://marcelodiani.online"
+                className="text-accent hover:underline"
+              >
+                Marcelo B. Diani
+              </a>
+            </address>
           </header>
 
           {blogPosts.length === 0 ? (

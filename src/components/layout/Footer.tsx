@@ -1,8 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
+import { Link } from "@/i18n/navigation";
 
 const SOCIAL_LINKS = [
   {
@@ -54,10 +54,7 @@ export function Footer() {
   const translations = useTranslations("footer");
   const navTranslations = useTranslations("nav");
   const legalTranslations = useTranslations("legal");
-  const locale = useLocale();
   const currentYear = new Date().getFullYear();
-
-  const localePath = locale === "en" ? "" : `/${locale}`;
 
   return (
     <footer className="border-t border-card-border py-8">
@@ -93,19 +90,26 @@ export function Footer() {
               {navTranslations("contact")}
             </a>
             <span className="text-card-border">|</span>
-            <a
-              href={`${localePath}/privacy`}
+            <Link
+              href="/privacy"
               className="hover:text-accent transition-colors underline underline-offset-2"
             >
               {legalTranslations("privacy.title")}
-            </a>
+            </Link>
             <span className="text-card-border">|</span>
-            <a
-              href={`${localePath}/terms`}
+            <Link
+              href="/terms"
               className="hover:text-accent transition-colors underline underline-offset-2"
             >
               {legalTranslations("terms.title")}
-            </a>
+            </Link>
+            <span className="text-card-border">|</span>
+            <Link
+              href="/blog"
+              className="hover:text-accent transition-colors underline underline-offset-2"
+            >
+              {navTranslations("blog")}
+            </Link>
             <span className="text-card-border">|</span>
             <a
               href="https://github.com/MarceloBD/marcelodiani"

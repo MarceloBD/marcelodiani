@@ -124,9 +124,12 @@ export default async function PrivacyPage({ params }: PageProps) {
               {privacy("title")}
             </h1>
             <p className="text-xs text-muted mb-2">{translations("lastUpdated")}</p>
-            <p className="text-xs text-muted mb-8">
-              Marcelo B. Diani — marcelodiani.online
-            </p>
+            <address className="not-italic text-xs text-muted mb-8">
+              <a rel="author" href="https://marcelodiani.online" className="hover:text-accent transition-colors">
+                Marcelo B. Diani
+              </a>{" "}
+              — marcelodiani.online
+            </address>
           </header>
 
           <div className="space-y-8">

@@ -267,8 +267,8 @@ O custo de encontrar esses problemas tarde é sempre maior que o custo de encont
   {
     slug: "top-4-percent-cursor-user-how-ai-changed-my-workflow",
     title: {
-      en: "Top 4% Cursor User — How AI Changed My Workflow",
-      pt: "Top 4% do Cursor — Como a IA Mudou Meu Workflow",
+      en: "Top 4% Cursor User How AI Changed My Workflow",
+      pt: "Top 4% do Cursor Como a IA Mudou Meu Workflow",
     },
     publishedAt: "2026-06-25",
     readingTime: 9,
@@ -535,8 +535,8 @@ Ficar no top 4% dos usuários do Cursor não foi um objetivo. Foi um efeito cola
   {
     slug: "seo-geo-and-why-i-created-booltools",
     title: {
-      en: "SEO & GEO in 2026 — Why I Created BoolTools",
-      pt: "SEO & GEO em 2026 — Por Que Criei o BoolTools",
+      en: "SEO & GEO in 2026 Why I Created BoolTools",
+      pt: "SEO & GEO em 2026 Por Que Criei o BoolTools",
     },
     publishedAt: "2026-06-22",
     readingTime: 7,
@@ -811,8 +811,8 @@ A capacidade de ver o que seu sistema está fazendo em tempo real não é opcion
   {
     slug: "i-spent-a-month-fixing-tests",
     title: {
-      en: "A Month Fixing Tests — Lessons Learned",
-      pt: "Um Mês Corrigindo Testes — O Que Aprendi",
+      en: "A Month Fixing Tests Lessons Learned",
+      pt: "Um Mês Corrigindo Testes O Que Aprendi",
     },
     publishedAt: "2026-03-13",
     readingTime: 4,
@@ -1009,8 +1009,8 @@ Porque no final, **testes devem proteger sua velocidade, não matá-la.**`,
   {
     slug: "i-removed-nextjs-from-my-project",
     title: {
-      en: "I Removed Next.js — And It Was Right",
-      pt: "Removi o Next.js — E Foi a Decisão Certa",
+      en: "I Removed Next.js And It Was Right",
+      pt: "Removi o Next.js E Foi a Decisão Certa",
     },
     publishedAt: "2025-03-13",
     readingTime: 5,

@@ -73,28 +73,34 @@ export async function SeoContent({ locale }: SeoContentProps) {
       </h2>
       <ol>
         <li>
+          <strong>{experience("positions.withWillow.company")}</strong> — {experience("positions.withWillow.role")} ({experience("positions.withWillow.period")}).{" "}
+          {isEnglish
+            ? "Created a marketplace with 1,000+ MCPs for enterprise companies. Cloned Webflow components to Next.js. Added Cloudflare workers for multi-frontend domain."
+            : "Criou um marketplace com 1.000+ MCPs para empresas corporativas. Clonou componentes do Webflow para Next.js. Adicionou workers no Cloudflare para domínio multi-frontend."}
+        </li>
+        <li>
           <strong>{experience("positions.clearer.company")}</strong> — {experience("positions.clearer.role")} ({experience("positions.clearer.period")}).{" "}
           {isEnglish
-            ? "Led two teams of 7 developers. Managed 14+ Shopify apps with millions in annual revenue. Migrated from Heroku to AWS using CDK. Implemented observability with Datadog."
-            : "Liderou duas equipes de 7 desenvolvedores. Gerenciou 14+ apps Shopify com milhões em receita anual. Migrou do Heroku para AWS usando CDK. Implementou observabilidade com Datadog."}
+            ? "Led two teams (3 and 6 developers). Managed 14 Shopify apps with multi-million dollar annual revenue. Migrated from Heroku to AWS using CDK. Implemented observability with Datadog."
+            : "Liderou duas equipes (3 e 6 desenvolvedores). Gerenciou 14 apps Shopify com receita anual multimilionária. Migrou do Heroku para AWS usando CDK. Implementou observabilidade com Datadog."}
         </li>
         <li>
           <strong>{experience("positions.acesso.company")}</strong> — {experience("positions.acesso.role")} ({experience("positions.acesso.period")}).{" "}
           {isEnglish
-            ? "Founded an e-commerce startup similar to Shopify with ERP, CRM, and AI features. Created 600+ online stores. 1,000+ tests."
-            : "Fundou uma startup de e-commerce similar ao Shopify com ERP, CRM e funcionalidades de IA. Criou 600+ lojas online. 1.000+ testes."}
+            ? "Founded an e-commerce platform (Shopify alternative) with ERP, CRM, and AI features. Onboarded 600+ stores. 1,000+ tests. 5 microservices."
+            : "Fundou uma plataforma de e-commerce (alternativa ao Shopify) com ERP, CRM e funcionalidades de IA. Integrou 600+ lojas. 1.000+ testes. 5 microsserviços."}
         </li>
         <li>
           <strong>{experience("positions.vortx.company")}</strong> — {experience("positions.vortx.role")} ({experience("positions.vortx.period")}).{" "}
           {isEnglish
-            ? "Financial company. Digitized 1,800 records from Excel to automated platform. Generated 200,000 dynamic PDFs."
-            : "Empresa financeira. Digitalizou 1.800 registros do Excel para plataforma automatizada. Gerou 200.000 PDFs dinâmicos."}
+            ? "Financial company. Upgraded legacy Angular/.NET platform. Migrated 1,800 Excel records to automated platform. Generated 200,000 dynamic PDFs with Puppeteer."
+            : "Empresa financeira. Atualizou plataforma legada Angular/.NET. Migrou 1.800 registros do Excel para plataforma automatizada. Gerou 200.000 PDFs dinâmicos com Puppeteer."}
         </li>
         <li>
           <strong>{experience("positions.enfase.company")}</strong> — {experience("positions.enfase.role")} ({experience("positions.enfase.period")}).{" "}
           {isEnglish
-            ? "Education company. Built postgraduate platform from scratch for 13,000+ students. Used Kafka for event-driven architecture."
-            : "Empresa educacional. Construiu plataforma de pós-graduação do zero para 13.000+ alunos. Usou Kafka para arquitetura orientada a eventos."}
+            ? "EdTech company. Developed 2 platforms from scratch for 13,000+ law students. Built real-time analytics with Kafka."
+            : "Empresa de EdTech. Desenvolveu 2 plataformas do zero para 13.000+ estudantes de direito. Construiu analytics em tempo real com Kafka."}
         </li>
       </ol>
 

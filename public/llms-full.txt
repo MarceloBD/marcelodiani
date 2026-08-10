@@ -1,6 +1,6 @@
 # Marcelo B. Diani — Senior Full Stack Developer & Team Lead
 
-> Senior Full Stack Developer with 7+ years of experience in JavaScript/TypeScript, specializing in React, Node.js, Next.js, and AWS. Computer Engineering graduate from the University of São Paulo (USP). Gold medalist at OBMEP national mathematics olympiad. Founder and e-commerce specialist focused on maximizing online sales. AI enthusiast building with LLMs, RAG, and LangChain.
+> Senior Full Stack Developer with 7+ years of experience specializing in TypeScript, React, and Node.js. Computer Engineer graduated from the University of São Paulo (USP) and mathematics olympiad gold medalist. Led teams of up to 6 developers managing 14 Shopify apps serving tens of thousands of daily users. Worked in EdTech, FinTech and E-commerce companies. Top 4% Cursor AI user worldwide in 2025. Positive mindset, driven by improving people's lives through technology.
 
 ## About Marcelo
 
@@ -12,64 +12,78 @@ His mission is to improve people's lives through technology. He is always open t
 
 ## Professional Experience
 
-### Clearer.io — Team Lead / Senior Full Stack Developer / Scrum Master (2022–2025)
+### WithWillow.ai — Freelancer (2026)
+Location: Remote
+
+- Created a marketplace with more than 1,000 MCPs for enterprise companies.
+- Cloned components from Webflow to Next.js allowing users to navigate without UI mismatches.
+- Added workers in Cloudflare allowing multiple frontends in the same domain, enabling the marketing team to work on the project too.
+- Optimized website SEO with different techniques to boost search engine rankings.
+- Tech stack: TypeScript, Next.js, Cloudflare, MCP, AI Agents, Security, Figma.
+
+### Clearer.io — Senior Full Stack Developer / Team Lead / Scrum Master (2022–2025)
 Location: Boston, Massachusetts (Remote)
 
-- Led two teams as Team Lead (7 developers). Responsible for PR reviews, 1:1 meetings, external meetings, individual goal tracking, Scrum ceremonies, sprint planning and task breakdown in Jira.
-- Helped manage more than 14 apps in the Shopify App Store with tens of thousands of users monthly and total revenue of millions per year.
-- Created a library with CDK and moved apps from Heroku to AWS to reduce hosting costs and improve architecture management through IaC.
-- Added unit tests and end-to-end tests using Datadog, allowing faster feature delivery without regressions. Added Codacy for static code analysis.
-- Added observability with logging and tracing in Datadog, reducing debugging time. Implemented caching with Memcached. Created Lambda functions using DynamoDB and LLMs.
-- Tech stack: JavaScript, TypeScript, Node.js, React, Next.js, MongoDB, PostgreSQL, REST, Redis, React Native, AWS, CDK, DataDog, Heroku, Codacy, Cloudflare.
+- Led two teams (3 and 6 developers) as Team Lead and Scrum Master, owning PR reviews, sprint planning and meetings, 1:1s, interviews and delivery tracking with Jellyfish, improving on-time delivery rate across the team.
+- Managed 14 Shopify App Store products (bundles, upsells, checkout, returns, currency conversion) serving tens of thousands of daily users and generating multi-million dollar annual revenue.
+- Migrated all managed applications from Heroku to AWS using a reusable Infrastructure as Code (IaC) library built with Cloud Development Kit (CDK), reducing hosting costs.
+- Increased test coverage from zero by introducing unit and end-to-end tests via Datadog Synthetic Monitoring, reducing production regressions. Added Codacy for static analysis.
+- Reduced average debugging time by implementing observability (logging and distributed tracing) in Datadog. Built a Memcached caching layer that eliminated database timeouts on heavy product queries, and a Lambda function using DynamoDB and LLMs to auto-generate customized storefront widgets.
+- Developed tools that boosted merchant revenue and enhanced user experience across the entire e-commerce conversion funnel. Resolved live critical production integration issues across diverse e-commerce storefronts.
+- Tech stack: JavaScript, TypeScript, Node.js, React, Next.js, MongoDB, PostgreSQL, REST, Redis, React Native, AWS, CDK, DataDog, Heroku, Codacy, Jellyfish, Cloudflare, Shopify.
 
 ### Acesso Comercial — Founder (2021–2022)
 Location: São Carlos, São Paulo
 
-- Founder and developer of a startup to help small stores sell online (similar to Shopify) with ERP, CRM, blog (with SSR) and omnichannel chat.
-- Built with 3 microservices (auth, core, metrics) in Linux server. Used GitHub Actions for Blue-Green deployment with Docker and Nginx.
-- Used React, Node.js, GraphQL, Relay, MongoDB, AWS (S3). Created features using AI with OpenAI, Gemini and Typesense for RAG.
-- Led two developers and coordinated with designers, social media, lawyers, and consultants.
-- Set up more than 1,000 unit, integration and end-to-end tests. Created around 600 stores.
+- Founded and built an e-commerce platform (Shopify alternative) for small businesses, featuring ERP, CRM, SSR blog, and omnichannel chat with websockets, onboarding over 600 stores.
+- Architected 5 microservices (auth, core, metrics, payments, messaging) with Blue-Green deployment via GitHub Actions, Docker, and Nginx. Monitored with Prometheus, Tempo, OpenTelemetry, Loki, and Grafana. Used BullMQ with Redis for async workers.
+- Built the platform with React, Node.js, GraphQL, Relay, and MongoDB; integrated 10+ third-party APIs (shipping, payments, Google Console, Facebook Business). Implemented AI features using OpenAI, Gemini, and RAG with Typesense as vector store.
+- Led a team of 2 developers and 1 support specialist, coordinating with designers, media buyers, lawyers, and external consultants.
+- Achieved 1,000+ automated tests (unit, integration, and end-to-end) with Mocha, Sinon, Chai, and Cypress, maintaining high code coverage.
+- Collaborated directly with more than 30 merchants via on-site and remote sessions to co-design product features and provide ongoing technical support.
+- Allocated over $10K in ad spend across paid media channels, driving platform growth and user engagement through data-driven campaigns.
 - Tech stack: TypeScript, Node.js, React, Next.js, MongoDB, GraphQL, AWS, GitHub Actions, Docker, WebSocket, LLMs, RAG, SSR, BullMQ, Redis.
 
 ### Vórtx DTVM — Full Stack Developer (2020–2021)
 Location: São Paulo, São Paulo
 
-- Worked at a financial company collecting and maintaining client data for fund investments.
-- Used Angular and Node for 3 microservices and 2 lambdas, and .NET Core connected with MongoDB cluster.
-- Moved 1,800 records from manual Excel sheets to an online automated platform, eliminating paper-based workflow.
-- Delivered the project to external users in 6 months, saving at least one full-time employee of manual effort.
-- Implemented refresh token, pagination optimization (reducing time to 500ms), and generated 200,000 dynamic PDFs.
-- Tech stack: C#, .NET, JavaScript, Angular, SQL Server, MongoDB, REST, GitHub Actions, Lambda, Puppeteer, Redux.
+- Upgraded and launched a legacy Angular/.NET platform into production.
+- Built and maintained a client data management platform for investment fund operations using Angular, .NET Core, 3 microservices, and 2 Lambda functions connected to a MongoDB cluster and SQL Server.
+- Migrated 1,800 manually stored Excel records to an automated online platform, eliminating manual effort.
+- Delivered the platform to external users in 6 months, on schedule and within budget.
+- Implemented refresh token authentication, reducing daily login friction for all users to a single sign-in per day.
+- Introduced backend pagination and restructured the database schema, reducing query response time from multiple seconds to under 500ms.
+- Generated 200,000 dynamic PDFs with Puppeteer for client-facing financial reports, delivering ahead of schedule to ensure Federal compliance and avoid regulatory fines.
+- Tech stack: C#, .NET, JavaScript, Angular, SQL Server, MongoDB, REST, GitHub Actions, Lambda, Puppeteer, Microservices, Clean Architecture.
 
 ### Ênfase Instituto Jurídico — Full Stack Developer Intern (2019–2020)
 Location: São Carlos, São Paulo
 
-- Worked at a distance education company using JavaScript frameworks, React and Node with PostgreSQL across 3 main products.
-- Developed a postgraduate platform from scratch and one for law job positions, both with about 13,000 active students.
-- Architected front end with Atomic Design for componentization, resulting in easier maintenance.
-- Built platform connected with an event system using Kafka for user statistics.
+- Developed 2 platforms from scratch (postgraduate courses and a revamp of an old platform) serving 13,000+ active law students, built with React, Node.js, PostgreSQL, and GraphQL.
+- Redesigned the front-end architecture using Atomic Design, breaking a monolithic codebase into reusable components and reducing maintenance effort.
+- Built a real-time student analytics dashboard connected to a Kafka event system, giving users visibility into their course progress and engagement.
+- Created a configurable database seeder that eliminated the need for production data in local development, speeding up developer onboarding and testing.
 - Tech stack: JavaScript, Node.js, React, PostgreSQL, GraphQL, Relay, Kafka, Prisma, Styled Components.
 
 ## Technical Skills
 
 ### Frontend
-React, Next.js, TypeScript, Angular, React Native, CSS3, HTML5, Relay, Redux, Styled Components, Storybook
+React, Next.js, TypeScript, Angular, React Native, CSS3, HTML5, Relay, Redux, Styled Components, Storybook, Astro, Tauri, Electron
 
 ### Backend
-Node.js, GraphQL, .NET, C#, Python, REST, Express, Prisma, Kafka, BullMQ, WebSocket
+Node.js, GraphQL, .NET, C#, Python, REST, Express, Prisma, Kafka, BullMQ, WebSocket, Golang
 
 ### Databases
-MongoDB, PostgreSQL, SQL Server, Redis, DynamoDB, Typesense
+MongoDB, PostgreSQL, SQL Server, Redis, DynamoDB, Supabase, MySQL, Typesense, ClickHouse
 
 ### DevOps & Cloud
-AWS, Docker, CDK, Lambda, CI/CD, GitHub Actions, Cloudflare, Heroku, Vercel, DataDog, Grafana, Prometheus, OpenTelemetry
+AWS, Docker, CDK, Lambda, CI/CD, GitHub Actions, Cloudflare, Heroku, Vercel, DataDog, Grafana, Prometheus, OpenTelemetry, Terraform
 
 ### AI & Machine Learning
-LLMs, LangChain, RAG, TensorFlow, Cursor
+LLMs, LangChain, LangGraph, RAG, TensorFlow, OpenAI, Gemini, Cursor, MCP
 
 ### Other
-Git, Cypress, Puppeteer, SEO, Figma, Unity
+Git, Shopify, Stripe, Cypress, Puppeteer, SEO, Figma, Unity
 
 ## Education & Achievements
 
@@ -81,27 +95,32 @@ Final grade: 7.8 — Top 10 of 61 students. Completed with no failed courses.
 Score 93% — Ranked 1st among all candidates at the company.
 
 ### Mathematics Olympiad — OBMEP (2009–2012)
-Gold medal winner. Participated in the 4-year program at UNESP for medalists.
+Gold medal winner. Participated in the 4-year Junior Scientific Initiation Program at UNESP for medalists.
 
 ### Hackathon Elo+Getnet (2018)
-Developed a solution to facilitate consumer purchases in a weekend hackathon.
+Built a consumer purchasing solution in a weekend hackathon organized by Elo and Getnet (team of 5).
 
 ### Warthog Robotics — USP (2015–2016)
 Control Department of USP São Carlos robotic team for robot soccer championships.
 
 ## Side Projects
 
+- Fast Read: Cross-platform speed reading web and desktop application using RSVP with ORP highlighting (Next.js, TypeScript, Tauri)
+- Design Patterns Quest: Interactive learning platform for mastering all 22 GoF design patterns through RPG-style experience (Next.js, TypeScript)
+- Browser Pal: AI-driven browser with manual navigation and autonomous orchestration via MCP API, with request interception, ad blocker, and crypto wallet (Electron, TypeScript, MCP)
+- Companies Data Visualizer: Big data pipeline to ingest and index government data from 70M+ companies for market analytics (Golang, PostgreSQL, Astro)
+- BoolTools SEO / GDPR / Security / Page Speed: Open-source auditing tools for search visibility, compliance, defense, and web performance (Golang, Astro, MCP)
 - WithWillow.ai: Contributions to the secure MCP gateway connecting AI agents to enterprise systems
-- BoolTools SEO Crawler: Open-source SEO/GEO auditing tool for optimizing search engine and AI search visibility
-- BoolTools GDPR Checker: Open-source GDPR/LGPD compliance auditing platform with 348 rules across consent, data rights, security, and vendor management
-- BoolTools Security Checker: Open-source security validation platform auditing against NVD, CWE, MITRE ATT&CK, CISA KEV, and other vulnerability databases
-- Welcome to Brazil: Complete guide for foreigners to visit, live, and thrive in Brazil
+- Welcome to Brazil: Complete guide for foreigners to visit, live, and thrive in Brazil, with interactive maps and city guides
 - marcelodiani: Interactive portfolio website with 3D scenes, AI chat, games, and real-time data widgets
 - vc-chess: Real-time multiplayer chess game — no account required
 - vc-billings: Personal monthly payment tracker (Next.js + Drizzle + Neon Postgres)
 - vc-ecommerce: E-commerce storefront template
 - Language Translator: React Native + Python translator using LangGraph and OCR
 - Learn Code: Online interface to learn languages and frameworks through concepts and puzzles
+- Coding Classes: Recorded coding classes teaching AI-assisted development techniques
+- Banner Generator: Banner generation tool leveraging multiple LLMs for quality output
+- Crypto Tax Calculator: Open-source Node.js app for calculating Brazilian taxes on crypto trading
 - Platform Jump Game: Unity C# mobile game with obstacles and global ranking on Google Play
 
 ## Languages Spoken
@@ -115,7 +134,7 @@ Control Department of USP São Carlos robotic team for robot soccer championship
 ## FAQ
 
 ### What are Marcelo Diani's main technologies?
-Marcelo specializes in React, Node.js, TypeScript, Next.js, AWS, MongoDB, PostgreSQL, Docker, and AI/ML technologies including LLMs and RAG.
+Marcelo specializes in React, Node.js, TypeScript, Next.js, AWS, MongoDB, PostgreSQL, Docker, and AI/ML technologies including LLMs, LangChain, LangGraph, RAG, and MCP.
 
 ### How to hire Marcelo Diani as a freelance developer?
 You can contact Marcelo via WhatsApp (+55 17 99106-8118), email (marcelodianib@gmail.com), or LinkedIn. He offers full stack development, technical consulting, and team leadership services.

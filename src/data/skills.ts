@@ -23,6 +23,9 @@ export const SKILLS: Skill[] = [
   { name: "Redux", category: "frontend" },
   { name: "Styled Components", category: "frontend" },
   { name: "Storybook", category: "frontend" },
+  { name: "Astro", category: "frontend" },
+  { name: "Tauri", category: "frontend" },
+  { name: "Electron", category: "frontend" },
 
   { name: "Node.js", category: "backend" },
   { name: "GraphQL", category: "backend" },
@@ -35,13 +38,17 @@ export const SKILLS: Skill[] = [
   { name: "Kafka", category: "backend" },
   { name: "BullMQ", category: "backend" },
   { name: "WebSocket", category: "backend" },
+  { name: "Golang", category: "backend" },
 
   { name: "MongoDB", category: "database" },
   { name: "PostgreSQL", category: "database" },
   { name: "SQL Server", category: "database" },
   { name: "Redis", category: "database" },
   { name: "DynamoDB", category: "database" },
+  { name: "Supabase", category: "database" },
+  { name: "MySQL", category: "database" },
   { name: "Typesense", category: "database" },
+  { name: "ClickHouse", category: "database" },
 
   { name: "AWS", category: "devops" },
   { name: "Docker", category: "devops" },
@@ -56,14 +63,21 @@ export const SKILLS: Skill[] = [
   { name: "Grafana", category: "devops" },
   { name: "Prometheus", category: "devops" },
   { name: "OpenTelemetry", category: "devops" },
+  { name: "Terraform", category: "devops" },
 
   { name: "LLMs", category: "ai" },
   { name: "LangChain", category: "ai" },
+  { name: "LangGraph", category: "ai" },
   { name: "RAG", category: "ai" },
   { name: "TensorFlow", category: "ai" },
+  { name: "OpenAI", category: "ai" },
+  { name: "Gemini", category: "ai" },
   { name: "Cursor", category: "ai" },
+  { name: "MCP", category: "ai" },
 
   { name: "Git", category: "other" },
+  { name: "Shopify", category: "other" },
+  { name: "Stripe", category: "other" },
   { name: "Cypress", category: "other" },
   { name: "Puppeteer", category: "other" },
   { name: "SEO", category: "other" },
@@ -72,6 +86,15 @@ export const SKILLS: Skill[] = [
 ];
 
 export const EXPERIENCE_TECH: Record<string, string[]> = {
+  withWillow: [
+    "TypeScript",
+    "Next.js",
+    "Cloudflare",
+    "MCP",
+    "AI",
+    "Security",
+    "Figma",
+  ],
   clearer: [
     "JavaScript",
     "TypeScript",
@@ -88,7 +111,9 @@ export const EXPERIENCE_TECH: Record<string, string[]> = {
     "DataDog",
     "Heroku",
     "Codacy",
+    "Jellyfish",
     "Cloudflare",
+    "Shopify",
   ],
   acesso: [
     "TypeScript",
@@ -134,9 +159,14 @@ export const EXPERIENCE_TECH: Record<string, string[]> = {
 };
 
 export const PROJECT_TECH: Record<string, string[]> = {
-  withWillow: ["TypeScript", "MCP", "Security", "Enterprise"],
+  fastRead: ["Next.js", "TypeScript", "Tauri"],
+  designPatternsQuest: ["Next.js", "TypeScript"],
+  browserPal: ["Electron", "TypeScript", "MCP"],
+  companiesDataVisualizer: ["Golang", "PostgreSQL", "Astro"],
+  boolTools: ["Golang", "Astro", "SEO", "GEO", "Open Source", "MCP"],
+  withWillow: ["TypeScript", "Next.js", "MCP", "Cloudflare", "Security"],
   boolToolsSeoCrawler: ["Astro", "Golang", "SEO", "GEO", "Open Source"],
-  welcomeToBrazil: ["TypeScript", "Next.js", "React", "Vercel"],
+  welcomeToBrazil: ["TypeScript", "Next.js", "React", "Vercel", "Supabase"],
   marcelodiani: ["TypeScript", "Next.js", "React", "Three.js", "Vercel"],
   vcChess: ["TypeScript", "Next.js", "React", "WebSocket", "Real-time"],
   vcBillings: ["TypeScript", "Next.js", "Drizzle", "Neon", "PostgreSQL"],
@@ -161,6 +191,11 @@ export const PROJECT_TECH: Record<string, string[]> = {
 };
 
 export const PROJECT_LINKS: Partial<Record<string, string>> = {
+  fastRead: "https://fastread.marcelodiani.online/",
+  designPatternsQuest: "https://designpatterns.marcelodiani.online/",
+  browserPal: "https://github.com/MarceloBD/browser-pal",
+  companiesDataVisualizer: "https://github.com/MarceloBD/companies-data-visualizer",
+  boolTools: "https://github.com/booltools/booltools-seo-crawler",
   withWillow: "https://withwillow.ai",
   boolToolsSeoCrawler: "https://github.com/booltools/booltools-seo-crawler",
   welcomeToBrazil: "https://welcometobrazil.online",

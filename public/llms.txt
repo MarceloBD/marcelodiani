@@ -1,6 +1,6 @@
 # Marcelo B. Diani — Senior Full Stack Developer & Team Lead
 
-> Senior Full Stack Developer with 7+ years of experience in JavaScript/TypeScript, specializing in React, Node.js, Next.js, and AWS. USP Computer Engineering graduate. Gold medalist at OBMEP. Founder and e-commerce specialist.
+> Senior Full Stack Developer with 7+ years of experience specializing in TypeScript, React, and Node.js. Computer Engineer graduated from the University of São Paulo (USP) and mathematics olympiad gold medalist. Led teams of up to 6 developers managing 14 Shopify apps serving tens of thousands of daily users. Worked in EdTech, FinTech and E-commerce companies. Top 4% Cursor AI user worldwide in 2025.
 
 ## About
 
@@ -11,15 +11,16 @@
 
 ## Expertise
 
-- Frontend: React, Next.js, TypeScript, Angular, React Native
-- Backend: Node.js, GraphQL, Python, .NET, Express
-- Cloud & DevOps: AWS (CDK, Lambda, DynamoDB), Docker, CI/CD, Datadog
-- Databases: MongoDB, PostgreSQL, Redis, DynamoDB
-- AI/ML: LLMs, LangChain, RAG, TensorFlow
+- Frontend: React, Next.js, TypeScript, Angular, React Native, Astro
+- Backend: Node.js, GraphQL, Python, .NET, Express, Golang
+- Cloud & DevOps: AWS (CDK, Lambda, DynamoDB), Docker, CI/CD, Datadog, Cloudflare, Terraform
+- Databases: MongoDB, PostgreSQL, Redis, DynamoDB, Supabase, ClickHouse
+- AI/ML: LLMs, LangChain, LangGraph, RAG, MCP, OpenAI, Gemini, TensorFlow
 
 ## Experience
 
-- Team Lead / Senior Full Stack Developer at Clearer.io (2022–2025)
+- Freelancer at WithWillow.ai (2026)
+- Senior Full Stack Developer / Team Lead / Scrum Master at Clearer.io (2022–2025)
 - Founder at Acesso Comercial (2021–2022)
 - Full Stack Developer at Vórtx DTVM (2020–2021)
 - Full Stack Developer Intern at Ênfase Instituto Jurídico (2019–2020)

@@ -33,8 +33,12 @@ function GamepadIcon() {
 }
 
 const PROJECT_KEYS = [
+  "fastRead",
+  "designPatternsQuest",
+  "browserPal",
+  "companiesDataVisualizer",
+  "boolTools",
   "withWillow",
-  "boolToolsSeoCrawler",
   "welcomeToBrazil",
   "marcelodiani",
   "vcChess",

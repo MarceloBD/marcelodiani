@@ -28,7 +28,7 @@
   },
   "about": {
     "title": "Sobre Mim",
-    "bio": "Formado em Engenharia de Computação pela Universidade de São Paulo (USP), em São Carlos, Brasil (2019). Medalhista em Olimpíada de Matemática. Trabalho há mais de 7 anos principalmente com JavaScript/TypeScript com forte experiência em desenvolvimento web. Especialista em e-commerce na maximização de vendas online. Entusiasta de IA. Sempre com uma mentalidade positiva.",
+    "bio": "Desenvolvedor Full Stack Sênior com 7+ anos de experiência especializado em TypeScript, React e Node.js. Engenheiro de Computação formado pela Universidade de São Paulo (USP) e medalhista de ouro em olimpíada de matemática. Liderou equipes de até 6 desenvolvedores gerenciando 14 apps Shopify com dezenas de milhares de usuários diários. Atuou em empresas de EdTech, FinTech e E-commerce. Top 4% dos usuários Cursor AI no mundo em 2025. Mentalidade positiva, motivado por melhorar a vida das pessoas através da tecnologia.",
     "stats": {
       "years": "7+",
       "yearsLabel": "Anos de Experiência",
@@ -90,17 +90,29 @@
     "title": "Experiência",
     "companyLogoAlt": "Logo da {company}",
     "positions": {
+      "withWillow": {
+        "company": "WithWillow.ai",
+        "location": "Remoto",
+        "period": "2026",
+        "role": "Freelancer",
+        "bullets": [
+          "Criou um marketplace com mais de 1.000 MCPs para empresas corporativas.",
+          "Clonou componentes do Webflow para Next.js permitindo navegação sem inconsistências visuais.",
+          "Adicionou workers no Cloudflare permitindo múltiplos frontends no mesmo domínio, possibilitando que o time de marketing também trabalhasse no projeto.",
+          "Otimizou o SEO do site com diferentes técnicas para melhorar o posicionamento nos motores de busca."
+        ]
+      },
       "clearer": {
         "company": "Clearer.io",
         "location": "Boston, Massachusetts, Remoto",
         "period": "2022 – 2025",
-        "role": "Líder Técnico / Desenvolvedor Full Stack Sênior / Scrum Master",
+        "role": "Desenvolvedor Full Stack Sênior / Líder Técnico / Scrum Master",
         "bullets": [
-          "Liderou dois times como Líder Técnico (7 desenvolvedores). Responsável por revisões de PR, reuniões 1:1, reuniões externas, acompanhamento de metas, cerimônias Scrum e planejamento de sprints no Jira.",
-          "Ajudou a gerenciar mais de 14 apps na Shopify App Store com dezenas de milhares de usuários mensais e receita total de milhões por ano.",
-          "Criou uma biblioteca com CDK e migrou apps do Heroku para AWS para reduzir custos de hospedagem e melhorar o gerenciamento de arquitetura com IaC.",
-          "Adicionou testes unitários e end-to-end usando Datadog, permitindo entregas mais rápidas sem regressões. Adicionou Codacy para análise estática de código.",
-          "Adicionou observabilidade com logging e tracing no Datadog, reduzindo tempo de debugging. Implementou cache com Memcached. Criou funções Lambda usando DynamoDB e LLMs."
+          "Liderou dois times (3 e 6 desenvolvedores) como Líder Técnico e Scrum Master, responsável por revisões de PR, planejamento de sprints, 1:1s, entrevistas e acompanhamento de entregas com Jellyfish, melhorando a taxa de entrega no prazo.",
+          "Gerenciou 14 produtos na Shopify App Store (bundles, upsells, checkout, devoluções, conversão de moeda) atendendo dezenas de milhares de usuários diários e gerando receita anual multimilionária.",
+          "Migrou todas as aplicações do Heroku para AWS usando uma biblioteca reutilizável de Infrastructure as Code (IaC) construída com CDK, reduzindo custos de hospedagem.",
+          "Aumentou a cobertura de testes do zero introduzindo testes unitários e end-to-end via Datadog Synthetic Monitoring. Adicionou Codacy para análise estática de código.",
+          "Reduziu o tempo médio de debugging implementando observabilidade (logging e tracing distribuído) no Datadog. Construiu uma camada de cache com Memcached e uma função Lambda usando DynamoDB e LLMs para gerar widgets personalizados."
         ]
       },
       "acesso": {
@@ -109,11 +121,11 @@
         "period": "2021 – 2022",
         "role": "Fundador",
         "bullets": [
-          "Fundador e desenvolvedor de uma startup para ajudar pequenas lojas a vender online, similar ao Shopify, com ERP, CRM, blog (com SSR) e chat omnichannel.",
-          "Construído com 3 microsserviços (auth, core, métricas) em servidor Linux. Usou Github Actions para deploy Blue-Green com Docker e Nginx.",
-          "Usou React, Node.js, GraphQL, Relay, MongoDB, AWS (S3). Criou funcionalidades com IA usando OpenAI, Gemini e Typesense para RAG.",
-          "Liderou dois desenvolvedores e coordenou com designers, social media, advogados e consultores.",
-          "Configurou mais de 1.000 testes unitários, integração e end-to-end. Criou cerca de 600 lojas."
+          "Fundou e construiu uma plataforma de e-commerce (alternativa ao Shopify) para pequenos negócios com ERP, CRM, blog SSR e chat omnichannel com websockets, integrando mais de 600 lojas.",
+          "Arquitetou 5 microsserviços (auth, core, métricas, pagamentos, mensagens) com deploy Blue-Green via GitHub Actions, Docker e Nginx. Monitorado com Prometheus, OpenTelemetry e Grafana.",
+          "Construiu com React, Node.js, GraphQL, Relay e MongoDB. Integrou 10+ APIs de terceiros. Implementou funcionalidades de IA usando OpenAI, Gemini e RAG com Typesense.",
+          "Liderou um time de 2 desenvolvedores e 1 especialista de suporte, coordenando com designers, compradores de mídia, advogados e consultores.",
+          "Alcançou 1.000+ testes automatizados com Mocha, Sinon, Chai e Cypress. Colaborou com 30+ lojistas para co-criar funcionalidades."
         ]
       },
       "vortx": {
@@ -122,11 +134,11 @@
         "period": "2020 – 2021",
         "role": "Desenvolvedor Full Stack",
         "bullets": [
-          "Trabalhou em uma empresa financeira coletando e mantendo dados de clientes para investimentos em fundos.",
-          "Usou Angular e Node para 3 microsserviços e 2 lambdas, e .NET Core conectado com cluster MongoDB.",
-          "Migrou 1.800 registros de planilhas Excel manuais para uma plataforma online automatizada, eliminando fluxo em papel.",
-          "Entregou o projeto para usuários externos em 6 meses, economizando pelo menos um funcionário em tempo integral de esforço manual.",
-          "Implementou refresh token, otimização de paginação (reduzindo tempo para 500ms) e gerou 200.000 PDFs dinâmicos."
+          "Atualizou e lançou uma plataforma legada Angular/.NET em produção para operações de fundos de investimento.",
+          "Construiu e manteve 3 microsserviços e 2 funções Lambda com Angular, .NET Core, cluster MongoDB e SQL Server.",
+          "Migrou 1.800 registros armazenados manualmente em Excel para uma plataforma online automatizada, eliminando esforço manual.",
+          "Entregou a plataforma para usuários externos em 6 meses, dentro do prazo e do orçamento.",
+          "Implementou autenticação com refresh token, paginação backend (reduzindo tempo de resposta para menos de 500ms) e gerou 200.000 PDFs dinâmicos com Puppeteer para conformidade."
         ]
       },
       "enfase": {
@@ -135,11 +147,10 @@
         "period": "2019 – 2020",
         "role": "Desenvolvedor Full Stack Estagiário",
         "bullets": [
-          "Trabalhou em uma empresa de educação a distância usando frameworks JavaScript, React e Node com PostgreSQL em 3 produtos principais.",
-          "Desenvolveu uma plataforma de pós-graduação do zero e uma para vagas jurídicas, ambas com cerca de 13.000 alunos ativos.",
-          "Arquitetou o front end com Atomic Design para componentização, resultando em manutenção mais fácil.",
-          "Construiu plataforma conectada com sistema de eventos usando Kafka para estatísticas de usuários.",
-          "Organizou eventos da empresa para promover integração entre membros de diferentes equipes."
+          "Desenvolveu 2 plataformas do zero (cursos de pós-graduação e reformulação de uma plataforma antiga) atendendo 13.000+ estudantes ativos de direito, construídas com React, Node.js, PostgreSQL e GraphQL.",
+          "Redesenhou a arquitetura front-end usando Atomic Design, dividindo um código monolítico em componentes reutilizáveis e reduzindo o esforço de manutenção.",
+          "Construiu um dashboard de analytics em tempo real conectado a um sistema de eventos Kafka, dando aos usuários visibilidade sobre seu progresso e engajamento nos cursos.",
+          "Criou um seeder de banco de dados configurável que eliminou a necessidade de dados de produção no desenvolvimento local, acelerando o onboarding e os testes."
         ]
       }
     }
@@ -161,17 +172,36 @@
     "closeDemo": "▲ Fechar Demo",
     "playDemo": "▶ Jogar Demo Web",
     "items": {
-      "boolToolsSeoCrawler": {
-        "name": "BoolTools SEO Crawler",
+      "fastRead": {
+        "name": "Fast Read",
         "year": "2026",
-        "description": "Ferramenta open-source de auditoria SEO/GEO para otimizar visibilidade em buscadores e IA."
+        "description": "Aplicação multiplataforma de leitura rápida para web e desktop usando RSVP (Rapid Serial Visual Presentation) com destaque ORP."
+      },
+      "designPatternsQuest": {
+        "name": "Design Patterns Quest",
+        "year": "2026",
+        "description": "Plataforma interativa para dominar todos os 22 padrões de design Gang of Four através de uma experiência estilo RPG."
+      },
+      "browserPal": {
+        "name": "Browser Pal",
+        "year": "2026",
+        "description": "Navegador orientado por IA com navegação manual e orquestração autônoma via API MCP, com interceptação de requisições, bloqueador de anúncios e carteira crypto."
+      },
+      "companiesDataVisualizer": {
+        "name": "Companies Data Visualizer",
+        "year": "2026",
+        "description": "Pipeline de big data para ingerir e indexar dados governamentais de 70M+ empresas, possibilitando filtragem de alta performance e análise de tendências de mercado."
+      },
+      "boolTools": {
+        "name": "BoolTools SEO / GDPR / Security / Page Speed",
+        "year": "2026",
+        "description": "Ferramentas open-source de auditoria SEO/GEO, GDPR, Segurança e Page Speed para visibilidade em buscas, conformidade, defesa e performance web."
       },
       "withWillow": {
         "name": "WithWillow.ai",
         "year": "2026",
         "description": "Contribuições para o gateway MCP seguro conectando agentes de IA a sistemas corporativos."
       },
-      
       "welcomeToBrazil": {
         "name": "Welcome to Brazil",
         "year": "2026",
@@ -929,7 +959,7 @@
       },
       "whatExperience": {
         "question": "Quantos anos de experiência Marcelo Diani tem?",
-        "answer": "Tenho 7+ anos de experiência profissional em desenvolvimento de software, com 3+ anos em cargos de liderança. Já gerenciei equipes de até 7 desenvolvedores, escrevi mais de 1.000 testes e gerenciei 25+ aplicações em produção em diversas indústrias incluindo e-commerce, fintech e educação."
+        "answer": "Tenho 7+ anos de experiência profissional em desenvolvimento de software, com 3+ anos em cargos de liderança. Já liderei equipes de até 6 desenvolvedores, escrevi mais de 1.000 testes e gerenciei 25+ aplicações em produção em empresas de EdTech, FinTech e E-commerce."
       }
     }
   },

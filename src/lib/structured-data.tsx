@@ -37,8 +37,8 @@ function buildFaqQuestions(locale: string) {
       pt: { question: "Onde Marcelo Diani está localizado e ele trabalha remotamente?", answer: "Marcelo está baseado em São Paulo, Brasil, e disponível para trabalho remoto em todos os fusos horários. Ele tem ampla experiência trabalhando com equipes internacionais, incluindo 3 anos liderando equipes remotas para uma empresa em Boston." },
     },
     {
-      en: { question: "How many years of experience does Marcelo Diani have?", answer: "Marcelo has 7+ years of professional experience in software development, with 3+ years in leadership roles. He has managed teams of up to 7 developers, written over 1,000 tests, and managed 25+ production applications across e-commerce, fintech, and education." },
-      pt: { question: "Quantos anos de experiência Marcelo Diani tem?", answer: "Marcelo tem 7+ anos de experiência profissional em desenvolvimento de software, com 3+ anos em cargos de liderança. Já gerenciou equipes de até 7 desenvolvedores, escreveu mais de 1.000 testes e gerenciou 25+ aplicações em produção em diversas indústrias." },
+      en: { question: "How many years of experience does Marcelo Diani have?", answer: "Marcelo has 7+ years of professional experience in software development, with 3+ years in leadership roles. He has led teams of up to 6 developers, written over 1,000 tests, and managed 25+ production applications across EdTech, FinTech, and E-commerce companies." },
+      pt: { question: "Quantos anos de experiência Marcelo Diani tem?", answer: "Marcelo tem 7+ anos de experiência profissional em desenvolvimento de software, com 3+ anos em cargos de liderança. Já liderou equipes de até 6 desenvolvedores, escreveu mais de 1.000 testes e gerenciou 25+ aplicações em produção em empresas de EdTech, FinTech e E-commerce." },
     },
   ];
 

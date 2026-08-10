@@ -7,9 +7,16 @@ import { TimelineItem } from "./TimelineItem";
 import { FloatingGeometrics } from "./FloatingGeometrics";
 import { EXPERIENCE_TECH } from "@/data/skills";
 
-const POSITION_KEYS = ["clearer", "acesso", "vortx", "enfase"] as const;
+const POSITION_KEYS = [
+  "withWillow",
+  "clearer",
+  "acesso",
+  "vortx",
+  "enfase",
+] as const;
 
 const COMPANY_LINKS: Record<string, string> = {
+  withWillow: "https://withwillow.ai",
   clearer: "https://clearer.io",
   acesso: "https://acessocomercial.com",
   vortx: "https://vortx.com.br",
@@ -17,6 +24,7 @@ const COMPANY_LINKS: Record<string, string> = {
 };
 
 const COMPANY_LOGOS: Record<string, string> = {
+  withWillow: "/logos/withwillow.svg",
   clearer: "/logos/clearer.png",
   acesso: "/logos/acesso.png",
   vortx: "/logos/vortx.png",
@@ -47,8 +55,12 @@ export function ExperienceSection() {
           <div className="space-y-16">
             {POSITION_KEYS.map((positionKey, index) => {
               const bulletsCount = 5;
-              const bullets = Array.from({ length: bulletsCount }, (_, bulletIndex) =>
-                translations(`positions.${positionKey}.bullets.${bulletIndex}`)
+              const bullets = Array.from(
+                { length: bulletsCount },
+                (_, bulletIndex) =>
+                  translations(
+                    `positions.${positionKey}.bullets.${bulletIndex}`,
+                  ),
               );
 
               return (

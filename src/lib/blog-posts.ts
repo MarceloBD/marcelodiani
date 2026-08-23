@@ -19,6 +19,64 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "we-generate-more-text-than-we-can-read",
+    title: {
+      en: "We Generate More Text Than We Can Read",
+      pt: "Geramos Mais Texto Do Que Conseguimos Ler",
+    },
+    publishedAt: "2026-08-23",
+    readingTime: 2,
+    coverImage: "/blog/fast-read-llm-output.png",
+    excerpt: {
+      en: "LLMs give us walls of text every day. The information is useful, but consuming it at normal reading speed feels impossible. So I built something for that.",
+      pt: "LLMs nos dão paredes de texto todo dia. A informação é útil, mas consumir em velocidade normal parece impossível. Então construí algo pra isso.",
+    },
+    content: {
+      en: `You ask an LLM a question and it gives you a thousand words back. You ask it to explain something and it writes an essay. Documentation, summaries, comparisons. The output just keeps growing.
+
+The thing is, most of that text is useful. It is not filler. But consuming it feels heavy because there is simply too much, and our reading speed has not changed in decades. We still read at 200 to 250 words per minute while the volume of text we need to process has exploded.
+
+I caught myself in a loop: generate a long response, skim it, miss details, ask the LLM to repeat parts. The information was right there, I just could not absorb it fast enough.
+
+## Fast Read
+
+So I built Fast Read. It uses a technique called RSVP (Rapid Serial Visual Presentation) that shows you one word at a time in a fixed position. Your eyes stay still, your brain just processes words. No scanning left to right, no jumping between lines. That overhead alone accounts for about 20% of your reading time.
+
+Most people hit 300 to 500 WPM on their first try. You paste text, press play, and the words flow. Arrow keys to adjust speed or navigate. Pause when something needs attention.
+
+If you prefer hearing the words, you can turn on text-to-speech. It syncs with your reading speed and auto-detects the language. Some people retain more visually, others auditorily. Both work.
+
+It handles PDF, EPUB, Markdown, HTML and plain text.
+
+Open source, free, no accounts, no data collection.
+
+https://fastread.marcelodiani.online/
+
+https://github.com/MarceloBD/fast-read`,
+      pt: `Você faz uma pergunta para um LLM e ele te devolve mil palavras. Pede para explicar algo e ele escreve um ensaio. Documentação, resumos, comparações. A saída só cresce.
+
+O ponto é que a maior parte desse texto é útil. Não é enchimento. Mas consumir tudo parece pesado porque simplesmente é demais, e nossa velocidade de leitura não mudou em décadas. Ainda lemos a 200 a 250 palavras por minuto enquanto o volume de texto que precisamos processar explodiu.
+
+Me peguei em um loop: gerar uma resposta longa, passar os olhos, perder detalhes, pedir pro LLM repetir partes. A informação estava ali, eu só não conseguia absorver rápido o suficiente.
+
+## Fast Read
+
+Então construí o Fast Read. Ele usa uma técnica chamada RSVP (Rapid Serial Visual Presentation) que mostra uma palavra por vez em uma posição fixa. Seus olhos ficam parados, seu cérebro apenas processa palavras. Sem escanear da esquerda pra direita, sem pular entre linhas. Só esse overhead já consome cerca de 20% do seu tempo de leitura.
+
+A maioria das pessoas alcança 300 a 500 WPM na primeira tentativa. Você cola o texto, aperta play, e as palavras fluem. Setas do teclado para ajustar velocidade ou navegar. Pausa quando algo precisa de atenção.
+
+Se você prefere ouvir as palavras, pode ativar o text-to-speech. Ele sincroniza com sua velocidade de leitura e detecta o idioma automaticamente. Algumas pessoas retêm mais visualmente, outras auditivamente. Ambos funcionam.
+
+Suporta PDF, EPUB, Markdown, HTML e texto puro.
+
+Open source, gratuito, sem cadastro, sem coleta de dados.
+
+https://fastread.marcelodiani.online/
+
+https://github.com/MarceloBD/fast-read`,
+    },
+  },
+  {
     slug: "compliance-and-security-why-i-built-booltools-gdpr-and-security-checker",
     title: {
       en: "Why I Built BoolTools GDPR & Security Checker",
